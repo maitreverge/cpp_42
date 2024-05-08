@@ -5,25 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 20:11:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/08 20:27:38 by flverge          ###   ########.fr       */
+/*   Created: 2024/05/08 20:43:38 by flverge           #+#    #+#             */
+/*   Updated: 2024/05/08 20:50:03 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "sample_class.hpp"
+#include "Sample_class.hpp"
 
-int main (void) {
-	
-	// Cet appl va me permettre de faire appel a la fois a un constructeur
-	// et un destructeur de classe
+int main (void)
+{
 	Sample coucou;
 
-	coucou.nb = 42;
+	// coucou.nb = 66;
+
+	std::cout << "2nd affichage de nb = " << coucou.nb << std::endl;
+
+	coucou.nb++;
 	
-	std::cout << coucou.nb << std::endl;
-
-	coucou.ft_hello();
-
-	return (0);
+	std::cout << "3eme affichage de nb = " << coucou.nb << std::endl;
+	return 0;
 }
