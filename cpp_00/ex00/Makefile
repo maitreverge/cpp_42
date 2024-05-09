@@ -6,7 +6,7 @@
 #    By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 13:04:54 by flverge           #+#    #+#              #
-#    Updated: 2024/05/09 13:10:55 by flverge          ###   ########.fr        #
+#    Updated: 2024/05/09 13:25:36 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,12 @@ NAME = megaphone
 CC = c++
 
 # Compiler flags
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Source files
 SRC_DIR := src
 SRC := $(wildcard $(SRC_DIR)/*.cpp)
-OBJ := ${SRC:.c=.o}
+OBJ := ${SRC:.cpp=.o}
 
 # Includes
 # INC =	-I ./includes/
@@ -38,29 +38,22 @@ BLUE = \033[94m
 
 all: $(NAME)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.cpp
+	@$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
 	@echo "$(BOLD)$(RED)🛠️            Compiling $(NAME)...      🛠️$(RESET)"
 	@echo "\n"
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 	@echo "$(BOLD)$(GREEN)🚀    $(NAME) fully compiled, ready to use     🚀$(RESET)"
-	@echo "\n"
 
 clean:
 	@rm -f $(OBJ)
 	@echo "$(BOLD)$(ORANGE)🌀     Cleaned .o $(NAME)'s files   🌀$(RESET)"
-	@echo "\n"
-	@echo "$(BOLD)$(BLUE)-----------------------$(RESET)"
-	@echo "\n"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(BOLD)$(ORANGE)🌀        Cleaned $(NAME) executable      🌀$(RESET)"
-	@echo "\n"
-	@echo "$(BOLD)$(BLUE)-----------------------$(RESET)"
-	@echo "\n"
+	@echo "$(BOLD)$(ORANGE)🌀     Cleaned $(NAME) executable   🌀$(RESET)"
 
 re: fclean all
 
