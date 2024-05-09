@@ -32,3 +32,6 @@
 *.app
 
 .vscode/
+
+# Executables from exercices 
+cpp_00/ex00/megaphone
