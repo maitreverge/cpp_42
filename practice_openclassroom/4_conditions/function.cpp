@@ -1,15 +1,28 @@
 #include <iostream>
 
-void	carre(int &nombre)
+void	increment(int nb)
 {
-	nombre = nombre * nombre;
+	std::cout << "Nombre dans fonction increment avant = " << nb << std::endl;
+	nb = nb + 1;
+	// nb++;
+
+	std::cout << "Nombre dans fonction increment apres = " << nb << std::endl;
 }
 
 int main(void)
 {
-	int nb = 4;
+	int nombre = 42;
 
-	carre(nb);
+	// ! Syntaxe pour declaration + assignation d'un pointeur
+	// int *ptr_nombre = &nombre;
 
-	std::cout << "nb au carre = = " << nb << std::endl;
+	// ! Cette variable est comme un alias, donc une reference
+	int &ref_nombre = nombre;
+
+	std::cout << "Valeur de ref_nombre = " << ref_nombre << std::endl;
+
+	std::cout << "Adresses de nombre = " << &nombre << std::endl;
+	std::cout << "Adresses de ref_nombre = " << &ref_nombre << std::endl;
+	// increment(nombre);
+	// std::cout << "Nombre main post fonction increment = " << nombre << std::endl;
 }
