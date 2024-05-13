@@ -6,7 +6,7 @@
 #    By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 13:04:54 by flverge           #+#    #+#              #
-#    Updated: 2024/05/11 10:24:46 by flverge          ###   ########.fr        #
+#    Updated: 2024/05/13 19:55:44 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ BLUE = \033[94m
 all: $(NAME)
 
 %.o: %.cpp
-	@$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 $(NAME): $(OBJ)
 	@echo "$(BOLD)$(RED)🛠️            Compiling $(NAME)...      🛠️$(RESET)"

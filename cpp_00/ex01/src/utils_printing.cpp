@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 19:05:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/13 19:45:18 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/13 20:03:49 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	custom_exit(void)
 {
-	std::cout << MAGENTA << "Thanks for using PhoneBook 1982" << RESET<< std::endl;
+	std::cout << MAGENTA << "Thanks for using PhoneBook 1982" << RESET << std::endl;
 	exit(0);
 }
 
