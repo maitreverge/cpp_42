@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:25:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/14 15:58:32 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/14 20:20:03 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	add_sub_contact(std::string message, std::string *target)
 	// std::cout << "MASTER CHECK !!!!! : " << target << std::endl;
 }
 
-void	add_contact(PhoneBook *ptr, int writeIndex, int displayIndex)
+void	add_contact(PhoneBook *ptr, int writeIndex)
 {
 	PhoneBook contact;
 
@@ -60,17 +60,16 @@ void	add_contact(PhoneBook *ptr, int writeIndex, int displayIndex)
 	// 		indexFreeContact++;
 	// }
 
-	*contact.contactAccess[writeIndex][0] = displayIndex;
 	
-	add_sub_contact("First Name : ", &*contact.contactAccess[writeIndex][1]);
+	add_sub_contact("First Name : ", &*contact.contactAccess[writeIndex][0]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][0] << std::endl;
-	add_sub_contact("Last Name : ", &*contact.contactAccess[writeIndex][2]);
+	add_sub_contact("Last Name : ", &*contact.contactAccess[writeIndex][1]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][1] << std::endl;
-	add_sub_contact("Nick Name : ", &*contact.contactAccess[writeIndex][3]);
+	add_sub_contact("Nick Name : ", &*contact.contactAccess[writeIndex][2]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][2] << std::endl;
-	add_sub_contact("Phone Number : ", &*contact.contactAccess[writeIndex][4]);
+	add_sub_contact("Phone Number : ", &*contact.contactAccess[writeIndex][3]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][3] << std::endl;
-	add_sub_contact("Secret : ", &*contact.contactAccess[writeIndex][5]);
+	add_sub_contact("Secret : ", &*contact.contactAccess[writeIndex][4]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][4] << std::endl;
 	
 	// do
@@ -87,7 +86,7 @@ void	print_separators(void)
 	for (int i = 0; i < 4; i++)
 	{
 		print_no_endl("+----------");
-		if (i == 4)
+		if (i == 3)
 		{
 			std::cout << "+" << std::endl;
 		}
@@ -99,7 +98,7 @@ void	title_print(void)
 	print_no_endl("|   INDEX  ");
 	print_no_endl("| 1st name ");
 	print_no_endl("| lastname ");
-	print_no_endl("| nick name");
+	print_no_endl("| nick name|");
 	// print_no_endl("| phone nb ");
 	// print_no_endl("|  secret  |");
 	std::cout << std::endl;
@@ -149,12 +148,16 @@ void	search_contact(PhoneBook *ptr)
 	{
 		for (int i = 0; i < NB_CONTACT; i++)
 		{
-			for (int j = 0; j < 4; j++)
+			for (int j = 0; j < 3; j++)
 			{
 				if (!stringIsEmpty(*contact.contactAccess[i][j]))
 				{
+					if (i < 9 && j == 0)
+						std::cout << "|         " << i + 1;
+					else if ( i >= 10 && j == 0)
+						std::cout << "|        " << i + 1;
 					display_line_contact(*contact.contactAccess[i][j]);
-					if (j == 3)
+					if (j == 2)
 					{
 						print_no_endl("|");
 						std::cout << std::endl;
@@ -174,7 +177,6 @@ int main(void)
 	PhoneBook phoneBook;
 
 	int writeIndex = 0;
-	int displayIndex = 1;
 
 	// Declare the main_prompt as 
 	std::string main_prompt;
@@ -202,9 +204,8 @@ int main(void)
 			custom_exit();
 		else if (main_prompt == "ADD")
 		{
-			add_contact(&phoneBook, writeIndex, displayIndex);
+			add_contact(&phoneBook, writeIndex);
 			writeIndex++;
-			displayIndex++;
 			if (writeIndex == 8)
 				writeIndex = 0;
 		}
