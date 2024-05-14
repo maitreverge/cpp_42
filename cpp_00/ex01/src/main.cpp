@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:25:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/13 19:57:12 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/14 12:31:19 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int main(void)
 	PhoneBook phoneBook;
 
 	// Declare the main_prompt as 
-	std::string main_prompt = 0;
+	std::string main_prompt;
 	
 	// Empty fill addresses
 	assign_adresses(&phoneBook, &contact);
