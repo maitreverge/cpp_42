@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:25:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/14 15:45:41 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/14 15:58:32 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ void	assign_adresses(PhoneBook *phoneBook, Contact *contact)
 {
 	for (int i = 0; i < NB_CONTACT ; i++)
 	{
-		phoneBook->contactAccess[i][0] = &contact->first_name[i];
-		phoneBook->contactAccess[i][1] = &contact->last_name[i];
-		phoneBook->contactAccess[i][2] = &contact->nick_name[i];
-		phoneBook->contactAccess[i][3] = &contact->phone_number[i];
-		phoneBook->contactAccess[i][4] = &contact->secret[i];
+		phoneBook->contactAccess[i][0] = &contact->index[i];
+		phoneBook->contactAccess[i][1] = &contact->first_name[i];
+		phoneBook->contactAccess[i][2] = &contact->last_name[i];
+		phoneBook->contactAccess[i][3] = &contact->nick_name[i];
+		phoneBook->contactAccess[i][4] = &contact->phone_number[i];
+		phoneBook->contactAccess[i][5] = &contact->secret[i];
 	}
 }
 
@@ -34,7 +35,7 @@ void	add_sub_contact(std::string message, std::string *target)
 	// std::cout << "MASTER CHECK !!!!! : " << target << std::endl;
 }
 
-void	add_contact(PhoneBook *ptr, int addIndex)
+void	add_contact(PhoneBook *ptr, int writeIndex, int displayIndex)
 {
 	PhoneBook contact;
 
@@ -58,16 +59,18 @@ void	add_contact(PhoneBook *ptr, int addIndex)
 	// 	for (int i = 0; !stringIsEmpty(*contact.contactAccess[i][0]); i++) // segfault
 	// 		indexFreeContact++;
 	// }
+
+	*contact.contactAccess[writeIndex][0] = displayIndex;
 	
-	add_sub_contact("First Name : ", &*contact.contactAccess[addIndex][0]);
+	add_sub_contact("First Name : ", &*contact.contactAccess[writeIndex][1]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][0] << std::endl;
-	add_sub_contact("Last Name : ", &*contact.contactAccess[addIndex][1]);
+	add_sub_contact("Last Name : ", &*contact.contactAccess[writeIndex][2]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][1] << std::endl;
-	add_sub_contact("Nick Name : ", &*contact.contactAccess[addIndex][2]);
+	add_sub_contact("Nick Name : ", &*contact.contactAccess[writeIndex][3]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][2] << std::endl;
-	add_sub_contact("Phone Number : ", &*contact.contactAccess[addIndex][3]);
+	add_sub_contact("Phone Number : ", &*contact.contactAccess[writeIndex][4]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][3] << std::endl;
-	add_sub_contact("Secret : ", &*contact.contactAccess[addIndex][4]);
+	add_sub_contact("Secret : ", &*contact.contactAccess[writeIndex][5]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][4] << std::endl;
 	
 	// do
@@ -81,7 +84,7 @@ void	add_contact(PhoneBook *ptr, int addIndex)
 
 void	print_separators(void)
 {
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		print_no_endl("+----------");
 		if (i == 4)
@@ -93,11 +96,12 @@ void	print_separators(void)
 
 void	title_print(void)
 {
+	print_no_endl("|   INDEX  ");
 	print_no_endl("| 1st name ");
 	print_no_endl("| lastname ");
 	print_no_endl("| nick name");
-	print_no_endl("| phone nb ");
-	print_no_endl("|  secret  |");
+	// print_no_endl("| phone nb ");
+	// print_no_endl("|  secret  |");
 	std::cout << std::endl;
 }
 
@@ -145,12 +149,12 @@ void	search_contact(PhoneBook *ptr)
 	{
 		for (int i = 0; i < NB_CONTACT; i++)
 		{
-			for (int j = 0; j < 5; j++)
+			for (int j = 0; j < 4; j++)
 			{
 				if (!stringIsEmpty(*contact.contactAccess[i][j]))
 				{
 					display_line_contact(*contact.contactAccess[i][j]);
-					if (j == 4)
+					if (j == 3)
 					{
 						print_no_endl("|");
 						std::cout << std::endl;
@@ -169,7 +173,8 @@ int main(void)
 	// Instance of phoneBook second
 	PhoneBook phoneBook;
 
-	int addIndex = 0;
+	int writeIndex = 0;
+	int displayIndex = 1;
 
 	// Declare the main_prompt as 
 	std::string main_prompt;
@@ -197,10 +202,11 @@ int main(void)
 			custom_exit();
 		else if (main_prompt == "ADD")
 		{
-			add_contact(&phoneBook, addIndex);
-			addIndex++;
-			if (addIndex == 8)
-				addIndex = 0;
+			add_contact(&phoneBook, writeIndex, displayIndex);
+			writeIndex++;
+			displayIndex++;
+			if (writeIndex == 8)
+				writeIndex = 0;
 		}
 		else // SEARCH
 			search_contact(&phoneBook);

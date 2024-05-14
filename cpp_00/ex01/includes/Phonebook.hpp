@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:28:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/14 15:43:47 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/14 15:51:56 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ class Contact
 	public:
 		Contact(void);
 		~Contact(void);
+		std::string index[NB_CONTACT];
 		std::string first_name[NB_CONTACT];
 		std::string last_name[NB_CONTACT];
 		std::string nick_name[NB_CONTACT];
