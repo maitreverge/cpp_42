@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:25:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/14 12:31:19 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/14 13:18:43 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,27 @@ void	add_contact(PhoneBook *ptr)
 
 	contact = *ptr;
 	
-	std::cout << "OKAY" << std::endl;
-}
+	int indexFreeContact = 0;	
+	clear_screen();
 
+	welcoming_printing("ADD Contact Menu");
+
+	print("Please enter contact details bellow : ");
+
+	// finds next free contact
+	// ! needs to point to the first one if everything full
+	for (int i = 0; *contact.contactAccess[i][0] != ""; i++)
+		indexFreeContact++;
+	
+	do
+	{
+		print("First Name : ");
+		getline(std::cin, *contact.contactAccess[indexFreeContact][0]);
+	} while (stringIsEmpty(*contact.contactAccess[indexFreeContact][0]));
+
+	print(*contact.contactAccess[indexFreeContact][0]);
+}
+	
 void	search_contact(PhoneBook *ptr)
 {
 	PhoneBook contact;
@@ -55,8 +73,9 @@ int main(void)
 	// Empty fill addresses
 	assign_adresses(&phoneBook, &contact);
 
-	// Print a welcoming message
-	welcoming_printing();
+	clear_screen();
+
+	welcoming_printing("PhoneBook 1982");
 	while (1)
 	{
 		please_prompt("");

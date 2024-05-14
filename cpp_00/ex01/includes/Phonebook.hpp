@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:28:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/13 20:04:19 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/14 13:17:43 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <stdlib.h>
+#include <cctype>
 
 
 #define NB_CONTACT 8
@@ -57,9 +59,16 @@ class Contact
 };
 
 void	custom_exit(void);
-void	welcoming_printing(void);
+void	welcoming_printing(std::string message);
 void	please_prompt(std::string message);
 bool	valid_prompt(std::string prompt);
+void clear_screen(void);
+
+bool	stringIsEmpty(std::string str);
+
+
+void print(std::string str);
+
 
 
 
