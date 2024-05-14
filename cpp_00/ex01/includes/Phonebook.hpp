@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:28:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/14 15:51:56 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/14 20:58:16 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ class Contact
 	public:
 		Contact(void);
 		~Contact(void);
-		std::string index[NB_CONTACT];
+		// std::string index[NB_CONTACT];
 		std::string first_name[NB_CONTACT];
 		std::string last_name[NB_CONTACT];
 		std::string nick_name[NB_CONTACT];
@@ -74,6 +74,10 @@ bool	stringIsEmpty(std::string str);
 
 void print(std::string str);
 void	print_no_endl(std::string str);
+void	print_color(std::string COLOR, std::string str);
+void	print_color_no_endl(std::string COLOR, std::string str);
+
+
 
 
 
