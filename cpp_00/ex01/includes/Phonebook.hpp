@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:28:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/14 14:53:06 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/14 15:43:47 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 
 #define NB_CONTACT 8
 #define MAX_WIDTH 10
+
+// extern int g_index;
 
 // colors
 #define RESET   "\033[0m"

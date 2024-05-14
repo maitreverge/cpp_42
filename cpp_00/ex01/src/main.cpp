@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:25:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/14 15:05:00 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/14 15:45:41 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ void	add_sub_contact(std::string message, std::string *target)
 	// std::cout << "MASTER CHECK !!!!! : " << target << std::endl;
 }
 
-void	add_contact(PhoneBook *ptr)
+void	add_contact(PhoneBook *ptr, int addIndex)
 {
 	PhoneBook contact;
 
 	contact = *ptr;
 	
-	int indexFreeContact = 0;	
+	// int indexFreeContact = 0;	
 	clear_screen();
 
 	welcoming_printing("ADD Contact Menu");
@@ -50,18 +50,24 @@ void	add_contact(PhoneBook *ptr)
 	// finds next free contact
 	// ! needs to point to the first one if everything full
 	// for (int i = 0; *contact.contactAccess[i][0] != ""; i++)
-	for (int i = 0; !stringIsEmpty(*contact.contactAccess[i][0]); i++) // segfault
-		indexFreeContact++;
+
+	// if (!stringIsEmpty(*contact.contactAccess[7][0]))
+	// 	indexFreeContact = 0;
+	// else
+	// {
+	// 	for (int i = 0; !stringIsEmpty(*contact.contactAccess[i][0]); i++) // segfault
+	// 		indexFreeContact++;
+	// }
 	
-	add_sub_contact("First Name : ", &*contact.contactAccess[indexFreeContact][0]);
+	add_sub_contact("First Name : ", &*contact.contactAccess[addIndex][0]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][0] << std::endl;
-	add_sub_contact("Last Name : ", &*contact.contactAccess[indexFreeContact][1]);
+	add_sub_contact("Last Name : ", &*contact.contactAccess[addIndex][1]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][1] << std::endl;
-	add_sub_contact("Nick Name : ", &*contact.contactAccess[indexFreeContact][2]);
+	add_sub_contact("Nick Name : ", &*contact.contactAccess[addIndex][2]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][2] << std::endl;
-	add_sub_contact("Phone Number : ", &*contact.contactAccess[indexFreeContact][3]);
+	add_sub_contact("Phone Number : ", &*contact.contactAccess[addIndex][3]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][3] << std::endl;
-	add_sub_contact("Secret : ", &*contact.contactAccess[indexFreeContact][4]);
+	add_sub_contact("Secret : ", &*contact.contactAccess[addIndex][4]);
 	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][4] << std::endl;
 	
 	// do
@@ -163,6 +169,8 @@ int main(void)
 	// Instance of phoneBook second
 	PhoneBook phoneBook;
 
+	int addIndex = 0;
+
 	// Declare the main_prompt as 
 	std::string main_prompt;
 	
@@ -188,7 +196,12 @@ int main(void)
 		if (main_prompt == "EXIT")
 			custom_exit();
 		else if (main_prompt == "ADD")
-			add_contact(&phoneBook);
+		{
+			add_contact(&phoneBook, addIndex);
+			addIndex++;
+			if (addIndex == 8)
+				addIndex = 0;
+		}
 		else // SEARCH
 			search_contact(&phoneBook);
 	}
