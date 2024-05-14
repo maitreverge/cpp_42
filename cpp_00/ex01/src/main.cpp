@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:25:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/14 13:33:28 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/14 15:05:00 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@ void	assign_adresses(PhoneBook *phoneBook, Contact *contact)
 	}
 }
 
-void	add_sub_contact(std::string message, std::string target)
+void	add_sub_contact(std::string message, std::string *target)
 {
 	do
 	{
 		print(message);
-		getline(std::cin, target);
-	} while (stringIsEmpty(target));
+		getline(std::cin, *target);
+	} while (stringIsEmpty(*target));
+	// std::cout << "MASTER CHECK !!!!! : " << target << std::endl;
 }
 
 void	add_contact(PhoneBook *ptr)
@@ -49,14 +50,19 @@ void	add_contact(PhoneBook *ptr)
 	// finds next free contact
 	// ! needs to point to the first one if everything full
 	// for (int i = 0; *contact.contactAccess[i][0] != ""; i++)
-	for (int i = 0; stringIsEmpty(*contact.contactAccess[i][0]); i++)
+	for (int i = 0; !stringIsEmpty(*contact.contactAccess[i][0]); i++) // segfault
 		indexFreeContact++;
 	
-	add_sub_contact("First Name : ", *contact.contactAccess[indexFreeContact][0]);
-	add_sub_contact("Last Name : ", *contact.contactAccess[indexFreeContact][1]);
-	add_sub_contact("Nick Name : ", *contact.contactAccess[indexFreeContact][2]);
-	add_sub_contact("Phone Number : ", *contact.contactAccess[indexFreeContact][3]);
-	add_sub_contact("Secret : ", *contact.contactAccess[indexFreeContact][4]);
+	add_sub_contact("First Name : ", &*contact.contactAccess[indexFreeContact][0]);
+	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][0] << std::endl;
+	add_sub_contact("Last Name : ", &*contact.contactAccess[indexFreeContact][1]);
+	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][1] << std::endl;
+	add_sub_contact("Nick Name : ", &*contact.contactAccess[indexFreeContact][2]);
+	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][2] << std::endl;
+	add_sub_contact("Phone Number : ", &*contact.contactAccess[indexFreeContact][3]);
+	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][3] << std::endl;
+	add_sub_contact("Secret : ", &*contact.contactAccess[indexFreeContact][4]);
+	// std::cout << "PRINT CHECK" << *contact.contactAccess[indexFreeContact][4] << std::endl;
 	
 	// do
 	// {
@@ -66,13 +72,88 @@ void	add_contact(PhoneBook *ptr)
 
 	// print(*contact.contactAccess[indexFreeContact][0]);
 }
+
+void	print_separators(void)
+{
+	for (int i = 0; i < 5; i++)
+	{
+		print_no_endl("+----------");
+		if (i == 4)
+		{
+			std::cout << "+" << std::endl;
+		}
+	}
+}
+
+void	title_print(void)
+{
+	print_no_endl("| 1st name ");
+	print_no_endl("| lastname ");
+	print_no_endl("| nick name");
+	print_no_endl("| phone nb ");
+	print_no_endl("|  secret  |");
+	std::cout << std::endl;
+}
+
+void	display_line_contact(std::string str)
+{
+	// int i = 0;
+	int len_str = str.length();
+
+	print_no_endl("|");
+	
+	if (len_str < MAX_WIDTH)
+	{
+		for (int i = 0; i < MAX_WIDTH - len_str; i++)
+			std::cout << " ";
+		std::cout << str;
+	}
+	else if (len_str == MAX_WIDTH)
+		std::cout << str;
+	else // + de 10
+	{
+		for (int i = 0; i < MAX_WIDTH - 1; i++)
+			std::cout << str[i];
+		std::cout << ".";
+	}
+}
 	
 void	search_contact(PhoneBook *ptr)
 {
 	PhoneBook contact;
 
 	contact = *ptr;
+
+	clear_screen();
+
+	welcoming_printing("SEARCH Contact Menu");
 	
+	// print 3 first lines
+	print_separators();
+	title_print();
+	print_separators();
+
+	if (stringIsEmpty(*contact.contactAccess[0][0]))
+		std::cout << RED << "NO CONTACT TO DISPLAY" << RESET << std::endl;
+	else
+	{
+		for (int i = 0; i < NB_CONTACT; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				if (!stringIsEmpty(*contact.contactAccess[i][j]))
+				{
+					display_line_contact(*contact.contactAccess[i][j]);
+					if (j == 4)
+					{
+						print_no_endl("|");
+						std::cout << std::endl;
+					}
+				}
+			}
+		}
+		print_separators();
+	}
 }
 
 int main(void)

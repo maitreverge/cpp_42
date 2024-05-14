@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 19:05:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/14 13:20:03 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/14 13:43:00 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@
 void	print(std::string str)
 {
 	std::cout << str << std::endl;
+}
+
+/**
+ * @brief Wrapper function for printing without a endl;
+ * 
+ * @param str 
+ */
+void	print_no_endl(std::string str)
+{
+	std::cout << str;
 }
 
 /**
