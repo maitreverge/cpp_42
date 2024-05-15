@@ -6,7 +6,7 @@
 #    By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 13:04:54 by flverge           #+#    #+#              #
-#    Updated: 2024/05/14 12:27:12 by flverge          ###   ########.fr        #
+#    Updated: 2024/05/15 13:42:09 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = phonebook
 CC = c++
 
 # Compiler flags
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Source files
 SRC_DIR := src
