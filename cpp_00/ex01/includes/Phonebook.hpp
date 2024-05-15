@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:28:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/14 20:58:16 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/15 11:54:04 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	please_prompt(std::string message);
 bool	valid_prompt(std::string prompt);
 void clear_screen(void);
 
-bool	stringIsEmpty(std::string str);
+bool	string_is_empty(std::string str);
 
 
 void print(std::string str);
@@ -77,6 +77,7 @@ void	print_no_endl(std::string str);
 void	print_color(std::string COLOR, std::string str);
 void	print_color_no_endl(std::string COLOR, std::string str);
 
+void	search_contact(PhoneBook *ptr);
 
 
 
