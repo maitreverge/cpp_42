@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:29:47 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/13 18:42:35 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/15 12:23:34 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  */
 PhoneBook::PhoneBook(void)
 {
-	return ;
+	return ; // not mandatory
 }
 
 /**
@@ -27,9 +27,13 @@ PhoneBook::PhoneBook(void)
  */
 PhoneBook::~PhoneBook(void)
 {
-	return;
+	return; // not mandatory
 }
 
+/**
+ * @brief Construct a new Contact:: Contact object
+ * 
+ */
 Contact::Contact(void)
 {
 	// At the start of execution, fill all the variables with nothing
@@ -44,9 +48,13 @@ Contact::Contact(void)
 	return;
 }
 
+/**
+ * @brief Destroy the Contact:: Contact object
+ * 
+ */
 Contact::~Contact(void)
 {
-	return;
+	return; // not mandatory
 }
 
 

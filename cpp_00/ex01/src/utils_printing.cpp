@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 19:05:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/15 11:42:06 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/15 12:51:23 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,21 @@ bool	valid_prompt(std::string prompt)
 	return false;
 }
 
+/**
+ * @brief Wrapper printing function for code readibility
+ * 
+ * @param message 
+ */
 void	welcoming_printing(std::string message)
 {
 	std::cout << "Welcome to " << GREEN << message << RESET << std::endl;
 }
 
+/**
+ * @brief Wrapper printing function for code readibility
+ * 
+ * @param message 
+ */
 void	please_prompt(std::string message)
 {
 	if (message == "error")
