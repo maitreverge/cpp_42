@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 19:05:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/14 20:31:30 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/15 11:42:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	print_color_no_endl(std::string COLOR, std::string str)
  * @return true 
  * @return false 
  */
-bool	stringIsEmpty(std::string str)
+bool	string_is_empty(std::string str)
 {
 	if (str.empty())
 		return true;

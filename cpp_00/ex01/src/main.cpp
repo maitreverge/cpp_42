@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:25:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/14 21:07:46 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/15 11:42:10 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	add_sub_contact(std::string message, std::string *target)
 	{
 		print(message);
 		getline(std::cin, *target);
-	} while (stringIsEmpty(*target));
+	} while (string_is_empty(*target));
 	// std::cout << "MASTER CHECK !!!!! : " << target << std::endl;
 }
 
@@ -51,11 +51,11 @@ void	add_contact(PhoneBook *ptr, int writeIndex)
 	// ! needs to point to the first one if everything full
 	// for (int i = 0; *contact.contactAccess[i][0] != ""; i++)
 
-	// if (!stringIsEmpty(*contact.contactAccess[7][0]))
+	// if (!string_is_empty(*contact.contactAccess[7][0]))
 	// 	indexFreeContact = 0;
 	// else
 	// {
-	// 	for (int i = 0; !stringIsEmpty(*contact.contactAccess[i][0]); i++) // segfault
+	// 	for (int i = 0; !string_is_empty(*contact.contactAccess[i][0]); i++) // segfault
 	// 		indexFreeContact++;
 	// }
 
@@ -75,7 +75,7 @@ void	add_contact(PhoneBook *ptr, int writeIndex)
 	// {
 	// 	print("First Name : ");
 	// 	getline(std::cin, *contact.contactAccess[indexFreeContact][0]);
-	// } while (stringIsEmpty(*contact.contactAccess[indexFreeContact][0]));
+	// } while (string_is_empty(*contact.contactAccess[indexFreeContact][0]));
 
 	// print(*contact.contactAccess[indexFreeContact][0]);
 }
@@ -165,7 +165,7 @@ void	search_contact(PhoneBook *ptr)
 	title_print();
 	print_separators();
 
-	if (stringIsEmpty(*contact.contactAccess[0][0]))
+	if (string_is_empty(*contact.contactAccess[0][0]))
 		std::cout << RED << "NO CONTACT TO DISPLAY" << RESET << std::endl;
 	else
 	{
@@ -174,7 +174,7 @@ void	search_contact(PhoneBook *ptr)
 		{
 			for (int j = 0; j < 3; j++)
 			{
-				if (!stringIsEmpty(*contact.contactAccess[i][j]))
+				if (!string_is_empty(*contact.contactAccess[i][j]))
 				{
 					if (i < 9 && j == 0)
 						std::cout << "|         " << i + 1;
@@ -212,13 +212,17 @@ void	search_contact(PhoneBook *ptr)
 			do
 			{
 				print_color_no_endl(GREEN, "Please choose the index");
-				print_no_endl(" (ex: 2) ");
+				print(" (ex: 2) ");
 				std::cout << BOLD << YELLOW <<  "-----" << RESET << std::endl;
 				getline(std::cin, promptIndex);
 			} while (!is_valid_index(promptIndex));
 
 			// takes the index string "1" to "0" then to (int)0
 			int indexToDisplay = promptIndex[0] - 1 - 48;
+		// ! check in search printing if the contact already exists,
+		// ! otherwise skip (in valid_index function)
+
+			if ()
 
 			// print everything on stdout
 			print_color_no_endl(MAGENTA, "First Name : ");
@@ -235,7 +239,6 @@ void	search_contact(PhoneBook *ptr)
 		
 		/*
 		! need for refactoring big functions
-		! check in search printing if the contact already exists, otherwise skip (in valid_index function)
 		! As the user for another search
 		! fix little colors prints
 		! refactor little libft functions
@@ -267,6 +270,7 @@ int main(void)
 	welcoming_printing("PhoneBook 1982");
 	while (1)
 	{
+		clear_screen();
 		please_prompt("");
 		
 		do
