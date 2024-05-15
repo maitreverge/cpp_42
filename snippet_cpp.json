@@ -1,0 +1,25 @@
+{
+	"Print with std::cout and std::endl": {
+		"prefix": "pprint",
+		"body": [
+			"std::cout << \"$1\" << std::endl;"
+		],
+		"description": "Print with std::cout and std::endl"
+	},
+	"Print canonical class in cpp": {
+		"prefix": "can_class",
+		"body": [
+			"class $1",
+			"{",
+			"private:",
+			"",
+			"public:",
+			"    $1();",
+			"    $1(const $1& copy);",
+			"    $1& operator=(const $1& rhs);",
+			"    ~$1();",
+			"};"
+		],
+		"description": "Print canonical class in cpp"
+	}
+}
