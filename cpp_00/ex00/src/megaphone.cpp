@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/11 12:08:50 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/16 10:20:53 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ int main(int ac, char **av)
 				// ! Need to cast it in a char, otherwise it prints out actual ASCII values
 				std::cout << (char)std::toupper(av[i][j]);
 			}
-			// One space between words 
-			std::cout << " ";
+			// One space between words
+			if (i < ac - 1)
+				std::cout << " ";
 		}
 		// Then back at the line
 		std::cout << std::endl;
