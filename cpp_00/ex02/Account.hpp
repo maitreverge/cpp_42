@@ -27,10 +27,10 @@ public:
 	static int	getTotalAmount( void ); // OKAY
 	static int	getNbDeposits( void ); // OKAY
 	static int	getNbWithdrawals( void ); // OKAY
-	static void	displayAccountsInfos( void );
+	static void	displayAccountsInfos( void ); // OKAY
 
-	Account( int initial_deposit );
-	~Account( void );
+	Account( int initial_deposit ); // OKAY
+	~Account( void ); // OKAY
 
 	void	makeDeposit( int deposit );
 	bool	makeWithdrawal( int withdrawal );

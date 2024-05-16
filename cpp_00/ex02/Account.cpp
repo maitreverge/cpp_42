@@ -6,14 +6,14 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 13:42:55 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/16 08:33:47 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/16 08:44:04 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
 #include <iomanip>
-#include <chrono>
+#include <chrono> // c++ 11
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -63,6 +63,7 @@ void	Account::_displayTimestamp(void)
 			<< std::setw(2) << utc_tm.tm_sec << "] ";
 }
 
+
 int	Account::getNbAccounts(void)
 {
 	return (_nbAccounts);
@@ -88,4 +89,24 @@ void Account::displayAccountsInfos (void)
 	_displayTimestamp();
 	std::cout << "accounts:" << _nbAccounts << ";" << "total:" << _totalAmount << ";"
 		<< "deposits:" << _totalNbDeposits << ";" << "withdrawals:" << _totalNbWithdrawals << std::endl;
+}
+
+void	Account::makeDeposit(int deposit)
+{
+	
+}
+
+bool	Account::makeWithdrawal(int withdrawal)
+{
+
+}
+
+int		Account::checkAmount(void)
+{
+	
+}
+
+void	Account::displayAccountsInfos(void)
+{
+	
 }
