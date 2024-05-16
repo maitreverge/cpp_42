@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:25:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/15 12:23:15 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/16 10:26:19 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,3 +116,8 @@ int main(void)
 			search_contact(&phoneBook);
 	}
 }
+
+/*
+! TO FIX : visibility of classes
+! EDGE CASE : typing index 9 or shit
+*/

@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 11:52:47 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/15 12:48:13 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/16 10:41:55 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,7 @@ void	display_line_contact(std::string str)
  */
 bool	is_valid_index(std::string str)
 {
-	if (str == "-1")
-	{
-		print_color(RED, "⛔ Selected Index is empty ⛔");
-		return false;
-	}
-	else if (str == "1"
+	if (str == "1"
 	or	str == "2"
 	or	str == "3"
 	or	str == "4"
@@ -95,7 +90,6 @@ bool	is_valid_index(std::string str)
 	or	str == "7"
 	or	str == "8")
 		return true;
-	print_color(RED, "⛔ Wrong index typed ⛔");
 	return false;
 }
 
@@ -188,18 +182,24 @@ void	search_contact(PhoneBook *ptr)
 		{
 			// ask for index between 1 and 8 + checks if the index is not empty
 			int indexToDisplay;
-			do
+			
+			while (1)
 			{
-				print_color_no_endl(GREEN, "Please choose the index");
+				print_color_no_endl(GREEN, "Please select the index");
 				print(" (ex: 2) ");
 				std::cout << BOLD << YELLOW <<  "-----" << RESET << std::endl;
 				getline(std::cin, promptIndex);
-				indexToDisplay = promptIndex[0] - 1 - 48;
-				if (string_is_empty(*contact.contactAccess[indexToDisplay][0]))
+				indexToDisplay = promptIndex[0] - 1 - 48; // dangerous assumption here
+				if (is_valid_index(promptIndex))
 				{
-					promptIndex = "-1";
+					if (string_is_empty(*contact.contactAccess[indexToDisplay][0]))
+						print_color(RED, "⛔ Selected Index is empty ⛔");
+					else
+						break;
 				}
-			} while (!is_valid_index(promptIndex));
+				else
+					print_color(RED, "⛔ Wrong index typed ⛔");
+			}
 
 			// print every contact detail on cout
 			print_color_no_endl(MAGENTA, "First Name : ");
