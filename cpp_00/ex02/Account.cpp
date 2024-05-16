@@ -6,13 +6,19 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 13:42:55 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/15 14:47:54 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/16 08:33:47 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
+#include <iomanip>
 #include <chrono>
+
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposits = 0;
+int Account::_totalNbWithdrawals = 0;
 
 /**
  * @brief 
@@ -20,9 +26,14 @@
  * 
  * @param initial_deposit 
  */
-Account::Account( int initial_deposit )
+Account::Account( int initial_deposit ):_amount(initial_deposit)
 {
-	
+	_accountIndex = _nbAccounts++;
+	_totalAmount += _amount;
+	_nbDeposits = 0;
+	_nbWithdrawals = 0;
+	_displayTimestamp();
+	std::cout << "index" << _accountIndex << ";" << "amout:" << initial_deposit << ";" << "created" << std::endl;
 }
 
 /**
@@ -31,26 +42,50 @@ Account::Account( int initial_deposit )
  */
 Account::~Account( void )
 {
-	return;
+	_displayTimestamp();
+	_nbAccounts--;
+	std::cout << "index:" << _accountIndex << ";" << "amount:" << _amount << ";" << "closed" << std::endl;
 }
 
 /**
  * @brief Displays the timestamp under the `[YYYYMMDD_HHMMSS]` format
  * 
  */
-static void	displayTimestamp( void )
+void	Account::_displayTimestamp(void)
 {
-	// Get the current time as a time_t object
-	std::time_t time_t_stamp = std::time(NULL);
+	std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
+	std::time_t time_now = std::chrono::system_clock::to_time_t(now);
+	tm utc_tm = *localtime(&time_now);
+	std::cout << std::setfill('0') << "[" << (utc_tm.tm_year + 1900) << std::setw(2) << utc_tm.tm_mon
+			<< std::setw(2) << utc_tm.tm_mday << "_"
+			<< std::setw(2) << utc_tm.tm_hour
+			<< std::setw(2) << utc_tm.tm_min
+			<< std::setw(2) << utc_tm.tm_sec << "] ";
+}
 
-	// Convert the time_t object to a tm structure representing local time
-	std::tm* tm = std::localtime(&time_t_stamp);
+int	Account::getNbAccounts(void)
+{
+	return (_nbAccounts);
+}
 
-	char buffer[16];
+int	Account::getTotalAmount(void)
+{
+	return (_totalAmount);
+}
 
-	// Format the time according to the format string provided
-	// %Y represents the year, %m the month, %d the day, %H the hour, %M the minute, and %S the second
-	std::strftime(buffer, sizeof(buffer), "%Y%m%d_%H%M%S", tm);
+int	Account::getNbDeposits(void)
+{
+	return (_totalNbDeposits);
+}
 
-	std::cout << "[" << buffer << "] " << std::endl;
+int	Account::getNbWithdrawals(void)
+{
+	return (_totalNbWithdrawals);
+}
+
+void Account::displayAccountsInfos (void)
+{
+	_displayTimestamp();
+	std::cout << "accounts:" << _nbAccounts << ";" << "total:" << _totalAmount << ";"
+		<< "deposits:" << _totalNbDeposits << ";" << "withdrawals:" << _totalNbWithdrawals << std::endl;
 }

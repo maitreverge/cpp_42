@@ -6,7 +6,7 @@
 #    By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/15 13:41:25 by flverge           #+#    #+#              #
-#    Updated: 2024/05/15 13:53:05 by flverge          ###   ########.fr        #
+#    Updated: 2024/05/16 08:30:55 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 # Source files
-SRC := $(wildcard *.cpp)
+SRC := Account.cpp \
+	tests.cpp
 OBJ := ${SRC:.cpp=.o}
 
 # Colors
