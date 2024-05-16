@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 11:52:47 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/16 10:41:55 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/16 10:59:01 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,10 @@ bool	is_valid_index(std::string str)
 		return true;
 	return false;
 }
+
+// std::string test;
+
+// std::to
 
 /**
  * @brief Checks if the input is either `yes` or `no`

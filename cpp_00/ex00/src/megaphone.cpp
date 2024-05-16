@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:55:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/16 10:20:53 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/16 11:29:53 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(int ac, char **av)
 			for (int j = 0; av[i][j] != 0; j++)
 			{
 				// Convert to upper each letter before printing it out
-				// ! Need to cast it in a char, otherwise it prints out actual ASCII values
+				//  Need to cast it in a char, otherwise it prints out actual ASCII values
 				std::cout << (char)std::toupper(av[i][j]);
 			}
 			// One space between words
