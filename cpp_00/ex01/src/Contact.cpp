@@ -6,42 +6,36 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:08:43 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/27 10:32:32 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/27 12:14:18 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 
-/**
- * @brief Construct a new Contact:: Contact object
- * 
- */
 Contact::Contact ( void ) {
+	this->_index = 0;
+	this->setFirstName("");
+	this->setLastName("");
+	this->setNickName("");
+	this->setPhoneNumber("");
+	this->setSecret("");
 	return;
 }
 
-/**
- * @brief Destroy the Contact:: Contact object
- * 
- */
-Contact::~Contact( void ) {
-	return;
+Contact::~Contact( void ) {}
+
+size_t Contact::getIndex( void ) const {
+	return this->_index;
 }
 
-/**
- * @brief _firstName getter function
- * 
- * @return std::string 
- */
+void Contact::setIndex ( size_t index ){
+	this->_index = index;
+}
+
 std::string Contact::getFirstName( void ) const {
 	return this->_firstName;
 }
 
-/**
- * @brief _firstName setter function
- * 
- * @param input 
- */
 void Contact::setFirstName( std::string input ) {
 	this->_firstName = input;
 }

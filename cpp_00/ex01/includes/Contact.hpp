@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:08:36 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/27 10:29:14 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/27 11:41:52 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ class Contact
 	public:
 		Contact( void );
 		~Contact( void );
+
+		// Getter and setter for index
+		size_t getIndex ( void ) const;
+		void setIndex ( size_t index );
 
 		// Getter and setter for first_name
 		std::string getFirstName ( void ) const;
@@ -40,6 +44,7 @@ class Contact
 		void setSecret ( std::string input );
 
 	private:
+		size_t		_index;
 		std::string _firstName;
 		std::string _lastName;
 		std::string _nickName;
