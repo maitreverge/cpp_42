@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:08:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/27 12:12:57 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/27 14:14:15 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 #include "Contact.hpp"
 #include "libcpp.hpp"
+
+#define NB_CONTACT 8
 
 // ANSII colors codes
 #define RESET   "\033[0m"
@@ -37,6 +39,10 @@ class Phonebook
 	public:
 		Phonebook( void );
 		~Phonebook( void );
+		void	appendNewContact( Contact newContact, size_t index);
+		void	searchContact( void ) const;
+		void	printAllContacts( void ) const;
+		void	printDetailsContact( std::string toPrint ) const;
 	private:
 		Contact accessContact[8];
 };

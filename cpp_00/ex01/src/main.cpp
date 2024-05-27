@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:08:53 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/27 12:46:57 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/27 13:30:11 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	addContactDetails(Contact &contact, std::string string, size_t detail)
 	}
 }
 
-void	addNewContact( void ){
+Contact	addNewContact( size_t index ){
 
 	Contact newContact;
 
@@ -65,20 +65,24 @@ void	addNewContact( void ){
 	clearScreen();
 	welcomePrinting("ADD CONTACT MENU");
 
+	newContact.setIndex(index);
+	
 	print("Please enter contact details bellow : ");
 	
 	addContactDetails(newContact, "Enter First Name", 1);
 	addContactDetails(newContact, "Enter Last Name", 2);
 	addContactDetails(newContact, "Enter Nick Name", 3);
 	addContactDetails(newContact, "Enter Phone Number", 4);
-	addContactDetails(newContact, "Enter Darkest Secret", 5);	
-	
+	addContactDetails(newContact, "Enter Darkest Secret", 5);
+
+	return newContact;
 }
 
 int main( void ){
 
 	Phonebook phonebook;
 	std::string menuPrompt;
+	size_t index = 0;
 
 	welcomePrinting("1982 PhoneBook");
 
@@ -92,12 +96,13 @@ int main( void ){
 		
 		if (menuPrompt == "ADD")
 		{
-			addNewContact();
+			phonebook.appendNewContact(addNewContact(index), index);
+			index++;
+			if (index == 9)
+				index= 0;
 		}
 		else if (menuPrompt == "SEARCH")
-		{
-			
-		}
+			phonebook.searchContact();
 		else // EXIT
 			definiveExit();
 	}
