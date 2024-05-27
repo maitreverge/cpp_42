@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:09:00 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/27 14:28:46 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/27 18:39:58 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void Phonebook::printAllContacts ( void ) const{
 		{
 			// print the index
 			printNoEndl("|         ");
-			std::cout << i;
+			std::cout << i + 1;
 			
 			// print subdetails
 			printDetailsContact(this->accessContact[i].getFirstName());

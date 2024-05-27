@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:08:53 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/27 13:30:11 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/27 18:38:02 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int main( void ){
 	std::string menuPrompt;
 	size_t index = 0;
 
+	clearScreen();
 	welcomePrinting("1982 PhoneBook");
 
 	while (1)
