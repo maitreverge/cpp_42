@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:08:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/16 13:23:39 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/27 10:38:01 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,14 @@
 
 #include "Contact.hpp"
 
-class Contact
+class Phonebook
 {
+	public:
+		Phonebook( void );
+		~Phonebook( void );
+		Contact accessContact[8];
+	private:
+	
 	
 };
 
