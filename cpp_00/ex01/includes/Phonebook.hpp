@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:08:40 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/27 14:14:15 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/27 19:13:05 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <sstream>
 
 #include "Contact.hpp"
 #include "libcpp.hpp"

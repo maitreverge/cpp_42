@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 11:45:53 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/27 12:12:23 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/27 19:44:33 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
  * 
  * @param str 
  */
-void	print( std::string str )
-{
+void	print( std::string str ){
 	std::cout << str << std::endl;
 }
 
@@ -27,8 +26,7 @@ void	print( std::string str )
  * 
  * @param str 
  */
-void	printNoEndl( std::string str )
-{
+void	printNoEndl( std::string str ){
 	std::cout << str;
 }
 
@@ -38,8 +36,7 @@ void	printNoEndl( std::string str )
  * @param COLOR 
  * @param str 
  */
-void	printColor( std::string COLOR, std::string str )
-{
+void	printColor( std::string COLOR, std::string str ){
 	std::cout << COLOR << str << RESET << std::endl;
 }
 
@@ -49,8 +46,7 @@ void	printColor( std::string COLOR, std::string str )
  * @param COLOR 
  * @param str 
  */
-void	printColorNoEndl( std::string COLOR, std::string str )
-{
+void	printColorNoEndl( std::string COLOR, std::string str ){
 	std::cout << COLOR << str << RESET;
 }
 
@@ -58,8 +54,7 @@ void	printColorNoEndl( std::string COLOR, std::string str )
  * @brief Clears the screen
  * 
  */
-void clearScreen( void )
-{
+void clearScreen( void ){
 	std::cout << "\x1B[2J\x1B[H" << std::endl;
 }
 
@@ -67,8 +62,7 @@ void clearScreen( void )
  * @brief Exit the program
  * 
  */
-void	definiveExit( void )
-{
+void	definiveExit( void ){
 	clearScreen();
 	std::cout << YELLOW << "Thanks for using PhoneBook 1982" << RESET << std::endl;
 	std::exit(EXIT_SUCCESS);
@@ -81,8 +75,7 @@ void	definiveExit( void )
  * @return true 
  * @return false 
  */
-bool	validMenuPrompt( std::string prompt )
-{
+bool	validMenuPrompt( std::string prompt ){
 	if (prompt == "EXIT"
 	or	prompt == "ADD"
 	or	prompt == "SEARCH")
@@ -96,8 +89,7 @@ bool	validMenuPrompt( std::string prompt )
  * 
  * @param message 
  */
-void	welcomePrinting( std::string message )
-{
+void	welcomePrinting( std::string message ){
 	std::cout << "Welcome to " << GREEN << message << RESET << std::endl;
 }
 
@@ -106,12 +98,30 @@ void	welcomePrinting( std::string message )
  * 
  * @param message 
  */
-void	pleasePrompt( void )
-{
+void	pleasePrompt( void ){
 	std::cout << "Please enter : ";
 	std::cout << GREEN << "ADD, "<< RESET;
 	std::cout << GREEN << "SEARCH"<< RESET;
 	std::cout << " or ";
 	std::cout << GREEN <<  "EXIT" << RESET << std::endl;
 	std::cout << BOLD << YELLOW <<  "-----" << RESET << std::endl;
+}
+
+/**
+ * @brief Atoi but ugly, but with error management somehow.
+ * 
+ * @param str 
+ * @param result 
+ * @return true 
+ * @return false 
+ */
+void stringToInt( const std::string& str, int& result ){
+    std::istringstream iss(str);
+    iss >> result;
+
+    // Check if the entire string was parsed and no errors occurred
+    if (iss.fail() or !iss.eof()) {
+		std::cerr << "Error from stringToInt" << std::endl;
+		std::exit(EXIT_FAILURE);
+    }
 }

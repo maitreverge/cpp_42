@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 11:45:03 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/27 12:08:08 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/27 19:46:33 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ void	definiveExit( void );
 bool	validMenuPrompt( std::string prompt );
 void	welcomePrinting( std::string message );
 void	pleasePrompt( void );
-
+void	stringToInt( const std::string& str, int& result );
 
 #endif // __LIBCPP_HPP__

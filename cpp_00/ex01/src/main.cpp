@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:08:53 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/27 18:38:02 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/27 19:38:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
  * @param string 
  * @param detail 
  */
-void	addContactDetails(Contact &contact, std::string string, size_t detail)
+void	addContactDetails( Contact &contact, std::string string, size_t detail )
 {
 	std::string addPrompt;
 
