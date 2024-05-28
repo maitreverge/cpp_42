@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:57:11 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/28 15:54:27 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/28 19:42:12 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main( int ac, char **av ){
 	
 	if (ac != 2)
 	{
-		std::cout << "Usage : ./moar_brainz" << RED << " <nb>" << RESET << std::endl;
+		std::cout << "Usage : "<< YELLOW << "./moar_brainz" << RED << " <nb_of_zombies>" << RESET << std::endl;
 		return 1;
 	}
 	
@@ -36,6 +36,12 @@ int main( int ac, char **av ){
 	int		nbZombies;
 	
 	stringToInt(av[1], nbZombies);
+
+	if (nbZombies <= 0)
+	{
+		std::cout << RED << "Number of Zombies can't be less than 1" << RESET << std::endl;
+		std::exit(EXIT_FAILURE);
+	}
 
 	bigHord = zombieHorde(nbZombies, "Marc");
 
