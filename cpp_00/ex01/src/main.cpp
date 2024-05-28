@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:08:53 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/27 19:38:59 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/28 09:11:17 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int main( void ){
 		{
 			phonebook.appendNewContact(addNewContact(index), index);
 			index++;
-			if (index == 9)
+			if (index == 8)
 				index= 0;
 		}
 		else if (menuPrompt == "SEARCH")

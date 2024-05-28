@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:09:00 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/27 19:43:38 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/28 09:08:31 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,9 @@ void	Phonebook::searchContact( void ) const{
 			}
 		}
 		else // "n" answer
+		{
+			clearScreen();
 			return;
+		}
 	}
 }
