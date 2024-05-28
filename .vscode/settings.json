@@ -46,7 +46,15 @@
 		"streambuf": "cpp",
 		"typeinfo": "cpp",
 		"cstring": "cpp",
-		"chrono": "cpp"
+		"chrono": "cpp",
+		"charconv": "cpp",
+		"ctime": "cpp",
+		"ratio": "cpp",
+		"format": "cpp",
+		"iomanip": "cpp",
+		"span": "cpp",
+		"sstream": "cpp",
+		"variant": "cpp"
 	},
 	"C_Cpp.default.compilerPath": "/usr/bin/g++"
 }

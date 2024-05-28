@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:57:51 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/28 20:28:47 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/28 20:43:51 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,8 @@ class Weapon
 		const std::string&	getType( void )const;
 		void			setType( std::string input );
 };
+
+void	print( std::string str );
+void	printNoEndl( std::string str );
+void	printColor( std::string COLOR, std::string str );
+void	printColorNoEndl( std::string COLOR, std::string str );
