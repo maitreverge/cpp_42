@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:57:51 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/28 20:43:51 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/29 18:19:58 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Weapon
 	private:
 		std::string _type;
 	public:
-		Weapon( void );
+		Weapon( std::string input );
 		~Weapon( void );
 		const std::string&	getType( void )const;
 		void			setType( std::string input );

@@ -6,11 +6,17 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:51:43 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/11 11:58:07 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/29 17:54:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Sample.hpp"
+
+/*
+	! Important :
+	Les pointeurs sur les attributs ou les fonctions membre de classe
+	ont besoin d'etre ensuite specifies a l'instance de classe vers lequel il pointe
+*/
 
 int main(void)
 {
@@ -20,7 +26,10 @@ int main(void)
 	// Declaration de pointeur classique
 	Sample *instancep = &instance;
 
+	// Pointeur sur attribut membre
 	int		Sample::*p = NULL;
+
+	// Pointeur sur fonction membre
 	void	(Sample::*f)(void) const;
 
 	p = &Sample::foo;

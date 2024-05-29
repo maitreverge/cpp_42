@@ -6,24 +6,24 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:57:53 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/28 20:38:43 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/29 18:19:40 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+class Weapon;
 
 class HumanA
 {
 	private:
-		std::string _name;
+		const std::string _name;
 		Weapon _weapon;
 	public:
-		HumanA(/* args */);
+		HumanA(std::string const name, Weapon starterWeapon);
 		~HumanA();
 		void	attack( void );
-		const std::string&	getName( void ) const;
-		void			setName( std::string input );
+		// const std::string&	getName( void ) const;
 };
 
 
