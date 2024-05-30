@@ -6,38 +6,38 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:57:45 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/29 09:14:25 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/30 11:46:39 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon( std::string input ) : _type(input){
+Weapon::Weapon( string input ) : _type(input){
 	// this->setType(input);
 }
 
 Weapon::~Weapon( void ){}
 
-const std::string& Weapon::getType( void )const{
+const string& Weapon::getType( void )const{
 	return this->_type;
 }
 
-void Weapon::setType( std::string input){
+void Weapon::setType( string input){
 	this->_type = input;
 }
 
-void	print( std::string str ){
-	std::cout << str << std::endl;
+void	print( string str ){
+	cout << str << endl;
 }
 
-void	printNoEndl( std::string str ){
-	std::cout << str <<;
+void	printNoEndl( string str ){
+	cout << str <<;
 }
 
-void	printColor( std::string COLOR, std::string str ){
-	std::cout << COLOR << str << RESET << std::endl;
+void	printColor( string COLOR, string str ){
+	cout << COLOR << str << RESET << endl;
 }
 
-void	printColorNoEndl( std::string COLOR, std::string str ){
-	std::cout << COLOR << str << RESET;
+void	printColorNoEndl( string COLOR, string str ){
+	cout << COLOR << str << RESET;
 }

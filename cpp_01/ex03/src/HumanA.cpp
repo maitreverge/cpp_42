@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:57:49 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/29 09:40:25 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/30 11:46:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * @param inputName 
  * @param starterWeapon 
  */
-HumanA::HumanA(std::string const inputName, Weapon starterWeapon) :
+HumanA::HumanA(string const inputName, Weapon starterWeapon) :
 	_name(inputName), _weapon(starterWeapon){}
 
 

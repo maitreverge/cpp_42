@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:57:51 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/29 18:19:58 by flverge          ###   ########.fr       */
+/*   Updated: 2024/05/30 11:46:28 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 #include <string>
 #include "HumanA.hpp"
 #include "HumanB.hpp"
+
+using std::string;
+using std::cout;
+using std::endl;
+using std::cin;
+
 
 // ANSII colors codes
 #define RESET   "\033[0m"
@@ -32,15 +38,15 @@
 class Weapon
 {
 	private:
-		std::string _type;
+		string _type;
 	public:
-		Weapon( std::string input );
+		Weapon( string input );
 		~Weapon( void );
-		const std::string&	getType( void )const;
-		void			setType( std::string input );
+		const string&	getType( void )const;
+		void			setType( string input );
 };
 
-void	print( std::string str );
-void	printNoEndl( std::string str );
-void	printColor( std::string COLOR, std::string str );
-void	printColorNoEndl( std::string COLOR, std::string str );
+void	print( string str );
+void	printNoEndl( string str );
+void	printColor( string COLOR, string str );
+void	printColorNoEndl( string COLOR, string str );
