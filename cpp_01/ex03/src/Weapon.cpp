@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:57:45 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/30 11:46:39 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/02 12:06:37 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print( string str ){
 }
 
 void	printNoEndl( string str ){
-	cout << str <<;
+	cout << str;
 }
 
 void	printColor( string COLOR, string str ){
