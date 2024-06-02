@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:02:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/02 15:15:52 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/02 16:27:38 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,13 @@ class Utils
 {
 private:
 	const string _targetString;
-	const string _remplacingString;
+	const string _replacingString;
 public:
 	Utils( const string target, const string remplace );
 	~Utils();
+	void areStringEqual( void )const;
+	const string& getTarget( void )const;
+	const string& getReplace( void )const;
 };
 
 

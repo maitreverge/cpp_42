@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:58:08 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/02 15:38:12 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/02 16:29:01 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,19 @@ static void wrongInput( void ){
 	exit(EXIT_FAILURE);
 }
 
+static void replaceCurrentLine(const string& target, const string& replace, string& currentLine)
+{
+	
+}
+
 int main(int ac, char**av){
 	if (ac != 3)
 		wrongInput();
 	
-	string target = av[1];
-	string remplace = av[2];
+	Utils myStrings(av[1], av[2]);
 	
-	if (target == remplace)
-	{
-		printColor(RED, "⛔ argv[1] and argv[2] are identical ⛔");
-		exit(EXIT_FAILURE);
-	}
-
-	// string fileName = "test_files/koala.txt";
+	// Chekcs if both strings are equal or not.
+	myStrings.areStringEqual();
 	
 	// Oppening file with checking both read and write permissions
 	// fstream myFile(fileName, fstream::in | fstream::out);
@@ -50,13 +49,31 @@ int main(int ac, char**av){
 
 	if (myFile.is_open())
 	{
-		print("File openned hey");
-		myFile.close();
+		string currentLine;
+		string temp;
+		
+		while (getline(myFile, currentLine))
+		{
+			temp = currentLine;
+			replaceCurrentLine(myStrings.getTarget(), myStrings.getReplace(), currentLine);
+			if (temp != currentLine)
+			{
+				// remplace within the file
+			}
+		}
+
+
+
+
+
+
+
+		
 	}
 	else
-		printColor(RED, "Failed to open in either write or read");
-
+		printColor(RED, "⛔ Failed to open file in both read and write mode ⛔");
+	
+	myFile.close();
 	
 	return (0);
-	
 }
