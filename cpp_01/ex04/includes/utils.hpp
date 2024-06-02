@@ -6,17 +6,20 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:02:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/02 14:13:50 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/02 15:15:52 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 
 using std::string;
 using std::cout;
 using std::endl;
 using std::cin;
+using std::fstream;
+using std::ofstream;
 
 // ANSII colors codes
 #define RESET   "\033[0m"

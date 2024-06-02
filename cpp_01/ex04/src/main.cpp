@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:58:08 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/02 14:19:20 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/02 15:38:12 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void wrongInput( void ){
 	printColorNoEndl(GREEN, "./sed_is_for_losers   ");
 	printColorNoEndl(YELLOW, "\"Target string\"   ");
 	printColor(BLUE, "\"String to remplace\"");
+	print("Example :");
+	printColor(YELLOW, "./sed_is_for_losers      koala      kangaroo");
 	exit(EXIT_FAILURE);
 }
 
@@ -38,5 +40,23 @@ int main(int ac, char**av){
 		exit(EXIT_FAILURE);
 	}
 
+	// string fileName = "test_files/koala.txt";
+	
+	// Oppening file with checking both read and write permissions
+	// fstream myFile(fileName, fstream::in | fstream::out);
+	fstream myFile("test_files/koala.txt", fstream::in | fstream::out);
+
+	// myFile.open(fileName, std::ios_base::in & std::ios_base::out);
+
+	if (myFile.is_open())
+	{
+		print("File openned hey");
+		myFile.close();
+	}
+	else
+		printColor(RED, "Failed to open in either write or read");
+
+	
+	return (0);
 	
 }
