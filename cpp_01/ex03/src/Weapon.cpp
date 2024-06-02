@@ -6,15 +6,13 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:57:45 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/02 12:06:37 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/02 12:54:48 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon( string input ) : _type(input){
-	// this->setType(input);
-}
+Weapon::Weapon( string input ) : _type(input){}
 
 Weapon::~Weapon( void ){}
 

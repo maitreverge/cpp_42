@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:57:53 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/02 12:32:49 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/02 12:55:46 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class HumanA
 {
 	private:
 		string _name;
-		Weapon& _weapon;
+		Weapon& _weapon; // use a reference, because HumanA MUST have a Weapon.
 	public:
 		HumanA(string name, Weapon& starterWeapon);
 		~HumanA();

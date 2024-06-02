@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:57:51 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/02 12:27:01 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/02 12:54:39 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,10 @@
 #include <string>
 #include <stddef.h>
 
-// #include "HumanA.hpp"
-// #include "HumanB.hpp"
-
 using std::string;
 using std::cout;
 using std::endl;
 using std::cin;
-
 
 // ANSII colors codes
 #define RESET   "\033[0m"
