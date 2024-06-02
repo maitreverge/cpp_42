@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:04:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/02 16:28:13 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/02 16:31:08 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 Utils::Utils( const string target, const string remplace ) :
 	_targetString(target), _replacingString(remplace) {}
+
+Utils::~Utils(){}
 
 const string& Utils::getReplace( void )const{
 	return this->_replacingString;
@@ -23,6 +25,10 @@ const string& Utils::getTarget( void )const{
 	return this->_targetString;
 }
 
+/**
+ * @brief Compare target and replace string, exit if so.
+ * 
+ */
 void Utils::areStringEqual( void )const{
 	if (this->_targetString == this->_replacingString)
 	{
@@ -30,8 +36,6 @@ void Utils::areStringEqual( void )const{
 		exit(EXIT_FAILURE);
 	}
 }
-
-Utils::~Utils(){}
 
 void	print( string str ){
 	cout << str << endl;
