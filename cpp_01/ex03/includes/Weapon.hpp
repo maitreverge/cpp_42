@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:57:51 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/30 11:46:28 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/02 12:27:01 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 #include <iostream>
 #include <string>
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+#include <stddef.h>
+
+// #include "HumanA.hpp"
+// #include "HumanB.hpp"
 
 using std::string;
 using std::cout;

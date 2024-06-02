@@ -6,11 +6,13 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:57:47 by flverge           #+#    #+#             */
-/*   Updated: 2024/05/30 11:00:25 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/02 12:41:03 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+// #include "Weapon.hpp"
 
 int main( void ){
 	{
