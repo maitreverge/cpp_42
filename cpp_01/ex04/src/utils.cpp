@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:04:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/03 10:49:50 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/03 11:54:50 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 Utils::Utils( const string file, const string target, const string remplace ) :
 	_originFile(file), _targetString(target), _replacingString(remplace) {
 		this->buildTargetFile();
-	}
+		
+		printColor(RED, "debug");
+		print(this->_originFile);
+		print(this->_targetFile);
+		print(this->_targetString);
+		print(this->_replacingString);
+}
 
 Utils::~Utils(){}
 
@@ -38,7 +44,7 @@ void Utils::buildTargetFile( void ){
 
 	this->_targetFile = targetFile;
 
-	printColor(RED, this->_targetFile);
+	// printColor(RED, this->_targetFile);
 }
 
 const string& Utils::getTargetFile( void )const{

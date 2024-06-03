@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:02:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/03 11:16:05 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/03 13:57:38 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ using std::cout;
 using std::endl;
 using std::cin;
 using std::fstream;
+using std::ifstream;
 using std::ofstream;
 
 // ANSII colors codes
@@ -37,7 +38,7 @@ class Utils
 {
 private:
 	const string _originFile;
-	string _targetFile;
+	string _targetFile; // build with buildTargetFile
 	const string _targetString;
 	const string _replacingString;
 public:
@@ -49,7 +50,6 @@ public:
 	const string& getTargetString( void )const;
 	const string& getReplaceString( void )const;
 	void	buildTargetFile( void );
-	// void deleteReplaceFile( void )const;
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:58:08 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/03 11:14:15 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/03 14:03:07 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void replaceCurrentLine(const string& target, const string& replace, stri
 	}
 }
 
-static void safeClosingFile(fstream& myTargetFile, fstream& myOriginFile){
+static void safeClosingFile(ofstream& myTargetFile, ifstream& myOriginFile){
 	if (myOriginFile.is_open())
 		myOriginFile.close();
 	if (myTargetFile.is_open())
@@ -68,32 +68,26 @@ int main(int ac, char**av){
 	
 	// Oppening origin file with checking both read and write permissions
 	// ! bug
-	fstream myOriginFile(myStrings.getOriginFile().c_str(), fstream::in | fstream::out);
-	// fstream myOriginFile("whgrefvergfvj",	 fstream::in | fstream::out);
+	std::ifstream myOriginFile(myStrings.getOriginFile().c_str());
 
 	
-	// ! TO DO : Creating target file
-	// Oppening AND target file
-	fstream myTargetFile(myStrings.getTargetFile().c_str(), fstream::in | fstream::out);
+	// Oppening AND creating target file
+	std::ofstream myTargetFile(myStrings.getTargetFile().c_str());
 	
-	// myFile.open(fileName, std::ios_base::in & std::ios_base::out);
-
-	if (myOriginFile.is_open() and myTargetFile.is_open())
+	if (myOriginFile.is_open())
 	{
-		
 		string currentLine;
-		// string temp;
 		
 		while (getline(myOriginFile, currentLine))
 		{
-			// temp = currentLine;
-			// if (!currentLine.empty())
 			replaceCurrentLine(myStrings.getTargetString(), myStrings.getReplaceString(), currentLine);
 			myTargetFile << currentLine;
+			if (!myOriginFile.eof())
+				myTargetFile << std::endl;
 		}
 	}
 	else
-		printColor(RED, "⛔ Failed to open file in both read and write mode ⛔");
+		printColor(RED, "⛔ Failed ORIGIN to open file in both read and write mode ⛔");
 	
 	safeClosingFile(myTargetFile, myOriginFile);
 	
