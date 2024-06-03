@@ -10,7 +10,7 @@ ls -la
 chmod 000 *.txt
 
 # READ + WRITE to koala
-chmod +rw koala.txt
+chmod 664 koala.txt
 
 # Only READ rights
 chmod +r NO_WRITE_RIGHTS.txt
