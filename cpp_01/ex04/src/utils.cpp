@@ -6,16 +6,20 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:04:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/02 16:31:08 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/03 09:01:05 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/utils.hpp"
 
-Utils::Utils( const string target, const string remplace ) :
-	_targetString(target), _replacingString(remplace) {}
+Utils::Utils( const string file, const string target, const string remplace ) :
+	_originFile(file), _targetString(target), _replacingString(remplace) {}
 
 Utils::~Utils(){}
+
+const string& Utils::getOriginFile( void )const{
+	return this->_originFile;
+}
 
 const string& Utils::getReplace( void )const{
 	return this->_replacingString;
@@ -35,6 +39,14 @@ void Utils::areStringEqual( void )const{
 		printColor(RED, "⛔ argv[1] and argv[2] are identical ⛔");
 		exit(EXIT_FAILURE);
 	}
+}
+
+void Utils::deleteReplaceFile( void )const{
+	int status = std::remove("*.replace");
+	if (status)
+		printColor(RED, "⛔ Error deleting \".replace\" file ⛔");
+	else
+		printColor(GREEN, "✅ Successfully deleting \".replace\" file ✅");
 }
 
 void	print( string str ){
