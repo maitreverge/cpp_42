@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:02:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/03 13:57:38 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/03 14:15:04 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,16 @@ private:
 public:
 	Utils( const string file, const string target, const string remplace );
 	~Utils();
-	void areStringEqual( void )const;
-	const string& getOriginFile( void )const;
-	const string& getTargetFile( void )const;
-	const string& getTargetString( void )const;
-	const string& getReplaceString( void )const;
-	void	buildTargetFile( void );
+	
+	void			buildTargetFile( void );
+	void			areStringEqual( void )const;
+	
+	const string&	getOriginFile( void )const;
+	const string&	getTargetFile( void )const;
+	
+	const string&	getReplaceString( void )const;
+	const string&	getTargetString( void )const;
 };
-
 
 void	print( string str );
 void	printNoEndl( string str );

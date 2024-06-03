@@ -6,11 +6,11 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:58:08 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/03 14:03:07 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/03 14:12:36 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/utils.hpp"
+#include "utils.hpp"
 
 /**
  * @brief Wrapper function to print a message and exit the program.
@@ -28,15 +28,23 @@ static void wrongInput( void ){
 	exit(EXIT_FAILURE);
 }
 
+/**
+ * @brief Takes the string read from the file descriptor
+ * Search for any occurence of the target string.
+ * If so : erase it, then write the replace string, all at the same position.
+ * 
+ * @param target 
+ * @param replace 
+ * @param currentLine 
+ */
 static void replaceCurrentLine(const string& target, const string& replace, string& currentLine)
 {
 	size_t pos;
 	
 	const size_t lenTarget = target.size();
-	// const size_t lenReplace = replace.length();
-	// checks if there is target in the string
 	
-	// string::npos == -1, so when find does not find target in currentLine
+	// string::npos == -1
+	// so when `find()` does not find target in currentLine
 	while ((pos = currentLine.find(target)) != string::npos)
 	{
 		currentLine.erase(pos, lenTarget);
@@ -57,22 +65,14 @@ int main(int ac, char**av){
 	
 	Utils myStrings(av[1], av[2], av[3]);
 	
-	// ! delete any occurence of *.replace file
-	// myStrings.deleteReplaceFile();
-	// deleteReplaceFile(myStrings.getOriginFile());
-
-	// myStringsssssss
-	
-	// Chekcs if both strings are equal or not, exit if so.
+	// Chekcs if both strings av[2] and av[3] are equal or not, exit if so.
 	myStrings.areStringEqual();
 	
-	// Oppening origin file with checking both read and write permissions
-	// ! bug
-	std::ifstream myOriginFile(myStrings.getOriginFile().c_str());
+	// Opening origin file with checking both read and write permissions
+	ifstream myOriginFile(myStrings.getOriginFile().c_str());
 
-	
-	// Oppening AND creating target file
-	std::ofstream myTargetFile(myStrings.getTargetFile().c_str());
+	// Opening AND creating target file with write permissions
+	ofstream myTargetFile(myStrings.getTargetFile().c_str());
 	
 	if (myOriginFile.is_open())
 	{
@@ -81,7 +81,10 @@ int main(int ac, char**av){
 		while (getline(myOriginFile, currentLine))
 		{
 			replaceCurrentLine(myStrings.getTargetString(), myStrings.getReplaceString(), currentLine);
+			// Write the replaced line straight in the output file
 			myTargetFile << currentLine;
+
+			// If the fd is not in EOF state, print a new line, except for the last line
 			if (!myOriginFile.eof())
 				myTargetFile << std::endl;
 		}

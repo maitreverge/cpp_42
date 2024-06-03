@@ -6,56 +6,34 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:04:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/03 11:54:50 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/03 14:19:31 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/utils.hpp"
+#include "utils.hpp"
 
 Utils::Utils( const string file, const string target, const string remplace ) :
 	_originFile(file), _targetString(target), _replacingString(remplace) {
 		this->buildTargetFile();
-		
-		printColor(RED, "debug");
-		print(this->_originFile);
-		print(this->_targetFile);
-		print(this->_targetString);
-		print(this->_replacingString);
 }
+
 
 Utils::~Utils(){}
 
-const string& Utils::getOriginFile( void )const{
-	return this->_originFile;
-}
-
-const string& Utils::getReplaceString( void )const{
-	return this->_replacingString;
-}
-
-const string& Utils::getTargetString( void )const{
-	return this->_targetString;
-}
-
+/**
+ * @brief Build the destination file name based on the target file.
+ * `file1` target file name => `file1.replace` destination file name.
+ * 
+ */
 void Utils::buildTargetFile( void ){
 	string targetFile = this->_originFile;
 
 	targetFile.append(".replace");
 
 	this->_targetFile = targetFile;
-
-	// printColor(RED, this->_targetFile);
-}
-
-const string& Utils::getTargetFile( void )const{
-	return this->_targetFile;
 }
 
 
-/**
- * @brief Compare target and replace string, exit if so.
- * 
- */
 void Utils::areStringEqual( void )const{
 	if (this->_targetString == this->_replacingString)
 	{
@@ -64,13 +42,28 @@ void Utils::areStringEqual( void )const{
 	}
 }
 
-// void Utils::deleteReplaceFile( void )const{
-// 	int status = std::remove("*.replace");
-// 	if (status)
-// 		printColor(RED, "⛔ Error deleting \".replace\" file ⛔");
-// 	else
-// 		printColor(GREEN, "✅ Successfully deleting \".replace\" file ✅");
-// }
+
+const string& Utils::getOriginFile( void )const{
+	return this->_originFile;
+}
+
+
+const string& Utils::getTargetFile( void )const{
+	return this->_targetFile;
+}
+
+
+const string& Utils::getReplaceString( void )const{
+	return this->_replacingString;
+}
+
+
+const string& Utils::getTargetString( void )const{
+	return this->_targetString;
+}
+
+
+// ----------------- UTILS FUNCTIONS --------------------------------
 
 void	print( string str ){
 	cout << str << endl;
