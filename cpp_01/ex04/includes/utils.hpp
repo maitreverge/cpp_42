@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:02:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/03 08:56:00 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/03 10:41:10 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class Utils
 {
 private:
 	const string _originFile;
-	const string _targetFile;
+	string _targetFile;
 	const string _targetString;
 	const string _replacingString;
 public:
@@ -47,7 +47,8 @@ public:
 	const string& getOriginFile( void )const;
 	const string& getTarget( void )const;
 	const string& getReplace( void )const;
-	void deleteReplaceFile( void )const;
+	void	buildTargetFile( void );
+	// void deleteReplaceFile( void )const;
 };
 
 

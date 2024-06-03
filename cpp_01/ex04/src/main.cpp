@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:58:08 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/03 09:08:55 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/03 10:38:17 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ int main(int ac, char**av){
 	Utils myStrings(av[1], av[2], av[3]);
 	
 	// ! delete any occurence of *.replace file
-	myStrings.deleteReplaceFile();
+	// myStrings.deleteReplaceFile();
 	// deleteReplaceFile(myStrings.getOriginFile());
+	/*
 	
 	// Chekcs if both strings are equal or not, exit if so.
 	myStrings.areStringEqual();
@@ -82,6 +83,7 @@ int main(int ac, char**av){
 		printColor(RED, "⛔ Failed to open file in both read and write mode ⛔");
 	
 	myFile.close();
+	*/
 	
 	return (0);
 }

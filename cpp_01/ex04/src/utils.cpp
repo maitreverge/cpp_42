@@ -6,14 +6,16 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:04:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/03 09:01:05 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/03 10:40:45 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/utils.hpp"
 
 Utils::Utils( const string file, const string target, const string remplace ) :
-	_originFile(file), _targetString(target), _replacingString(remplace) {}
+	_originFile(file), _targetString(target), _replacingString(remplace) {
+		this->buildTargetFile();
+	}
 
 Utils::~Utils(){}
 
@@ -29,6 +31,16 @@ const string& Utils::getTarget( void )const{
 	return this->_targetString;
 }
 
+void Utils::buildTargetFile( void ){
+	string targetFile = this->_originFile;
+
+	targetFile.append(".replace");
+
+	this->_targetFile = targetFile;
+
+	printColor(RED, this->_targetFile);
+}
+
 /**
  * @brief Compare target and replace string, exit if so.
  * 
@@ -41,13 +53,13 @@ void Utils::areStringEqual( void )const{
 	}
 }
 
-void Utils::deleteReplaceFile( void )const{
-	int status = std::remove("*.replace");
-	if (status)
-		printColor(RED, "⛔ Error deleting \".replace\" file ⛔");
-	else
-		printColor(GREEN, "✅ Successfully deleting \".replace\" file ✅");
-}
+// void Utils::deleteReplaceFile( void )const{
+// 	int status = std::remove("*.replace");
+// 	if (status)
+// 		printColor(RED, "⛔ Error deleting \".replace\" file ⛔");
+// 	else
+// 		printColor(GREEN, "✅ Successfully deleting \".replace\" file ✅");
+// }
 
 void	print( string str ){
 	cout << str << endl;
