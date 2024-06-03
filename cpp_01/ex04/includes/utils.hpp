@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:02:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/03 10:41:10 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/03 11:16:05 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ public:
 	~Utils();
 	void areStringEqual( void )const;
 	const string& getOriginFile( void )const;
-	const string& getTarget( void )const;
-	const string& getReplace( void )const;
+	const string& getTargetFile( void )const;
+	const string& getTargetString( void )const;
+	const string& getReplaceString( void )const;
 	void	buildTargetFile( void );
 	// void deleteReplaceFile( void )const;
 };

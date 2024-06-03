@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:58:08 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/03 10:38:17 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/03 11:14:15 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ static void replaceCurrentLine(const string& target, const string& replace, stri
 	}
 }
 
+static void safeClosingFile(fstream& myTargetFile, fstream& myOriginFile){
+	if (myOriginFile.is_open())
+		myOriginFile.close();
+	if (myTargetFile.is_open())
+		myTargetFile.close();
+}
+
 int main(int ac, char**av){
 	if (ac != 4)
 		wrongInput();
@@ -53,37 +60,42 @@ int main(int ac, char**av){
 	// ! delete any occurence of *.replace file
 	// myStrings.deleteReplaceFile();
 	// deleteReplaceFile(myStrings.getOriginFile());
-	/*
+
+	// myStringsssssss
 	
 	// Chekcs if both strings are equal or not, exit if so.
 	myStrings.areStringEqual();
 	
-	// Oppening file with checking both read and write permissions
-	fstream myFile(myStrings.getOriginFile(), fstream::in | fstream::out);
+	// Oppening origin file with checking both read and write permissions
+	// ! bug
+	fstream myOriginFile(myStrings.getOriginFile().c_str(), fstream::in | fstream::out);
+	// fstream myOriginFile("whgrefvergfvj",	 fstream::in | fstream::out);
 
+	
+	// ! TO DO : Creating target file
+	// Oppening AND target file
+	fstream myTargetFile(myStrings.getTargetFile().c_str(), fstream::in | fstream::out);
+	
 	// myFile.open(fileName, std::ios_base::in & std::ios_base::out);
 
-	if (myFile.is_open())
+	if (myOriginFile.is_open() and myTargetFile.is_open())
 	{
-		string currentLine;
-		string temp;
 		
-		while (getline(myFile, currentLine))
+		string currentLine;
+		// string temp;
+		
+		while (getline(myOriginFile, currentLine))
 		{
-			temp = currentLine;
-			if (!currentLine.empty())
-				replaceCurrentLine(myStrings.getTarget(), myStrings.getReplace(), currentLine);
-			if (temp != currentLine)
-			{
-				myFile << currentLine;
-			}
+			// temp = currentLine;
+			// if (!currentLine.empty())
+			replaceCurrentLine(myStrings.getTargetString(), myStrings.getReplaceString(), currentLine);
+			myTargetFile << currentLine;
 		}
 	}
 	else
 		printColor(RED, "⛔ Failed to open file in both read and write mode ⛔");
 	
-	myFile.close();
-	*/
+	safeClosingFile(myTargetFile, myOriginFile);
 	
 	return (0);
 }

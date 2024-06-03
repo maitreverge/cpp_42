@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:04:28 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/03 10:40:45 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/03 10:49:50 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ const string& Utils::getOriginFile( void )const{
 	return this->_originFile;
 }
 
-const string& Utils::getReplace( void )const{
+const string& Utils::getReplaceString( void )const{
 	return this->_replacingString;
 }
 
-const string& Utils::getTarget( void )const{
+const string& Utils::getTargetString( void )const{
 	return this->_targetString;
 }
 
@@ -40,6 +40,11 @@ void Utils::buildTargetFile( void ){
 
 	printColor(RED, this->_targetFile);
 }
+
+const string& Utils::getTargetFile( void )const{
+	return this->_targetFile;
+}
+
 
 /**
  * @brief Compare target and replace string, exit if so.
