@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:58:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/04 10:08:58 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/04 10:16:39 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,6 @@ void Harl::error( void )const{
 
 
 void Harl::complain( string level ){
-
-	// Declaration of pointers to member functions
-	// void (this->*ptrDebug)( void ) = &this->::debug;
-
-	// void (this->*ptrDebug)( void ) = &this->debug;
-
-	// void(Harl::*ptrDebug)( void ) const = &Harl::debug;
-	
-	// ! TO DO
-	/*
-	faire en sorte de pouvoir faire un switch case sur des strings
-	*/
-
-	// ! maybe use binary masks
 	switch (level[0])
 	{
 		case 'D': // debug
@@ -97,7 +83,7 @@ void Harl::complain( string level ){
 	}
 }
 
-// -------------- UTILS FUNCTIONS
+// -------------- UTILS FUNCTIONS ----------------
 
 void	print( string str ){
 	cout << str << endl;

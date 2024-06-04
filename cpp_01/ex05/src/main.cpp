@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:58:15 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/04 10:14:07 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/04 10:16:22 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int main( void ){
 	printColor(GREEN, "Please enter a message");
 	printColor(YELLOW, "DEBUG // INFO // WARNING // ERROR");
 
+	// Keeps asking the user for a valid prompt
 	do
 	{
 		getline(cin, promptUser);

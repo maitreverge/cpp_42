@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:58:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/04 10:04:28 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/04 10:15:52 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,6 @@ using std::ofstream;
 class Harl
 {
 private:
-
-	// typedef enum _e{
-	// 	DEBUG, // 0
-	// 	INFO,
-	// 	WARNING,
-	// 	ERROR
-	// } _keywords;
 	
 	void debug( void )const;
 	void info( void )const;
@@ -54,11 +47,13 @@ private:
 	void(Harl::*ptrInfo)( void )const;
 	void(Harl::*ptrWarning)( void )const;
 	void(Harl::*ptrError)( void )const;
-	// size_t _attributes[4];
+
 public:
+
 	Harl( void );
 	~Harl( void );
 	void complain( string level );
+	
 };
 
 void	print( string str );
@@ -66,6 +61,3 @@ void	printNoEndl( string str );
 void	printColor( string COLOR, string str );
 void	printColorNoEndl( string COLOR, string str );
 void	clearScreen( void );
-
-
-
