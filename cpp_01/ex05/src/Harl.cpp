@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:58:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/03 22:20:07 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/04 10:08:58 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ Harl::Harl( void ){
 	ptrInfo = &Harl::info;
 	ptrWarning = &Harl::warning;
 	ptrError = &Harl::error;
-
-	
 }
 
 
@@ -79,14 +77,23 @@ void Harl::complain( string level ){
 	*/
 
 	// ! maybe use binary masks
-	switch (level)
+	switch (level[0])
 	{
-	case string("DEBUG"):
-		/* code */
-		break;
-	
-	default:
-		break;
+		case 'D': // debug
+			(this->*ptrDebug)();
+			break;
+		case 'I': // info
+			(this->*ptrInfo)();
+			break;
+		case 'W': // warning
+			(this->*ptrWarning)();
+			break;
+		case 'E': // error
+			(this->*ptrError)();
+			break;
+		default:
+			printColor(RED, "⛔ Failed switch statement ⛔");
+			break;
 	}
 }
 

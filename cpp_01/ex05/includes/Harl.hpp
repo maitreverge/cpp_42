@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:58:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/03 22:15:38 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/04 10:04:28 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ class Harl
 {
 private:
 
-	typedef enum _e{
-		DEBUG, // 0
-		INFO,
-		WARNING,
-		ERROR
-	} _keywords;
+	// typedef enum _e{
+	// 	DEBUG, // 0
+	// 	INFO,
+	// 	WARNING,
+	// 	ERROR
+	// } _keywords;
 	
 	void debug( void )const;
 	void info( void )const;
