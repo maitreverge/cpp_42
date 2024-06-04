@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:58:33 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/04 10:38:00 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/04 11:17:19 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ private:
 public:
 	Harl( const string input);
 	~Harl();
+	const string& getMessage( void )const;
+
+	void (Harl::*ptrDebug)( void )const;
+	void (Harl::*ptrInfo)( void )const;
+	void (Harl::*ptrWarning)( void )const;
+	void (Harl::*ptrError)( void )const;
 };
 
 void	print( string str );
