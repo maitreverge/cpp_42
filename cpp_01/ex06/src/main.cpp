@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 09:58:30 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/04 11:27:09 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/04 11:41:52 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void printUsage( void ){
 	printColor(RED, "⛔ Wrong Usage⛔ ");
-	printNoEndl("Usage :");
+	printNoEndl("Usage :   ");
 	printColorNoEndl(GREEN, "./harlFilter     ");
 	printColor(YELLOW, "\"MESSAGE\"");
 	exit(EXIT_FAILURE);
@@ -34,21 +34,24 @@ int main( int ac, char **av){
 	if (ac != 2)
 		printUsage();
 	
-	clearScreen();
-	
 	Harl thisIsHarl(av[1]);
 	
 	checkValidString(thisIsHarl.getMessage());
 
+	// No break, as asked in the subject,
+	// the first corrent occurence will trigger all the others ones.
 	switch (thisIsHarl.getMessage()[0])
 	{
 		case 'D': // debug
-			(thisIsHarl.*ptrDebug());
+			// Accessing, in the instance class, the class instance pointer
+			(thisIsHarl.*(thisIsHarl.ptrDebug))();
 		case 'I': // info
+			(thisIsHarl.*(thisIsHarl.ptrInfo))();
 		case 'W': // warning 
+			(thisIsHarl.*(thisIsHarl.ptrWarning))();
 		case 'E': // error
-		
-		default:
+			(thisIsHarl.*(thisIsHarl.ptrError))();
+		default: // kind of useless, as I already filtered before
 			break;
 	}
 
