@@ -6,12 +6,12 @@
 #    By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/28 09:35:55 by flverge           #+#    #+#              #
-#    Updated: 2024/05/28 09:36:03 by flverge          ###   ########.fr        #
+#    Updated: 2024/06/04 10:18:23 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Program name
-NAME = harl_filter
+NAME = harlFilter
 
 # Colors
 RESET = \033[0m
