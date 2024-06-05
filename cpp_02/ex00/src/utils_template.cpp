@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/05 12:56:26 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/05 13:28:04 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void clearScreen( void ){
  * @brief Custom exit function that prints a string in red before exiting.
  * 
  */
-void	customExit( void ){
+void	customExit( string str ){
 	printColor(RED, str);
 	std::exit(EXIT_FAILURE);
 }
