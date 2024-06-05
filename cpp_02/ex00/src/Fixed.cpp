@@ -6,28 +6,27 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:48:22 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/05 12:27:09 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/05 14:28:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Fixed.hpp"
 
-void	print( string str ){
-	cout << str << endl;
+// Default constructor
+Fixed::Fixed( void ) {}
+
+// Copy constructor
+Fixed::Fixed( const Fixed& copy ){
+	
 }
 
-void	printNoEndl( string str ){
-	cout << str;
+
+Fixed::~Fixed() {}
+
+void Fixed::setRawBits( int const raw ){
+	this->fixedPoint= raw;
 }
 
-void	printColor( string COLOR, string str ){
-	cout << COLOR << str << RESET << endl;
-}
-
-void	printColorNoEndl( string COLOR, string str ){
-	cout << COLOR << str << RESET;
-}
-
-void clearScreen(void){
-	cout << "\x1B[2J\x1B[H" << endl;
+int Fixed::getRawBits( void )const{
+	return this->fixedPoint;
 }
