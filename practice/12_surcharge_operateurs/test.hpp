@@ -1,35 +1,35 @@
 #pragma #once
 
-class 
+class Test
 {
 private:
 
 
 public:
 
-	( void );
-	( const & copy );
-	& operator=( const & right_operator);
-	~();
+	Test( void );
+	Test( const Test& copy );
+	Test& operator=( const Test& right_operator);
+	~Test();
 
 };
 
-ostream& operator<<( ostream& output_stream, const & input );
+ostream& operator<<( ostream& output_stream, const Test& input );
 
 
 // ---------- Functions declarations ---------------
 
 
-::( void ){}
+Test::Test( void ){}
 
 
-::( const & copy ){ *this = copy }
+Test::Test( const Test& copy ){ *this = copy }
 
 
-::~( void ){}
+Test::~Test( void ){}
 
 
-&::operator=( const $ right_operator ){
+Test&::Testoperator=( const Test$ right_operator ){
 	if (this != &right_operator){
 		// Reassign every value with the getter value 
 		// this->_foo = right_operator.getFoo()
@@ -38,7 +38,7 @@ ostream& operator<<( ostream& output_stream, const & input );
 }
 
 
-ostream& operator<<( ostream& output_stream, const & right_input ){
+ostream& operator<<( ostream& output_stream, const Test& right_input ){
 	//output_stream << right_input.PutAGetterFunctionhere();
 	return output_stream;
 }
