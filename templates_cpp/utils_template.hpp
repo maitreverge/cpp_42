@@ -6,9 +6,11 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/05 12:55:41 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/06 16:21:39 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include <iostream>
 #include <fstream>

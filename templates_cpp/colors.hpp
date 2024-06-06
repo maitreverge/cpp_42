@@ -6,9 +6,11 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:44:59 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/05 12:45:11 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/06 16:21:27 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 // ANSII colors codes
 #define RESET   "\033[0m"

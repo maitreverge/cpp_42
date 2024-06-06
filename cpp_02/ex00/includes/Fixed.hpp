@@ -6,9 +6,11 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:48:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/06 16:19:04 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/06 16:21:58 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include "utils_template.hpp"
 
