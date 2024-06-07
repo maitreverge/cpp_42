@@ -6,13 +6,16 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:48:22 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/07 15:52:47 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/07 17:20:48 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Fixed.hpp"
 
-Fixed::Fixed( void ){}
+Fixed::Fixed( void ){
+	
+	printColor(GREEN, "✅ Default Constructor Called ✅");
+}
 
 Fixed::Fixed( const int intInput ){
 	
@@ -30,7 +33,11 @@ Fixed::Fixed( const float floatInput ){
 }
 
 
-Fixed::Fixed( const Fixed& copy ){ *this = copy; }
+Fixed::Fixed( const Fixed& copy ){
+	
+	printColor(UNDERLINE_GREEN, "✅ Copy Constructor Called ✅");
+	*this = copy;
+}
 
 // Destructor
 Fixed::~Fixed( void ){
@@ -40,6 +47,8 @@ Fixed::~Fixed( void ){
 
 
 Fixed& Fixed::operator=( const Fixed& right_operator ){
+	
+	printColor(YELLOW, "🔄 Copy assignment Operator Called 🔄");
 	if (this != &right_operator){
 		this->_fixedPointValue = right_operator._fixedPointValue;
 	}
@@ -47,20 +56,26 @@ Fixed& Fixed::operator=( const Fixed& right_operator ){
 }
 
 float Fixed::toFloat( void )const{
+
 	return static_cast<float>( this->_fixedPointValue / pow(2, this->_fractionalBits) );
 }
 
 int Fixed::toInt( void )const{
+	
+	// std::cout << "Result power = " << pow(2, this->_fractionalBits) << std::endl;
 	return ( this->_fixedPointValue / pow(2, this->_fractionalBits) );
 }
 
 const int& Fixed::getFixedPointValue( void )const{
+	
 	return this->_fixedPointValue;
 }
 
 
 // Surcharge d'operateur d'input
 std::ostream& operator<<( std::ostream& output_stream, const Fixed& right_input ){
-	output_stream << right_input.getFixedPointValue();
+	
+	// output_stream << /*std::fixed << */ std::setprecision(5) << right_input.toFloat();
+	output_stream << right_input.toFloat();
 	return output_stream;
 }

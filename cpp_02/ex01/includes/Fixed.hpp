@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:48:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/07 15:52:16 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/07 17:26:19 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,20 @@ private:
 
 public:
 
-	Fixed ( void );
-	
 	// Constructors
+	Fixed ( void );
 	Fixed( const int intInput );
 	Fixed( const float floatInput );
-	Fixed( const Fixed& copy ); // Copy constructor
+
+	// Copy constructor
+	Fixed( const Fixed& copy );
 	
 	// Destructors
 	~Fixed();
 	
 	// Class assignment operator overload
 	Fixed& operator=( const Fixed& right_operator );
+	Fixed& operator[]( const Fixed& right_operator );
 	
 	// Getter
 	const int& getFixedPointValue( void )const;
@@ -45,4 +47,5 @@ public:
 
 };
 
+// Surcharge operateur outpout pour la classe 
 std::ostream& operator<<( std::ostream& output_stream, const Fixed& right_input );
