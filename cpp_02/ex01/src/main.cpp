@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:48:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/07 14:50:37 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/07 15:50:44 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int main( void ){
 	
 	a = Fixed( 1234.4321f );
 	
-	// cout << "a is " << a << endl;
-	// cout << "b is " << b << endl;
-	// cout << "c is " << c << endl;
-	// cout << "d is " << d << endl;
+	cout << "a is " << a << endl;
+	cout << "b is " << b << endl;
+	cout << "c is " << c << endl;
+	cout << "d is " << d << endl;
 	cout << "a is " << a.toInt() << " as integer" << endl;
 	cout << "b is " << b.toInt() << " as integer" << endl;
 	cout << "c is " << c.toInt() << " as integer" << endl;
 	cout << "d is " << d.toInt() << " as integer" << endl;
 	
-	return 0;
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:48:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/07 14:51:32 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/07 15:52:16 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,15 @@ public:
 	~Fixed();
 	
 	// Class assignment operator overload
-	Fixed& operator=( const Fixed& right_operator);
+	Fixed& operator=( const Fixed& right_operator );
+	
+	// Getter
+	const int& getFixedPointValue( void )const;
 	
 	// Getter fromthe subject
 	float	toFloat( void ) const;
 	int		toInt( void ) const;
 
 };
+
+std::ostream& operator<<( std::ostream& output_stream, const Fixed& right_input );

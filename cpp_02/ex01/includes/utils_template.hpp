@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/06 16:24:51 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/07 15:46:50 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <istream>
+#include <ostream>
 #include <sstream>
 #include <cstdlib>
 #include <cmath>

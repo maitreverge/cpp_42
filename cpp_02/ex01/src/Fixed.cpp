@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:48:22 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/07 14:49:43 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/07 15:52:47 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,15 @@ float Fixed::toFloat( void )const{
 
 int Fixed::toInt( void )const{
 	return ( this->_fixedPointValue / pow(2, this->_fractionalBits) );
+}
+
+const int& Fixed::getFixedPointValue( void )const{
+	return this->_fixedPointValue;
+}
+
+
+// Surcharge d'operateur d'input
+std::ostream& operator<<( std::ostream& output_stream, const Fixed& right_input ){
+	output_stream << right_input.getFixedPointValue();
+	return output_stream;
 }
