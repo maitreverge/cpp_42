@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/07 15:47:12 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/08 08:59:48 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ using std::cin;
 using std::fstream;
 using std::ifstream;
 using std::ofstream;
+using std::ostream;
 
 #include "colors.hpp" // Includes all ANSII color codes
 
