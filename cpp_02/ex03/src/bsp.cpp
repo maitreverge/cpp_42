@@ -6,7 +6,9 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:51:36 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/05 10:51:37 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/10 20:14:01 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/Point.hpp"
 
