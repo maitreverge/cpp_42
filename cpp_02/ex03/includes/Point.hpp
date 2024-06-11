@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:51:14 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/11 10:58:17 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/11 11:45:30 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,4 @@ public:
 
 ostream& operator<<( ostream& output_stream, const Point& input );
 
-bool bsp( Point const a, Point const b, Point const c, Point const point);
+bool bsp( Point const& a, Point const& b, Point const& c, Point const& point);

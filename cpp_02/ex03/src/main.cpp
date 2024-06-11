@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:48:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/11 11:19:41 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/11 11:47:16 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,21 @@ int main ( void ){
     Point const onEdge3(2.5, 5);  // on edge BC
 
 	printColor(BOLD_GREEN, "Testing points inside the triangle");
-    std::cout << "inside1: " << (bsp(a, b, c, inside1) ? "Inside" : "Outside") << "\n";
-    std::cout << "inside2: " << (bsp(a, b, c, inside2) ? "Inside" : "Outside") << "\n";
-    std::cout << "inside3: " << (bsp(a, b, c, inside3) ? "Inside" : "Outside") << "\n";
 
-	printColor(BOLD_RED, "Testing points inside the triangle");
-    std::cout << "outside1: " << (bsp(a, b, c, outside1) ? "Inside" : "Outside") << "\n";
-    std::cout << "outside2: " << (bsp(a, b, c, outside2) ? "Inside" : "Outside") << "\n";
-    std::cout << "outside3: " << (bsp(a, b, c, outside3) ? "Inside" : "Outside") << "\n";
+	cout << "inside1: " << bsp(a, b, c, outside3) << "\n";
+	cout << "inside1: " << (bsp(a, b, c, inside1) ? "Inside" : "Outside") << "\n";
+	cout << "inside2: " << (bsp(a, b, c, inside2) ? "Inside" : "Outside") << "\n";
+	cout << "inside3: " << (bsp(a, b, c, inside3) ? "Inside" : "Outside") << "\n";
+
+	printColor(BOLD_RED, "Testing points Outside the triangle");
+	
+	cout << "outside1: " << (bsp(a, b, c, outside1) ? "Inside" : "Outside") << "\n";
+	cout << "outside2: " << (bsp(a, b, c, outside2) ? "Inside" : "Outside") << "\n";
+	cout << "outside3: " << (bsp(a, b, c, outside3) ? "Inside" : "Outside") << "\n";
 
 	printColor(BOLD_YELLOW, "Testing points on the edge of the triangle");
-    std::cout << "onEdge1: " << (bsp(a, b, c, onEdge1) ? "Inside" : "Outside") << "\n";
-    std::cout << "onEdge2: " << (bsp(a, b, c, onEdge2) ? "Inside" : "Outside") << "\n";
-    std::cout << "onEdge3: " << (bsp(a, b, c, onEdge3) ? "Inside" : "Outside") << "\n";
+	
+	cout << "onEdge1: " << (bsp(a, b, c, onEdge1) ? "Inside" : "Outside") << "\n";
+	cout << "onEdge2: " << (bsp(a, b, c, onEdge2) ? "Inside" : "Outside") << "\n";
+	cout << "onEdge3: " << (bsp(a, b, c, onEdge3) ? "Inside" : "Outside") << "\n";
 }
