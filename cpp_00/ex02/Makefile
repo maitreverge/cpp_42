@@ -6,12 +6,12 @@
 #    By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/28 09:35:55 by flverge           #+#    #+#              #
-#    Updated: 2024/06/11 17:38:55 by flverge          ###   ########.fr        #
+#    Updated: 2024/06/11 18:34:41 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Program name
-NAME = now_it_is_weird
+NAME = bank
 
 # Colors
 RESET = \033[0m
@@ -25,7 +25,7 @@ ORANGE = \033[93m
 CC = c++
 
 # Compiler flags
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -std=c++98
 
 # Source files
 SRC_DIR := src
