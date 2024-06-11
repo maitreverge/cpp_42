@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:48:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/11 11:47:16 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/11 12:08:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int main ( void ){
 
+	// Points of the triangle
 	Point const a(0, 10);
     Point const b(-5, 0);
     Point const c(5, 0);
@@ -33,9 +34,13 @@ int main ( void ){
     Point const onEdge2(-2.5, 5);  // on edge AC
     Point const onEdge3(2.5, 5);  // on edge BC
 
+	// Point on the same spots as triangle points
+	Point const initialA(0, 10); // same spot than point a
+    Point const initialB(-5, 0); // same spot than point b
+    Point const initialC(5, 0); // same spot than point c
+
 	printColor(BOLD_GREEN, "Testing points inside the triangle");
 
-	cout << "inside1: " << bsp(a, b, c, outside3) << "\n";
 	cout << "inside1: " << (bsp(a, b, c, inside1) ? "Inside" : "Outside") << "\n";
 	cout << "inside2: " << (bsp(a, b, c, inside2) ? "Inside" : "Outside") << "\n";
 	cout << "inside3: " << (bsp(a, b, c, inside3) ? "Inside" : "Outside") << "\n";
@@ -51,4 +56,10 @@ int main ( void ){
 	cout << "onEdge1: " << (bsp(a, b, c, onEdge1) ? "Inside" : "Outside") << "\n";
 	cout << "onEdge2: " << (bsp(a, b, c, onEdge2) ? "Inside" : "Outside") << "\n";
 	cout << "onEdge3: " << (bsp(a, b, c, onEdge3) ? "Inside" : "Outside") << "\n";
+
+	printColor(BOLD_HIGH_INTENSITY_YELLOW, "Testing points on the same spot than triangle spots");
+	
+	cout << "initialA: " << (bsp(a, b, c, initialA) ? "Inside" : "Outside") << "\n";
+	cout << "initialB: " << (bsp(a, b, c, initialB) ? "Inside" : "Outside") << "\n";
+	cout << "initialC: " << (bsp(a, b, c, initialC) ? "Inside" : "Outside") << "\n";
 }
