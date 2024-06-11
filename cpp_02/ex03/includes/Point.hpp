@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:51:14 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/10 22:42:06 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/11 10:58:17 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,12 @@ public:
 	Point( const Point& copy );
 	Point& operator=( const Point& right_operator );
 	~Point();
+	
+	const Fixed& getFixedX( void )const;
+	const Fixed& getFixedY( void )const;
 
 };
 
 ostream& operator<<( ostream& output_stream, const Point& input );
+
+bool bsp( Point const a, Point const b, Point const c, Point const point);
