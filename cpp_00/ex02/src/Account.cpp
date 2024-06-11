@@ -6,11 +6,13 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:53:54 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/11 18:45:30 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/11 19:13:33 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Account.hpp"
+#include <ctime>
+#include <sstream>
 #include <iostream>
 
 int Account::_nbAccounts = 0;
@@ -23,7 +25,17 @@ Account::Account( void ){}
 
 Account::Account( int initial_desposit ){
 	
-	std::cout << "Hello" << std::endl;
+	_totalAmount += initial_desposit;
+	_accountIndex = this->getNbAccounts();
+	_nbAccounts++;
+	_amount = initial_desposit;
+	_nbDeposits = 0;
+	_nbWithdrawals = 0;
+	
+	_displayTimestamp();
+	
+	std::cout << " index:" << _accountIndex << ";amount:" << _amount << ";created" << std::endl;
+
 }
 
 Account::~Account(){}
@@ -47,7 +59,9 @@ int Account::getNbWithdrawals( void ){
 }
 
 void Account:: displayAccountsInfos( void ){
-	// ! TO DO
+	
+	_displayTimestamp();
+	std::cout << " accounts:" << _nbAccounts << ";total:" << _totalAmount << std::endl;
 }
 
 void Account::makeDeposit( int deposit ){
@@ -69,5 +83,19 @@ void Account::displayStatus( void )const{
 // Private members
 
 void Account::_displayTimestamp( void ){
-	// ! TO DO
+	
+	std::time_t t = std::time(0);
+    std::tm* now = std::localtime(&t);
+
+    // Create a stringstream to format the timestamp
+    std::stringstream ss;
+
+    // Write timestamp to stringstream
+    // std::put_time is not available in C++98, so we use strftime instead
+    char buffer[16];
+    std::strftime(buffer, sizeof(buffer), "%Y%m%d_%H%M%S", now);
+    ss << buffer;
+
+    // Return the timestamp
+    std::cout << "[" << ss.str() << "]";
 }
