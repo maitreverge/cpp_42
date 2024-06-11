@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:53:54 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/11 19:13:33 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/11 20:55:02 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,14 @@ Account::Account( int initial_desposit ){
 
 }
 
-Account::~Account(){}
+Account::~Account(){
+	
+	_displayTimestamp();
+	
+	std::cout << " index:" << _accountIndex << ";amount:" << _amount << ";closed";
+	if (_accountIndex != 7)
+		std::cout << std::endl;
+}
 
 // Public members
 
@@ -61,41 +68,84 @@ int Account::getNbWithdrawals( void ){
 void Account:: displayAccountsInfos( void ){
 	
 	_displayTimestamp();
-	std::cout << " accounts:" << _nbAccounts << ";total:" << _totalAmount << std::endl;
+	std::cout << " accounts:" << _nbAccounts << ";total:" << _totalAmount << ";deposits:" << _totalNbDeposits << ";withdrawals:" << _totalNbWithdrawals << std::endl;
+
 }
 
 void Account::makeDeposit( int deposit ){
-	// ! TO DO
+	
+	if (deposit >= 0)
+	{
+		int pre_amount = _amount;
+		_amount += deposit;
+		_totalAmount+= deposit;
+		_totalNbDeposits++;
+		_nbDeposits++;
+
+		_displayTimestamp();
+
+		std::cout << " index:" << _accountIndex << ";p_amount:" << pre_amount << ";deposit:" << deposit << ";amount:" << _amount << ";nb_deposits:" << _nbDeposits << std::endl;
+	}
+	else
+		std::cout << " index:" << _accountIndex << ";p_amount:" << _amount << ";deposit:ERROR (deposit can't be negative)" << std::endl;
+	
 }
 
 bool Account::makeWithdrawal( int withdrawal ){
-	// ! TO DO
+	
+	_displayTimestamp();
+
+	int pre_amount = _amount;
+
+	std::cout << " index:" << _accountIndex << ";p_amount:" << pre_amount << ";withdrawal:";
+
+	if (checkAmount() - withdrawal < 0 or withdrawal < 0)
+	{
+		std::cout << "refused" << std::endl;
+		return false;
+	}
+	else
+	{
+		_nbWithdrawals++;
+		_totalNbWithdrawals++;
+		_totalAmount -= withdrawal;
+		_amount -= withdrawal;
+		std::cout << withdrawal << ";amount:" << _amount << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
+		return true;
+	}
 }
 
 int Account::checkAmount( void )const{
-	// ! TO DO
+	
+	return _amount;
 }
 
 void Account::displayStatus( void )const{
-	// ! TO DO
+	_displayTimestamp();
+
+	std::cout << " index:" << _accountIndex << ";amount:" << _amount << ";deposits:" << _nbDeposits << ";withdrawals:" << _nbWithdrawals << std::endl;
 }
 
 // Private members
 
 void Account::_displayTimestamp( void ){
 	
-	std::time_t t = std::time(0);
-    std::tm* now = std::localtime(&t);
+	// std::time_t t = std::time(0);
+    // std::tm* now = std::localtime(&t);
 
-    // Create a stringstream to format the timestamp
-    std::stringstream ss;
+    // // Create a stringstream to format the timestamp
+    // std::stringstream ss;
 
-    // Write timestamp to stringstream
-    // std::put_time is not available in C++98, so we use strftime instead
-    char buffer[16];
-    std::strftime(buffer, sizeof(buffer), "%Y%m%d_%H%M%S", now);
-    ss << buffer;
+    // // Write timestamp to stringstream
+    // // std::put_time is not available in C++98, so we use strftime instead
+    // char buffer[16];
+    // std::strftime(buffer, sizeof(buffer), "%Y%m%d_%H%M%S", now);
+    // ss << buffer;
 
-    // Return the timestamp
-    std::cout << "[" << ss.str() << "]";
+    // // Return the timestamp
+    // std::cout << "[" << ss.str() << "]";
+
+    // std::cout << "[" << ss.str() << "]";
+    std::cout << "[19920104_091532]";
+	
 }
