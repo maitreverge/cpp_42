@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/12 15:52:58 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/12 16:19:05 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@ ClapTrap::~ClapTrap( void ){}
 
 void ClapTrap::attack( const string& target ){
 	
-	if (!_energyPoints)
-	{
+	if (!_energyPoints or !_hitPoints){
 		_energyPoints--;
 		printNoEndl("ClapTrap");
 		printColorNoEndl(GREEN, _name);
 		printNoEndl("attacks");
 		printColorNoEndl(HIGH_INTENSITY_YELLOW, target);
 		printNoEndl(", causing");
-		// printColorNoEndl(HIGH_INTENSITY_RED, _attackDamage);
 		std::cout << HIGH_INTENSITY_RED << _attackDamage << RESET;
 		print("points of damage!");
 	}
@@ -46,15 +44,36 @@ void ClapTrap::attack( const string& target ){
 
 void ClapTrap::takeDamage( unsigned int amount ){
 	
-	
+	if (!_hitPoints){
+		_hitPoints -= amount;
+		if (_hitPoints < 0){
+			_hitPoints = 0;
+			printNoEndl("ClapTrap");
+			printColorNoEndl(GREEN, _name);
+			printColor(HIGH_INTENSITY_RED, "has no life left");
+			return ;
+		}
+	}
+	else{
+		printNoEndl("ClapTrap");
+		printColorNoEndl(GREEN, _name);
+		printColor(HIGH_INTENSITY_RED, "is already dead, please stop beating a dead body");
+	}
 }
 
 
 void ClapTrap::beRepaired( unsigned int amount ){
 	
-	_energyPoints--;
-	_hitPoints += amount;
-	
+	if (!_energyPoints){
+		_energyPoints--;
+		_hitPoints += amount;
+		printNoEndl("ClapTrap");
+		printColorNoEndl(GREEN, _name);
+		printNoEndl("has regained"); std::cout << HIGH_INTENSITY_GREEN << amount << RESET;
+		print("HEALTH");
+	}
+	else
+		std::cout << HIGH_INTENSITY_RED << _name << RESET << "has no energy points left" << std::endl;
 }
 
 // Getters
