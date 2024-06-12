@@ -6,11 +6,11 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/12 16:19:05 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/12 19:47:25 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ClapTrap.hpp"
+#include "ClapTrap.hpp"
 
 // Constructors
 ClapTrap::ClapTrap( void ){}
@@ -27,7 +27,7 @@ ClapTrap::~ClapTrap( void ){}
 
 void ClapTrap::attack( const string& target ){
 	
-	if (!_energyPoints or !_hitPoints){
+	if (_energyPoints and _hitPoints){
 		_energyPoints--;
 		printNoEndl("ClapTrap");
 		printColorNoEndl(GREEN, _name);
@@ -44,7 +44,7 @@ void ClapTrap::attack( const string& target ){
 
 void ClapTrap::takeDamage( unsigned int amount ){
 	
-	if (!_hitPoints){
+	if (_hitPoints){
 		_hitPoints -= amount;
 		if (_hitPoints < 0){
 			_hitPoints = 0;
@@ -64,7 +64,7 @@ void ClapTrap::takeDamage( unsigned int amount ){
 
 void ClapTrap::beRepaired( unsigned int amount ){
 	
-	if (!_energyPoints){
+	if (_energyPoints){
 		_energyPoints--;
 		_hitPoints += amount;
 		printNoEndl("ClapTrap");
@@ -110,4 +110,43 @@ ostream& operator<<( ostream& output_stream, const ClapTrap& right_input ){
 	output_stream << right_input.getEnergyPoints();
 	output_stream << right_input.getAttackDamage();
 	return output_stream;
+}
+
+/////////////////////////////////////////////////////////////////////////
+
+void ClapTrap::printHealthBar( void )const{
+	
+	// 💚 💛 ❤️ 💔
+	if (!_hitPoints)
+	{
+		// ! No health
+	}
+	else
+	{
+		switch (_hitPoints / 3)
+		{
+			case 0:
+				printNoEndl("❤️  ");
+				break;
+			case 1:
+				printNoEndl("💛  ");
+				break;
+			default:
+				printNoEndl("💚  ");
+				break;
+		}
+		std::cout << BACKGROUND_HIGH_INTENSITY_WHITE << _hitPoints << RESET ;
+	}
+
+	// printing actual health_bar
+	for (size_t i = 0; i < _hitPoints * 2; i++)
+	{
+		printColorNoEndl(HIGH_INTENSITY_GREEN, FULL_BLOCK);
+	}
+	for (size_t i = _hitPoints; i < 20; i++)
+	{
+		printColorNoEndl(RED, MEDIUM_BLOCK);
+	}
+	
+	
 }
