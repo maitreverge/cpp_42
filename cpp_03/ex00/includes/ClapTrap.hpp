@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:15 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/12 15:26:46 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/12 15:47:04 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ private:
 
 	ClapTrap( void );
 	const string _name;
-	unsigned int _hitPoints;
-	unsigned int _energyPoints;
-	unsigned int _attackdamage;
+	unsigned int _hitPoints; // LIFE 
+	unsigned int _energyPoints; // MANA
+	unsigned int _attackDamage; // SUBSTRACT TO LIFE
 	
 public:
 
