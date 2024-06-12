@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:39:35 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/12 16:26:11 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/12 19:11:50 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ int main( void ){
 
 	ClapTrap miaous("Miaous");
 	clearScreen();
+
+	for (size_t i = 0; i < 6; i++)
+		std::cout << std::endl;
+	
 
 	return (0);
 }

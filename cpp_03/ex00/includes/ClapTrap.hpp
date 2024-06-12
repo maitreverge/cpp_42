@@ -6,11 +6,16 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:15 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/12 16:20:09 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/12 19:11:00 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils_template.hpp"
+
+#define FULL_BLOCK "\u2588";      /*  █  */
+#define HEAVY_BLOCK "\u2593";     /*  ▓  */
+#define MEDIUM_BLOCK "\u2592";    /*  ▒  */
+#define LIGHT_BLOCK "\u2591";     /*  ░  */
 
 class ClapTrap
 {
