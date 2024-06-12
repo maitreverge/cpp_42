@@ -6,21 +6,22 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:15 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/12 12:07:02 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/12 15:26:46 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils_template.hpp"
+#include <ncurses.h>
 
 class ClapTrap
 {
 private:
 
 	ClapTrap( void );
-	string _name;
-	size_t _hitPoints;
-	size_t _energyPoints;
-	size_t _attackdamage;
+	const string _name;
+	unsigned int _hitPoints;
+	unsigned int _energyPoints;
+	unsigned int _attackdamage;
 	
 public:
 
@@ -33,36 +34,16 @@ public:
 	void takeDamage( unsigned int amount );
 	void beRepaired( unsigned int amount );
 
+	const string& getName( void )const;
+	const unsigned int& getHitPoints( void )const;
+	const unsigned int& getEnergyPoints( void )const;
+	const unsigned int& getAttackDamage( void )const;
+
+	void setHitPoints( unsigned int inputHitPoints );
+	void setEnergyPoints( unsigned int inputEnergyPoints );
+	void setAttackDamage( unsigned int inputAttackDamage );
+	
+
 };
 
 ostream& operator<<( ostream& output_stream, const ClapTrap& input );
-
-
-// ---------- Functions declarations ---------------
-
-
-ClapTrap::ClapTrap( void ){}
-
-ClapTrap::ClapTrap( string nameInput) :
-_name(nameInput), _hitPoints(10), _energyPoints(10), _attackdamage(0){}
-
-
-ClapTrap::ClapTrap( const ClapTrap& copy ){ *this = copy; }
-
-
-ClapTrap::~ClapTrap( void ){}
-
-
-ClapTrap& ClapTrap::operator=( const ClapTrap& right_operator ){
-	if (this != &right_operator){
-		// Reassign every value with the getter value 
-		// this->_foo = right_operator.getFoo()
-	}
-	return *this;
-}
-
-
-ostream& operator<<( ostream& output_stream, const ClapTrap& right_input ){
-	//output_stream << right_input.PutAGetterFunctionhere();
-	return output_stream;
-}
