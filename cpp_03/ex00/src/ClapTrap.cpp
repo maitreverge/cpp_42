@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/12 19:47:25 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/12 21:33:42 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,15 +114,18 @@ ostream& operator<<( ostream& output_stream, const ClapTrap& right_input ){
 
 /////////////////////////////////////////////////////////////////////////
 
-void ClapTrap::printHealthBar( void )const{
+void ClapTrap::printHealthBar( int enemy )const{
 	
+	// Prints extra spaces for 
+	if (enemy)
+		for (size_t i = 0; i < 30; i++)
+			printNoEndl(" ");
+		
 	// 💚 💛 ❤️ 💔
+	// Printing emojis depending on health level
 	if (!_hitPoints)
-	{
-		// ! No health
-	}
-	else
-	{
+		printNoEndl("💔  ");
+	else{
 		switch (_hitPoints / 3)
 		{
 			case 0:
@@ -135,18 +138,15 @@ void ClapTrap::printHealthBar( void )const{
 				printNoEndl("💚  ");
 				break;
 		}
-		std::cout << BACKGROUND_HIGH_INTENSITY_WHITE << _hitPoints << RESET ;
 	}
+	std::cout << BACKGROUND_HIGH_INTENSITY_WHITE << _hitPoints << RESET ;
 
-	// printing actual health_bar
+	// printing actual health_bar * 2 for larger bar
 	for (size_t i = 0; i < _hitPoints * 2; i++)
-	{
 		printColorNoEndl(HIGH_INTENSITY_GREEN, FULL_BLOCK);
-	}
-	for (size_t i = _hitPoints; i < 20; i++)
-	{
+	for (size_t i = _hitPoints * 2; i < 20; i++)
 		printColorNoEndl(RED, MEDIUM_BLOCK);
-	}
 	
-	
+	// printing extra line
+	cout << endl;
 }
