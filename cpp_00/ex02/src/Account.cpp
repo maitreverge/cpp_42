@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:53:54 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/11 20:55:02 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/12 10:30:57 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,22 +130,22 @@ void Account::displayStatus( void )const{
 
 void Account::_displayTimestamp( void ){
 	
-	// std::time_t t = std::time(0);
-    // std::tm* now = std::localtime(&t);
+	std::time_t t = std::time(0);
+    std::tm* now = std::localtime(&t);
 
-    // // Create a stringstream to format the timestamp
-    // std::stringstream ss;
+    // Create a stringstream to format the timestamp
+    std::stringstream ss;
 
-    // // Write timestamp to stringstream
-    // // std::put_time is not available in C++98, so we use strftime instead
-    // char buffer[16];
-    // std::strftime(buffer, sizeof(buffer), "%Y%m%d_%H%M%S", now);
-    // ss << buffer;
+    // Write timestamp to stringstream
+    // std::put_time is not available in C++98, so we use strftime instead
+    char buffer[16];
+    std::strftime(buffer, sizeof(buffer), "%Y%m%d_%H%M%S", now);
+    ss << buffer;
 
-    // // Return the timestamp
-    // std::cout << "[" << ss.str() << "]";
+    // Return the timestamp
+    std::cout << "[" << ss.str() << "]";
 
-    // std::cout << "[" << ss.str() << "]";
-    std::cout << "[19920104_091532]";
+	// ! Un-comment this line for better comparing
+    // std::cout << "[19920104_091532]";
 	
 }
