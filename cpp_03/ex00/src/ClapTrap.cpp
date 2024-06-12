@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/12 21:33:42 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/12 22:39:02 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,4 +149,21 @@ void ClapTrap::printHealthBar( int enemy )const{
 	
 	// printing extra line
 	cout << endl;
+}
+
+void ClapTrap::displayChararter( void )const{
+
+	
+
+cout << "░░░░░░░░▀████▀▄▄░░░░░░░░░░░░░░▄█" << endl;
+cout << "░░░░░░░░░░█▀" << BACKGROUND_YELLOW << "░░░░" << RESET << "▀▀▄▄▄▄▄" << "░░░░▄▄▀▀█" << endl;
+cout << "░░▄░░░░░░░░█ " << BACKGROUND_YELLOW <<  "░░░░░░░░░░" << RESET << "▀▀▀▀▄" << BACKGROUND_YELLOW <<  "░░" << RESET << "▄▀" << endl;
+cout << "░▄▀" << BACKGROUND_YELLOW <<  "░" << RESET << "▀▄░░░░░░▀▄" << BACKGROUND_YELLOW <<  "░░░░░░░░░░░░░░" << RESET << "▀▄▀░" << endl;
+cout << "▄▀" << BACKGROUND_YELLOW <<  "░░░░" << RESET <<  "█░░░░░█▀" << BACKGROUND_YELLOW <<  "░░░" << RESET << "▄█▀▄" << BACKGROUND_YELLOW <<  "░░░░░░░░" << RESET <<  "▄█░" << endl;
+cout << "▀▄░░░░░▀▄░░█░░░░░▀██▀░░░░░██▄█░░" << endl;
+cout << "░▀▄░░░░▄▀░█░░░▄██▄░░░▄░░▄░░▀▀░█░" << endl;
+cout << "░░█░░▄▀░░█░░░░▀██▀░░░░▀▀░▀▀░░▄▀░" << endl;
+cout << "░█░░░█░░█░░░░░░▄▄░░░░░░░░░░░▄▀░░" << endl;
+
+
 }
