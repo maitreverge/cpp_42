@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:15 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/12 21:39:52 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/13 09:00:46 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ public:
 
 	// Extra for printing video-game like
 	void printHealthBar( int enemy = 0 ) const;
-	void displayChararter( void )const;
+	void displayCharacter( void )const;
 
 };
 

@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:39:35 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/12 22:26:47 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/13 09:00:55 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int main( void ){
 	// 	std::cout << std::endl;
 	
 	pikachu.printHealthBar(1);
-	pikachu.displayChararter();
+	pikachu.displayCharacter();
 	return (0);
 }

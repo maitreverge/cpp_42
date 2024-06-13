@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/12 22:39:02 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/13 09:15:33 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void ClapTrap::printHealthBar( int enemy )const{
 	cout << endl;
 }
 
-void ClapTrap::displayChararter( void )const{
+void ClapTrap::displayCharacter( void )const{
 
 	
 
@@ -160,10 +160,10 @@ cout << "░░░░░░░░░░█▀" << BACKGROUND_YELLOW << "░░�
 cout << "░░▄░░░░░░░░█ " << BACKGROUND_YELLOW <<  "░░░░░░░░░░" << RESET << "▀▀▀▀▄" << BACKGROUND_YELLOW <<  "░░" << RESET << "▄▀" << endl;
 cout << "░▄▀" << BACKGROUND_YELLOW <<  "░" << RESET << "▀▄░░░░░░▀▄" << BACKGROUND_YELLOW <<  "░░░░░░░░░░░░░░" << RESET << "▀▄▀░" << endl;
 cout << "▄▀" << BACKGROUND_YELLOW <<  "░░░░" << RESET <<  "█░░░░░█▀" << BACKGROUND_YELLOW <<  "░░░" << RESET << "▄█▀▄" << BACKGROUND_YELLOW <<  "░░░░░░░░" << RESET <<  "▄█░" << endl;
-cout << "▀▄░░░░░▀▄░░█░░░░░▀██▀░░░░░██▄█░░" << endl;
-cout << "░▀▄░░░░▄▀░█░░░▄██▄░░░▄░░▄░░▀▀░█░" << endl;
-cout << "░░█░░▄▀░░█░░░░▀██▀░░░░▀▀░▀▀░░▄▀░" << endl;
-cout << "░█░░░█░░█░░░░░░▄▄░░░░░░░░░░░▄▀░░" << endl;
+cout << "▀▄" << BACKGROUND_YELLOW <<  "░░░░░" << RESET << "▀▄░░█" << BACKGROUND_YELLOW <<  "░░░░░" << RESET <<  "▀██▀" << BACKGROUND_YELLOW << "░░░░░" << RESET <<  "██▄█░░" << endl;
+cout << "░▀▄" << BACKGROUND_YELLOW << "░░░░" << RESET << "▄▀░█" << BACKGROUND_YELLOW << "░░░" << RESET <<  RED << "▄██▄" << RESET << BACKGROUND_YELLOW << "░░░" << RESET << "▄" << BACKGROUND_YELLOW << "░░" << RESET << "▄" << BACKGROUND_YELLOW << "░░" << RESET << "▀▀" << BACKGROUND_YELLOW << "░" << RESET << "█░" << endl;
+cout << "░░█" << BACKGROUND_YELLOW << "░░" << RESET << "▄▀░░█" << BACKGROUND_YELLOW << "░░░░" << RESET << RED << "▀██▀" << RESET << BACKGROUND_YELLOW << "░░░░" << RESET << "▀▀" << BACKGROUND_YELLOW << "░" << RESET << "▀▀" << BACKGROUND_YELLOW << "░░" << RESET << "▄▀░" << endl;
+cout << "░█" << BACKGROUND_YELLOW << "░░░" << RESET << "█░░█" << BACKGROUND_YELLOW << "░░░░░░" << RESET << "▄▄" << BACKGROUND_YELLOW << "░░░░░░░░░░░" << RESET << "▄▀░░" << endl;
 
 
 }
