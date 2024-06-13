@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/13 09:15:33 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/13 12:14:03 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,12 @@ ostream& operator<<( ostream& output_stream, const ClapTrap& right_input ){
 void ClapTrap::printHealthBar( int enemy )const{
 	
 	// Prints extra spaces for 
-	if (enemy)
-		for (size_t i = 0; i < 30; i++)
+	if (enemy){
+		for (size_t i = 0; i < 55; i++)
 			printNoEndl(" ");
+		// cout << endl;
+	}
+	// cout << endl;
 		
 	// 💚 💛 ❤️ 💔
 	// Printing emojis depending on health level
@@ -151,9 +154,9 @@ void ClapTrap::printHealthBar( int enemy )const{
 	cout << endl;
 }
 
-void ClapTrap::displayCharacter( void )const{
+void ClapTrap::displayPikachu( void )const{
 
-	
+cout << endl;
 
 cout << "░░░░░░░░▀████▀▄▄░░░░░░░░░░░░░░▄█" << endl;
 cout << "░░░░░░░░░░█▀" << BACKGROUND_YELLOW << "░░░░" << RESET << "▀▀▄▄▄▄▄" << "░░░░▄▄▀▀█" << endl;
@@ -164,6 +167,29 @@ cout << "▀▄" << BACKGROUND_YELLOW <<  "░░░░░" << RESET << "▀▄�
 cout << "░▀▄" << BACKGROUND_YELLOW << "░░░░" << RESET << "▄▀░█" << BACKGROUND_YELLOW << "░░░" << RESET <<  RED << "▄██▄" << RESET << BACKGROUND_YELLOW << "░░░" << RESET << "▄" << BACKGROUND_YELLOW << "░░" << RESET << "▄" << BACKGROUND_YELLOW << "░░" << RESET << "▀▀" << BACKGROUND_YELLOW << "░" << RESET << "█░" << endl;
 cout << "░░█" << BACKGROUND_YELLOW << "░░" << RESET << "▄▀░░█" << BACKGROUND_YELLOW << "░░░░" << RESET << RED << "▀██▀" << RESET << BACKGROUND_YELLOW << "░░░░" << RESET << "▀▀" << BACKGROUND_YELLOW << "░" << RESET << "▀▀" << BACKGROUND_YELLOW << "░░" << RESET << "▄▀░" << endl;
 cout << "░█" << BACKGROUND_YELLOW << "░░░" << RESET << "█░░█" << BACKGROUND_YELLOW << "░░░░░░" << RESET << "▄▄" << BACKGROUND_YELLOW << "░░░░░░░░░░░" << RESET << "▄▀░░" << endl;
+
+
+}
+
+void ClapTrap::displayShrek( void )const{
+	
+cout << endl;
+
+printColor(BOLD_GREEN, "                               				⢀⡴⠑⡄⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ");
+printColor(BOLD_GREEN, "                               				⠸⡇⠀⠿⡀⠀⠀⠀⣀⡴⢿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ");
+printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠑⢄⣠⠾⠁⣀⣄⡈⠙⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀ ");
+printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⢀⡀⠁⠀⠀⠈⠙⠛⠂⠈⣿⣿⣿⣿⣿⠿⡿⢿⣆⠀⠀⠀⠀⠀⠀⠀ ");
+printColor(BOLD_GREEN, "                               				⠀⠀⠀⢀⡾⣁⣀⠀⠴⠂⠙⣗⡀⠀⢻⣿⣿⠭⢤⣴⣦⣤⣹⠀⠀⠀⢀⢴⣶⣆ ");
+printColor(BOLD_GREEN, "                               				⠀⠀⢀⣾⣿⣿⣿⣷⣮⣽⣾⣿⣥⣴⣿⣿⡿⢂⠔⢚⡿⢿⣿⣦⣴⣾⠁⠸⣼⡿ ");
+printColor(BOLD_GREEN, "                               				⠀⢀⡞⠁⠙⠻⠿⠟⠉⠀⠛⢹⣿⣿⣿⣿⣿⣌⢤⣼⣿⣾⣿⡟⠉⠀⠀⠀⠀⠀ ");
+printColor(BOLD_GREEN, "                               				⠀⣾⣷⣶⠇⠀⠀⣤⣄⣀⡀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ ");
+printColor(BOLD_GREEN, "                               				⠀⠉⠈⠉⠀⠀⢦⡈⢻⣿⣿⣿⣶⣶⣶⣶⣤⣽⡹⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ ");
+printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⠀⠉⠲⣽⡻⢿⣿⣿⣿⣿⣿⣿⣷⣜⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ ");
+printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣷⣶⣮⣭⣽⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀ ");
+printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⣀⣀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀ ");
+printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀ ");
+printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀ ");
+printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠿⠛⠉");
 
 
 }
