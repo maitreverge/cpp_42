@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:39:35 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/13 12:10:30 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/13 13:41:07 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,31 @@ int main( void ){
 	
 	clearScreen();
 
+	pikachu.takeDamage(1);
+	pikachu.takeDamage(1);
+	pikachu.takeDamage(1);
+
+	
+	pikachu.beRepaired(1);
+	pikachu.beRepaired(1);
+	pikachu.beRepaired(1);
+	pikachu.beRepaired(1);
+
+	pikachu.takeDamage(1);
+	// pikachu.takeDamage(1);
+
+
+
+	// pikachu.takeDamage(1);
+
+	// pikachu.beRepaired(1);
+	// pikachu.beRepaired(1);
+	// pikachu.beRepaired(1);
+	
+	
+	
+	
+	
 	
 	shrek.printHealthBar(1);
 	shrek.displayShrek();

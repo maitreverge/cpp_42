@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/13 12:14:03 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/13 13:40:19 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ClapTrap::ClapTrap( void ){}
 
 ClapTrap::ClapTrap( string nameInput ) :
-_name(nameInput), _hitPoints(10), _energyPoints(10), _attackDamage(0){}
+_name(nameInput), _hitPoints(10), _maxHealth(10), _energyPoints(10), _attackDamage(0){}
 
 ClapTrap::ClapTrap( const ClapTrap& copy ){ *this = copy; }
 
@@ -67,6 +67,7 @@ void ClapTrap::beRepaired( unsigned int amount ){
 	if (_energyPoints){
 		_energyPoints--;
 		_hitPoints += amount;
+		updateMaxHealth();
 		printNoEndl("ClapTrap");
 		printColorNoEndl(GREEN, _name);
 		printNoEndl("has regained"); std::cout << HIGH_INTENSITY_GREEN << amount << RESET;
@@ -112,19 +113,22 @@ ostream& operator<<( ostream& output_stream, const ClapTrap& right_input ){
 	return output_stream;
 }
 
+void	ClapTrap::updateMaxHealth( void ){
+	
+	if (this->_hitPoints > this->_maxHealth)
+		this->_maxHealth = this->_hitPoints;
+}
+
 /////////////////////////////////////////////////////////////////////////
 
-void ClapTrap::printHealthBar( int enemy )const{
+void ClapTrap::printHealthBar( int enemy ){
 	
 	// Prints extra spaces for 
 	if (enemy){
 		for (size_t i = 0; i < 55; i++)
 			printNoEndl(" ");
-		// cout << endl;
 	}
-	// cout << endl;
-		
-	// 💚 💛 ❤️ 💔
+	
 	// Printing emojis depending on health level
 	if (!_hitPoints)
 		printNoEndl("💔  ");
@@ -147,11 +151,35 @@ void ClapTrap::printHealthBar( int enemy )const{
 	// printing actual health_bar * 2 for larger bar
 	for (size_t i = 0; i < _hitPoints * 2; i++)
 		printColorNoEndl(HIGH_INTENSITY_GREEN, FULL_BLOCK);
-	for (size_t i = _hitPoints * 2; i < 20; i++)
+	for (size_t i = _hitPoints * 2; i < _maxHealth * 2; i++)
 		printColorNoEndl(RED, MEDIUM_BLOCK);
 	
-	// printing extra line
 	cout << endl;
+	if (enemy){
+		for (size_t i = 0; i < 55; i++)
+			printNoEndl(" ");
+	}
+	printNoEndl( "🔪");
+	std::cout << "  " << BACKGROUND_HIGH_INTENSITY_WHITE << _attackDamage << RESET  << endl;
+	
+	if (enemy){
+		for (size_t i = 0; i < 55; i++)
+			printNoEndl(" ");
+	}
+	
+	// printColorNoEndl(BACKGROUND_HIGH_INTENSITY_CYAN, "🔋");
+	printNoEndl( "🔋");
+	std::cout << "  " << BACKGROUND_HIGH_INTENSITY_WHITE << _energyPoints << RESET ;
+	// 🔋
+
+	// _energyPoints--;
+
+	for (size_t i = 0; i < _energyPoints * 2; i++)
+		printColorNoEndl(HIGH_INTENSITY_YELLOW, FULL_BLOCK);
+	for (size_t i = _energyPoints * 2; i < _energyPoints * 2; i++)
+		printColorNoEndl(YELLOW, MEDIUM_BLOCK);
+	
+	// cout << endl;
 }
 
 void ClapTrap::displayPikachu( void )const{
