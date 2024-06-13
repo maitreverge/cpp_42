@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/08 08:59:48 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/13 15:39:46 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,4 @@ void	printNoEndl( string str );
 void	printColor( string COLOR, string str );
 void	printColorNoEndl( string COLOR, string str );
 void	clearScreen( void );
-void	customExit( void );
+void	customExit( string str );
