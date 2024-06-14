@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:39:35 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/13 15:59:08 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 10:41:22 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,30 @@ void printUsageActions( ClapTrap& player, ClapTrap& enemy ){
 	
 	printColor(YELLOW, "SELECT YOUR ACTION");
 	printNoEndl("[1] ATTACK   ");
-	printColor( HIGH_INTENSITY_RED, enemy.getName());
+	printColorNoEndl( HIGH_INTENSITY_RED, enemy.getName());
+	printColor( HIGH_INTENSITY_YELLOW, "   (Cost 1 🔋)");
 	printNoEndl("[2] HEAL     ");
-	printColor( HIGH_INTENSITY_GREEN, player.getName());
+	printColorNoEndl( HIGH_INTENSITY_GREEN, player.getName());
+	printColor( HIGH_INTENSITY_YELLOW, "   (Cost 1 🔋)");
 	printColor(RED, "[3] EXIT");
+}
+
+static void displayBothPlayers( ClapTrap& enemy, ClapTrap& player){
+
+	enemy.printHealthBar(1);
+	enemy.displayShrek();
+	for (size_t i = 0; i < 4; i++)
+		std::cout << std::endl;
+	player.printHealthBar();
+	player.displayPikachu();
 }
 
 static void characterTakesAction( ClapTrap& player, ClapTrap& enemy ){
 	
+	clearScreen();
+	displayBothPlayers(enemy, player);
 	// Print which player we are actually playing
-	printColor(UNDERLINE_GREEN, player.getName());
+	printColor(UNDERLINE_GREEN, "SELECTED PLAYER : "+player.getName()+"\n");
 	
 	string userPrompt;
 
@@ -56,8 +70,13 @@ static void characterTakesAction( ClapTrap& player, ClapTrap& enemy ){
 	switch (userPrompt[0])
 	{
 		case '1': // ATTACK
-			player.attack(enemy.getName());
-			enemy.takeDamage(1);
+			if (player.getAttackDamage()){
+				player.attack(enemy.getName());
+				enemy.takeDamage(1);
+			}
+			else
+				cout << HIGH_INTENSITY_RED << player.getName() << RESET << " can't make any damage !" << endl;
+
 			break;
 		case '2': // HEAL
 			player.beRepaired(1);
@@ -92,20 +111,14 @@ int main( void ){
 
 	ClapTrap shrek("Shrek");
 	
-	clearScreen();
 
-	// pikachu.takeDamage(1);
-	// pikachu.beRepaired(1);
-	
 	string userPrompt;
 	while (true){
 		
-		shrek.printHealthBar(1);
-		shrek.displayShrek();
-		for (size_t i = 0; i < 4; i++)
-			std::cout << std::endl;
-		pikachu.printHealthBar();
-		pikachu.displayPikachu();
+		printColor(BACKGROUND_HIGH_INTENSITY_CYAN, "LOADING CHARACTERS"); sleep(2);
+		clearScreen();
+
+		displayBothPlayers(shrek, pikachu);
 
 		// ! STEP ONE : SELECT CHARACTER WHICH DO THE ACTION
 		do
@@ -114,6 +127,7 @@ int main( void ){
 			printColorNoEndl(BOLD_YELLOW, "$ > ");
 			getline(cin, userPrompt);
 		} while (!validPromptCharacter( userPrompt ));
+		// displayBothPlayers(shrek, pikachu);
 		
 		startBattle(pikachu, shrek, userPrompt[0]);
 		

@@ -6,13 +6,14 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:15 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/13 13:31:11 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 10:14:49 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "utils_template.hpp"
+#include <unistd.h>
 
 class ClapTrap
 {

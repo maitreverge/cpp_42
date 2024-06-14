@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/13 13:40:19 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 10:41:41 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ ClapTrap::~ClapTrap( void ){}
 
 void ClapTrap::attack( const string& target ){
 	
-	if (_energyPoints and _hitPoints){
+	if (_energyPoints){
 		_energyPoints--;
 		printNoEndl("ClapTrap");
 		printColorNoEndl(GREEN, _name);
@@ -37,8 +37,10 @@ void ClapTrap::attack( const string& target ){
 		std::cout << HIGH_INTENSITY_RED << _attackDamage << RESET;
 		print("points of damage!");
 	}
-	else
-		std::cout << HIGH_INTENSITY_RED << _name << RESET << "has no energy points left" << std::endl;
+	else if (!_energyPoints)
+		std::cout << HIGH_INTENSITY_RED << _name << RESET << " has no energy points left 🪫" << std::endl;
+	// else if (!_attackDamage)
+	// 	std::cout << HIGH_INTENSITY_RED << _name << RESET << " can't make any damage !" << std::endl;
 }
 
 
@@ -57,7 +59,7 @@ void ClapTrap::takeDamage( unsigned int amount ){
 	else{
 		printNoEndl("ClapTrap");
 		printColorNoEndl(GREEN, _name);
-		printColor(HIGH_INTENSITY_RED, "is already dead, please stop beating a dead body");
+		printColor(HIGH_INTENSITY_RED, " is already dead, please stop beating him !");
 	}
 }
 
@@ -74,7 +76,7 @@ void ClapTrap::beRepaired( unsigned int amount ){
 		print("HEALTH");
 	}
 	else
-		std::cout << HIGH_INTENSITY_RED << _name << RESET << "has no energy points left" << std::endl;
+		std::cout << HIGH_INTENSITY_RED << _name << RESET << "has no energy points left 🪫" << std::endl;
 }
 
 // Getters
