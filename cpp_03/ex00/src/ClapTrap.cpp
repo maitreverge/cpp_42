@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 11:45:11 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 12:24:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ClapTrap::ClapTrap( void ){
 }
 
 ClapTrap::ClapTrap( string nameInput ) :
-_name(nameInput), _hitPoints(10), _maxHealth(_hitPoints), _energyPoints(10), _attackDamage(0){}
+_name(nameInput), _hitPoints(10), _maxHealth(_hitPoints), _energyPoints(10), _attackDamage(6){}
 
 ClapTrap::ClapTrap( const ClapTrap& copy ){ *this = copy; }
 
@@ -209,12 +209,12 @@ void ClapTrap::printHealthBar( int enemy ){
 	std::cout << "  " << BACKGROUND_HIGH_INTENSITY_WHITE << _energyPoints << RESET ;
 	// 🔋
 
-	// _energyPoints--;
 
+	// * PRINT ENERGY POINTS
 	for (size_t i = 0; i < _energyPoints * 2; i++)
 		printColorNoEndl(HIGH_INTENSITY_YELLOW, FULL_BLOCK);
-	for (size_t i = _energyPoints * 2; i < _energyPoints * 2; i++)
-		printColorNoEndl(YELLOW, MEDIUM_BLOCK);
+	// for (size_t i = _energyPoints * 2; i < _energyPoints * 2; i++)
+	// 	printColorNoEndl(YELLOW, MEDIUM_BLOCK);
 	
 	// cout << endl;
 }
