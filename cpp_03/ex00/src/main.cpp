@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:39:35 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 11:33:51 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 12:08:35 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void printUsageActions( ClapTrap& player, ClapTrap& enemy ){
 	printColor(RED, "[3] EXIT");
 }
 
+// ! bug : reverse displaying depending on the selected character
 static void displayBothPlayers( ClapTrap& enemy, ClapTrap& player){
 
 	enemy.printHealthBar(1);
@@ -51,10 +52,14 @@ static void displayBothPlayers( ClapTrap& enemy, ClapTrap& player){
 	player.displayPikachu();
 }
 
-static void characterTakesAction( ClapTrap& player, ClapTrap& enemy ){
+// static void characterTakesAction( ClapTrap& player, ClapTrap& enemy, int switch);
+
+static void characterTakesAction( ClapTrap& player, ClapTrap& enemy, int sw = 0){
 	
 	clearScreen();
-	displayBothPlayers(enemy, player);
+	
+	!sw ? displayBothPlayers(enemy, player) : displayBothPlayers(player, enemy);
+	
 	// Print which player we are actually playing
 	printColor(UNDERLINE_GREEN, "SELECTED PLAYER : "+player.getName()+"\n");
 	
@@ -78,7 +83,6 @@ static void characterTakesAction( ClapTrap& player, ClapTrap& enemy ){
 				player.updateEnergyPoints(-1); // Attacking cost energy despite having no attackDamage
 				cout << HIGH_INTENSITY_RED << player.getName() << RESET << " can't make any damage !" << endl;
 			}
-
 			break;
 		case '2': // HEAL
 			player.beRepaired(1);
@@ -98,7 +102,7 @@ static void startBattle( ClapTrap& pikachu, ClapTrap& shrek, char choice){
 			characterTakesAction(pikachu, shrek);
 			break;
 		case '2': // shrek
-			characterTakesAction(shrek, pikachu);
+			characterTakesAction(shrek, pikachu, 1);
 			break;
 		case '3': // exit
 			clearScreen();

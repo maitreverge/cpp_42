@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 11:35:57 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 11:45:11 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ClapTrap::ClapTrap( void ){
 }
 
 ClapTrap::ClapTrap( string nameInput ) :
-_name(nameInput), _hitPoints(10), _maxHealth(10), _energyPoints(10), _attackDamage(0){}
+_name(nameInput), _hitPoints(10), _maxHealth(_hitPoints), _energyPoints(10), _attackDamage(0){}
 
 ClapTrap::ClapTrap( const ClapTrap& copy ){ *this = copy; }
 
@@ -93,14 +93,6 @@ void ClapTrap::takeDamage( unsigned int amount ){
 		
 		printFunctionMessage(TAKE_DAMAGE, customItoA(amount));
 
-		// ! USELESS, as _hitPoints can't be negative
-		// if (_hitPoints < 0){
-		// 	_hitPoints = 0;
-		// 	printNoEndl("ClapTrap");
-		// 	printColorNoEndl(GREEN, _name);
-		// 	printColor(HIGH_INTENSITY_RED, "has no life left");
-		// 	return ;
-		// }
 	}
 	else {
 		printNoEndl("ClapTrap");
