@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 13:31:15 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 14:59:15 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Constructors
 ClapTrap::ClapTrap( void ){
 	
-	 // ! TO DO : display constructor names
+	printColor(BOLD_GREEN, "ClapTrap "+_name+" created !");
 }
 
 ClapTrap::ClapTrap( string nameInput ) :
@@ -27,7 +27,7 @@ ClapTrap::ClapTrap( const ClapTrap& copy ){ *this = copy; }
 // Destructors
 ClapTrap::~ClapTrap( void ){
 
-	// ! TO DO : display constructor names
+	printColor(BOLD_GREEN, "ClapTrap "+_name+" destroyed !");
 }
 
 /**
@@ -69,13 +69,17 @@ void ClapTrap::printFunctionMessage( e_printingActions message, string target )c
 		case NO_ENERGY:
 			printNoEndl("ClapTrap ");
 			printColorNoEndl(GREEN, _name);
-			printColor(HIGH_INTENSITY_RED, "has no ENERGY left 🪫");
+			printColor(HIGH_INTENSITY_RED, " has no ENERGY left 🪫");
 			break;
 		case NO_HEALTH:
 			printNoEndl("ClapTrap ");
 			printColorNoEndl(GREEN, _name);
-			printColor(HIGH_INTENSITY_RED, "has no HEALTH left 💔");
+			printColor(HIGH_INTENSITY_RED, " is already dead 💀");
 			break;
+		case NO_DAMAGE:
+			printNoEndl("ClapTrap ");
+			printColorNoEndl(GREEN, _name);
+			printColor(HIGH_INTENSITY_RED, " can't make any damage !");
 		default:
 			break;
 	}
@@ -83,11 +87,11 @@ void ClapTrap::printFunctionMessage( e_printingActions message, string target )c
 
 void ClapTrap::attack( const string& target ){
 	
-	if (_energyPoints and _hitPoints){
+	if (_energyPoints){
 		_energyPoints--;
 		printFunctionMessage(ATTACK, target);
 	}
-	else if (!_energyPoints)
+	else
 		printFunctionMessage(NO_ENERGY, target);
 		// std::cout << HIGH_INTENSITY_RED << _name << RESET << " has no energy points left 🪫" << std::endl;
 }
@@ -161,24 +165,19 @@ void	ClapTrap::updateMaxHealth( void ){
 		this->_maxHealth = this->_hitPoints;
 }
 
-/////////////////////////////////////////////////////////////////////////
-
 void ClapTrap::printHealthBar( int enemy ){
 	
-	// Prints extra spaces for 
-	if (enemy){
-		for (size_t i = 0; i < 55; i++)
-			printNoEndl(" ");
-	}
+	// Prints extra spaces for shrek
+	if (enemy){ for (size_t i = 0; i < 55; i++){ printNoEndl(" "); } }
 	
-	// Printing emojis depending on health level
+	// * PRINT HEALTH BAR
 	if (!_hitPoints)
 		printNoEndl("💔  ");
 	else{
 		switch (_hitPoints / 3)
 		{
 			case 0:
-				printNoEndl("❤️  ");
+				printNoEndl("❤️   ");
 				break;
 			case 1:
 				printNoEndl("💛  ");
@@ -188,56 +187,48 @@ void ClapTrap::printHealthBar( int enemy ){
 				break;
 		}
 	}
-	std::cout << BACKGROUND_HIGH_INTENSITY_WHITE << _hitPoints << RESET ;
+	printColorNoEndl(BACKGROUND_HIGH_INTENSITY_WHITE, customItoA(_hitPoints));
 
-	// printing actual health_bar * 2 for larger bar
+	// Print the health bar, first the actual health, then the missing health based on the maxHealth
 	for (size_t i = 0; i < _hitPoints * 2; i++)
 		printColorNoEndl(HIGH_INTENSITY_GREEN, FULL_BLOCK);
 	for (size_t i = _hitPoints * 2; i < _maxHealth * 2; i++)
 		printColorNoEndl(RED, MEDIUM_BLOCK);
-	
 	cout << endl;
-	if (enemy){
-		for (size_t i = 0; i < 55; i++)
-			printNoEndl(" ");
-	}
-	printNoEndl( "🔪");
-	std::cout << "  " << BACKGROUND_HIGH_INTENSITY_WHITE << _attackDamage << RESET  << endl;
 	
-	if (enemy){
-		for (size_t i = 0; i < 55; i++)
-			printNoEndl(" ");
-	}
+	// Prints extra spaces for shrek
+	if (enemy){ for (size_t i = 0; i < 55; i++){ printNoEndl(" "); } }
 	
-	// printColorNoEndl(BACKGROUND_HIGH_INTENSITY_CYAN, "🔋");
-	printNoEndl( "🔋");
-	std::cout << "  " << BACKGROUND_HIGH_INTENSITY_WHITE << _energyPoints << RESET ;
-	// 🔋
+	// * PRINT ATTACK DAMAGE
+	printNoEndl( "🔪  ");
+	printColor(BACKGROUND_HIGH_INTENSITY_WHITE, customItoA(_attackDamage));
+	
+	// Prints extra spaces for shrek
+	if (enemy){ for (size_t i = 0; i < 55; i++){ printNoEndl(" "); } }
+	
+	// * PRINT ENERGY POINTS BAR
+	printNoEndl( "🔋  ");
+	printColorNoEndl(BACKGROUND_HIGH_INTENSITY_WHITE, customItoA(_energyPoints));
 
-
-	// * PRINT ENERGY POINTS
 	for (size_t i = 0; i < _energyPoints * 2; i++)
 		printColorNoEndl(HIGH_INTENSITY_YELLOW, FULL_BLOCK);
-	// for (size_t i = _energyPoints * 2; i < _energyPoints * 2; i++)
-	// 	printColorNoEndl(YELLOW, MEDIUM_BLOCK);
-	
-	// cout << endl;
 }
 
 void ClapTrap::displayPikachu( void )const{
 
 cout << endl;
-
-cout << "░░░░░░░░▀████▀▄▄░░░░░░░░░░░░░░▄█" << endl;
-cout << "░░░░░░░░░░█▀" << BACKGROUND_YELLOW << "░░░░" << RESET << "▀▀▄▄▄▄▄" << "░░░░▄▄▀▀█" << endl;
-cout << "░░▄░░░░░░░░█ " << BACKGROUND_YELLOW <<  "░░░░░░░░░░" << RESET << "▀▀▀▀▄" << BACKGROUND_YELLOW <<  "░░" << RESET << "▄▀" << endl;
-cout << "░▄▀" << BACKGROUND_YELLOW <<  "░" << RESET << "▀▄░░░░░░▀▄" << BACKGROUND_YELLOW <<  "░░░░░░░░░░░░░░" << RESET << "▀▄▀░" << endl;
-cout << "▄▀" << BACKGROUND_YELLOW <<  "░░░░" << RESET <<  "█░░░░░█▀" << BACKGROUND_YELLOW <<  "░░░" << RESET << "▄█▀▄" << BACKGROUND_YELLOW <<  "░░░░░░░░" << RESET <<  "▄█░" << endl;
-cout << "▀▄" << BACKGROUND_YELLOW <<  "░░░░░" << RESET << "▀▄░░█" << BACKGROUND_YELLOW <<  "░░░░░" << RESET <<  "▀██▀" << BACKGROUND_YELLOW << "░░░░░" << RESET <<  "██▄█░░" << endl;
-cout << "░▀▄" << BACKGROUND_YELLOW << "░░░░" << RESET << "▄▀░█" << BACKGROUND_YELLOW << "░░░" << RESET <<  RED << "▄██▄" << RESET << BACKGROUND_YELLOW << "░░░" << RESET << "▄" << BACKGROUND_YELLOW << "░░" << RESET << "▄" << BACKGROUND_YELLOW << "░░" << RESET << "▀▀" << BACKGROUND_YELLOW << "░" << RESET << "█░" << endl;
-cout << "░░█" << BACKGROUND_YELLOW << "░░" << RESET << "▄▀░░█" << BACKGROUND_YELLOW << "░░░░" << RESET << RED << "▀██▀" << RESET << BACKGROUND_YELLOW << "░░░░" << RESET << "▀▀" << BACKGROUND_YELLOW << "░" << RESET << "▀▀" << BACKGROUND_YELLOW << "░░" << RESET << "▄▀░" << endl;
-cout << "░█" << BACKGROUND_YELLOW << "░░░" << RESET << "█░░█" << BACKGROUND_YELLOW << "░░░░░░" << RESET << "▄▄" << BACKGROUND_YELLOW << "░░░░░░░░░░░" << RESET << "▄▀░░" << endl;
-
+if (_hitPoints) {
+	cout <<  "░░░░░░░░▀████▀▄▄░░░░░░░░░░░░░░▄█" << endl;
+	cout <<  "░░░░░░░░░░█▀" << BACKGROUND_YELLOW << "░░░░" << RESET << "▀▀▄▄▄▄▄" << "░░░░▄▄▀▀█" << endl;
+	cout <<  "░░▄░░░░░░░░█ " << BACKGROUND_YELLOW <<  "░░░░░░░░░░" << RESET << "▀▀▀▀▄" << BACKGROUND_YELLOW <<  "░░" << RESET << "▄▀" << endl;
+	cout <<  "░▄▀" << BACKGROUND_YELLOW <<  "░" << RESET << "▀▄░░░░░░▀▄" << BACKGROUND_YELLOW <<  "░░░░░░░░░░░░░░" << RESET << "▀▄▀░" << endl;
+	cout <<  "▄▀" << BACKGROUND_YELLOW <<  "░░░░" << RESET <<  "█░░░░░█▀" << BACKGROUND_YELLOW <<  "░░░" << RESET << "▄█▀▄" << BACKGROUND_YELLOW <<  "░░░░░░░░" << RESET <<  "▄█░" << endl;
+	cout <<  "▀▄" << BACKGROUND_YELLOW <<  "░░░░░" << RESET << "▀▄░░█" << BACKGROUND_YELLOW <<  "░░░░░" << RESET <<  "▀██▀" << BACKGROUND_YELLOW << "░░░░░" << RESET <<  "██▄█░░" << endl;
+	cout <<  "░▀▄" << BACKGROUND_YELLOW << "░░░░" << RESET << "▄▀░█" << BACKGROUND_YELLOW << "░░░" << RESET <<  RED << "▄██▄" << RESET << BACKGROUND_YELLOW << "░░░" << RESET << "▄" << BACKGROUND_YELLOW << "░░" << RESET << "▄" << BACKGROUND_YELLOW << "░░" << RESET << "▀▀" << BACKGROUND_YELLOW << "░" << RESET << "█░" << endl;
+	cout <<  "░░█" << BACKGROUND_YELLOW << "░░" << RESET << "▄▀░░█" << BACKGROUND_YELLOW << "░░░░" << RESET << RED << "▀██▀" << RESET << BACKGROUND_YELLOW << "░░░░" << RESET << "▀▀" << BACKGROUND_YELLOW << "░" << RESET << "▀▀" << BACKGROUND_YELLOW << "░░" << RESET << "▄▀░" << endl;
+	cout <<  "░█" << BACKGROUND_YELLOW << "░░░" << RESET << "█░░█" << BACKGROUND_YELLOW << "░░░░░░" << RESET << "▄▄" << BACKGROUND_YELLOW << "░░░░░░░░░░░" << RESET << "▄▀░░" << endl;
+}
+else{} // does not print the character if he got no life left
 
 }
 
@@ -245,21 +236,23 @@ void ClapTrap::displayShrek( void )const{
 	
 cout << endl;
 
-printColor(BOLD_GREEN, "                               				⢀⡴⠑⡄⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ");
-printColor(BOLD_GREEN, "                               				⠸⡇⠀⠿⡀⠀⠀⠀⣀⡴⢿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ");
-printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠑⢄⣠⠾⠁⣀⣄⡈⠙⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀ ");
-printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⢀⡀⠁⠀⠀⠈⠙⠛⠂⠈⣿⣿⣿⣿⣿⠿⡿⢿⣆⠀⠀⠀⠀⠀⠀⠀ ");
-printColor(BOLD_GREEN, "                               				⠀⠀⠀⢀⡾⣁⣀⠀⠴⠂⠙⣗⡀⠀⢻⣿⣿⠭⢤⣴⣦⣤⣹⠀⠀⠀⢀⢴⣶⣆ ");
-printColor(BOLD_GREEN, "                               				⠀⠀⢀⣾⣿⣿⣿⣷⣮⣽⣾⣿⣥⣴⣿⣿⡿⢂⠔⢚⡿⢿⣿⣦⣴⣾⠁⠸⣼⡿ ");
-printColor(BOLD_GREEN, "                               				⠀⢀⡞⠁⠙⠻⠿⠟⠉⠀⠛⢹⣿⣿⣿⣿⣿⣌⢤⣼⣿⣾⣿⡟⠉⠀⠀⠀⠀⠀ ");
-printColor(BOLD_GREEN, "                               				⠀⣾⣷⣶⠇⠀⠀⣤⣄⣀⡀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ ");
-printColor(BOLD_GREEN, "                               				⠀⠉⠈⠉⠀⠀⢦⡈⢻⣿⣿⣿⣶⣶⣶⣶⣤⣽⡹⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ ");
-printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⠀⠉⠲⣽⡻⢿⣿⣿⣿⣿⣿⣿⣷⣜⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ ");
-printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣷⣶⣮⣭⣽⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀ ");
-printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⣀⣀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀ ");
-printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀ ");
-printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀ ");
-printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠿⠛⠉");
-
+if (_hitPoints) {
+	printColor(BOLD_GREEN, "                               				⢀⡴⠑⡄⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ");
+	printColor(BOLD_GREEN, "                               				⠸⡇⠀⠿⡀⠀⠀⠀⣀⡴⢿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ");
+	printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠑⢄⣠⠾⠁⣀⣄⡈⠙⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀ ");
+	printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⢀⡀⠁⠀⠀⠈⠙⠛⠂⠈⣿⣿⣿⣿⣿⠿⡿⢿⣆⠀⠀⠀⠀⠀⠀⠀ ");
+	printColor(BOLD_GREEN, "                               				⠀⠀⠀⢀⡾⣁⣀⠀⠴⠂⠙⣗⡀⠀⢻⣿⣿⠭⢤⣴⣦⣤⣹⠀⠀⠀⢀⢴⣶⣆ ");
+	printColor(BOLD_GREEN, "                               				⠀⠀⢀⣾⣿⣿⣿⣷⣮⣽⣾⣿⣥⣴⣿⣿⡿⢂⠔⢚⡿⢿⣿⣦⣴⣾⠁⠸⣼⡿ ");
+	printColor(BOLD_GREEN, "                               				⠀⢀⡞⠁⠙⠻⠿⠟⠉⠀⠛⢹⣿⣿⣿⣿⣿⣌⢤⣼⣿⣾⣿⡟⠉⠀⠀⠀⠀⠀ ");
+	printColor(BOLD_GREEN, "                               				⠀⣾⣷⣶⠇⠀⠀⣤⣄⣀⡀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ ");
+	printColor(BOLD_GREEN, "                               				⠀⠉⠈⠉⠀⠀⢦⡈⢻⣿⣿⣿⣶⣶⣶⣶⣤⣽⡹⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ ");
+	printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⠀⠉⠲⣽⡻⢿⣿⣿⣿⣿⣿⣿⣷⣜⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ ");
+	printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣷⣶⣮⣭⣽⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀ ");
+	printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⣀⣀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀ ");
+	printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀ ");
+	printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀ ");
+	printColor(BOLD_GREEN, "                               				⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠿⠛⠉");
+}
+else{}
 
 }

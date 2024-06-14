@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:39:35 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 13:36:39 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 14:55:50 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void printUsageActions( ClapTrap& player, ClapTrap& enemy ){
 	printColor(RED, "[3] EXIT");
 }
 
-// ! bug : reverse displaying depending on the selected character
+
 static void displayBothPlayers( ClapTrap& enemy, ClapTrap& player){
 
 	enemy.printHealthBar(1);
@@ -52,19 +52,23 @@ static void displayBothPlayers( ClapTrap& enemy, ClapTrap& player){
 	player.displayPikachu();
 }
 
-// static void characterTakesAction( ClapTrap& player, ClapTrap& enemy, int switch);
-
 static void characterTakesAction( ClapTrap& player, ClapTrap& enemy, int sw = 0){
 	
 	clearScreen();
 	
+	// Displays the correct stats bars depending which character is plugged as `player` or `enemy`
 	!sw ? displayBothPlayers(enemy, player) : displayBothPlayers(player, enemy);
+
+	// Checks if the selected player is alive, exit if so.
+	if (!player.getHitPoints())
+		{printColor(HIGH_INTENSITY_RED ,player.getName() + " is already dead, can't do anything 💀"); return;}
 	
 	// Print which player we are actually playing
-	printColor(UNDERLINE_GREEN, "SELECTED PLAYER : "+player.getName()+"\n");
+	printColor(UNDERLINE_GREEN, "SELECTED PLAYER : " + player.getName() + "\n");
 	
 	string userPrompt;
-
+	
+	// User prompt 1 / 2 or 3
 	do
 	{
 		printUsageActions(player, enemy);
@@ -75,30 +79,32 @@ static void characterTakesAction( ClapTrap& player, ClapTrap& enemy, int sw = 0)
 	switch (userPrompt[0])
 	{
 		case '1': // ATTACK
-			if (player.getAttackDamage() and enemy.getHitPoints()) {
+			if (!player.getAttackDamage()){
+				if (player.getEnergyPoints())
+					player.updateEnergyPoints(-1); // Attacking cost energy despite having no attackDamage
+				player.printFunctionMessage(ClapTrap::NO_DAMAGE, ""); 
+			}
+			else if (!player.getEnergyPoints())
+				player.printFunctionMessage(ClapTrap::NO_ENERGY, "");
+			else if (!enemy.getHitPoints())
+				enemy.printFunctionMessage(ClapTrap::NO_HEALTH, "");
+			else { // actual attacking condition
 				player.attack(enemy.getName());
 				enemy.takeDamage(player.getAttackDamage());
 			}
-			else if (!player.getAttackDamage()) {
-				if (player.getEnergyPoints())
-					player.updateEnergyPoints(-1); // Attacking cost energy despite having no attackDamage
-				cout << HIGH_INTENSITY_RED << player.getName() << RESET << " can't make any damage !" << endl;
-			}
-			else // (!enemy.getHitPoints)
-				cout << HIGH_INTENSITY_RED << enemy.getName() << RESET << " is already dead 💀" << endl;
 			break;
 		case '2': // HEAL
 			player.beRepaired(1);
 			break;
-		case '3': // exit
+		case '3': // EXIT
 			break;
-			// clearScreen();
-			// customExit("Battle is Over");
+		default: // just to be safe
+			break;
 	}
 }
 
 static void startBattle( ClapTrap& pikachu, ClapTrap& shrek, char choice){
-
+	
 	switch (choice)
 	{
 		case '1': // pikachu
@@ -119,27 +125,29 @@ int main( void ){
 	ClapTrap pikachu("Pikachu");
 
 	ClapTrap shrek("Shrek");
+
+	sleep(2);
 	
 
 	string userPrompt;
 	while (true){
 		
+		// Prints and wait 2 seconds.
 		printColor(BACKGROUND_HIGH_INTENSITY_CYAN, "LOADING CHARACTERS"); sleep(2);
+		
 		clearScreen();
 
 		displayBothPlayers(shrek, pikachu);
 
-		// ! STEP ONE : SELECT CHARACTER WHICH DO THE ACTION
+		// * USER is prompted to choose the character
 		do
 		{
 			printUsageCharacter();
 			printColorNoEndl(BOLD_YELLOW, "$ > ");
 			getline(cin, userPrompt);
 		} while (!validPromptCharacter( userPrompt ));
-		// displayBothPlayers(shrek, pikachu);
 		
 		startBattle(pikachu, shrek, userPrompt[0]);
-		
 	}
 	return (0);
 }

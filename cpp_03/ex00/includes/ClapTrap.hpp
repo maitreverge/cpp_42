@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:15 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 13:26:37 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 14:32:20 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 #include "utils_template.hpp"
 #include <unistd.h>
-// #include <stdio.h>
 #include <stdlib.h>
 
 class ClapTrap
@@ -35,7 +34,8 @@ public:
 		TAKE_DAMAGE,
 		BE_REPAIRED,
 		NO_ENERGY,
-		NO_HEALTH
+		NO_HEALTH,
+		NO_DAMAGE
 	}		e_printingActions;
 
 	ClapTrap( string nameInput );
