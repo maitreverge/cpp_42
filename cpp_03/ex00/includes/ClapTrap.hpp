@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:15 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 11:13:44 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 13:26:37 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ public:
 	typedef enum e{
 		ATTACK,
 		TAKE_DAMAGE,
-		BE_REPAIRED
+		BE_REPAIRED,
+		NO_ENERGY,
+		NO_HEALTH
 	}		e_printingActions;
 
 	ClapTrap( string nameInput );

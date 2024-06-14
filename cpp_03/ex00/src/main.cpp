@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:39:35 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 12:23:31 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 13:36:39 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,17 @@ static void characterTakesAction( ClapTrap& player, ClapTrap& enemy, int sw = 0)
 	switch (userPrompt[0])
 	{
 		case '1': // ATTACK
-			if (player.getAttackDamage()) {
+			if (player.getAttackDamage() and enemy.getHitPoints()) {
 				player.attack(enemy.getName());
-				enemy.takeDamage(1);
+				enemy.takeDamage(player.getAttackDamage());
 			}
-			else {
+			else if (!player.getAttackDamage()) {
 				if (player.getEnergyPoints())
 					player.updateEnergyPoints(-1); // Attacking cost energy despite having no attackDamage
 				cout << HIGH_INTENSITY_RED << player.getName() << RESET << " can't make any damage !" << endl;
 			}
+			else // (!enemy.getHitPoints)
+				cout << HIGH_INTENSITY_RED << enemy.getName() << RESET << " is already dead 💀" << endl;
 			break;
 		case '2': // HEAL
 			player.beRepaired(1);
