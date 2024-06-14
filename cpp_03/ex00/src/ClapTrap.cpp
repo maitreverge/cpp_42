@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 10:41:41 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 10:48:27 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ const unsigned int& ClapTrap::getAttackDamage( void )const{ return this->_attack
 // Setters
 void ClapTrap::setHitPoints( unsigned int inputHitPoints ){ _hitPoints = inputHitPoints; }
 
-void ClapTrap::setEnergyPoints( unsigned int inputEnergyPoints ){ _energyPoints = inputEnergyPoints; }
+void ClapTrap::updateEnergyPoints( int inputEnergyPoints ){ _energyPoints += inputEnergyPoints; }
 
 void ClapTrap::setAttackDamage( unsigned int inputAttackDamage ){ _attackDamage = inputAttackDamage; }
 

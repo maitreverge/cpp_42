@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:15 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 10:14:49 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 10:48:44 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ public:
 	const unsigned int& getAttackDamage( void )const;
 
 	void setHitPoints( unsigned int inputHitPoints );
-	void setEnergyPoints( unsigned int inputEnergyPoints );
+	void updateEnergyPoints( int inputEnergyPoints );
 	void setAttackDamage( unsigned int inputAttackDamage );
 	
 	void updateMaxHealth( void );
