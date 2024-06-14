@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/13 15:39:46 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 11:25:33 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <sstream>
 #include <cstdlib>
 
+
 using std::string;
 using std::cout;
 using std::endl;
@@ -27,6 +28,7 @@ using std::fstream;
 using std::ifstream;
 using std::ofstream;
 using std::ostream;
+using std::stringstream
 
 #include "colors.hpp" // Includes all ANSII color codes
 
@@ -37,3 +39,4 @@ void	printColor( string COLOR, string str );
 void	printColorNoEndl( string COLOR, string str );
 void	clearScreen( void );
 void	customExit( string str );
+string	customItoA( long long int target);
