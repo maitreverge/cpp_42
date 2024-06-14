@@ -6,14 +6,17 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 10:48:27 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 11:35:57 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 // Constructors
-ClapTrap::ClapTrap( void ){}
+ClapTrap::ClapTrap( void ){
+	
+	 // ! TO DO : display constructor names
+}
 
 ClapTrap::ClapTrap( string nameInput ) :
 _name(nameInput), _hitPoints(10), _maxHealth(10), _energyPoints(10), _attackDamage(0){}
@@ -22,25 +25,64 @@ ClapTrap::ClapTrap( const ClapTrap& copy ){ *this = copy; }
 
 
 // Destructors
-ClapTrap::~ClapTrap( void ){}
+ClapTrap::~ClapTrap( void ){
 
+	// ! TO DO : display constructor names
+}
+
+/**
+ * @brief Function expects 3 inputs :
+ * 
+ * `ATTACK` : Print message for the `attack` action.
+ * `TAKE_DAMAGE` : Print message for the `takeDamage` action.
+ * `BE_REPAIRED` : Print message for the `beRepaired` action.
+ * 
+ * @param message 
+ */
+void ClapTrap::printFunctionMessage( e_printingActions message, string target )const{
+	
+	switch (message)
+	{
+		case ATTACK:
+			printNoEndl("ClapTrap");
+			printColorNoEndl(GREEN, _name);
+			printNoEndl(" attacks");
+			printColorNoEndl(HIGH_INTENSITY_YELLOW, target);
+			printNoEndl(", causing ");
+			std::cout << HIGH_INTENSITY_RED << _attackDamage << RESET;
+			print(" points of damage!");
+			break;
+		case TAKE_DAMAGE:
+			printNoEndl("ClapTrap");
+			printColorNoEndl(GREEN, _name);
+			printNoEndl(" takes ");
+			printColorNoEndl(HIGH_INTENSITY_YELLOW, target); // !TO DO : need to plug a itoa function
+			print(" points of damage!\n");
+			// printNoEndl(" damages ");
+			// std::cout << HIGH_INTENSITY_RED << _attackDamage << RESET;
+			break;
+		case BE_REPAIRED:
+			printNoEndl("ClapTrap");
+			printColorNoEndl(GREEN, _name);
+			printNoEndl(" heals himself ");
+			printColorNoEndl(HIGH_INTENSITY_GREEN, target); // !TO DO : need to plug a itoa function
+			print(" points health.");
+			// std::cout << HIGH_INTENSITY_RED << _attackDamage << RESET;
+			// print(" points of damage!\n");
+			break;
+		default:
+			break;
+	}
+}
 
 void ClapTrap::attack( const string& target ){
 	
 	if (_energyPoints){
 		_energyPoints--;
-		printNoEndl("ClapTrap");
-		printColorNoEndl(GREEN, _name);
-		printNoEndl("attacks");
-		printColorNoEndl(HIGH_INTENSITY_YELLOW, target);
-		printNoEndl(", causing");
-		std::cout << HIGH_INTENSITY_RED << _attackDamage << RESET;
-		print("points of damage!");
+		printFunctionMessage(ATTACK, target);
 	}
-	else if (!_energyPoints)
+	else
 		std::cout << HIGH_INTENSITY_RED << _name << RESET << " has no energy points left 🪫" << std::endl;
-	// else if (!_attackDamage)
-	// 	std::cout << HIGH_INTENSITY_RED << _name << RESET << " can't make any damage !" << std::endl;
 }
 
 
@@ -48,15 +90,19 @@ void ClapTrap::takeDamage( unsigned int amount ){
 	
 	if (_hitPoints){
 		_hitPoints -= amount;
-		if (_hitPoints < 0){
-			_hitPoints = 0;
-			printNoEndl("ClapTrap");
-			printColorNoEndl(GREEN, _name);
-			printColor(HIGH_INTENSITY_RED, "has no life left");
-			return ;
-		}
+		
+		printFunctionMessage(TAKE_DAMAGE, customItoA(amount));
+
+		// ! USELESS, as _hitPoints can't be negative
+		// if (_hitPoints < 0){
+		// 	_hitPoints = 0;
+		// 	printNoEndl("ClapTrap");
+		// 	printColorNoEndl(GREEN, _name);
+		// 	printColor(HIGH_INTENSITY_RED, "has no life left");
+		// 	return ;
+		// }
 	}
-	else{
+	else {
 		printNoEndl("ClapTrap");
 		printColorNoEndl(GREEN, _name);
 		printColor(HIGH_INTENSITY_RED, " is already dead, please stop beating him !");
@@ -70,10 +116,7 @@ void ClapTrap::beRepaired( unsigned int amount ){
 		_energyPoints--;
 		_hitPoints += amount;
 		updateMaxHealth();
-		printNoEndl("ClapTrap");
-		printColorNoEndl(GREEN, _name);
-		printNoEndl("has regained"); std::cout << HIGH_INTENSITY_GREEN << amount << RESET;
-		print("HEALTH");
+		printFunctionMessage(BE_REPAIRED, customItoA(amount));
 	}
 	else
 		std::cout << HIGH_INTENSITY_RED << _name << RESET << "has no energy points left 🪫" << std::endl;

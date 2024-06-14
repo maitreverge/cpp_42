@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:15 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 10:48:44 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/14 11:13:44 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #include "utils_template.hpp"
 #include <unistd.h>
+// #include <stdio.h>
+#include <stdlib.h>
 
 class ClapTrap
 {
@@ -27,6 +29,12 @@ private:
 	unsigned int _attackDamage; // SUBSTRACT TO LIFE
 	
 public:
+
+	typedef enum e{
+		ATTACK,
+		TAKE_DAMAGE,
+		BE_REPAIRED
+	}		e_printingActions;
 
 	ClapTrap( string nameInput );
 	ClapTrap( const ClapTrap& copy );
@@ -49,6 +57,7 @@ public:
 	void updateMaxHealth( void );
 
 	// Extra for printing video-game like
+	void printFunctionMessage( e_printingActions message, string target )const;
 	void printHealthBar( int enemy = 0 );
 	void displayPikachu( void )const;
 	void displayShrek( void )const;
