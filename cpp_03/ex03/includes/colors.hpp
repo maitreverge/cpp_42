@@ -6,11 +6,17 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:44:59 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/06 16:21:27 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/15 11:39:13 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
+// UNICODE defines for blocks
+#define FULL_BLOCK "\u2588"      /*  █  */
+#define HEAVY_BLOCK "\u2593"     /*  ▓  */
+#define MEDIUM_BLOCK "\u2592"    /*  ▒  */
+#define LIGHT_BLOCK "\u2591"     /*  ░  */
 
 // ANSII colors codes
 #define RESET   "\033[0m"
