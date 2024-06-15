@@ -6,18 +6,19 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/05 13:27:56 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/15 11:46:09 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/utils_template.hpp"
+// #include "../includes/utils_template.hpp"
 
 /**
  * @brief Print a string with a newline at the end.
  * 
  * @param str 
  */
-void	print( string str ){
+void	print( const string& str ){
+	
 	cout << str << endl;
 }
 
@@ -26,7 +27,8 @@ void	print( string str ){
  * 
  * @param str 
  */
-void	printNoEndl( string str ){
+void	printNoEndl( const string& str ){
+	
 	cout << str;
 }
 
@@ -36,7 +38,8 @@ void	printNoEndl( string str ){
  * @param COLOR 
  * @param str 
  */
-void	printColor( string COLOR, string str ){
+void	printColor( string COLOR, const string& str ){
+	
 	cout << COLOR << str << RESET << endl;
 }
 
@@ -46,7 +49,8 @@ void	printColor( string COLOR, string str ){
  * @param COLOR 
  * @param str 
  */
-void	printColorNoEndl( string COLOR, string str ){
+void	printColorNoEndl( string COLOR, const string& str ){
+	
 	cout << COLOR << str << RESET;
 }
 
@@ -55,6 +59,7 @@ void	printColorNoEndl( string COLOR, string str ){
  * 
  */
 void clearScreen( void ){
+	
 	cout << "\x1B[2J\x1B[H" << endl;
 }
 
@@ -62,7 +67,44 @@ void clearScreen( void ){
  * @brief Custom exit function that prints a string in red before exiting.
  * 
  */
-void	customExit( string str ){
+void	customExit( const string& str ){
+	
 	printColor(RED, str);
-	std::exit(EXIT_FAILURE);
+	std::exit(EXIT_SUCCESS);
+}
+
+/**
+ * @brief c++98 itoa implementation.
+ * 
+ * @param target 
+ * @return string 
+ */
+string customItoA( const long long int& target ){
+
+	string temp;
+	stringstream out;
+	
+	out << target;
+	temp = out.str();
+
+	return temp;
+}
+
+/**
+ * @brief c++98 atoi implementation.
+ * 
+ * @param str 
+ * @return int 
+ */
+int customAtoI(const string& str) {
+	
+	int result;
+	
+	std::stringstream ss(str);
+	ss >> result;
+	
+	if (ss.fail()) {
+		customExit("customAtoI failed to allocate in stringstream");
+	}
+	return result;
 }
