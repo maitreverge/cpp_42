@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:15 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 14:32:20 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/15 11:11:14 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,33 @@ public:
 	void takeDamage( unsigned int amount );
 	void beRepaired( unsigned int amount );
 
-	const string& getName( void )const;
+	// Getters
+	const string&		getName( void )const;
 	const unsigned int& getHitPoints( void )const;
 	const unsigned int& getEnergyPoints( void )const;
 	const unsigned int& getAttackDamage( void )const;
 
+	// Setters
 	void setHitPoints( unsigned int inputHitPoints );
 	void updateEnergyPoints( int inputEnergyPoints );
 	void setAttackDamage( unsigned int inputAttackDamage );
 	
 	void updateMaxHealth( void );
 
-	// Extra for printing video-game like
+	// Extra functions for printing battle
 	void printFunctionMessage( e_printingActions message, string target )const;
-	void printHealthBar( int enemy = 0 );
+	void printStats( int enemy = 0 )const;
 	void displayPikachu( void )const;
 	void displayShrek( void )const;
-
 };
 
 ostream& operator<<( ostream& output_stream, const ClapTrap& input );
+
+// wrapper_functions.cpp
+
+void	printUsageCharacter( void );
+bool	validPromptCharacter( string input );
+void	printUsageActions( ClapTrap& player, ClapTrap& enemy );
+void	displayBothPlayers( ClapTrap& enemy, ClapTrap& player);
+void	rightAlign( void );
+

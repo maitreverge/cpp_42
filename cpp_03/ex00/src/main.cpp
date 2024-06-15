@@ -6,52 +6,20 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:39:35 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 14:55:50 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/15 11:13:18 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ClapTrap.hpp"
 
-static void printUsageCharacter( void ){
-
-	printColor(YELLOW, "SELECT YOUR PLAYER");
-	print("[1] PIKACHU");
-	print("[2] SHREK");
-	printColor(RED, "[3] EXIT");
-}
-
-static bool validPromptCharacter( string input ){
-	
-	if (input == "1"
-	or	input == "2"
-	or	input == "3")
-		return true;
-	return false;
-}
-
-void printUsageActions( ClapTrap& player, ClapTrap& enemy ){
-	
-	printColor(YELLOW, "SELECT YOUR ACTION");
-	printNoEndl("[1] ATTACK   ");
-	printColorNoEndl( HIGH_INTENSITY_RED, enemy.getName());
-	printColor( HIGH_INTENSITY_YELLOW, "   (Cost 1 🔋)");
-	printNoEndl("[2] HEAL     ");
-	printColorNoEndl( HIGH_INTENSITY_GREEN, player.getName());
-	printColor( HIGH_INTENSITY_YELLOW, "   (Cost 1 🔋)");
-	printColor(RED, "[3] EXIT");
-}
-
-
-static void displayBothPlayers( ClapTrap& enemy, ClapTrap& player){
-
-	enemy.printHealthBar(1);
-	enemy.displayShrek();
-	for (size_t i = 0; i < 4; i++)
-		std::cout << std::endl;
-	player.printHealthBar();
-	player.displayPikachu();
-}
-
+/**
+ * @brief Hearth function for battle.
+ * Displays the characters, and inits actions based on user inputs.
+ * 
+ * @param player 
+ * @param enemy 
+ * @param sw 
+ */
 static void characterTakesAction( ClapTrap& player, ClapTrap& enemy, int sw = 0){
 	
 	clearScreen();
@@ -68,7 +36,7 @@ static void characterTakesAction( ClapTrap& player, ClapTrap& enemy, int sw = 0)
 	
 	string userPrompt;
 	
-	// User prompt 1 / 2 or 3
+	// User prompt 1, 2 or 3
 	do
 	{
 		printUsageActions(player, enemy);
@@ -81,7 +49,7 @@ static void characterTakesAction( ClapTrap& player, ClapTrap& enemy, int sw = 0)
 		case '1': // ATTACK
 			if (!player.getAttackDamage()){
 				if (player.getEnergyPoints())
-					player.updateEnergyPoints(-1); // Attacking cost energy despite having no attackDamage
+					player.updateEnergyPoints(-1); // Attacking cost energy despite player having no attackDamage
 				player.printFunctionMessage(ClapTrap::NO_DAMAGE, ""); 
 			}
 			else if (!player.getEnergyPoints())
@@ -98,11 +66,19 @@ static void characterTakesAction( ClapTrap& player, ClapTrap& enemy, int sw = 0)
 			break;
 		case '3': // EXIT
 			break;
-		default: // just to be safe
+		default:
 			break;
 	}
 }
 
+/**
+ * @brief Wrapper function for picking which character
+ * is going to be either the player or the enemy
+ * 
+ * @param pikachu 
+ * @param shrek 
+ * @param choice 
+ */
 static void startBattle( ClapTrap& pikachu, ClapTrap& shrek, char choice){
 	
 	switch (choice)

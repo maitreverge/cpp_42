@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/14 11:25:23 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/15 11:20:57 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,15 @@ void clearScreen( void ){
  */
 void	customExit( string str ){
 	printColor(RED, str);
-	std::exit(EXIT_FAILURE);
+	std::exit(EXIT_SUCCESS);
 }
 
+/**
+ * @brief c++98 itoa implementation.
+ * 
+ * @param target 
+ * @return string 
+ */
 string customItoA( long long int target ){
 
 	string temp;
