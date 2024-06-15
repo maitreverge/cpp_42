@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:15 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/15 11:11:14 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/15 11:21:56 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ public:
 ostream& operator<<( ostream& output_stream, const ClapTrap& input );
 
 // wrapper_functions.cpp
-
 void	printUsageCharacter( void );
 bool	validPromptCharacter( string input );
 void	printUsageActions( ClapTrap& player, ClapTrap& enemy );

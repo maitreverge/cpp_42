@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:39:35 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/15 11:13:18 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/15 11:36:36 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,15 @@ static void characterTakesAction( ClapTrap& player, ClapTrap& enemy, int sw = 0)
 
 /**
  * @brief Wrapper function for picking which character
- * is going to be either the player or the enemy
+ * is going to be either the player or the enemy.
+ * 
+ * Return `false` to exit proprelly the program, `true` otherwise and the program keeps running. 
  * 
  * @param pikachu 
  * @param shrek 
  * @param choice 
  */
-static void startBattle( ClapTrap& pikachu, ClapTrap& shrek, char choice){
+static bool startBattle( ClapTrap& pikachu, ClapTrap& shrek, char choice){
 	
 	switch (choice)
 	{
@@ -90,10 +92,9 @@ static void startBattle( ClapTrap& pikachu, ClapTrap& shrek, char choice){
 			characterTakesAction(shrek, pikachu, 1);
 			break;
 		case '3': // exit
-			clearScreen();
-			customExit("Battle is Over");
-			break;
+			return false;
 	}
+	return true;
 }
 
 int main( void ){
@@ -123,7 +124,12 @@ int main( void ){
 			getline(cin, userPrompt);
 		} while (!validPromptCharacter( userPrompt ));
 		
-		startBattle(pikachu, shrek, userPrompt[0]);
+		if (!startBattle(pikachu, shrek, userPrompt[0]))
+			break;
 	}
+	
+	clearScreen();
+	printColor(RED, "Battle is Over\n");
+	
 	return (0);
 }
