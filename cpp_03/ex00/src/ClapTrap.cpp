@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/17 11:09:50 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/17 16:09:14 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,10 +162,10 @@ ClapTrap& ClapTrap::operator=( const ClapTrap& right_operator ){
 
 ostream& operator<<( ostream& output_stream, const ClapTrap& right_input ){
 
-	output_stream << right_input.getName();
-	output_stream << right_input.getHitPoints();
-	output_stream << right_input.getEnergyPoints();
-	output_stream << right_input.getAttackDamage();
+	output_stream << "Name : " << right_input.getName();
+	output_stream << "\nHit Points : " << right_input.getHitPoints();
+	output_stream << "\nEnergy Points : " << right_input.getEnergyPoints();
+	output_stream << "\nAttack Points : " << right_input.getAttackDamage();
 	return output_stream;
 }
 
