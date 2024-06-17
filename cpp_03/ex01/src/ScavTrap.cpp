@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:44:38 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/17 16:52:41 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/17 22:11:37 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 ScavTrap::ScavTrap( void ){}
 
-ScavTrap::ScavTrap( string nameInput ) : ClapTrap( nameInput ){
+ScavTrap::ScavTrap( string nameInput ) : ClapTrap( nameInput ), _isGate( false ){
 
 	printColor(HIGH_INTENSITY_GREEN, "ScavTrap "+_name+" created !");
 }
 
 
-ScavTrap::ScavTrap( const ScavTrap& copy ){ *this = copy; }
+ScavTrap::ScavTrap( const ScavTrap& copy ) : ClapTrap(copy) { *this = copy; }
 
 
 ScavTrap::~ScavTrap( void ) {
@@ -38,6 +38,16 @@ ScavTrap& ScavTrap::operator=( const ScavTrap& right_operator ){
 	return *this;
 }
 
+bool ScavTrap::getIsGate ( void )const{
+
+	return this->_isGate;
+}
+
+void ScavTrap::setIsGate( bool value ){
+
+	this->_isGate = value;
+}
+
 
 ostream& operator<<( ostream& output_stream, const ScavTrap& right_input ){
 	
@@ -53,7 +63,18 @@ void ScavTrap::guardGate( void ){
 
 	printNoEndl("ScavTrap");
 	printColorNoEndl(GREEN, this->getName());
-	print("is now in Guard Gate Mode 🛡️");
+	
+	if (getIsGate()){
+
+		print("is now in Guard Gate Mode 🛡️");
+		this->setIsGate(true);
+	}
+	else {
+
+		print("is no longer in Guard Gate Mode 🛡️");
+		this->setIsGate(false);
+		
+	}
 }
 
 void ScavTrap::attack( const string& target ){
@@ -61,14 +82,7 @@ void ScavTrap::attack( const string& target ){
 	// ! We need to print a different message here
 	if (_energyPoints){
 		_energyPoints--;
-		// printFunctionMessage(ATTACK, target);
-		printNoEndl("ScavTrap ");
-		printColorNoEndl(GREEN, _name);
-		printNoEndl(" inflicts ");
-		printColorNoEndl(HIGH_INTENSITY_YELLOW, target);
-		printNoEndl(", causing a total of ");
-		std::cout << HIGH_INTENSITY_RED << _attackDamage << RESET;
-		print(" points of damage!");
+		printFunctionMessage(ATTACK_SCAV, target);
 	}
 	else
 		printFunctionMessage(NO_ENERGY, target);

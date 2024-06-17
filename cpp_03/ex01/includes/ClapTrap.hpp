@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:15 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/17 16:05:11 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/17 22:14:14 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include <stdlib.h>
 
 #include "utils_template.hpp"
-// #include "ScavTrap.hpp"
+#include "ScavTrap.hpp"
+
 
 class ClapTrap
 {
@@ -33,7 +34,8 @@ protected:
 public:
 
 	typedef enum e{
-		ATTACK,
+		ATTACK_CLAP,
+		ATTACK_SCAV,
 		TAKE_DAMAGE,
 		BE_REPAIRED,
 		NO_ENERGY,

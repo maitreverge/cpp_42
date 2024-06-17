@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 10:57:20 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/15 11:17:41 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/17 22:04:40 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ bool validPromptCharacter( string input ){
 	
 	if (input == "1"
 	or	input == "2"
-	or	input == "3")
+	or	input == "3"
+	or	input == "4")
 		return true;
 	return false;
 }
@@ -32,13 +33,20 @@ bool validPromptCharacter( string input ){
 void printUsageActions( ClapTrap& player, ClapTrap& enemy ){
 	
 	printColor(YELLOW, "SELECT YOUR ACTION");
+	
 	printNoEndl("[1] ATTACK   ");
 	printColorNoEndl( HIGH_INTENSITY_RED, enemy.getName());
 	printColor( HIGH_INTENSITY_YELLOW, "   (Cost 1 🔋)");
+	
 	printNoEndl("[2] HEAL     ");
 	printColorNoEndl( HIGH_INTENSITY_GREEN, player.getName());
 	printColor( HIGH_INTENSITY_YELLOW, "   (Cost 1 🔋)");
-	printColor(RED, "[3] EXIT");
+	
+	printNoEndl("[3] ");
+	printColorNoEndl( HIGH_INTENSITY_GREEN, player.getName());
+	printColor( HIGH_INTENSITY_YELLOW, "  GUARD GATE ");
+	
+	printColor(RED, "[4] EXIT");
 }
 
 

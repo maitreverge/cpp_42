@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/17 16:51:43 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/17 22:13:57 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,21 @@ void ClapTrap::printFunctionMessage( e_printingActions message, string target )c
 	
 	switch (message)
 	{
-		case ATTACK:
+		case ATTACK_CLAP:
 			printNoEndl("ClapTrap ");
 			printColorNoEndl(GREEN, _name);
 			printNoEndl(" attacks ");
 			printColorNoEndl(HIGH_INTENSITY_YELLOW, target);
 			printNoEndl(", causing ");
+			std::cout << HIGH_INTENSITY_RED << _attackDamage << RESET;
+			print(" points of damage!");
+			break;
+		case ATTACK_SCAV:
+			printNoEndl("ScavTrap ");
+			printColorNoEndl(GREEN, _name);
+			printNoEndl(" inflicts ");
+			printColorNoEndl(HIGH_INTENSITY_YELLOW, target);
+			printNoEndl(", causing a total of ");
 			std::cout << HIGH_INTENSITY_RED << _attackDamage << RESET;
 			print(" points of damage!");
 			break;
@@ -100,7 +109,7 @@ void ClapTrap::attack( const string& target ){
 	
 	if (_energyPoints){
 		_energyPoints--;
-		printFunctionMessage(ATTACK, target);
+		printFunctionMessage(ATTACK_CLAP, target);
 	}
 	else
 		printFunctionMessage(NO_ENERGY, target);
@@ -233,6 +242,9 @@ void ClapTrap::printStats( int enemy )const{
 
 	for (size_t i = 0; i < _energyPoints; i++)
 		printColorNoEndl(HIGH_INTENSITY_YELLOW, FULL_BLOCK);
+	
+	if (this->ScavTrap::getIsGate())
+	{}
 }
 
 void ClapTrap::displayPikachu( void )const{
