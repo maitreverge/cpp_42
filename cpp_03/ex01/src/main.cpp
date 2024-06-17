@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:39:35 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/17 16:14:05 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/17 16:48:30 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * @param enemy 
  * @param sw 
  */
-static void characterTakesAction( ClapTrap& player, ClapTrap& enemy, int sw = 0){
+static void characterTakesAction( ScavTrap& player, ScavTrap& enemy, int sw = 0){
 	
 	clearScreen();
 	
@@ -63,7 +63,7 @@ static void characterTakesAction( ClapTrap& player, ClapTrap& enemy, int sw = 0)
 			}
 			break;
 		case '2': // HEAL
-			player.beRepaired(1);
+			player.beRepaired(10);
 			break;
 		case '3': // EXIT
 			break;
@@ -82,7 +82,7 @@ static void characterTakesAction( ClapTrap& player, ClapTrap& enemy, int sw = 0)
  * @param shrek 
  * @param choice 
  */
-static bool startBattle( ClapTrap& pikachu, ClapTrap& shrek, char choice){
+static bool startBattle( ScavTrap& pikachu, ScavTrap& shrek, char choice){
 	
 	switch (choice)
 	{
@@ -101,7 +101,7 @@ static bool startBattle( ClapTrap& pikachu, ClapTrap& shrek, char choice){
 int main( void ){
 
 	ScavTrap pikachu("Pikachu");
-	ClapTrap shrek("Shrek");
+	ScavTrap shrek("Shrek");
 
 	// cout << shrek << endl;
 
@@ -112,7 +112,7 @@ int main( void ){
 	while (true){
 		
 		// Prints and wait 2 seconds.
-		printColor(BACKGROUND_HIGH_INTENSITY_CYAN, "LOADING CHARACTERS"); sleep(2);
+		printColor(BACKGROUND_HIGH_INTENSITY_CYAN, "LOADING CHARACTERS"); sleep(4);
 		
 		clearScreen();
 

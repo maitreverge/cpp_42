@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/17 16:27:56 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/17 16:51:43 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ ClapTrap::ClapTrap( const ClapTrap& copy ){
 // Destructors
 ClapTrap::~ClapTrap( void ){
 
-	printColor(BOLD_GREEN, "ClapTrap "+_name+" destroyed !");
+	printColor(BOLD_RED, "ClapTrap "+_name+" destroyed !");
 }
 
 /**
@@ -45,6 +45,8 @@ ClapTrap::~ClapTrap( void ){
  * `NO_ENERGY` : Print message when instance got no energy left.
  * `NO_HEALTH` : Print message when instance got no health left.
  * `NO_DAMAGE` : Print message when instance got no `attackDamage`.
+ * 
+ * ! Those displays messages are only for the ClapTrap class
  * 
  * @param message 
  */

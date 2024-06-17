@@ -1,1 +1,6 @@
 Need to refactor function to automate the name of the class (Clap, Scav) within the game mechanic
+
+add guardGate function in the battle choices
+
+Refactor the printFunctionMessage function for adding ATTACK_CLAP, ATTACK_SCAV possibilities
+
