@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/15 11:19:18 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/17 11:09:50 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void ClapTrap::printFunctionMessage( e_printingActions message, string target )c
 		case ATTACK:
 			printNoEndl("ClapTrap ");
 			printColorNoEndl(GREEN, _name);
-			printNoEndl(" attacks");
+			printNoEndl(" attacks ");
 			printColorNoEndl(HIGH_INTENSITY_YELLOW, target);
 			printNoEndl(", causing ");
 			std::cout << HIGH_INTENSITY_RED << _attackDamage << RESET;
