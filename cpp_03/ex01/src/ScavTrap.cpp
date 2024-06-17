@@ -6,13 +6,18 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:44:38 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/17 15:13:16 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/17 16:31:18 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ScavTrap.hpp"
 
 ScavTrap::ScavTrap( void ){}
+
+ScavTrap::ScavTrap( string nameInput ) : ClapTrap( nameInput ){
+
+	printColor(BOLD_GREEN, "ScavTrap "+_name+" created !");
+}
 
 
 ScavTrap::ScavTrap( const ScavTrap& copy ){ *this = copy; }
@@ -32,10 +37,11 @@ ScavTrap& ScavTrap::operator=( const ScavTrap& right_operator ){
 
 
 ostream& operator<<( ostream& output_stream, const ScavTrap& right_input ){
-	output_stream << right_input.getName();
-	output_stream << right_input.getHitPoints();
-	output_stream << right_input.getEnergyPoints();
-	output_stream << right_input.getAttackDamage();
+	
+	output_stream << "Name : " << right_input.getName();
+	output_stream << "\nHit Points : " << right_input.getHitPoints();
+	output_stream << "\nEnergy Points : " << right_input.getEnergyPoints();
+	output_stream << "\nAttack Points : " << right_input.getAttackDamage();
 	return output_stream;
 }
 

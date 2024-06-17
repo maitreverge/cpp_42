@@ -1,0 +1,1 @@
+Need to refactor function to automate the name of the class (Clap, Scav) within the game mechanic

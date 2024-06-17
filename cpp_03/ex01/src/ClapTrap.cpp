@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/17 14:04:23 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/17 16:27:56 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ClapTrap::ClapTrap( void ){}
 
 ClapTrap::ClapTrap( string nameInput ) :
-_name(nameInput), _hitPoints(10), _maxHealth(_hitPoints), _energyPoints(10), _attackDamage(0){
+_name(nameInput), _hitPoints(100), _maxHealth(_hitPoints), _energyPoints(50), _attackDamage(20){
 
 	printColor(BOLD_GREEN, "ClapTrap "+_name+" created !");
 }
@@ -162,10 +162,10 @@ ClapTrap& ClapTrap::operator=( const ClapTrap& right_operator ){
 
 ostream& operator<<( ostream& output_stream, const ClapTrap& right_input ){
 
-	output_stream << right_input.getName();
-	output_stream << right_input.getHitPoints();
-	output_stream << right_input.getEnergyPoints();
-	output_stream << right_input.getAttackDamage();
+	output_stream << "Name : " << right_input.getName();
+	output_stream << "\nHit Points : " << right_input.getHitPoints();
+	output_stream << "\nEnergy Points : " << right_input.getEnergyPoints();
+	output_stream << "\nAttack Points : " << right_input.getAttackDamage();
 	return output_stream;
 }
 
@@ -209,9 +209,9 @@ void ClapTrap::printStats( int enemy )const{
 	printColorNoEndl(BACKGROUND_HIGH_INTENSITY_WHITE, customItoA(_hitPoints));
 
 	// Print the health bar, first the actual health, then the missing health based on the maxHealth
-	for (size_t i = 0; i < _hitPoints * 2; i++)
+	for (size_t i = 0; i < _hitPoints; i++)
 		printColorNoEndl(HIGH_INTENSITY_GREEN, FULL_BLOCK);
-	for (size_t i = _hitPoints * 2; i < _maxHealth * 2; i++)
+	for (size_t i = _hitPoints; i < _maxHealth; i++)
 		printColorNoEndl(RED, MEDIUM_BLOCK);
 	cout << endl;
 	
@@ -229,7 +229,7 @@ void ClapTrap::printStats( int enemy )const{
 	printNoEndl( "🔋  ");
 	printColorNoEndl(BACKGROUND_HIGH_INTENSITY_WHITE, customItoA(_energyPoints));
 
-	for (size_t i = 0; i < _energyPoints * 2; i++)
+	for (size_t i = 0; i < _energyPoints; i++)
 		printColorNoEndl(HIGH_INTENSITY_YELLOW, FULL_BLOCK);
 }
 
