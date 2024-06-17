@@ -6,11 +6,12 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:39:35 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/15 11:36:36 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/17 16:14:05 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ClapTrap.hpp"
+#include "../includes/ScavTrap.hpp"
 
 /**
  * @brief Hearth function for battle.
@@ -99,9 +100,10 @@ static bool startBattle( ClapTrap& pikachu, ClapTrap& shrek, char choice){
 
 int main( void ){
 
-	ClapTrap pikachu("Pikachu");
-
+	ScavTrap pikachu("Pikachu");
 	ClapTrap shrek("Shrek");
+
+	// cout << shrek << endl;
 
 	sleep(2);
 	
