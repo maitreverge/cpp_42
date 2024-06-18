@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:46:14 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/18 13:39:06 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 13:57:47 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void DiamondTrap::whoAmI( void ){
 
 void DiamondTrap::attack( string target ){
 
+	printColor(RED, "DIAMONDTRAP calling Scavtrap attack");
 	ScavTrap::attack(target);
 }
 
