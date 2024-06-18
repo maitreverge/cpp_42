@@ -6,7 +6,9 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:46:14 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/11 17:46:15 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:34:47 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/DiamondTrap.hpp"
 
