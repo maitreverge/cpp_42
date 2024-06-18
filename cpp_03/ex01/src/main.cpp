@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:39:35 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/17 22:00:37 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 10:26:49 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,10 @@ static void characterTakesAction( ScavTrap& player, ScavTrap& enemy, int sw = 0)
 			player.beRepaired(10);
 			break;
 		case '3': // GUARD
+			player.guardGate();
 			break;
 		case '4': // EXIT
-			player.guardGate();
+			break;
 		default:
 			break;
 	}

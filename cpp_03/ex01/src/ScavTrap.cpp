@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:44:38 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/17 22:11:37 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 10:37:47 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,10 @@ ScavTrap& ScavTrap::operator=( const ScavTrap& right_operator ){
 	return *this;
 }
 
-bool ScavTrap::getIsGate ( void )const{
+bool ScavTrap::getIsGate( void )const{
 
 	return this->_isGate;
 }
-
-void ScavTrap::setIsGate( bool value ){
-
-	this->_isGate = value;
-}
-
 
 ostream& operator<<( ostream& output_stream, const ScavTrap& right_input ){
 	
@@ -55,25 +49,23 @@ ostream& operator<<( ostream& output_stream, const ScavTrap& right_input ){
 	output_stream << "\nHit Points : " << right_input.getHitPoints();
 	output_stream << "\nEnergy Points : " << right_input.getEnergyPoints();
 	output_stream << "\nAttack Points : " << right_input.getAttackDamage();
+	output_stream << "\nIsGate Status : " << (right_input.getIsGate() ? "true" : "false");
 	return output_stream;
 }
 
 
 void ScavTrap::guardGate( void ){
 
-	printNoEndl("ScavTrap");
+	printNoEndl("ScavTrap ");
 	printColorNoEndl(GREEN, this->getName());
-	
-	if (getIsGate()){
 
-		print("is now in Guard Gate Mode 🛡️");
-		this->setIsGate(true);
+	if (_isGate) {
+		printColor(RED, " is no longer in Guard Gate Mode 🛡️");
+		_isGate = false;
 	}
 	else {
-
-		print("is no longer in Guard Gate Mode 🛡️");
-		this->setIsGate(false);
-		
+		printColor(GREEN, " is now in Guard Gate Mode 🛡️");
+		_isGate = true;
 	}
 }
 

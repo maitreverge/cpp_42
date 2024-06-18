@@ -6,11 +6,11 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/17 22:13:57 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 10:38:16 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "../includes/ClapTrap.hpp"
 
 // Constructors
 
@@ -220,9 +220,9 @@ void ClapTrap::printStats( int enemy )const{
 	printColorNoEndl(BACKGROUND_HIGH_INTENSITY_WHITE, customItoA(_hitPoints));
 
 	// Print the health bar, first the actual health, then the missing health based on the maxHealth
-	for (size_t i = 0; i < _hitPoints; i++)
+	for (size_t i = 0; i < _hitPoints / 2; i++)
 		printColorNoEndl(HIGH_INTENSITY_GREEN, FULL_BLOCK);
-	for (size_t i = _hitPoints; i < _maxHealth; i++)
+	for (size_t i = _hitPoints / 2; i < _maxHealth / 2; i++)
 		printColorNoEndl(RED, MEDIUM_BLOCK);
 	cout << endl;
 	
@@ -240,11 +240,11 @@ void ClapTrap::printStats( int enemy )const{
 	printNoEndl( "🔋  ");
 	printColorNoEndl(BACKGROUND_HIGH_INTENSITY_WHITE, customItoA(_energyPoints));
 
-	for (size_t i = 0; i < _energyPoints; i++)
+	for (size_t i = 0; i < _energyPoints / 2; i++)
 		printColorNoEndl(HIGH_INTENSITY_YELLOW, FULL_BLOCK);
 	
-	if (this->ScavTrap::getIsGate())
-	{}
+	// if (this->ScavTrap::getIsGate())
+	// {}
 }
 
 void ClapTrap::displayPikachu( void )const{
