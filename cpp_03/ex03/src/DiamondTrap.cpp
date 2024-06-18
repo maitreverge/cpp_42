@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:46:14 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/18 12:29:28 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 13:39:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,13 @@ DiamondTrap::DiamondTrap( string nameInput ) :
 }
 
 
-DiamondTrap::DiamondTrap( const DiamondTrap& copy ) : { *this = copy; }
+DiamondTrap::DiamondTrap( const DiamondTrap& copy ) {*this = copy; }
 
 
-DiamondTrap::~DiamondTrap( void ){}
+DiamondTrap::~DiamondTrap( void ){
+
+	printColor(RED, "DiamondTrap "+_name+" destroyed !");
+}
 
 
 DiamondTrap& DiamondTrap::operator=( const DiamondTrap& right_operator ){
@@ -43,13 +46,13 @@ DiamondTrap& DiamondTrap::operator=( const DiamondTrap& right_operator ){
 
 const string& DiamondTrap::getName( void )const{
 
-	return this->_name; // return _name instance of DiamondTrap
+	return this->DiamondTrap::_name; // return _name from DiamondTrap, not ClapTrap
 }
 
 void DiamondTrap::whoAmI( void ){
 
 	// Display both _name from Diamond and _name from Clap
-	printColor(YELLOW, "DiamondTrap name : " +DiamondTrap::getName());
+	printColor(YELLOW, "DiamondTrap name : " +this->getName());
 	printColor(YELLOW, "ClapTrap name : " +ClapTrap::getName());
 }
 

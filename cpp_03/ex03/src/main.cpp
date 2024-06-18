@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:39:35 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/18 12:30:35 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 13:51:43 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,16 @@ static void characterTakesAction( DiamondTrap& player, DiamondTrap& enemy, int s
 		case '2': // HEAL
 			player.beRepaired(10);
 			break;
-		case '3': // HIGH FIVE GUYS
-			player.highFivesGuys(); // ! CHANGE THE SPECIAL ABILITY
+		case '3': // GUARD GATE
+			player.guardGate();
 			break;
-		case '4': // EXIT
+		case '4': // HIGH FIVE
+			player.highFivesGuys();
+			break;
+		case '5': // WHOAMI
+			player.whoAmI();
+			break;
+		case '6': // EXIT
 			break;
 		default:
 			break;

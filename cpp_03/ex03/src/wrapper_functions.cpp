@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 10:57:20 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/18 11:28:06 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 13:48:46 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ void printUsageCharacter( void ){
 
 bool validPromptCharacter( string input ){
 	
-	if (input == "1"
-	or	input == "2"
-	or	input == "3"
-	or	input == "4")
+	if (input == "1" // ATTACK
+	or	input == "2" // HEAL
+	or	input == "3" // GUARD GATE FROM SCAV
+	or	input == "4" // HIGH FIVE FROM FRAG
+	or	input == "5" // WHOAMI FROM DIAMOND
+	or	input == "6") // EXIT
 		return true;
 	return false;
 }
@@ -44,9 +46,17 @@ void printUsageActions( ClapTrap& player, ClapTrap& enemy ){
 	
 	printNoEndl("[3] ");
 	printColorNoEndl( HIGH_INTENSITY_GREEN, player.getName());
+	printColor( HIGH_INTENSITY_YELLOW, "  GUARD GATE ");
+
+	printNoEndl("[4] ");
+	printColorNoEndl( HIGH_INTENSITY_GREEN, player.getName());
 	printColor( HIGH_INTENSITY_YELLOW, "  SAY HI");
+
+	printNoEndl("[5] ");
+	printColorNoEndl( HIGH_INTENSITY_GREEN, player.getName());
+	printColor( HIGH_INTENSITY_YELLOW, "  DISPLAYS IDENTITY");
 	
-	printColor(RED, "[4] EXIT");
+	printColor(RED, "[6] EXIT");
 }
 
 

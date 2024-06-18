@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:42:57 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/18 11:24:31 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 13:42:38 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,8 +243,6 @@ void ClapTrap::printStats( int enemy )const{
 	for (size_t i = 0; i < _energyPoints / 2; i++)
 		printColorNoEndl(HIGH_INTENSITY_YELLOW, FULL_BLOCK);
 	
-	// if (this->ScavTrap::getIsGate())
-	// {}
 }
 
 void ClapTrap::displayPikachu( void )const{
@@ -252,14 +250,14 @@ void ClapTrap::displayPikachu( void )const{
 	cout << endl;
 	if (_hitPoints) {
 		cout <<  "░░░░░░░░▀████▀▄▄░░░░░░░░░░░░░░▄█" << endl;
-		cout <<  "░░░░░░░░░░█▀" << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░░░░" << RESET << "▀▀▄▄▄▄▄" << "░░░░▄▄▀▀█" << endl;
-		cout <<  "░░▄░░░░░░░░█ " << BACKGROUND_HIGH_INTENSITY_MAGENTA <<  "░░░░░░░░░░" << RESET << "▀▀▀▀▄" << BACKGROUND_HIGH_INTENSITY_MAGENTA <<  "░░" << RESET << "▄▀" << endl;
-		cout <<  "░▄▀" << BACKGROUND_HIGH_INTENSITY_MAGENTA <<  "░" << RESET << "▀▄░░░░░░▀▄" << BACKGROUND_HIGH_INTENSITY_MAGENTA <<  "░░░░░░░░░░░░░░" << RESET << "▀▄▀░" << endl;
-		cout <<  "▄▀" << BACKGROUND_HIGH_INTENSITY_MAGENTA <<  "░░░░" << RESET <<  "█░░░░░█▀" << BACKGROUND_HIGH_INTENSITY_MAGENTA <<  "░░░" << RESET << "▄█▀▄" << BACKGROUND_HIGH_INTENSITY_MAGENTA <<  "░░░░░░░░" << RESET <<  "▄█░" << endl;
-		cout <<  "▀▄" << BACKGROUND_HIGH_INTENSITY_MAGENTA <<  "░░░░░" << RESET << "▀▄░░█" << BACKGROUND_HIGH_INTENSITY_MAGENTA <<  "░░░░░" << RESET <<  "▀██▀" << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░░░░░" << RESET <<  "██▄█░░" << endl;
-		cout <<  "░▀▄" << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░░░░" << RESET << "▄▀░█" << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░░░" << RESET <<  RED << "▄██▄" << RESET << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░░░" << RESET << "▄" << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░░" << RESET << "▄" << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░░" << RESET << "▀▀" << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░" << RESET << "█░" << endl;
-		cout <<  "░░█" << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░░" << RESET << "▄▀░░█" << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░░░░" << RESET << RED << "▀██▀" << RESET << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░░░░" << RESET << "▀▀" << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░" << RESET << "▀▀" << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░░" << RESET << "▄▀░" << endl;
-		cout <<  "░█" << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░░░" << RESET << "█░░█" << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░░░░░░" << RESET << "▄▄" << BACKGROUND_HIGH_INTENSITY_MAGENTA << "░░░░░░░░░░░" << RESET << "▄▀░░" << endl;
+		cout <<  "░░░░░░░░░░█▀" << BOLD_HIGH_INTENSITY_BLUE << "░░░░" << RESET << "▀▀▄▄▄▄▄" << "░░░░▄▄▀▀█" << endl;
+		cout <<  "░░▄░░░░░░░░█ " << BOLD_HIGH_INTENSITY_BLUE <<  "░░░░░░░░░░" << RESET << "▀▀▀▀▄" << BOLD_HIGH_INTENSITY_BLUE <<  "░░" << RESET << "▄▀" << endl;
+		cout <<  "░▄▀" << BOLD_HIGH_INTENSITY_BLUE <<  "░" << RESET << "▀▄░░░░░░▀▄" << BOLD_HIGH_INTENSITY_BLUE <<  "░░░░░░░░░░░░░░" << RESET << "▀▄▀░" << endl;
+		cout <<  "▄▀" << BOLD_HIGH_INTENSITY_BLUE <<  "░░░░" << RESET <<  "█░░░░░█▀" << BOLD_HIGH_INTENSITY_BLUE <<  "░░░" << RESET << "▄█▀▄" << BOLD_HIGH_INTENSITY_BLUE <<  "░░░░░░░░" << RESET <<  "▄█░" << endl;
+		cout <<  "▀▄" << BOLD_HIGH_INTENSITY_BLUE <<  "░░░░░" << RESET << "▀▄░░█" << BOLD_HIGH_INTENSITY_BLUE <<  "░░░░░" << RESET <<  "▀██▀" << BOLD_HIGH_INTENSITY_BLUE << "░░░░░" << RESET <<  "██▄█░░" << endl;
+		cout <<  "░▀▄" << BOLD_HIGH_INTENSITY_BLUE << "░░░░" << RESET << "▄▀░█" << BOLD_HIGH_INTENSITY_BLUE << "░░░" << RESET <<  RED << "▄██▄" << RESET << BOLD_HIGH_INTENSITY_BLUE << "░░░" << RESET << "▄" << BOLD_HIGH_INTENSITY_BLUE << "░░" << RESET << "▄" << BOLD_HIGH_INTENSITY_BLUE << "░░" << RESET << "▀▀" << BOLD_HIGH_INTENSITY_BLUE << "░" << RESET << "█░" << endl;
+		cout <<  "░░█" << BOLD_HIGH_INTENSITY_BLUE << "░░" << RESET << "▄▀░░█" << BOLD_HIGH_INTENSITY_BLUE << "░░░░" << RESET << RED << "▀██▀" << RESET << BOLD_HIGH_INTENSITY_BLUE << "░░░░" << RESET << "▀▀" << BOLD_HIGH_INTENSITY_BLUE << "░" << RESET << "▀▀" << BOLD_HIGH_INTENSITY_BLUE << "░░" << RESET << "▄▀░" << endl;
+		cout <<  "░█" << BOLD_HIGH_INTENSITY_BLUE << "░░░" << RESET << "█░░█" << BOLD_HIGH_INTENSITY_BLUE << "░░░░░░" << RESET << "▄▄" << BOLD_HIGH_INTENSITY_BLUE << "░░░░░░░░░░░" << RESET << "▄▀░░" << endl;
 	}
 	else{} // does not print the character if he got no life left
 
