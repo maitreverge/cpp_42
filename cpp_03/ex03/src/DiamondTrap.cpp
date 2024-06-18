@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:46:14 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/18 13:57:47 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 14:03:15 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ DiamondTrap::DiamondTrap( void ){}
 DiamondTrap::DiamondTrap( string nameInput ) :
 	ClapTrap(nameInput+"_clap_name"), ScavTrap(nameInput), FragTrap(nameInput), _name(nameInput){
 
-	printColor(HIGH_INTENSITY_GREEN, "DiamondTrap "+_name+" created !");
+	printColor(BACKGROUND_HIGH_INTENSITY_GREEN, "DiamondTrap "+_name+" created !");
 
 	_hitPoints = FragTrap::_hitPoints;
 	_energyPoints = ScavTrap::_energyPoints;
@@ -30,7 +30,7 @@ DiamondTrap::DiamondTrap( const DiamondTrap& copy ) {*this = copy; }
 
 DiamondTrap::~DiamondTrap( void ){
 
-	printColor(RED, "DiamondTrap "+_name+" destroyed !");
+	printColor(BACKGROUND_HIGH_INTENSITY_RED, "DiamondTrap "+_name+" destroyed !");
 }
 
 

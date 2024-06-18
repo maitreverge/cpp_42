@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:44:38 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/18 10:37:47 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 14:03:34 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ ScavTrap::ScavTrap( void ){}
 
 ScavTrap::ScavTrap( string nameInput ) : ClapTrap( nameInput ), _isGate( false ){
 
-	printColor(HIGH_INTENSITY_GREEN, "ScavTrap "+_name+" created !");
+	printColor(GREEN, "ScavTrap "+_name+" created !");
 }
 
 
@@ -25,7 +25,7 @@ ScavTrap::ScavTrap( const ScavTrap& copy ) : ClapTrap(copy) { *this = copy; }
 
 ScavTrap::~ScavTrap( void ) {
 
-	printColor(BOLD_HIGH_INTENSITY_RED, "ScavTrap "+_name+" destroyed !");
+	printColor(RED, "ScavTrap "+_name+" destroyed !");
 }
 
 

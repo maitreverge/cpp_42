@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:45:37 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/18 11:26:25 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 14:03:25 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ FragTrap::FragTrap( const FragTrap& copy ) : ClapTrap(copy) { *this = copy; }
 
 FragTrap::~FragTrap( void ){
 
-	printColor(BOLD_HIGH_INTENSITY_RED, "FragTrap "+_name+" destroyed !");
+	printColor(HIGH_INTENSITY_RED, "FragTrap "+_name+" destroyed !");
 }
 
 
