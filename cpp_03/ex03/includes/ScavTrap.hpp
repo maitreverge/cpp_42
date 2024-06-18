@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:44:20 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/18 11:53:58 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 12:16:26 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 class ScavTrap : virtual public ClapTrap
 {
 	
-private:
+protected:
 
+	ScavTrap( void );
 	bool _isGate;
 
 public:
 
-	ScavTrap( void );
 	ScavTrap( string nameInput ); 
 	ScavTrap( const ScavTrap& copy );
 	ScavTrap& operator=( const ScavTrap& right_operator );
