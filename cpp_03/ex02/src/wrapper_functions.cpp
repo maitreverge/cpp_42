@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 10:57:20 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/17 22:04:40 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:28:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void printUsageActions( ClapTrap& player, ClapTrap& enemy ){
 	
 	printNoEndl("[3] ");
 	printColorNoEndl( HIGH_INTENSITY_GREEN, player.getName());
-	printColor( HIGH_INTENSITY_YELLOW, "  GUARD GATE ");
+	printColor( HIGH_INTENSITY_YELLOW, "  SAY HI");
 	
 	printColor(RED, "[4] EXIT");
 }

@@ -6,12 +6,12 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:39:35 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/18 10:26:49 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/18 11:09:30 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ClapTrap.hpp"
-#include "../includes/ScavTrap.hpp"
+#include "../includes/FragTrap.hpp"
 
 /**
  * @brief Hearth function for battle.
@@ -21,7 +21,7 @@
  * @param enemy 
  * @param sw 
  */
-static void characterTakesAction( ScavTrap& player, ScavTrap& enemy, int sw = 0){
+static void characterTakesAction( FragTrap& player, FragTrap& enemy, int sw = 0){
 	
 	clearScreen();
 	
@@ -65,8 +65,8 @@ static void characterTakesAction( ScavTrap& player, ScavTrap& enemy, int sw = 0)
 		case '2': // HEAL
 			player.beRepaired(10);
 			break;
-		case '3': // GUARD
-			player.guardGate();
+		case '3': // HIGH FIVE GUYS
+			player.highFivesGuys(); // ! CHANGE THE SPECIAL ABILITY
 			break;
 		case '4': // EXIT
 			break;
@@ -85,7 +85,7 @@ static void characterTakesAction( ScavTrap& player, ScavTrap& enemy, int sw = 0)
  * @param shrek 
  * @param choice 
  */
-static bool startBattle( ScavTrap& pikachu, ScavTrap& shrek, char choice){
+static bool startBattle( FragTrap& pikachu, FragTrap& shrek, char choice){
 	
 	switch (choice)
 	{
@@ -103,8 +103,8 @@ static bool startBattle( ScavTrap& pikachu, ScavTrap& shrek, char choice){
 
 int main( void ){
 
-	ScavTrap pikachu("Pikachu");
-	ScavTrap shrek("Shrek");
+	FragTrap pikachu("Pikachu");
+	FragTrap shrek("Shrek");
 
 	// cout << shrek << endl;
 
