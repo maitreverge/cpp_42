@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:07:01 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/18 22:09:07 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/19 16:22:30 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class Dog : public Animal
 
 private:
 
-	// Some private members
 
 protected:
 

@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:08:31 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/18 22:08:59 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/19 16:22:25 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class Cat : public Animal
 
 private:
 
-	// Some private members
 
 protected:
 

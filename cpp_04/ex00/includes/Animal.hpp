@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 21:37:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/18 22:07:20 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/19 16:31:36 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Animal
 protected:
 
 	string _type;
-	void makeSound( void )const;
+	void makeSound( void )const = 0;
 
 public:
 
