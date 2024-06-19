@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 21:37:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/19 16:31:36 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/19 22:01:18 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,23 @@
 
 #include "utils_template.hpp"
 #include "Dog.hpp"
+#include "Cat.hpp"
 
 class Animal
 {
 
+private:
+
+	Animal( void ); // So the user can't call this one because I choosed it.
+	
 protected:
 
 	string _type;
-	void makeSound( void )const = 0;
+	virtual void makeSound( void )const;
 
 public:
 
-	Animal( void );
+	Animal( string inputName = ""); // Can be something, or empty
 	Animal( const Animal& copy );
 	Animal& operator=( const Animal& right_operator );
 	~Animal();
@@ -36,36 +41,3 @@ public:
 };
 
 ostream& operator<<( ostream& output_stream, const Animal& input );
-
-
-// ---------- Functions declarations ---------------
-
-
-Animal::Animal( void ){}
-
-
-Animal::Animal( const Animal& copy ){ *this = copy; }
-
-
-Animal::~Animal( void ){}
-
-const string&	Animal::getType( void )const{ return this->_type; }
-
-void	Animal::setType( const string& input){ this->_type = input; }
-
-
-Animal& Animal::operator=( const Animal& right_operator ){
-	
-	if (this != &right_operator){
-		
-		this->_type = right_operator.getType();
-	}
-	return *this;
-}
-
-
-ostream& operator<<( ostream& output_stream, const Animal& right_input ){
-	
-	output_stream << "Type of Animal Class = " << right_input.getType();
-	return output_stream;
-}

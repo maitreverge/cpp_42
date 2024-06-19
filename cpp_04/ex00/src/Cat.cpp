@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 22:07:48 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/19 20:45:06 by flverge          ###   ########.fr       */
+/*   Created: 2024/06/19 20:28:47 by flverge           #+#    #+#             */
+/*   Updated: 2024/06/19 20:45:01 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Cat.hpp"
 
-Dog::Dog( void ) : Animal( "" ){}
+Cat::Cat( void ) : Animal( "" ){}
 
-Dog::Dog( const Dog& copy ) : Animal( copy ) {}
+Cat::Cat( string catName ) : Animal( catName ){}
 
-Dog::~Dog( void ){}
+Cat::Cat( const Cat& copy ) : Animal( copy ) {}
 
-void Dog::makeSound( void )const{
+Cat::~Cat( void ){}
 
-	printColorNoEndl(RED, "THE DOG ");
-	printColor(GREEN, "barks 🐶");
+void Cat::makeSound( void )const{
+
+	printColorNoEndl(RED, "THE CAT ");
+	printColor(GREEN, "meows 😺");
 }
 
 
-Dog& Dog::operator=( const Dog& right_operator ){
+Cat& Cat::operator=( const Cat& right_operator ){
 
 	if (this != &right_operator){
 		
@@ -35,9 +37,8 @@ Dog& Dog::operator=( const Dog& right_operator ){
 }
 
 
-ostream& operator<<( ostream& output_stream, const Dog& right_input ){
+ostream& operator<<( ostream& output_stream, const Cat& right_input ){
 
-	output_stream << "Type of Dog Class = " << right_input.getType();
+	output_stream << "Type of Cat Class = " << right_input.getType();
 	return output_stream;
 }
-

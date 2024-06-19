@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:07:01 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/19 16:22:30 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/19 22:01:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,19 @@ class Dog : public Animal
 
 private:
 
+	Dog( void );
+
+private:
+
+	// Some private members
 
 protected:
 
-	// Some protected members
+	void makeSound( void )const;
 
 public:
 
-	Dog( void );
+	Dog( string dogName );
 	Dog( const Dog& copy );
 	Dog& operator=( const Dog& right_operator );
 	~Dog();
@@ -39,27 +44,4 @@ ostream& operator<<( ostream& output_stream, const Dog& input );
 // ---------- Functions declarations ---------------
 
 
-Dog::Dog( void ){}
 
-
-Dog::Dog( const Dog& copy ){ *this = copy; }
-
-
-Dog::~Dog( void ){}
-
-
-Dog& Dog::operator=( const Dog& right_operator ){
-
-	if (this != &right_operator){
-		// Reassign every value with the getter value 
-		// this->_foo = right_operator.getFoo()
-	}
-	return *this;
-}
-
-
-ostream& operator<<( ostream& output_stream, const Dog& right_input ){
-
-	//output_stream << right_input.PutAGetterFunctionhere();
-	return output_stream;
-}
