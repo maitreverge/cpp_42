@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 13:40:11 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 15:57:32 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 16:11:03 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ protected:
 	
 	string ideas[100];
 
-	friend class Cat;
-	friend class Dog;
+	// quelle humliation
+	// friend class Cat;
+	// friend class Dog;
 
 public:
 
