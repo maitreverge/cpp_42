@@ -6,9 +6,14 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:07:48 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 15:35:27 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 15:54:01 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "Dog.hpp"
+#include "Brain.hpp"
+
+
 
 Dog::Dog( void ) : Animal( "" ){}
 

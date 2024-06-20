@@ -6,9 +6,11 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 21:33:54 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 15:35:12 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 15:50:07 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "Animal.hpp"
 
 Animal::Animal( void ){
 

@@ -6,11 +6,14 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:07:01 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 15:35:08 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 15:55:34 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
+#include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal
 {

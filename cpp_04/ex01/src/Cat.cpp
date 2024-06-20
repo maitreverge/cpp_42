@@ -6,9 +6,13 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:28:47 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 15:35:22 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 15:54:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "Cat.hpp"
+#include "Brain.hpp"
+
 
 Cat::Cat( void )
 	: Animal( "" ), catBrain(new Brain()) {
