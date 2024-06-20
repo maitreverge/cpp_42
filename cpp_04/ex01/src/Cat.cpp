@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:28:47 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 15:54:06 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 19:28:50 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ Cat::Cat( string catName )
 	: Animal( catName ), catBrain(new Brain()) {
 
 	printColor(GREEN, catName+" Cat has been created 🐈");
-	// this->catBrain = new Brain();
 	extraLine();
 }
 
-Cat::Cat( const Cat& copy ) : Animal( copy ) {}
+Cat::Cat( const Cat& copy ) : Animal( copy ) { *this = copy; }
 
 Cat::~Cat( void ){
 
@@ -42,6 +41,12 @@ void Cat::makeSound( void )const{
 	printColorNoEndl(RED, "THE CAT ");
 	printColor(GREEN, "meows 😺");
 }
+
+const string& Cat::getThoughts( void )const{
+
+	return this->catBrain->printIdea(); // method for proving deep copy
+}
+
 
 
 Cat& Cat::operator=( const Cat& right_operator ){
@@ -57,5 +62,6 @@ Cat& Cat::operator=( const Cat& right_operator ){
 ostream& operator<<( ostream& output_stream, const Cat& right_input ){
 
 	output_stream << "Type of Cat Class = " << right_input.getType();
+	output_stream << "\nThoughts of the cat = " << right_input.getThoughts(); // proving for deep copy
 	return output_stream;
 }

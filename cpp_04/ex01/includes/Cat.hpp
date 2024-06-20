@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:08:31 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 18:47:11 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 19:19:58 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ public:
 	~Cat();
 
 	void makeSound( void )const;
+
+	const string& getThoughts( void )const;
 };
 
 ostream& operator<<( ostream& output_stream, const Cat& input );

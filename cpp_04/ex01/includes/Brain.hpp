@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 13:40:11 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 19:15:05 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 19:28:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ public:
 	~Brain();
 	Brain& operator=( const Brain& right_operator );
 
-	const string& printIdea( void )const;
+	const string& printIdea( void )const; 
 
 };
