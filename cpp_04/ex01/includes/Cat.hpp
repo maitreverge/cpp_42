@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:08:31 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 19:19:58 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 19:40:04 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ private:
 public:
 
 	Cat( void );
-	Cat( string catName );
+	Cat( string catName, string brainIdea );
 	Cat( const Cat& copy );
 	Cat& operator=( const Cat& right_operator );
 	~Cat();

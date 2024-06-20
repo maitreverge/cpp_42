@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:28:47 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 19:28:50 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 19:43:03 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 
 Cat::Cat( void )
-	: Animal( "" ), catBrain(new Brain()) {
+	: Animal( "" ), catBrain(new Brain("Empty Thoughts")) {
 
 	printColor(GREEN, "Cat has been created 🐈");
 }
 
-Cat::Cat( string catName )
-	: Animal( catName ), catBrain(new Brain()) {
+Cat::Cat( string catName, string brainIdea )
+	: Animal( catName ), catBrain(new Brain(brainIdea)) {
 
 	printColor(GREEN, catName+" Cat has been created 🐈");
 	extraLine();
@@ -44,7 +44,7 @@ void Cat::makeSound( void )const{
 
 const string& Cat::getThoughts( void )const{
 
-	return this->catBrain->printIdea(); // method for proving deep copy
+	return this->catBrain->getIdea(); // method for proving deep copy
 }
 
 
@@ -54,6 +54,12 @@ Cat& Cat::operator=( const Cat& right_operator ){
 	if (this != &right_operator){
 		
 		this->_type = right_operator.getType();
+		
+		// Step one, delete the old brain
+		delete this->catBrain;
+
+		// Step two, reassign the new brain
+		this->catBrain = right_operator.catBrain;
 	}
 	return *this;
 }
