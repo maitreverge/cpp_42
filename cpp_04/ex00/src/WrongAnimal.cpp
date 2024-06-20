@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 13:03:55 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 13:07:38 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 13:15:25 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	WrongAnimal::setType( const string& input){ this->_type = input; }
 
 void WrongAnimal::makeSound( void )const{
 
-	printColorNoEndl(RED, "THE WrongAnimal ");
+	printColorNoEndl(RED, "The WrongAnimal ");
 	printColor(GREEN, "makes a sound ! Nobody knows what kind of sound, because this is an WrongAnimal");
 }
 
