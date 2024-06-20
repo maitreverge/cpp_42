@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/15 11:45:27 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 12:48:26 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,3 +41,4 @@ void	clearScreen( void );
 void	customExit( const string& str );
 string	customItoA( const long long int& target);
 int 	customAtoI( const string& str );
+void	extraLine( void );

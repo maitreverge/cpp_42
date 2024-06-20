@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/15 11:47:32 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 13:37:21 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,13 @@ int customAtoI(const string& str) {
 		customExit("customAtoI failed to allocate in stringstream");
 	}
 	return result;
+}
+
+/**
+ * @brief Prints an extra empty line
+ * 
+ */
+void	extraLine( void ){
+
+	cout << endl;
 }
