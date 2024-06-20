@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:08:31 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 15:51:29 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 18:47:11 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ class Cat : public Animal
 private:
 
 	Brain *catBrain;
-
-protected:
-
 
 public:
 

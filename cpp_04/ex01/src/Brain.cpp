@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 14:32:11 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 15:57:03 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 19:15:54 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ Brain::Brain( void ){
 	printColor(CYAN, "A Brain was created 🧠");
 }
 
+Brain::Brain( string ideaInput ){ // proof for deep copy
+
+	this->ideas[0] = ideaInput;
+}
+
 
 Brain::Brain( const Brain& copy ){ *this = copy; }
 
@@ -26,6 +31,11 @@ Brain::Brain( const Brain& copy ){ *this = copy; }
 Brain::~Brain( void ){
 
 	printColor(CYAN, "A Brain was destroyed 🧠");
+}
+
+const string& Brain::printIdea( void )const{
+
+	print(this->ideas[0]);
 }
 
 
