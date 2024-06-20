@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:28:47 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/19 20:45:01 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 12:51:36 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,20 @@
 
 Cat::Cat( void ) : Animal( "" ){}
 
-Cat::Cat( string catName ) : Animal( catName ){}
+Cat::Cat( string catName ) : Animal( catName ){
+
+	printColor(GREEN, catName+" Cat has been created 🐈");
+	extraLine();
+}
 
 Cat::Cat( const Cat& copy ) : Animal( copy ) {}
 
-Cat::~Cat( void ){}
+Cat::~Cat( void ){
+
+	
+	printColor(GREEN, "Cat destroyed 😿");
+	extraLine();
+}
 
 void Cat::makeSound( void )const{
 

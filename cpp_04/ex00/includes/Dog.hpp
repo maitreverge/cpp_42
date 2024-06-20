@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:07:01 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/19 22:01:59 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 12:40:39 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class Dog : public Animal
 
 private:
 
-	Dog( void );
 
 private:
 
@@ -27,15 +26,16 @@ private:
 
 protected:
 
-	void makeSound( void )const;
 
 public:
 
+	Dog( void );
 	Dog( string dogName );
 	Dog( const Dog& copy );
 	Dog& operator=( const Dog& right_operator );
 	~Dog();
 
+	void makeSound( void )const;
 };
 
 ostream& operator<<( ostream& output_stream, const Dog& input );

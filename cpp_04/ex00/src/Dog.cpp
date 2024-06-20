@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:07:48 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/19 20:45:06 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 12:52:03 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,20 @@
 
 Dog::Dog( void ) : Animal( "" ){}
 
+Dog::Dog( string dogName ) : Animal( dogName ){
+
+	printColor(BLUE, dogName+" Dog has been created 🐕");
+	extraLine();
+}
+
+
 Dog::Dog( const Dog& copy ) : Animal( copy ) {}
 
-Dog::~Dog( void ){}
+Dog::~Dog( void ){
+
+	printColor(BLUE, "DOG destroyed 🥺");
+	extraLine();
+}
 
 void Dog::makeSound( void )const{
 

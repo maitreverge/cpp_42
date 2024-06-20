@@ -6,22 +6,35 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 21:33:54 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/19 20:44:57 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 12:51:28 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal( void ){}
+Animal::Animal( void ){
+
+	
+	printColor(HIGH_INTENSITY_YELLOW, "Random nameless Animal has been created 🫥");
+	extraLine();
+}
 
 
-Animal::Animal( string inputName ) : _type(inputName) {}
+Animal::Animal( string inputName ) : _type(inputName) {
+	
+	printColor(HIGH_INTENSITY_YELLOW, "Random Animal has been created 🫥");
+	extraLine();
+}
 
 
 Animal::Animal( const Animal& copy ){ *this = copy; }
 
 
-Animal::~Animal( void ){}
+Animal::~Animal( void ){
+
+	printColor(BOLD_HIGH_INTENSITY_YELLOW, "Animal destroyed 💥");
+	extraLine();
+}
 
 
 Animal& Animal::operator=( const Animal& right_operator ){

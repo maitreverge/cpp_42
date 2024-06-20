@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:08:31 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/19 22:01:37 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 12:40:35 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class Cat : public Animal
 
 private:
 
-	Cat( void );
 
 private:
 
@@ -27,15 +26,16 @@ private:
 
 protected:
 
-	void makeSound( void )const;
 
 public:
 
+	Cat( void );
 	Cat( string catName );
 	Cat( const Cat& copy );
 	Cat& operator=( const Cat& right_operator );
 	~Cat();
 
+	void makeSound( void )const;
 };
 
 ostream& operator<<( ostream& output_stream, const Cat& input );
