@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/18 21:37:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 13:06:11 by flverge          ###   ########.fr       */
+/*   Created: 2024/06/20 13:03:29 by flverge           #+#    #+#             */
+/*   Updated: 2024/06/20 13:09:13 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 #include "utils_template.hpp"
 
-class Animal
+
+class WrongAnimal
 {
 
 private:
@@ -26,16 +27,16 @@ protected:
 
 public:
 
-	Animal( void );
-	Animal( string inputName );
-	Animal( const Animal& copy );
-	Animal& operator=( const Animal& right_operator );
-	virtual ~Animal();
+	WrongAnimal( void );
+	WrongAnimal( string inputName); // Can be something, or empty
+	WrongAnimal( const WrongAnimal& copy );
+	WrongAnimal& operator=( const WrongAnimal& right_operator );
+	virtual ~WrongAnimal();
 
 	const string&	getType( void )const;
 	void			setType( const string& input);
 
-	virtual void makeSound( void )const;
+	void makeSound( void )const;
 };
 
-ostream& operator<<( ostream& output_stream, const Animal& input );
+ostream& operator<<( ostream& output_stream, const WrongAnimal& input );
