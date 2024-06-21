@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 21:33:54 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 19:45:32 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/21 08:59:41 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@ void Animal::makeSound( void )const{
 	printColorNoEndl(RED, "THE ANIMAL ");
 	printColor(GREEN, "makes a sound ! Nobody knows what kind of sound, because this is an Animal");
 }
+
+void Animal::displayThought( void )const{
+
+	printColor(RED, "Selected Animal have no Brain, then no Thoughts");
+}
+
 
 
 ostream& operator<<( ostream& output_stream, const Animal& right_input ){

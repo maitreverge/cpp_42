@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:28:47 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 19:43:03 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/21 09:23:28 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,14 @@ void Cat::makeSound( void )const{
 	printColor(GREEN, "meows 😺");
 }
 
+void Cat::displayThought( void )const{
+
+	print(this->catBrain->getIdea()); // method for proving deep copy
+}
+
 const string& Cat::getThoughts( void )const{
 
-	return this->catBrain->getIdea(); // method for proving deep copy
+	return this->catBrain->getIdea();
 }
 
 
@@ -59,7 +64,8 @@ Cat& Cat::operator=( const Cat& right_operator ){
 		delete this->catBrain;
 
 		// Step two, reassign the new brain
-		this->catBrain = right_operator.catBrain;
+		// this->catBrain = right_operator.catBrain;
+		this->catBrain = new Brain(*right_operator.catBrain);
 	}
 	return *this;
 }
@@ -68,6 +74,6 @@ Cat& Cat::operator=( const Cat& right_operator ){
 ostream& operator<<( ostream& output_stream, const Cat& right_input ){
 
 	output_stream << "Type of Cat Class = " << right_input.getType();
-	output_stream << "\nThoughts of the cat = " << right_input.getThoughts(); // proving for deep copy
+	output_stream << "\nThoughts of the cat = " << right_input.getThoughts();
 	return output_stream;
 }

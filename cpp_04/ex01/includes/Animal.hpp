@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 21:37:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 19:53:45 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/21 09:07:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ public:
 	void			setType( const string& input);
 
 	virtual void makeSound( void )const;
+
+	virtual void displayThought( void )const;
+
 };
 
 ostream& operator<<( ostream& output_stream, const Animal& input );

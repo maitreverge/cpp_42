@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 13:38:55 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 19:49:26 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/21 09:16:51 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,37 @@
 
 int main(void){
 
-	Animal *a1 = new Cat("Croquette", "Miam Miam");
+	// Animal *a1 = new Cat("Croquette", "Miam Miam");
 
-	// Animal *a2 = new Cat("Miaous", "Miaous oui la guerre");
 
-	cout << *a1 << endl;
+	// a1->displayThought();
+
+	// Animal a2 = *a1;
+
+	// a2.displayThought();
 
 	// cout << *a2 << endl;
 
+	print("----------------------------------");
+
+	Cat c1("Miaous", "Turbo Croquette");
+
+	print("Cat 1 name = "+c1.getType());
+	c1.displayThought();
+
 	
-	delete a1;
+	print("----------------------------------");
+
+	Cat c2;
+	
+	c2 = c1;
+
+	print("Cat 2 name = "+c2.getType());
+	
+	c2.displayThought();
+
+	
+	// delete a1;
 	// delete a2;
 
 	
