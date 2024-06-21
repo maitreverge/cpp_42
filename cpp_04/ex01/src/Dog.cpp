@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:07:48 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/21 19:36:32 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/21 19:39:46 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include "Brain.hpp"
 
 Dog::Dog( void )
-	: Animal( "" ), DogBrain(new Brain("Empty Thoughts")) {
+	: Animal( "" ), dogBrain(new Brain("Empty Thoughts")) {
 
 	printColor(GREEN, "Dog has been created 🐕");
 }
 
 Dog::Dog( string dogName, string brainIdea )
-	: Animal( dogName ), DogBrain(new Brain(brainIdea)) {
+	: Animal( dogName ), dogBrain(new Brain(brainIdea)) {
 
 	printColor(GREEN, dogName+" Dog has been created 🐕");
 	extraLine();
@@ -30,7 +30,7 @@ Dog::Dog( const Dog& copy ) : Animal( copy ) { *this = copy; }
 
 Dog::~Dog( void ){
 
-	delete DogBrain;
+	delete dogBrain;
 	printColor(GREEN, "Dog destroyed 🥺");
 	extraLine();
 }
@@ -43,12 +43,12 @@ void Dog::makeSound( void )const{
 
 void Dog::displayThought( void )const{
 
-	print(this->DogBrain->getIdea());
+	print(this->dogBrain->getIdea());
 }
 
 const string& Dog::getThoughts( void )const{
 
-	return this->DogBrain->getIdea();
+	return this->dogBrain->getIdea();
 }
 
 
