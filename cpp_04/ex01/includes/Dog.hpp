@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:07:01 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 18:47:08 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/21 19:33:14 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,10 @@ public:
 	~Dog();
 
 	void makeSound( void )const;
+
+	void displayThought( void )const;
+
+	const string& getThoughts( void )const;
 };
 
 ostream& operator<<( ostream& output_stream, const Dog& input );
-
-
-// ---------- Functions declarations ---------------
-
-
-

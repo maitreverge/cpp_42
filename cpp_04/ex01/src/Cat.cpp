@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:28:47 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/21 09:23:28 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/21 19:33:32 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void Cat::makeSound( void )const{
 
 void Cat::displayThought( void )const{
 
-	print(this->catBrain->getIdea()); // method for proving deep copy
+	print(this->catBrain->getIdea());
 }
 
 const string& Cat::getThoughts( void )const{
