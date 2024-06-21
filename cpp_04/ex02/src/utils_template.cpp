@@ -6,11 +6,11 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/15 11:47:32 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/20 15:35:47 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/utils_template.hpp"
+#include "utils_template.hpp"
 
 /**
  * @brief Print a string with a newline at the end.
@@ -107,4 +107,13 @@ int customAtoI(const string& str) {
 		customExit("customAtoI failed to allocate in stringstream");
 	}
 	return result;
+}
+
+/**
+ * @brief Prints an extra empty line
+ * 
+ */
+void	extraLine( void ){
+
+	cout << endl;
 }
