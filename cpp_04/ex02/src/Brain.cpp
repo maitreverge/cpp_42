@@ -6,12 +6,12 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 14:32:11 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/21 19:32:19 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/23 12:14:07 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Brain.hpp"
-#include "Animal.hpp"
+#include "a_Animal.hpp"
 
 
 Brain::Brain( void ){

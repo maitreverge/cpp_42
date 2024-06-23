@@ -6,13 +6,13 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 13:40:11 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 19:42:27 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/23 12:13:23 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Animal.hpp"
+#include "a_Animal.hpp"
 
 class Brain
 {

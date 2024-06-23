@@ -6,16 +6,16 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:07:01 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/21 19:40:39 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/23 12:12:29 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Animal.hpp"
+#include "a_Animal.hpp"
 #include "Brain.hpp"
 
-class Dog : public Animal
+class Dog : public a_Animal
 {
 
 private:

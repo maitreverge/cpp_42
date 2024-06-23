@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:28:47 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/21 19:33:32 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/23 12:45:27 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 
 
 Cat::Cat( void )
-	: Animal( "" ), catBrain(new Brain("Empty Thoughts")) {
+	: a_Animal( "" ), catBrain(new Brain("Empty Thoughts")) {
 
 	printColor(GREEN, "Cat has been created 🐈");
 }
 
 Cat::Cat( string catName, string brainIdea )
-	: Animal( catName ), catBrain(new Brain(brainIdea)) {
+	: a_Animal( catName ), catBrain(new Brain(brainIdea)) {
 
 	printColor(GREEN, catName+" Cat has been created 🐈");
 	extraLine();
 }
 
-Cat::Cat( const Cat& copy ) : Animal( copy ) { *this = copy; }
+Cat::Cat( const Cat& copy ) : a_Animal( copy ) { *this = copy; }
 
 Cat::~Cat( void ){
 
@@ -36,6 +36,7 @@ Cat::~Cat( void ){
 	extraLine();
 }
 
+// Comment this methods for making the Cat Class abstract;
 void Cat::makeSound( void )const{
 
 	printColorNoEndl(RED, "THE CAT ");

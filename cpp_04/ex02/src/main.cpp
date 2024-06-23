@@ -6,84 +6,46 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 13:38:55 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/21 20:03:14 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/23 12:44:08 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "a_Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 
 int main(void){
 
-	// Test for basic printing a Animal with << operator overload
 	print("----------------- TEST 1 -----------------");
 	{
-		Animal *a1 = new Cat("Croquette", "Miam Miam");
+		// When working with abstract class, we can still declare it as a pointer, it won't cause any problems.
+		a_Animal *a1 = new Cat("Croquette", "Miam Miam");
+		
+		// However, it will cause problems in this case, because infine we still use a_Animal class
+		// a_Animal *a2 = new a_Animal();
 
 		cout << *a1 << endl;
 
 		delete a1;
 	}
 
-	print("------------------ TEST 2----------------");
+	print("----------------- TEST 2 -----------------");
 	{
-		Animal *a2 = new Cat("Croquette", "Miam Miam");
-
-
-		// Actually prints the adress of a1
-		cout << a2 << endl;
-
-		// Deferencing the pointer actually call the << Operator overload from Animal Class
-		cout << *a2 << endl;
-		print("----------------------------------");
+		// Problems arrise when we want to declare a_Animal as a simple instace, it won't work.
 		
-		// Since a2 is a Cat, we would want to display Cat casting it something like
-		
-		// cout << (Cat)*a2 << endl;
+		// ! Uncomment the bellow line to see error compilation
+		// a_Animal a;
 
-		// Unfortunatelly, this is a wrong syntax, for this we should use dynamic casting
+		
+		// Others class must have the pure virtual method in a_Animal implemented as well,
+		// Otherwise the derived class will also become abstract
 
-		// Because a2 is a pointer, straight casting it will still display the adress.
-		
-		cout << dynamic_cast<Cat*>(a2) << endl;
-		
-		print("----------------------------------");
-		
-		// We need then to deference the whole thing with * operator first.
-		cout << *dynamic_cast<Cat*>(a2) << endl;
-
-		delete a2;
+		// Try to comment the method 
+		Dog d1;
+		Cat c1;
 	}
 
-	print("------------------ TEST 3----------------");
-	// Tests asked by the subject
-	{
-		Animal *animals[10];
-
-		// Init first half with Cats
-		for (size_t i = 0; i < 5; i++)
-			animals[i] = new Cat("Miaous", "Croquette 100\% poisson ");
-
-		// Init second half with Dogs
-		for (size_t i = 5; i < 10; i++)
-			animals[i] = new Dog("Roberto", "Croquette 100% Boeuf");
-		
-		print("----------------------------------");
-		
-		// Printing dynamically each Cat
-		for (size_t i = 0; i < 5; i++)
-			cout << *dynamic_cast<Cat*>(animals[i]) << endl;
-		
-		// Printing dynamically each Dog
-		for (size_t i = 5; i < 10; i++)
-			cout << *dynamic_cast<Dog*>(animals[i]) << endl;
-
-		// Freeing each Animal
-		for (size_t i = 0; i < 10; i++)
-			delete animals[i];
-			
-	}
+	// a_Animal x;
 
 	return 0;
 }
