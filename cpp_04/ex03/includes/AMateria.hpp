@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:14:41 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/23 13:39:33 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/24 08:05:05 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ public:
 
 	virtual AMateria* clone( void ) const = 0; // virtual
 	
-	// ! TO DO
-	// virtual void use( ICharacter& target );
+	virtual void use( ICharacter& target );
 
 };
 

@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:31:59 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/23 13:39:42 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/24 08:06:20 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,16 @@ AMateria::~AMateria( void ){}
 
 const string& AMateria::getType( void )const { return this->_type; }
 
-// void AMateria::use( ICharacter& target ) {
+// ! NO NEED FOR CLONE FUNCTION (it's a pure virtual function)
 
-// 	// ! TO DO
-// }
+
+void AMateria::use( ICharacter& target ) {
+
+	if (_type == "ice")
+		print("* shoots an ice bolt at <name> *");
+	else
+		print("* heals <name>'s wounds *");
+}
 
 ostream& operator<<( ostream& output_stream, const AMateria& right_input ){
 
