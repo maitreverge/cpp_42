@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:14:41 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/24 08:05:05 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/25 15:32:05 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 	AMateria( const string& type ); // done
 	AMateria( const AMateria& copy );
 	AMateria& operator=( const AMateria& right_operator );
-	~AMateria();
+	virtual ~AMateria();
 
 	const string& getType( void )const; // done
 
@@ -37,5 +37,3 @@ public:
 	virtual void use( ICharacter& target );
 
 };
-
-ostream& operator<<( ostream& output_stream, const AMateria& input );
