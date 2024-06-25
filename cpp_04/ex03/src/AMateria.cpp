@@ -6,11 +6,12 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:31:59 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/25 15:32:11 by flverge          ###   ########.fr       */
+/*   Updated: 2024/06/25 15:32:52 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 AMateria::AMateria( void ){}
 
