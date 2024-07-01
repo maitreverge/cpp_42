@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:15:11 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/01 15:39:35 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/01 17:59:09 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 Bureaucrat::Bureaucrat( void ){}
 
 Bureaucrat::Bureaucrat( string nameInput, int gradeInput ) :
-	_name(nameInput), _grade(gradeInput){
-	
+	_name(nameInput){
 	
 	if (gradeInput < 1)
 		throw GradeTooHighException();
 	else if (gradeInput > 150)
 		throw GradeTooLowException();
+	else
+		this->_grade = gradeInput;
 }
 
 Bureaucrat::Bureaucrat( const Bureaucrat& copy ){ *this = copy; }
@@ -43,20 +44,26 @@ Bureaucrat::~Bureaucrat( void ){}
 const string&	Bureaucrat::getName( void )const{ return this->_name; }
 const int&		Bureaucrat::getGrade( void )const{ return this->_grade; }
 
-void			Bureaucrat::incrementGrade( int value ){
 
-	if (this->_grade - value < 1)
+void			Bureaucrat::incrementGrade( void ){
+
+	if (this->_grade <= 1)
 		throw GradeTooHighException();
+	else
+		this->_grade--;
 }
-void			Bureaucrat::decrementGrade( int value ){
 
-	if (this->_grade + value > 150)
+void			Bureaucrat::decrementGrade( void ){
+
+	if (this->_grade >= 150)
 		throw GradeTooLowException();
+	else
+		this->_grade++;
 }
 
 // Exceptions functions
-const char* Bureaucrat::GradeTooHighException::_what( void ) const{ return "The Grade is too High"; }
-const char* Bureaucrat::GradeTooLowException::_what( void ) const{ return "The Grade is too Low"; }
+const char* Bureaucrat::GradeTooHighException::what( void ) const throw(){ return ("The Grade is too High"); }
+const char* Bureaucrat::GradeTooLowException::what( void ) const throw(){ return ("The Grade is too Low"); }
 
 
 ostream& operator<<( ostream& output_stream, const Bureaucrat& right_input ){

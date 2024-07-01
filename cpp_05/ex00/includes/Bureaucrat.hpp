@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:08:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/01 15:42:14 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/01 17:59:27 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,20 @@ public:
 	const string&	getName( void )const;
 	const int&		getGrade( void )const;
 
-	void			incrementGrade( int value );
-	void			decrementGrade( int value );
+	void			incrementGrade( void );
+	void			decrementGrade( void );
 
 	// Nested Exception Classes
 	class GradeTooHighException : public exception
 	{
 		public:
-			virtual const char* _what( void ) const;
+			virtual const char* what( void ) const throw();
 	};
 
 	class GradeTooLowException : public exception
 	{
 		public:
-			virtual const char* _what( void ) const;
+			virtual const char* what( void ) const throw();
 	};
 
 };
