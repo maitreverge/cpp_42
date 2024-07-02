@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:15:11 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 13:31:02 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 13:53:20 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 Bureaucrat::Bureaucrat( void ) :
 	_name(""),
 	_grade(75){}
+
 
 Bureaucrat::Bureaucrat( string nameInput, int gradeInput ) :
 	_name(nameInput){
@@ -26,6 +27,7 @@ Bureaucrat::Bureaucrat( string nameInput, int gradeInput ) :
 	else
 		this->_grade = gradeInput;
 }
+
 
 Bureaucrat::Bureaucrat( const Bureaucrat& copy ) :
 	_name(copy._name),
@@ -44,6 +46,7 @@ Bureaucrat& Bureaucrat::operator=( const Bureaucrat& right_operator ){
 
 Bureaucrat::~Bureaucrat( void ){}
 
+
 // Getters
 const string&	Bureaucrat::getName( void )const{ return this->_name; }
 const int&		Bureaucrat::getGrade( void )const{ return this->_grade; }
@@ -54,10 +57,12 @@ void			Bureaucrat::incrementGrade( void ){
 	(this->_grade <= 1) ? throw GradeTooHighException() : this->_grade--;
 }
 
+
 void			Bureaucrat::decrementGrade( void ){
 
 	(this->_grade >= 150) ? throw GradeTooLowException() : this->_grade++;
 }
+
 
 void	Bureaucrat::signForm( int wasSigned, string nameForm, string reason ){
 
@@ -74,9 +79,9 @@ const char* Bureaucrat::GradeTooLowException::what( void ) const throw(){ return
 
 ostream& operator<<( ostream& output_stream, const Bureaucrat& right_input ){
 
-	output_stream << right_input.getName();
+	output_stream << CYAN << right_input.getName() << RESET;
 	output_stream << ", bureaucrat grade ";
-	output_stream << right_input.getGrade();
+	output_stream << BOLD_GREEN << right_input.getGrade() << RESET;
 	output_stream << "\n";
 	return output_stream;
 }

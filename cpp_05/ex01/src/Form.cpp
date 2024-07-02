@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:13:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 13:27:50 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 13:52:19 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,30 @@ Form::Form( string nameInput, int gradeSign, int gradeExecute ) :
 }
 
 
-// Form::Form( const Form& copy ) : 
-// 	_name(copy._name), _isFormSigned(copy._isFormSigned), _requiredGradeExecution(copy._requiredGradeExecution), _requiredGradeSign(copy._requiredGradeSign){ *this = copy; }
+Form::Form( const Form& copy ) : 
+	_name(copy._name),
+	_isFormSigned(copy._isFormSigned),
+	_requiredGradeExecution(copy._requiredGradeExecution),
+	_requiredGradeSign(copy._requiredGradeSign) {}
 
+/**
+ * @brief This operator overload can only copy `_isFormSigned`
+ * the only non `const` member.
+ * 
+ * @param right_operator 
+ * @return Form& 
+ */
 Form& Form::operator=( const Form& right_operator ){
 
 	if (this != &right_operator){
-		// this->_name = right_operator.getName();
 		this->_isFormSigned = right_operator.getIsFormSigned();
 	}
 	return *this;
 }
 
-Form::Form( const Form& copy ) :
-	_name(copy._name),
-	_isFormSigned(copy._isFormSigned),
-	_requiredGradeExecution(copy._requiredGradeExecution),
-	_requiredGradeSign(copy._requiredGradeSign){}
-
-
 
 Form::~Form( void ){}
+
 
 void	Form::beSigned( Bureaucrat &person ){
 	
@@ -91,9 +94,11 @@ const char* Form::FormAlreadySigned::what( void ) const throw(){ return "The For
 
 ostream& operator<<( ostream& output_stream, const Form& right_input ){
 
-	output_stream << "Form";
-	output_stream << right_input.getName();
-	output_stream << (right_input.getIsFormSigned() ? " is signed, " : " is not signed, ");
+	output_stream << "Form ";
+	output_stream << CYAN << right_input.getName() << RESET;
+	output_stream << (right_input.getIsFormSigned() ? BOLD_GREEN : BOLD_RED );
+	output_stream << (right_input.getIsFormSigned() ? " is signed, " :  " is not signed, ");
+	output_stream << RESET << endl;
 	output_stream << "have a required Grade of ";
 	output_stream << right_input.getRequiredGradeSign();
 	output_stream << " for signing and a required Grade of ";
