@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 09:29:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 11:49:04 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 13:11:51 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class Form
 
 private:
 	
-	// Decided to not use this constructor.
 	Form( void );
 	
 	// 1 ==  HIGH, 150 == LOW

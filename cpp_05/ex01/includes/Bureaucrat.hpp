@@ -6,27 +6,26 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:08:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 11:53:57 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 13:29:37 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "utils_template.hpp"
-#include "Form.hpp"
+// #include "Form.hpp"
 
 class Bureaucrat
 {
 
 private:
 
-	Bureaucrat( void );
-	
 	string	_name;
 	int		_grade; // From 1 to 150 ( 1 = hight, 150 = low)
 
 public:
 
+	Bureaucrat( void );
 	Bureaucrat( string nameInput, int gradeInput );
 	Bureaucrat( const Bureaucrat& copy );
 	Bureaucrat& operator=( const Bureaucrat& right_operator );

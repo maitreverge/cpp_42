@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:15:11 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/01 17:59:09 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 13:32:35 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ Bureaucrat::Bureaucrat( string nameInput, int gradeInput ) :
 		this->_grade = gradeInput;
 }
 
-Bureaucrat::Bureaucrat( const Bureaucrat& copy ){ *this = copy; }
+Bureaucrat::Bureaucrat( const Bureaucrat& copy ) : 
+	_name(copy._name),
+	_grade(copy._grade){}
 
 
 Bureaucrat& Bureaucrat::operator=( const Bureaucrat& right_operator ){

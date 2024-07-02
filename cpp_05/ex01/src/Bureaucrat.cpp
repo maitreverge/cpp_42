@@ -6,13 +6,15 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:15:11 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 12:14:24 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 13:31:02 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat( void ){}
+Bureaucrat::Bureaucrat( void ) :
+	_name(""),
+	_grade(75){}
 
 Bureaucrat::Bureaucrat( string nameInput, int gradeInput ) :
 	_name(nameInput){
@@ -25,7 +27,9 @@ Bureaucrat::Bureaucrat( string nameInput, int gradeInput ) :
 		this->_grade = gradeInput;
 }
 
-Bureaucrat::Bureaucrat( const Bureaucrat& copy ){ *this = copy; }
+Bureaucrat::Bureaucrat( const Bureaucrat& copy ) :
+	_name(copy._name),
+	_grade(copy._grade){}
 
 
 Bureaucrat& Bureaucrat::operator=( const Bureaucrat& right_operator ){

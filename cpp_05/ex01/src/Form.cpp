@@ -6,30 +6,48 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:13:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 12:10:30 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 13:27:50 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-// Can't use this constructor, left empty
-Form::Form( void ) : {}
+Form::Form( void ) :
+	_requiredGradeSign(50),
+	_requiredGradeExecution(50){}
 
 Form::Form( string nameInput, int gradeSign, int gradeExecute ) :
-	_name(nameInput), _isFormSigned(false), _requiredGradeSign(gradeSign), _requiredGradeExecution(gradeExecute){}
+	_name(nameInput),
+	_isFormSigned(false),
+	_requiredGradeSign(gradeSign),
+	_requiredGradeExecution(gradeExecute){
+
+	if (_requiredGradeExecution < 1 or _requiredGradeSign < 1)
+		throw Form::GradeTooHighException();
+	if (_requiredGradeExecution > 150 or _requiredGradeSign > 150)
+		throw Form::GradeTooLowException();
+}
 
 
-Form::Form( const Form& copy ) { *this = copy; }
-
+// Form::Form( const Form& copy ) : 
+// 	_name(copy._name), _isFormSigned(copy._isFormSigned), _requiredGradeExecution(copy._requiredGradeExecution), _requiredGradeSign(copy._requiredGradeSign){ *this = copy; }
 
 Form& Form::operator=( const Form& right_operator ){
 
 	if (this != &right_operator){
+		// this->_name = right_operator.getName();
 		this->_isFormSigned = right_operator.getIsFormSigned();
 	}
 	return *this;
 }
+
+Form::Form( const Form& copy ) :
+	_name(copy._name),
+	_isFormSigned(copy._isFormSigned),
+	_requiredGradeExecution(copy._requiredGradeExecution),
+	_requiredGradeSign(copy._requiredGradeSign){}
+
 
 
 Form::~Form( void ){}
@@ -75,12 +93,13 @@ ostream& operator<<( ostream& output_stream, const Form& right_input ){
 
 	output_stream << "Form";
 	output_stream << right_input.getName();
-	output_stream << right_input.getIsFormSigned() ? BOLD_GREEN " is signed, " : BOLD_RED " is not signed, ";
-	output_stream << RESET "have a required Grade of ";
+	output_stream << (right_input.getIsFormSigned() ? " is signed, " : " is not signed, ");
+	output_stream << "have a required Grade of ";
 	output_stream << right_input.getRequiredGradeSign();
 	output_stream << " for signing and a required Grade of ";
 	output_stream << right_input.getRequiredGradeExecution();
 	output_stream << " for being executed.";
 	output_stream << endl;
+	
 	return output_stream;
 }

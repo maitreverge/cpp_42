@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 09:28:10 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 12:08:45 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 13:13:17 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,20 @@
 
 int main(void){
 
-	Bureaucrat ulysse("Ulysse", 140);
+	Bureaucrat ulysse("Ulysse", 60);
 
-	Form f1("Name", 2, 5);
+	Form f1("Slavery Contract", 4, 4);
 
-	f1.beSigned(ulysse);
+	try
+	{
+		f1.beSigned(ulysse);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+
+
 	return 0;
 }
