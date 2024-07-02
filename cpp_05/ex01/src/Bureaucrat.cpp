@@ -6,11 +6,11 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:15:11 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 11:54:59 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 12:14:24 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Bureaucrat.hpp"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat( void ){}
 
@@ -47,26 +47,20 @@ const int&		Bureaucrat::getGrade( void )const{ return this->_grade; }
 
 void			Bureaucrat::incrementGrade( void ){
 
-	if (this->_grade <= 1)
-		throw GradeTooHighException();
-	else
-		this->_grade--;
+	(this->_grade <= 1) ? throw GradeTooHighException() : this->_grade--;
 }
 
 void			Bureaucrat::decrementGrade( void ){
 
-	if (this->_grade >= 150)
-		throw GradeTooLowException();
-	else
-		this->_grade++;
+	(this->_grade >= 150) ? throw GradeTooLowException() : this->_grade++;
 }
 
 void	Bureaucrat::signForm( int wasSigned, string nameForm, string reason ){
 
 	if (wasSigned)
-		printColor(GREEN, this->getName() + " bureaucrat signed " + nameForm);
+		printColor(BOLD_GREEN, this->getName() + " bureaucrat signed " + nameForm);
 	else
-		printColorNoEndl(RED, this->getName() + " couldn't sign form " + nameForm + " because " + reason);
+		printColor(BOLD_RED, this->getName() + " couldn't sign form " + nameForm + " because " + reason);
 }
 
 // Exceptions functions

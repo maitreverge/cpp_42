@@ -6,11 +6,12 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:13:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 11:55:41 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 12:10:30 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 // Can't use this constructor, left empty
 Form::Form( void ) : {}
@@ -41,6 +42,7 @@ void	Form::beSigned( Bureaucrat &person ){
 		throw FormAlreadySigned();
 	}
 	else{
+		
 		if (this->getRequiredGradeSign() < person.getGrade()) {
 			
 			person.signForm(0, this->_name ,"bureaucrat grade is too low");
