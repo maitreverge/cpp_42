@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 09:29:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 13:11:51 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 14:54:40 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,33 @@
 
 #include "Bureaucrat.hpp"
 
-class Form
+class AForm
 {
 
 private:
 	
-	Form( void );
+	AForm( void );
 	
 	// 1 ==  HIGH, 150 == LOW
 	const string	_name;
-	bool			_isFormSigned;
+	bool			_isAFormSigned;
 	const int		_requiredGradeSign;
 	const int		_requiredGradeExecution;
 
 public:
 
-	Form( string nameInput, int gradeSign, int gradeExecute );
-	Form( const Form& copy );
-	Form& operator=( const Form& right_operator );
-	~Form();
+	AForm( string nameInput, int gradeSign, int gradeExecute );
+	AForm( const AForm& copy );
+	AForm& operator=( const AForm& right_operator );
+	virtual ~AForm();
 	
 	// Getters
-	const string&	getName( void )const;
-	const bool&		getIsFormSigned( void )const;
-	const int&		getRequiredGradeSign( void )const;
-	const int&		getRequiredGradeExecution( void )const;
+	virtual const string&	getName( void )const = 0;
+	virtual const bool&		getIsAFormSigned( void )const;
+	virtual const int&		getRequiredGradeSign( void )const;
+	virtual const int&		getRequiredGradeExecution( void )const;
 
-	void			beSigned( Bureaucrat &person );
+	virtual void			beSigned( Bureaucrat &person );
 	
 	// Nested Exception Classes
 	class GradeTooHighException : public exception
@@ -55,7 +55,7 @@ public:
 			virtual const char* what( void ) const throw();
 	};
 	
-	class FormAlreadySigned : public exception
+	class AFormAlreadySigned : public exception
 	{
 		public:
 			virtual const char* what( void ) const throw();
@@ -63,7 +63,4 @@ public:
 
 };
 
-ostream& operator<<( ostream& output_stream, const Form& input );
-
-// Declaration function
-
+ostream& operator<<( ostream& output_stream, const AForm& input );
