@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:13:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 15:05:14 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 18:54:55 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,9 @@ void	AForm::beSigned( Bureaucrat &person ){
 	}
 }
 
+// Setter
+void			AForm::setIsFormSigned( bool value ){ this->_isFormSigned = value; }
+
 
 // Getters
 const string&	AForm::getName( void )const{ return this->_name; }
@@ -89,6 +92,7 @@ const int&		AForm::getRequiredGradeExecution( void )const{ return this->_require
 const char* AForm::GradeTooHighException::what( void ) const throw(){ return "The AForm Grade is too High"; }
 const char* AForm::GradeTooLowException::what( void ) const throw(){ return "The AForm Grade is too Low"; }
 const char* AForm::AFormAlreadySigned::what( void ) const throw(){ return "The AForm Is Already Signed"; }
+const char* AForm::AFormIsNotSigned::what( void ) const throw(){ return "The AForm Is Not Signed"; }
 
 
 

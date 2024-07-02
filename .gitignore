@@ -43,7 +43,6 @@ HI_THIS_IS_BRAIN
 unnecessary_violence
 sed_is_for_losers
 harl_2_0
-test
 koala.txt.replace
 harlFilter
 
@@ -83,3 +82,5 @@ coffee_making
 
 # Executables from cpp_09
 
+cpp_00/ex02/test
+cpp_01/ex04/test

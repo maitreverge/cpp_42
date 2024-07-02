@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 09:29:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 15:13:18 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 18:54:13 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ public:
 	AForm& operator=( const AForm& right_operator );
 	virtual ~AForm();
 	
+	// Setter
+	virtual void			setIsFormSigned( bool value );
+	
 	// Getters
 	virtual const string&	getName( void )const;
 	virtual const bool&		getIsFormSigned( void )const;
@@ -61,6 +64,12 @@ public:
 	};
 	
 	class AFormAlreadySigned : public exception
+	{
+		public:
+			virtual const char* what( void ) const throw();
+	};
+
+	class AFormIsNotSigned : public exception
 	{
 		public:
 			virtual const char* what( void ) const throw();
