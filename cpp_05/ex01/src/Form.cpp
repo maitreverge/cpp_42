@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:13:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 10:13:29 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 11:55:41 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,27 @@ Form& Form::operator=( const Form& right_operator ){
 
 Form::~Form( void ){}
 
+void	Form::beSigned( Bureaucrat &person ){
+	
+	if (this->_isFormSigned){
+
+		person.signForm(0, this->_name ,"form is already signed.");
+		throw FormAlreadySigned();
+	}
+	else{
+		if (this->getRequiredGradeSign() < person.getGrade()) {
+			
+			person.signForm(0, this->_name ,"bureaucrat grade is too low");
+			throw Form::GradeTooLowException();
+		}
+		else{
+			
+			person.signForm(1, this->_name);
+			this->_isFormSigned = true;
+		}
+	}
+}
+
 
 // Getters
 const string&	Form::getName( void )const{ return this->_name; }
@@ -44,6 +65,7 @@ const int&		Form::getRequiredGradeExecution( void )const{ return this->_required
 // Nested Exception Classes
 const char* Form::GradeTooHighException::what( void ) const throw(){ return "The Form Grade is too High"; }
 const char* Form::GradeTooLowException::what( void ) const throw(){ return "The Form Grade is too Low"; }
+const char* Form::FormAlreadySigned::what( void ) const throw(){ return "The Form Is Already Signed"; }
 
 
 

@@ -6,11 +6,11 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:15:11 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 10:04:15 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 11:54:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "../includes/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat( void ){}
 
@@ -59,6 +59,14 @@ void			Bureaucrat::decrementGrade( void ){
 		throw GradeTooLowException();
 	else
 		this->_grade++;
+}
+
+void	Bureaucrat::signForm( int wasSigned, string nameForm, string reason ){
+
+	if (wasSigned)
+		printColor(GREEN, this->getName() + " bureaucrat signed " + nameForm);
+	else
+		printColorNoEndl(RED, this->getName() + " couldn't sign form " + nameForm + " because " + reason);
 }
 
 // Exceptions functions

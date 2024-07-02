@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 09:29:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 10:13:43 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 11:49:04 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ public:
 	const bool&		getIsFormSigned( void )const;
 	const int&		getRequiredGradeSign( void )const;
 	const int&		getRequiredGradeExecution( void )const;
+
+	void			beSigned( Bureaucrat &person );
 	
 	// Nested Exception Classes
 	class GradeTooHighException : public exception
@@ -53,7 +55,16 @@ public:
 		public:
 			virtual const char* what( void ) const throw();
 	};
+	
+	class FormAlreadySigned : public exception
+	{
+		public:
+			virtual const char* what( void ) const throw();
+	};
 
 };
 
 ostream& operator<<( ostream& output_stream, const Form& input );
+
+// Declaration function
+

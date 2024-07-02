@@ -6,13 +6,14 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:08:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/01 17:59:27 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 11:53:57 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "utils_template.hpp"
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -23,10 +24,6 @@ private:
 	
 	string	_name;
 	int		_grade; // From 1 to 150 ( 1 = hight, 150 = low)
-
-protected:
-
-	// Some protected members
 
 public:
 
@@ -40,6 +37,8 @@ public:
 
 	void			incrementGrade( void );
 	void			decrementGrade( void );
+
+	void			signForm( int wasSigned, string nameForm, string reason = "" );
 
 	// Nested Exception Classes
 	class GradeTooHighException : public exception
@@ -57,3 +56,5 @@ public:
 };
 
 ostream& operator<<( ostream& output_stream, const Bureaucrat& input );
+
+// to add to Bureaucrap.pp
