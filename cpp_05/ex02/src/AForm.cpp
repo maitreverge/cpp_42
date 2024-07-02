@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:13:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 14:53:00 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 15:05:14 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ AForm::AForm( void ) :
 
 AForm::AForm( string nameInput, int gradeSign, int gradeExecute ) :
 	_name(nameInput),
-	_isAFormSigned(false),
+	_isFormSigned(false),
 	_requiredGradeSign(gradeSign),
 	_requiredGradeExecution(gradeExecute){
 
@@ -32,7 +32,7 @@ AForm::AForm( string nameInput, int gradeSign, int gradeExecute ) :
 
 AForm::AForm( const AForm& copy ) : 
 	_name(copy._name),
-	_isAFormSigned(copy._isAFormSigned),
+	_isFormSigned(copy._isFormSigned),
 	_requiredGradeExecution(copy._requiredGradeExecution),
 	_requiredGradeSign(copy._requiredGradeSign) {}
 
@@ -46,7 +46,7 @@ AForm::AForm( const AForm& copy ) :
 AForm& AForm::operator=( const AForm& right_operator ){
 
 	if (this != &right_operator){
-		this->_isAFormSigned = right_operator.getIsAFormSigned();
+		this->_isFormSigned = right_operator.getIsFormSigned();
 	}
 	return *this;
 }
@@ -57,7 +57,7 @@ AForm::~AForm( void ){}
 
 void	AForm::beSigned( Bureaucrat &person ){
 	
-	if (this->_isAFormSigned){
+	if (this->_isFormSigned){
 
 		person.signForm(0, this->_name ,"Aform is already signed.");
 		throw AFormAlreadySigned();
@@ -72,7 +72,7 @@ void	AForm::beSigned( Bureaucrat &person ){
 		else{
 			
 			person.signForm(1, this->_name);
-			this->_isAFormSigned = true;
+			this->_isFormSigned = true;
 		}
 	}
 }
@@ -80,7 +80,7 @@ void	AForm::beSigned( Bureaucrat &person ){
 
 // Getters
 const string&	AForm::getName( void )const{ return this->_name; }
-const bool&		AForm::getIsAFormSigned( void )const{ return this->_isAFormSigned; }
+const bool&		AForm::getIsFormSigned( void )const{ return this->_isFormSigned; }
 const int&		AForm::getRequiredGradeSign( void )const{ return this->_requiredGradeSign; }
 const int&		AForm::getRequiredGradeExecution( void )const{ return this->_requiredGradeExecution; }
 
@@ -96,8 +96,8 @@ ostream& operator<<( ostream& output_stream, const AForm& right_input ){
 
 	output_stream << "AForm ";
 	output_stream << CYAN << right_input.getName() << RESET;
-	output_stream << (right_input.getIsAFormSigned() ? BOLD_GREEN : BOLD_RED );
-	output_stream << (right_input.getIsAFormSigned() ? " is signed, " :  " is not signed, ");
+	output_stream << (right_input.getIsFormSigned() ? BOLD_GREEN : BOLD_RED );
+	output_stream << (right_input.getIsFormSigned() ? " is signed, " :  " is not signed, ");
 	output_stream << RESET << endl;
 	output_stream << "have a required Grade of ";
 	output_stream << right_input.getRequiredGradeSign();

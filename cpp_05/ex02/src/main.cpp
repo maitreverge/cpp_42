@@ -6,12 +6,12 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 09:28:10 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 14:49:24 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/02 14:56:00 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 void	triggerTest(string &promptUser ,string testName){
 
