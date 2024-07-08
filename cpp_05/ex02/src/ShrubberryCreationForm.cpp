@@ -6,19 +6,18 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 08:59:21 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/08 09:51:51 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/08 10:03:10 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
-#include <stdio.h>
 
 // AForm base constructor is in protected base class, but infine won't be used because private in the derived class
 ShrubberyCreationForm::ShrubberyCreationForm( void ) : AForm(){}
 
 
 ShrubberyCreationForm::ShrubberyCreationForm( string targetInput ) :
-	AForm("Splendid Shruberry Form", 145, 137),
+	AForm("Splendid Shruberry Form", 145, 137), // ! ASKED IN THE SUBJECT
 	_target(targetInput){}
 
 
@@ -51,6 +50,17 @@ ShrubberyCreationForm::~ShrubberyCreationForm( void ){}
 const string&	ShrubberyCreationForm::getTarget( void )const{ return this->_target; }
 void			ShrubberyCreationForm::setTarget( string input ){ this->_target = input; }
 
+/**
+ * @brief This methods checks multiples things :
+ * - if the file `<target>_shrubbery` does not exists,
+ * - if the form is signed,
+ * - if the `executor` has the required execution grade
+ * 
+ * If all these prerequisites are met, a file `<target>_shrubbery` is created
+ * with a ASCII tree in it.
+ * 
+ * @param executor 
+ */
 void 			ShrubberyCreationForm::execute( const Bureaucrat& executor )const{
 
 	string fileName = this->getTarget() + "_shrubbery";
@@ -62,7 +72,8 @@ void 			ShrubberyCreationForm::execute( const Bureaucrat& executor )const{
 	else if ( executor.getGrade() > this->getRequiredGradeExecution())
 		throw Bureaucrat::GradeTooLowException();
 	else {
-
+		
+		// Open a filestream, draw the tree, then close the filestream.
 		try
 		{
 			ofstream outputFile(fileName.c_str());
@@ -79,7 +90,11 @@ void 			ShrubberyCreationForm::execute( const Bureaucrat& executor )const{
 	}
 }
 
-
+/**
+ * @brief returns an ascii tree as a string, used in .execute method.
+ * 
+ * @return const string 
+ */
 const string ShrubberyCreationForm::drawAsciiTree( void )const{
 	
 	string tree = "";
