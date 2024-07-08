@@ -6,11 +6,12 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:15:11 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 13:53:20 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/08 12:20:57 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat( void ) :
 	_name(""),
@@ -71,6 +72,21 @@ void	Bureaucrat::signForm( int wasSigned, string nameForm, string reason ){
 	else
 		printColor(BOLD_RED, this->getName() + " couldn't sign form " + nameForm + " because " + reason);
 }
+
+void	Bureaucrat::executeForm(AForm const & form){
+
+	try
+	{
+		form.execute(*this);
+		printColor(BOLD_GREEN, this->_name + " executed " + form.getName());
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		printColor(BOLD_RED, this->_name + " did not executed " + form.getName());
+	}
+}
+
 
 // Exceptions functions
 const char* Bureaucrat::GradeTooHighException::what( void ) const throw(){ return ("The Bureaucrat Grade is too High"); }

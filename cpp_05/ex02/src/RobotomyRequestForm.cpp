@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 10:55:48 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/08 11:06:02 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/08 12:17:12 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void 			RobotomyRequestForm::execute( const Bureaucrat& executor )const{
 		printColor(BOLD_YELLOW, "🏗️ DRILLING NOIZE BRRR BRRRRRRRRRRRR BRRR BR 🏗️");
 
 		// Run a random function that return true 50% of the time
-		srand(time(NULL)); // seed time in rand() to achieve true randomness
 
 		// Without the previous line, 
 		int value = rand() % 2;

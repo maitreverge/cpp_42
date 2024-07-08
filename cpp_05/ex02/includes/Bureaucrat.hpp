@@ -6,13 +6,15 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:08:18 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 13:40:41 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/08 11:58:50 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "utils_template.hpp"
+
+class AForm;
 
 class Bureaucrat
 {
@@ -40,6 +42,8 @@ public:
 	void			incrementGrade( void );
 	void			decrementGrade( void );
 	void			signForm( int wasSigned, string nameForm, string reason = "" );
+
+	void			executeForm(AForm const & form);
 
 	// Nested Exception Classes
 	class GradeTooHighException : public exception
