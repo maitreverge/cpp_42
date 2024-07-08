@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 09:28:10 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/08 10:36:54 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/08 11:02:52 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,50 +26,41 @@ void	triggerTest(string &promptUser ,string testName){
 	} while (!promptUser.empty());
 }
 
-static void test1( void ){
+static void testShrub( void ){
 
 	Bureaucrat hercule("Hercule", 1);
 
-	RobotomyRequestForm f1("this_is_target_name");
+	ShrubberyCreationForm f1("this_is_target_name");
 
 	f1.beSigned(hercule);
 
 	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
-	f1.execute(hercule);
 }
 
-int main(void){
+static void testRobot( void ){
 
-	srand(time(NULL));
+	Bureaucrat ulysse("Ulysse", 1);
+
+	RobotomyRequestForm f1("this_is_target_name");
+
+	f1.beSigned(ulysse);
+
+	f1.execute(ulysse);
+}
+
+
+int main(void){
 
 	string promptUser = "";
 	clearScreen();
 
-	triggerTest(promptUser, "TEST failed Bureaucrat and Form");
+	triggerTest(promptUser, "TEST Shrubberry Form");
 
-	test1();
+	testShrub();
 	
-	triggerTest(promptUser, "TEST valid Bureaucrat and Form");
+	triggerTest(promptUser, "TEST Robotomy Form");
 
-	// test2();
+	testRobot();
 	
 	return 0;
 }
