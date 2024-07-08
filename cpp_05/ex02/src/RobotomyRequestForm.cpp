@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 10:55:48 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/08 10:59:44 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/08 11:06:02 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,6 @@ void 			RobotomyRequestForm::execute( const Bureaucrat& executor )const{
 			printColor(BOLD_RED, this->_target + " robotomization has failed ⛔");
 	}
 }
-
-
-const char* RobotomyRequestForm::FileAlreadyExists::what( void )const throw(){ return "File with extension \"_shrubbery\" already exists."; }
 
 
 ostream& operator<<( ostream& output_stream, const RobotomyRequestForm& right_input ){
