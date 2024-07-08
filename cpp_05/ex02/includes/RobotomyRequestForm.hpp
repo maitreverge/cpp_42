@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 10:04:52 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/08 10:14:13 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/08 10:34:19 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ private:
 	RobotomyRequestForm( void ); // done
 	
 	string	_target;
-	bool	_isTargetRobotomized;
 
 public:
 	
@@ -33,7 +32,6 @@ public:
 
 	const string&	getTarget( void )const;
 	void			setTarget( string input );
-	const bool&			getIsTargetRobotomized( void )const;
 
 	// const string	drawAsciiTree( void )const;
 
@@ -53,19 +51,17 @@ ostream& operator<<( ostream& output_stream, const RobotomyRequestForm& input );
 // -------------------------------------------
 
 // AForm base constructor is in protected base class, but infine won't be used because private in the derived class
-RobotomyRequestForm::RobotomyRequestForm( void ) : AForm(), _isTargetRobotomized(false){}
+RobotomyRequestForm::RobotomyRequestForm( void ) : AForm(){}
 
 
 RobotomyRequestForm::RobotomyRequestForm( string targetInput ) :
 	AForm("Fabulous Robotomy Form", 72, 45), // ! ASKED IN THE SUBJECT
-	_target(targetInput),
-	_isTargetRobotomized(false){}
+	_target(targetInput){}
 
 
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm& copy ) :
 	AForm( this->getName(), this->getRequiredGradeSign(), this->getRequiredGradeExecution()),
-	_target(copy._target),
-	_isTargetRobotomized(false){}
+	_target(copy._target){}
 
 
 /**
@@ -80,7 +76,6 @@ RobotomyRequestForm& RobotomyRequestForm::operator=( const RobotomyRequestForm& 
 	if (this != &right_operator){
 		// Reassign every value with the getter value
 		this->setIsFormSigned(right_operator.getIsFormSigned());
-		this->_isTargetRobotomized = right_operator.getIsTargetRobotomized();
 	}
 	return *this;
 }
@@ -92,12 +87,29 @@ RobotomyRequestForm::~RobotomyRequestForm( void ){}
 // Getters and setters 
 const string&	RobotomyRequestForm::getTarget( void )const{ return this->_target; }
 void			RobotomyRequestForm::setTarget( string input ){ this->_target = input; }
-const bool&		RobotomyRequestForm::getIsTargetRobotomized( void )const{ return this->_isTargetRobotomized; }
 
 
 void 			RobotomyRequestForm::execute( const Bureaucrat& executor )const{
 
-	// ! TO DO
+	// prerequesites checks
+	if (!this->getIsFormSigned())
+		throw AForm::AFormIsNotSigned();
+	else if ( executor.getGrade() > this->getRequiredGradeExecution())
+		throw Bureaucrat::GradeTooLowException();
+	else {
+
+		printColor(BOLD_YELLOW, "🏗️ DRILLING NOIZE BRRR BRRRRRRRRRRRR BRRR BR 🏗️");
+
+		// Run a random function that return true 50% of the time
+		// srand(time(NULL));
+		int value = rand() % 2;
+		
+		if (value){
+			printColor(BOLD_GREEN, this->_target + " has been robotomized 🤖");
+		}
+		else
+			printColor(BOLD_RED, this->_target + " robotomization has failed ⛔");
+	}
 }
 
 

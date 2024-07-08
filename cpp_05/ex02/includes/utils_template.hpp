@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/08 10:03:26 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/08 10:37:18 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <stdio.h>
+#include <ctime>
 
 using std::string;
 using std::cout;
