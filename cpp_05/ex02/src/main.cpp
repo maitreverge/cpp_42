@@ -6,12 +6,13 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 09:28:10 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/02 14:56:00 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/08 09:45:01 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 void	triggerTest(string &promptUser ,string testName){
 
@@ -24,6 +25,17 @@ void	triggerTest(string &promptUser ,string testName){
 	} while (!promptUser.empty());
 }
 
+static void test1( void ){
+
+	Bureaucrat hercule("Hercule", 1);
+
+	ShrubberyCreationForm f1("this_is_target_name");
+
+	f1.beSigned(hercule);
+
+	f1.execute(hercule);
+}
+
 int main(void){
 
 	string promptUser = "";
@@ -31,7 +43,7 @@ int main(void){
 
 	triggerTest(promptUser, "TEST failed Bureaucrat and Form");
 
-	// test1();
+	test1();
 	
 	triggerTest(promptUser, "TEST valid Bureaucrat and Form");
 

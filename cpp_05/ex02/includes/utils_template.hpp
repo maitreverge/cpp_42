@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/01 15:12:25 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/08 09:42:21 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,4 @@ void	customExit( const string& str );
 string	customItoA( const long long int& target);
 int 	customAtoI( const string& str );
 void	extraLine( void );
+bool	doesFileExists( const string& fileName);

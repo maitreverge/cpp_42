@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/20 13:37:21 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/08 09:42:07 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,26 @@ int customAtoI(const string& str) {
 void	extraLine( void ){
 
 	cout << endl;
+}
+
+/**
+ * @brief Return `true` if the given `fileName` exists,
+ * Return `false` otherwise.
+ * 
+ * @param fileName 
+ * @return true 
+ * @return false 
+ */
+bool	doesFileExists( const string& fileName){
+
+	FILE * fileStream;
+
+	fileStream = fopen(fileName.c_str(), "r");
+
+	if (fileStream != NULL){
+		
+		fclose(fileStream);
+		return true;
+	}
+	return false;
 }
