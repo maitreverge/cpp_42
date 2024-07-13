@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 16:32:09 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/13 16:37:01 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/13 16:39:33 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Intern::Intern( const Intern& copy ) {*this = copy;}
 
 Intern& Intern::operator=( const Intern& right_operator ){
 
-    // no member values on this class
+    (void)right_operator;
     return *this;
 }
 
