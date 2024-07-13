@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 10:04:52 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/08 11:05:53 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/13 16:05:32 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ public:
 
 	const string&	getTarget( void )const;
 	void			setTarget( string input );
-
-	// const string	drawAsciiTree( void )const;
 
 	void 			execute( const Bureaucrat& executor )const;
 
