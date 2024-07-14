@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 16:32:09 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/13 16:39:33 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/14 16:19:05 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Intern& Intern::operator=( const Intern& right_operator ){
 }
 
 
-AForm*    Intern::makeForm( string formTarget, string formName ){
+AForm*    Intern::makeForm( string formTarget, string formName ){ /* formName can be NULL */
 
     if (formName.empty()) // ! as asked in the subject
         throw Intern::FormNameError();

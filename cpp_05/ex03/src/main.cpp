@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 09:28:10 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/13 18:08:29 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/14 16:31:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,17 @@ static void testIntern( void ){
 	try
 	{
 		Bureaucrat hercule("Hercule", 1);
-		Intern titouan_en_stage();
+		Intern titouan_en_stage;
 		
-		AForm* intern_form = titouan_en_stage.// mdr ca compile pas
+		string formTarget = "Jean-Didier";
+		string formName = "robotomy"; // can be set to "" 
 		
-		// hercule.executeForm(f1);
+		AForm* intern_form = titouan_en_stage.makeForm(formTarget,formName);
+
+		intern_form->beSigned(hercule);
+
+		hercule.executeForm(*intern_form);
+		
 	}
 	catch(const std::exception& e)
 	{
