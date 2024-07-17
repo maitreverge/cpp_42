@@ -11,7 +11,7 @@ int main(void){
 	int const *c = (int const*)&a;
 
 	
-	int *e = c; 
+	int *e = c; // won't compile
 	/*
 	When not especially specified, the compiler won't work because
        we are trying to access through a pointer a variable which is const,
