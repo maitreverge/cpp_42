@@ -3,17 +3,37 @@
 Work with casting
 */
 
-class Parent{};
-class Child1 : public Parent{};
-class Child2 : public Parent{};
+class Animal{};
+class Dog : public Animal{};
+class Cat : public Animal{};
+
+/*
+In a way, the Dog and Cat classes are more specialized than the Animal one,
+which can be considered as 
+
+*/
 
 int main(void){
 
-    Parent papa;
+    Dog a;
 
-    Child1 baby;
+    Animal* b = &a; // Implicit reinterpretation cast
 
-    Child2 *test = papa; // won't 
+    Animal* c = (Animal*) &a; // explicit reinterpretation cast
+
+    Animal* d = &a; // An Animal Pointer can be a Dog
+
+    Dog* e = d; // A Dog* can't be neceseraly an Animal
+
+    Cat* f = (Cat *)d;
+    
+    /*
+    
+    d variable is a Dog*, but still can be casted in a Cat*
+    Because Cat and DOG are both derived from Animal, we clearly understand that
+    A Dog can't be interpreted as a Cat, because those two class are very different
+    
+    */
 
 
     
