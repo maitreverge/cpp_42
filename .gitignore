@@ -75,7 +75,9 @@ this_is_target_name_shrubbery
 
 
 # Executables from cpp_06 
-
+scalar_converter
+serialization
+identify_real_type
 
 # Executables from cpp_07 
 
