@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:52:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/20 20:44:15 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/20 21:07:16 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,16 @@ void    printChar( string &input, bool isLimit ){
     }
     
     // Testing for a simple char
-    if (input.length() == 1 && std::isprint(input[0])){
+    if (input.length() == 1
+        and std::isprint(input[0])
+        and not std::isdigit(input[0])){
 
         cout << BOLD_GREEN << input << RESET;
         return;
     }
 
     // Trying to convert the string in a string
-    int result;
+    unsigned char result;
     try
     {
         result = std::atoi(input.c_str());
@@ -77,8 +79,8 @@ void    printChar( string &input, bool isLimit ){
         return;
     }
 
-    if (std::isprint(result))
-        cout << BOLD_GREEN << static_cast<char>(result) << RESET;
+    if (std::isgraph(result))
+        cout << BOLD_GREEN << result << RESET;
     else
         printColor(BOLD_RED, "impossible");
     

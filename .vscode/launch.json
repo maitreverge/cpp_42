@@ -8,7 +8,7 @@
 			"name": "(gdb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/cpp_04/ex01/world_on_fire",
+			"program": "${workspaceFolder}/cpp_06/ex00/scalar_converter",
 			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",

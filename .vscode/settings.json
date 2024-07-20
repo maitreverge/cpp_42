@@ -55,7 +55,8 @@
 		"span": "cpp",
 		"sstream": "cpp",
 		"variant": "cpp",
-		"fstream": "cpp"
+		"fstream": "cpp",
+		"codecvt": "cpp"
 	},
 	"C_Cpp.default.compilerPath": "/usr/bin/g++"
 }
