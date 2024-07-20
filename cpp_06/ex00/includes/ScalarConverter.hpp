@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:52:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/20 21:07:16 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/20 21:09:04 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void    printChar( string &input, bool isLimit ){
         return;
     }
     
-    // Testing for a simple char
+    // Testing for a simple char (exclusing 0 to 9 input)
     if (input.length() == 1
         and std::isprint(input[0])
         and not std::isdigit(input[0])){
