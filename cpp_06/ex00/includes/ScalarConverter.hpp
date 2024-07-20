@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:52:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/20 15:01:56 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/20 20:44:15 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,84 +49,67 @@ ScalarConverter::ScalarConverter( void ){}
 
 ScalarConverter::ScalarConverter( const ScalarConverter& copy ) {*this = copy;}
 
-void    printImpossible( string &input ) {
+void    printChar( string &input, bool isLimit ){
 
-    printColorNoEndl(BOLD_BLUE, input);
-    printColor(BOLD_RED, "impossible");
-}
+    // Testing for limits 
+    if (isLimit){
 
-ScalarConverter::e_Result isInputValid( string &input, string allTypes[4] , string allLimits[6] )
-{
-    if (input == "")
-        return ScalarConverter::ERROR;
-    
-    string validChars[4] = {".", "f", "+", "-"};
-    // checking error input
-    for (size_t i = 0; i < input.size(); i++)
-    {
-        if (i = 0)
-        {
-            if (input)
-        }
+        printColor(BOLD_RED, "impossible");
+        return;
     }
     
-    
-    // Checking for any limits string
-    for (size_t i = 0; i < 6; i++)
-    {
-        if (input == allLimits[i])
-            return ScalarConverter::LIMITS;
+    // Testing for a simple char
+    if (input.length() == 1 && std::isprint(input[0])){
+
+        cout << BOLD_GREEN << input << RESET;
+        return;
     }
-    
-    // Check for char
-    if (input.length() == 1)
-        return ScalarConverter::CHAR;
-    
-    // Check for int
-    
-    
-    return ScalarConverter::ERROR;
+
+    // Trying to convert the string in a string
+    int result;
+    try
+    {
+        result = std::atoi(input.c_str());
+    }
+    catch(const std::exception& e)
+    {
+        printColor(BOLD_RED, "impossible");
+        return;
+    }
+
+    if (std::isprint(result))
+        cout << BOLD_GREEN << static_cast<char>(result) << RESET;
+    else
+        printColor(BOLD_RED, "impossible");
     
 }
 
 void    ScalarConverter::convert( string &input ) {
     
-    string allTypes[4] = {"char: ", "int: ", "float: ", "double: "};
-    
     string allLimits[6] = {"+inff", "+inf", "-inff", "-inf", "nan", "nanf"};
-    
-    
-    if (size_t result = isInputValid(input,  allTypes, allLimits)){
-        
-        switch (result)
-        {
-        case LIMITS:
-            printColorNoEndl(BOLD_BLUE, "char: ");
-            printColor(BOLD_RED, "impossible");
-            printColorNoEndl(BOLD_BLUE, "int: ");
-            printColor(BOLD_RED, "impossible");
+
+    bool isLimit = false;
+
+    // Check is the string is part of a limit
+    for (size_t i = 0; i < 6; i++)
+    {
+        if (input == allLimits[i]){
             
-            break;
-        case CHAR:
-                printColorNoEndl(BOLD_BLUE, "char: ");
-                (std::isprint(input[0])) ? printColor(BOLD_GREEN, input) : printColor(BOLD_RED, "not printable");
-                printColorNoEndl(BOLD_BLUE, "int: ");
-                cout << BOLD_GREEN << static_cast<int>(input[0]) << RESET << endl;
-                printColorNoEndl(BOLD_BLUE, "float: ");
-                cout << BOLD_GREEN << static_cast<float>(input[0]) << RESET << endl;
-                printColorNoEndl(BOLD_BLUE, "double: ");
-            break;
-        
-        
-        default:
+            isLimit = true;
             break;
         }
     }
-    else{
-
-        for (size_t i = 0; i < 4; i++)
-            printImpossible(allTypes[i]);
-    }
+    
+    
+    printColorNoEndl(BOLD_BLUE, "char: ");
+    printChar(input, isLimit);
+    printColorNoEndl(BOLD_BLUE, "int: ");
+    // printInt(input);
+    printColorNoEndl(BOLD_BLUE, "double: ");
+    // printDouble(input);
+    printColorNoEndl(BOLD_BLUE, "float: ");
+    // printFloat(input);
+    
     
 }
 
