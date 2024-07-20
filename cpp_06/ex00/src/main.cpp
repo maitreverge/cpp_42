@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:17:10 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/20 13:26:20 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/20 14:36:13 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 int main(void){
 
-    string test = "97";
+    string test = "{";
 
-    // ScalarConverter::convert( test );
+    ScalarConverter::convert( test );
 
-    cout << __INT32_MAX__ << endl;
-
-    
 }

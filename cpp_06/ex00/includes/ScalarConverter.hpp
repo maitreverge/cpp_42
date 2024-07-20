@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:52:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/20 13:26:04 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/20 15:01:56 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,21 @@ void    printImpossible( string &input ) {
     printColor(BOLD_RED, "impossible");
 }
 
-ScalarConverter::e_Result isInputValid( string &input, /* string allTypes[4] , */ string allLimits[6] )
+ScalarConverter::e_Result isInputValid( string &input, string allTypes[4] , string allLimits[6] )
 {
     if (input == "")
         return ScalarConverter::ERROR;
+    
+    string validChars[4] = {".", "f", "+", "-"};
+    // checking error input
+    for (size_t i = 0; i < input.size(); i++)
+    {
+        if (i = 0)
+        {
+            if (input)
+        }
+    }
+    
     
     // Checking for any limits string
     for (size_t i = 0; i < 6; i++)
@@ -68,10 +79,12 @@ ScalarConverter::e_Result isInputValid( string &input, /* string allTypes[4] , *
     }
     
     // Check for char
-    if (input.length() == 1 and not std::isdigit(input[0]) and std::isprint(input[0]))
+    if (input.length() == 1)
         return ScalarConverter::CHAR;
     
     // Check for int
+    
+    
     return ScalarConverter::ERROR;
     
 }
@@ -83,17 +96,31 @@ void    ScalarConverter::convert( string &input ) {
     string allLimits[6] = {"+inff", "+inf", "-inff", "-inf", "nan", "nanf"};
     
     
-    if (size_t result = isInputValid(input, /* allTypes,*/ allLimits)){
+    if (size_t result = isInputValid(input,  allTypes, allLimits)){
         
-        // switch (result)
-        // {
-        // case /* constant-expression */:
-        //     /* code */
-        //     break;
+        switch (result)
+        {
+        case LIMITS:
+            printColorNoEndl(BOLD_BLUE, "char: ");
+            printColor(BOLD_RED, "impossible");
+            printColorNoEndl(BOLD_BLUE, "int: ");
+            printColor(BOLD_RED, "impossible");
+            
+            break;
+        case CHAR:
+                printColorNoEndl(BOLD_BLUE, "char: ");
+                (std::isprint(input[0])) ? printColor(BOLD_GREEN, input) : printColor(BOLD_RED, "not printable");
+                printColorNoEndl(BOLD_BLUE, "int: ");
+                cout << BOLD_GREEN << static_cast<int>(input[0]) << RESET << endl;
+                printColorNoEndl(BOLD_BLUE, "float: ");
+                cout << BOLD_GREEN << static_cast<float>(input[0]) << RESET << endl;
+                printColorNoEndl(BOLD_BLUE, "double: ");
+            break;
         
-        // default:
-        //     break;
-        // }
+        
+        default:
+            break;
+        }
     }
     else{
 
