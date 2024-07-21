@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:52:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/21 10:04:57 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/21 16:14:29 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,16 +150,7 @@ void    printInt( string &input, bool isLimit ){
         return;
     }
     
-    long long int result;
-    try
-    {
-        result = std::atoll(input.c_str());
-    }
-    catch(const std::exception& e)
-    {
-        printColor(BOLD_RED, "impossible");
-        return;
-    }
+    long long int result = std::atoll(input.c_str());
 
     /*
         atoll return 0 if the conversion failed, and such case has been handled
@@ -200,16 +191,7 @@ void    printFloat( string &input, bool isLimit){
         return;
     }
 
-    double result;
-    try
-    {
-        result = std::atof(input.c_str());
-    }
-    catch(const std::exception& e)
-    {
-        printColor(BOLD_RED, "impossible");
-        return;
-    }
+    double result = std::atof(input.c_str());
 
     /*
         atof return 0 if the conversion failed, and such case has been handled
@@ -238,7 +220,6 @@ void    ScalarConverter::convert( string &input ) {
             break;
         }
     }
-    
     
     printColorNoEndl(BOLD_BLUE, "char: ");
     printChar(input, isLimit);
