@@ -6,11 +6,36 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:17:10 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/21 09:09:58 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/21 09:32:27 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+// ! Add to templates
+// This function trims leading and trailing whitespace from a given string.
+string trimWhitespace(const string& str) {
+    // Copy the input string to a new string which will be trimmed
+    string trimmed = str;
+
+    // Find the first character position after leading whitespace
+    string::size_type left = trimmed.find_first_not_of(" \t\n\r");
+
+    // Find the last character position before trailing whitespace
+    string::size_type right = trimmed.find_last_not_of(" \t\n\r");
+    
+    // If both 'left' and 'right' are not string::npos (indicating that the string is not all whitespace)
+    if (left != string::npos && right != string::npos) {
+        // Trim the string by taking a substring from 'left' to 'right'
+        trimmed = trimmed.substr(left, right - left + 1);
+    } else {
+        // If the string is all whitespace, clear it
+        trimmed.clear();
+    }
+    
+    // Return the trimmed string
+    return trimmed;
+}
 
 int main(){
 
@@ -28,7 +53,7 @@ int main(){
     {
         getline(cin, promptUser);
 
-        // trim le prompt des whitespaces
+        promptUser = trimWhitespace(promptUser);
 
         ScalarConverter::convert(promptUser);
     } while (promptUser != "EXIT");
@@ -39,3 +64,6 @@ int main(){
     printColor(BOLD_CYAN, "Thanks for using ScalarConverter");
 
 }
+
+#include <string>
+#include <cctype>

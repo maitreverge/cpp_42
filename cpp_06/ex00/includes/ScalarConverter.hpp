@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:52:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/21 09:11:34 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/21 09:17:16 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ bool inputIsZero( string &input ) {
     int floatingPresence = 0; // for the 'f' character
     int polarityPresence = 0; // for the either '+' or the '-'
 
-    int i = 0;
+    size_t i = 0;
 
     if (input[i] == '+' or input[i] == '-'){
         
@@ -118,7 +118,7 @@ bool inputIsZero( string &input ) {
             polarityPresence++;
             if (polarityPresence > 1) return false;
         }
-        else if (input[i] == '0')
+        else if (input[i] != '0')
             return false;
     }
     
@@ -143,10 +143,12 @@ void    printInt( string &input, bool isLimit ){
         return;
     }
 
-    // edge case for 0
+    // edge case for mathematical 0 value
     if (inputIsZero(input))
-
-    // if 
+    {
+        cout << BOLD_GREEN << 0 << RESET << endl;
+        return;
+    }
     
     long long int result;
     try
@@ -159,7 +161,11 @@ void    printInt( string &input, bool isLimit ){
         return;
     }
 
-    if (result > INT_MAX or result < INT_MIN)
+    /*
+        atoll return 0 if the conversion failed, and such case has been handled
+        by the function inputIsZero
+    */
+    if (result > INT_MAX or result < INT_MIN or result == 0)
         printColor(BOLD_RED, "impossible");
     else
         cout << BOLD_GREEN << result << RESET << endl;
