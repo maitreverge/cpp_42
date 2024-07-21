@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:52:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/21 19:10:14 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/21 19:43:31 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,13 +129,6 @@ bool inputIsValid( string &input ) {
 
 void    printChar( string &input, bool isLimit ){
 
-    // Testing for limits 
-    if (isLimit){
-
-        printColor(BOLD_RED, "impossible");
-        return;
-    }
-    
     // Testing for a simple char (exclusing 0 to 9 input)
     if (input.length() == 1
         and std::isprint(input[0])
@@ -144,6 +137,14 @@ void    printChar( string &input, bool isLimit ){
         cout << BOLD_GREEN << input << RESET << endl;
         return;
     }
+    
+    // Testing for limits 
+    if (isLimit or not inputIsValid(input)){
+
+        printColor(BOLD_RED, "impossible");
+        return;
+    }
+    
 
     // Trying to convert the string in a string
     unsigned char result = std::atoi(input.c_str());
@@ -161,10 +162,12 @@ void    printInt( string &input, bool isLimit ){
     // Testing for limits keywords
     if (isLimit){
 
-        if (input == "nan")
-            printColor(BOLD_RED, "impossible");
+        if (input[0] == 'n')
+            printColor(BOLD_RED, "nan");
+        else if (input[0] == '+')
+            cout << BOLD_GREEN << "+inf" << RESET << endl;
         else
-            cout << BOLD_GREEN << input << RESET << endl;
+            cout << BOLD_GREEN << "-inf" << RESET << endl;
         return;
     }
 
@@ -217,7 +220,7 @@ void    printFloat( string &input, bool isLimit){
 
     else if (input.length() == 1 && std::isprint(input[0])) {
         
-        cout << BOLD_GREEN << std::fixed << std::setprecision(1) << static_cast<float>(input[0]) << "f" << RESET << endl;
+        cout << BOLD_GREEN << std::fixed << std::setprecision(5) << static_cast<float>(input[0]) << "f" << RESET << endl;
         return;
     }
     
@@ -243,7 +246,7 @@ void    printFloat( string &input, bool isLimit){
     if (result > __FLT32_MAX__ or result < __FLT32_MIN__ or result == 0)
         printColor(BOLD_RED, "impossible");
     else
-        cout << BOLD_GREEN << static_cast<float>(result) << "f" << RESET << endl;
+        cout << BOLD_GREEN << std::fixed << std::setprecision(5) << static_cast<float>(result) << "f" << RESET << endl;
 
     return;
 }
@@ -263,7 +266,7 @@ void    printDouble( string &input, bool isLimit){
     }
     
     else if (input.length() == 1 && std::isprint(input[0])) {
-        cout << BOLD_GREEN << std::fixed << std::setprecision(1) << static_cast<double>(input[0]) << RESET << endl;
+        cout << BOLD_GREEN << std::fixed << std::setprecision(5) << static_cast<double>(input[0]) << RESET << endl;
         return;
     }
     
@@ -289,7 +292,7 @@ void    printDouble( string &input, bool isLimit){
     if (result > __DBL_MAX__ or result < __DBL_MIN__ or result == 0)
         printColor(BOLD_RED, "impossible");
     else
-        cout << BOLD_GREEN << static_cast<double>(result) << RESET << endl;
+        cout << BOLD_GREEN << std::fixed << std::setprecision(5) << static_cast<double>(result) << RESET << endl;
 
     return;
 }
