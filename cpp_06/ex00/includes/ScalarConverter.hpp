@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:52:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/21 07:59:57 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/21 09:11:34 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,53 @@ void    printChar( string &input, bool isLimit ){
     
 }
 
-void    printInt( string &input, bool isLimit){
+bool inputIsZero( string &input ) {
+    
+    int decimalPresence = 0; // for '.'
+    int floatingPresence = 0; // for the 'f' character
+    int polarityPresence = 0; // for the either '+' or the '-'
 
+    int i = 0;
+
+    if (input[i] == '+' or input[i] == '-'){
+        
+        polarityPresence = true;
+        i++;
+    }
+    
+    // loop throught the whole string
+    for (; i < input.length(); i++)
+    {
+        if (input[i] == '.'){
+            
+            decimalPresence++;
+            if (decimalPresence > 1) return false;
+        }
+        else if (input[i] == 'f'){
+            
+            floatingPresence++;
+            if (floatingPresence > 1) return false;
+        }
+        else if (input[i] == '+' or input[i] == '-'){
+
+            polarityPresence++;
+            if (polarityPresence > 1) return false;
+        }
+        else if (input[i] == '0')
+            return false;
+    }
+    
+    return true;
+}
+
+void    printInt( string &input, bool isLimit ){
+
+    if (input.empty()){
+        
+        printColor(BOLD_RED, "impossible");
+        return;
+    }
+    
     // Testing for limits keywords
     if (isLimit){
 
@@ -99,6 +144,7 @@ void    printInt( string &input, bool isLimit){
     }
 
     // edge case for 0
+    if (inputIsZero(input))
 
     // if 
     

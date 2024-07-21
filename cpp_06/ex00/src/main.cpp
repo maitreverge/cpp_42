@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:17:10 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/20 20:51:10 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/21 09:09:58 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ int main(){
     do
     {
         getline(cin, promptUser);
+
+        // trim le prompt des whitespaces
+
         ScalarConverter::convert(promptUser);
     } while (promptUser != "EXIT");
     
