@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:52:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/21 09:17:16 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/21 10:04:57 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,56 @@ void    printInt( string &input, bool isLimit ){
     return;
 }
 
+void    printFloat( string &input, bool isLimit){
+
+    if (input.empty()){
+        
+        printColor(BOLD_RED, "nanf");
+        return;
+    }
+    
+    // Testing for limits keywords
+    if (isLimit){
+
+        if (input[0] == 'n')
+            printColor(BOLD_RED, "nanf");
+        else if (input[0] == '+')
+            cout << BOLD_GREEN << "+inff" << RESET << endl;
+        else
+            cout << BOLD_GREEN << "-inff" << RESET << endl;
+        return;
+    }
+
+    // edge case for mathematical 0 value
+    if (inputIsZero(input))
+    {
+        cout << BOLD_GREEN << "0.0f" << RESET << endl;
+        return;
+    }
+
+    double result;
+    try
+    {
+        result = std::atof(input.c_str());
+    }
+    catch(const std::exception& e)
+    {
+        printColor(BOLD_RED, "impossible");
+        return;
+    }
+
+    /*
+        atof return 0 if the conversion failed, and such case has been handled
+        by the function inputIsZero
+    */
+    if (result > __FLT32_MAX__ or result < __FLT32_MIN__ or result == 0)
+        printColor(BOLD_RED, "impossible");
+    else
+        cout << BOLD_GREEN << static_cast<float>(result) << "f" << RESET << endl;
+
+    return;
+}
+
 void    ScalarConverter::convert( string &input ) {
     
     string allLimits[6] = {"+inff", "+inf", "-inff", "-inf", "nan", "nanf"};
@@ -194,10 +244,10 @@ void    ScalarConverter::convert( string &input ) {
     printChar(input, isLimit);
     printColorNoEndl(BOLD_BLUE, "int: ");
     printInt(input, isLimit);
+    printColorNoEndl(BOLD_BLUE, "float: ");
+    printFloat(input, isLimit);
     printColorNoEndl(BOLD_BLUE, "double: ");
     // printDouble(input);
-    printColorNoEndl(BOLD_BLUE, "float: ");
-    // printFloat(input);
     
     
 }
