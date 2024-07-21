@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_template.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/20 13:20:37 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/21 07:40:30 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <string>
-#include <limits>
+#include <limits.h>
 
 
 using std::string;

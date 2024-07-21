@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:52:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/20 21:09:04 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/21 07:59:57 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void    printChar( string &input, bool isLimit ){
         and std::isprint(input[0])
         and not std::isdigit(input[0])){
 
-        cout << BOLD_GREEN << input << RESET;
+        cout << BOLD_GREEN << input << RESET << endl;
         return;
     }
 
@@ -80,10 +80,45 @@ void    printChar( string &input, bool isLimit ){
     }
 
     if (std::isgraph(result))
-        cout << BOLD_GREEN << result << RESET;
+        cout << BOLD_GREEN << result << RESET << endl;
     else
-        printColor(BOLD_RED, "impossible");
+        printColor(BOLD_RED, "Non displayable");
     
+}
+
+void    printInt( string &input, bool isLimit){
+
+    // Testing for limits keywords
+    if (isLimit){
+
+        if (input == "nan")
+            printColor(BOLD_RED, "impossible");
+        else
+            cout << BOLD_GREEN << input << RESET << endl;
+        return;
+    }
+
+    // edge case for 0
+
+    // if 
+    
+    long long int result;
+    try
+    {
+        result = std::atoll(input.c_str());
+    }
+    catch(const std::exception& e)
+    {
+        printColor(BOLD_RED, "impossible");
+        return;
+    }
+
+    if (result > INT_MAX or result < INT_MIN)
+        printColor(BOLD_RED, "impossible");
+    else
+        cout << BOLD_GREEN << result << RESET << endl;
+
+    return;
 }
 
 void    ScalarConverter::convert( string &input ) {
@@ -106,7 +141,7 @@ void    ScalarConverter::convert( string &input ) {
     printColorNoEndl(BOLD_BLUE, "char: ");
     printChar(input, isLimit);
     printColorNoEndl(BOLD_BLUE, "int: ");
-    // printInt(input);
+    printInt(input, isLimit);
     printColorNoEndl(BOLD_BLUE, "double: ");
     // printDouble(input);
     printColorNoEndl(BOLD_BLUE, "float: ");
