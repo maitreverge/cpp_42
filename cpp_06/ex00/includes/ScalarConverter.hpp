@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:52:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/21 17:26:46 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/21 19:10:14 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,12 +158,6 @@ void    printChar( string &input, bool isLimit ){
 
 void    printInt( string &input, bool isLimit ){
 
-    if (input.empty() or not inputIsValid(input)){
-        
-        printColor(BOLD_RED, "impossible");
-        return;
-    }
-    
     // Testing for limits keywords
     if (isLimit){
 
@@ -174,8 +168,20 @@ void    printInt( string &input, bool isLimit ){
         return;
     }
 
+    // edge case for single chars
+    else if (input.length() == 1 && std::isprint(input[0])) {
+        cout << BOLD_GREEN << static_cast<int>(input[0]) << RESET << endl;
+        return;
+    }
+    
+    else if (input.empty() or not inputIsValid(input)){
+        
+        printColor(BOLD_RED, "impossible");
+        return;
+    }
+
     // edge case for mathematical 0 value
-    if (inputIsZero(input))
+    else if (inputIsZero(input))
     {
         cout << BOLD_GREEN << 0 << RESET << endl;
         return;
@@ -197,12 +203,6 @@ void    printInt( string &input, bool isLimit ){
 
 void    printFloat( string &input, bool isLimit){
 
-    if (input.empty() or not inputIsValid(input)){
-        
-        printColor(BOLD_RED, "nanf");
-        return;
-    }
-    
     // Testing for limits keywords
     if (isLimit){
 
@@ -212,6 +212,18 @@ void    printFloat( string &input, bool isLimit){
             cout << BOLD_GREEN << "+inff" << RESET << endl;
         else
             cout << BOLD_GREEN << "-inff" << RESET << endl;
+        return;
+    }
+
+    else if (input.length() == 1 && std::isprint(input[0])) {
+        
+        cout << BOLD_GREEN << std::fixed << std::setprecision(1) << static_cast<float>(input[0]) << "f" << RESET << endl;
+        return;
+    }
+    
+    if (input.empty() or not inputIsValid(input)){
+        
+        printColor(BOLD_RED, "nanf");
         return;
     }
 
@@ -238,12 +250,6 @@ void    printFloat( string &input, bool isLimit){
 
 void    printDouble( string &input, bool isLimit){
 
-    if (input.empty() or not inputIsValid(input)){
-        
-        printColor(BOLD_RED, "nan");
-        return;
-    }
-    
     // Testing for limits keywords
     if (isLimit){
 
@@ -255,9 +261,20 @@ void    printDouble( string &input, bool isLimit){
             cout << BOLD_GREEN << "-inf" << RESET << endl;
         return;
     }
+    
+    else if (input.length() == 1 && std::isprint(input[0])) {
+        cout << BOLD_GREEN << std::fixed << std::setprecision(1) << static_cast<double>(input[0]) << RESET << endl;
+        return;
+    }
+    
+    else if (input.empty() or not inputIsValid(input)){
+        
+        printColor(BOLD_RED, "nan");
+        return;
+    }
 
     // edge case for mathematical 0 value
-    if (inputIsZero(input))
+    else if (inputIsZero(input))
     {
         cout << BOLD_GREEN << "0.0" << RESET << endl;
         return;

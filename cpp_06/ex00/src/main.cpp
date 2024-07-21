@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 10:17:10 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/21 09:32:27 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/21 17:29:02 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int main(){
     
     printColor(BOLD_GREEN, "Type anything to be converted");
     print("Example : 65, k, 2.02f, 42, Hello World, 1000000000000000");
+    print("You can also type limits such as : \"+inff\", \"+inf\", \"-inff\", \"-inf\", \"nan\", \"nanf\"");
     printColor(BOLD_RED, "Type \"EXIT\" for quitting");
     
     do
