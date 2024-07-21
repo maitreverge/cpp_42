@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:52:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/21 17:17:11 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/21 17:26:46 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,43 +48,6 @@ ScalarConverter::ScalarConverter( void ){}
 
 
 ScalarConverter::ScalarConverter( const ScalarConverter& copy ) {*this = copy;}
-
-void    printChar( string &input, bool isLimit ){
-
-    // Testing for limits 
-    if (isLimit){
-
-        printColor(BOLD_RED, "impossible");
-        return;
-    }
-    
-    // Testing for a simple char (exclusing 0 to 9 input)
-    if (input.length() == 1
-        and std::isprint(input[0])
-        and not std::isdigit(input[0])){
-
-        cout << BOLD_GREEN << input << RESET << endl;
-        return;
-    }
-
-    // Trying to convert the string in a string
-    unsigned char result;
-    try
-    {
-        result = std::atoi(input.c_str());
-    }
-    catch(const std::exception& e)
-    {
-        printColor(BOLD_RED, "impossible");
-        return;
-    }
-
-    if (std::isgraph(result))
-        cout << BOLD_GREEN << result << RESET << endl;
-    else
-        printColor(BOLD_RED, "Non displayable");
-    
-}
 
 bool inputIsZero( string &input ) {
     
@@ -164,9 +127,38 @@ bool inputIsValid( string &input ) {
     return true;
 }
 
+void    printChar( string &input, bool isLimit ){
+
+    // Testing for limits 
+    if (isLimit){
+
+        printColor(BOLD_RED, "impossible");
+        return;
+    }
+    
+    // Testing for a simple char (exclusing 0 to 9 input)
+    if (input.length() == 1
+        and std::isprint(input[0])
+        and not std::isdigit(input[0])){
+
+        cout << BOLD_GREEN << input << RESET << endl;
+        return;
+    }
+
+    // Trying to convert the string in a string
+    unsigned char result = std::atoi(input.c_str());
+
+    if (std::isgraph(result))
+        cout << BOLD_GREEN << result << RESET << endl;
+    else
+        printColor(BOLD_RED, "Non displayable");
+    
+}
+
+
 void    printInt( string &input, bool isLimit ){
 
-    if (input.empty()){
+    if (input.empty() or not inputIsValid(input)){
         
         printColor(BOLD_RED, "impossible");
         return;
@@ -205,7 +197,7 @@ void    printInt( string &input, bool isLimit ){
 
 void    printFloat( string &input, bool isLimit){
 
-    if (input.empty()){
+    if (input.empty() or not inputIsValid(input)){
         
         printColor(BOLD_RED, "nanf");
         return;
@@ -244,6 +236,47 @@ void    printFloat( string &input, bool isLimit){
     return;
 }
 
+void    printDouble( string &input, bool isLimit){
+
+    if (input.empty() or not inputIsValid(input)){
+        
+        printColor(BOLD_RED, "nan");
+        return;
+    }
+    
+    // Testing for limits keywords
+    if (isLimit){
+
+        if (input[0] == 'n')
+            printColor(BOLD_RED, "nan");
+        else if (input[0] == '+')
+            cout << BOLD_GREEN << "+inf" << RESET << endl;
+        else
+            cout << BOLD_GREEN << "-inf" << RESET << endl;
+        return;
+    }
+
+    // edge case for mathematical 0 value
+    if (inputIsZero(input))
+    {
+        cout << BOLD_GREEN << "0.0" << RESET << endl;
+        return;
+    }
+
+    long double result = std::atof(input.c_str());
+
+    /*
+        atof return 0 if the conversion failed, and such case has been handled
+        by the function inputIsZero
+    */
+    if (result > __DBL_MAX__ or result < __DBL_MIN__ or result == 0)
+        printColor(BOLD_RED, "impossible");
+    else
+        cout << BOLD_GREEN << static_cast<double>(result) << RESET << endl;
+
+    return;
+}
+
 void    ScalarConverter::convert( string &input ) {
     
     string allLimits[6] = {"+inff", "+inf", "-inff", "-inf", "nan", "nanf"};
@@ -267,8 +300,7 @@ void    ScalarConverter::convert( string &input ) {
     printColorNoEndl(BOLD_BLUE, "float: ");
     printFloat(input, isLimit);
     printColorNoEndl(BOLD_BLUE, "double: ");
-    // printDouble(input);
-    
+    printDouble(input, isLimit);
     
 }
 
