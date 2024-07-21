@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:52:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/21 16:14:29 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/21 17:17:11 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,45 @@ bool inputIsZero( string &input ) {
             if (polarityPresence > 1) return false;
         }
         else if (input[i] != '0')
+            return false;
+    }
+    
+    return true;
+}
+
+bool inputIsValid( string &input ) {
+    
+    int decimalPresence = 0; // for '.'
+    int floatingPresence = 0; // for the 'f' character
+    int polarityPresence = 0; // for the either '+' or the '-'
+
+    size_t i = 0;
+
+    if (input[i] == '+' or input[i] == '-'){
+        
+        polarityPresence = true;
+        i++;
+    }
+    
+    // loop throught the whole string
+    for (; i < input.length(); i++)
+    {
+        if (input[i] == '.'){
+            
+            decimalPresence++;
+            if (decimalPresence > 1) return false;
+        }
+        else if (input[i] == 'f'){
+            
+            floatingPresence++;
+            if (floatingPresence > 1) return false;
+        }
+        else if (input[i] == '+' or input[i] == '-'){
+
+            polarityPresence++;
+            if (polarityPresence > 1) return false;
+        }
+        else if (not isdigit(input[i]))
             return false;
     }
     
