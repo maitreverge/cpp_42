@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/21 18:49:15 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/22 09:24:55 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <string>
 #include <climits>
 #include <iomanip>
+#include <cfloat>
 
 
 using std::string;
