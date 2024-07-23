@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   5_dynamic_cast.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 10:10:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/18 10:56:12 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/23 11:36:19 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,23 @@ Il faut donc faire de la gestion d'erreur.
 
 */
 
-class Parent
+class Base
 {
     public:
-    virtual ~Parent(void){}
+    virtual ~Base(void){}
 };
-class Child1 : public Parent{};
-class Child2 : public Parent{};
+class A : public Base{};
+class B : public Base{};
 
 class Random{};
 
 int main(void){
 
-    Child1 a; // Reference value
+    A a; // Reference value
 
-    Parent* b = &a; // Implicit upcast
+    Base* b = &a; // Implicit upcast
 
-    Child1* c = dynamic_cast<Child1*>(b);
+    A* c = dynamic_cast<A*>(b);
 
     /*
     Dans le cas ou le dynamic cast essaie de downcaster, il peut renvoyer NULL si le dynamic_cast echoue
@@ -63,7 +63,7 @@ int main(void){
         cout << "Conversion is OKAY"  << endl;        
 
     try{
-        Child2 & d = dynamic_cast<Child2 &>(*b);
+        B & d = dynamic_cast<B &>(*b);
         cout << "Conversion is OKAY" << endl;
     }
     catch(std::bad_cast &bc){

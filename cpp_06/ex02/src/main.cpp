@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 21:16:35 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/23 11:41:00 by ubuntu           ###   ########.fr       */
+/*   Created: 2024/07/23 11:25:27 by ubuntu            #+#    #+#             */
+/*   Updated: 2024/07/23 12:08:21 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Base.hpp"
 
-#include "utils_template.hpp"
+int main(void){
 
-class Base
-{
+    // Declaring a Base class pointer
+    Base *baseClass;
 
-public:
+    // baseClass got either a base A, B or C base on ramdom value.
+    baseClass = generate();
 
-    virtual ~Base(){};
+    Base &refBaseClass = *baseClass;
 
-};
+    identify(baseClass);
 
-Base * generate(void);
-void identify(Base* p);
-void identify(Base& p);
+    identify(refBaseClass);
+
+    
+}
