@@ -6,26 +6,29 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:56:30 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/24 19:44:01 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/24 20:00:37 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "utils_template.hpp"
 
 template < typename T >
 class Array
 {
     public:
-        Array( void ): mainArray(NULL){} // Init a empty array, so ini the pointer to NULL
+        Array( void ): mainArray(NULL){} // Init a empty array, so init the pointer to NULL
 
         Array ( unsigned int n ) : mainArray(new T[n] ){
-                
+            
+            // deep init each member to 0
             for (size_t i = 0; i < n; i++)
             {
                 mainArray[i] = 0;
             }
         }
 
-        // constructeur de copie
-        Array (const Array &copy) : {
+        // Copy constructor
+        Array (const Array &copy) {
 
             int size = this->size();
 
@@ -33,11 +36,11 @@ class Array
             // which copy the pointer, then kinda links two classes
             for (size_t i = 0; i < size; i++)
             {
-                this->mainArray[i] = copy.mainArray[i]
+                this->mainArray[i] = copy.mainArray[i];
             }
         }
 
-        // surcharge operateur =
+        // Operator= overload
         Array& operator=(const Array& right_operator){
             
             int size = this->size();
@@ -47,17 +50,18 @@ class Array
 
                 for (size_t i = 0; i < size; i++)
                 {
-                    this->mainArray[i] = right_operator.mainArray[i]
+                    this->mainArray[i] = right_operator.mainArray[i];
                 }
             }
             return *this;            
         }
 
-        T &accessArray( const int &index ){
+        // getter
+        T &accessArray( const int &index )const{
 
             try
             {
-                return mainArray[i];
+                return this->mainArray[index];
             }
             catch(const std::exception& e)
             {
@@ -69,15 +73,17 @@ class Array
 
         int size( void )const{
 
-            int size = 0;
+            // return sizeof(mainArray);
 
-            T test;
+
+            int size = 0;
 
             while(1){
 
+                T test;
                 try
                 {
-                    test = mainArray[size++];
+                    test = this->mainArray[size++];
                 }
                 catch(const std::exception& e)
                 {
