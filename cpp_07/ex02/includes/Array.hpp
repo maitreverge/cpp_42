@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:56:30 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/24 20:02:58 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/24 21:04:59 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,27 +72,19 @@ class Array
         }
 
         int size( void )const{
+            
+            
+            int *current_address = this->mainArray;
 
-            // return sizeof(mainArray);
+            int *adress_p1 = &this->mainArray[0];
+            
+            // int *size
 
+            cout << current_address << endl;
+            
+            cout << adress_p1 << endl;
 
-            int size = 0;
-
-            while(1){
-
-                T test;
-                try
-                {
-                    test = this->mainArray[size++];
-                }
-                catch(const std::out_of_range& e)
-                {
-                    break;
-                    static_cast<void>(test);
-                }
-                
-            }
-            return size;
+            return *current_address;
         }
     
     private:
