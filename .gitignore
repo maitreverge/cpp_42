@@ -80,7 +80,9 @@ serialization
 identify_real_type
 
 # Executables from cpp_07 
-
+start_with_few_functions
+iter
+array
 
 # Executables from cpp_08 
 
