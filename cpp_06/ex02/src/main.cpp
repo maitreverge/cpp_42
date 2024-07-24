@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:25:27 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/23 12:08:21 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/24 09:53:13 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ int main(void){
 
     identify(refBaseClass);
 
-    
+    delete baseClass;
 }
