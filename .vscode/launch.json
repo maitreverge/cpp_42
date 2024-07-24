@@ -8,7 +8,7 @@
 			"name": "(gdb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/cpp_06/ex00/scalar_converter",
+			"program": "${workspaceFolder}/cpp_07/ex02/array",
 			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",

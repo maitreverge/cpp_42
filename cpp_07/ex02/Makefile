@@ -6,7 +6,7 @@
 #    By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/28 09:35:55 by flverge           #+#    #+#              #
-#    Updated: 2024/07/24 10:09:15 by ubuntu           ###   ########.fr        #
+#    Updated: 2024/07/24 20:03:20 by ubuntu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ ORANGE = \033[93m
 CC = c++
 
 # Compiler flags
-FLAGS = -Wall -Wextra -Werror -Wshadow -Wno-reorder -std=c++98
+FLAGS = -Wall -Wextra -Werror -Wshadow -Wno-reorder -std=c++98 -g
 
 # Source files
 SRC_DIR := src

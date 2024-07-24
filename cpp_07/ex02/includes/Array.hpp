@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:56:30 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/24 20:00:37 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/24 20:02:58 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,10 @@ class Array
                 {
                     test = this->mainArray[size++];
                 }
-                catch(const std::exception& e)
+                catch(const std::out_of_range& e)
                 {
                     break;
+                    static_cast<void>(test);
                 }
                 
             }
