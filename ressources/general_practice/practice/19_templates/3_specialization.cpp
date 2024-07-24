@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 13:42:53 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/24 14:31:47 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/24 16:15:01 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,24 @@ int main() {
     std::cout << "max(\"apple\", \"banana\"): " << max(str1, str2) << std::endl;
 
     return 0;
+}
+
+
+
+// General template
+template<typename T>
+void theFunctionTemplate(T value) {
+    // General implementation
+}
+
+// Explicit specialization for int
+template<>
+void theFunctionTemplate<int>(int number) {
+    // Specialized implementation for int
+}
+
+// Explicit specialization for float
+template<>
+void theFunctionTemplate<float>(float nb) {
+    // Specialized implementation for float
 }
