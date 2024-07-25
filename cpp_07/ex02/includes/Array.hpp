@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:56:30 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/25 10:54:12 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/25 12:44:40 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,20 @@ class Array
         }
 
         // Copy constructor
-        Array (const Array &copy) {
+        Array (const Array &copy) : _mainArray(new T[copy._size]), _size(copy._size) {
 
-            int size = this->size();
+            // int size = copy.size();
 
-            // deep copy instead of list init
-            // which copy the pointer, then kinda links two classes
-            for (int i = 0; i < size; i++)
+            // this->_mainArray = new T[size];
+
+            // // deep copy instead of list init
+            // // which copy the pointer, then kinda links two classes
+            for (int i = 0; i < this->_size; i++)
             {
                 this->_mainArray[i] = copy._mainArray[i];
             }
+            
+            // *this = copy;
         }
 
         class IndexOutOfRange : public exception
@@ -59,20 +63,27 @@ class Array
         // Operator= overload
         Array& operator=(const Array& right_operator){
             
-            int size = this->size();
-
-            // Same, deep copy
-            if (this != right_operator){
-
-                for (size_t i = 0; i < size; i++)
+            if (this != &right_operator){
+                
+                T* tempArray = new T[right_operator._size];
+                
+                for (int i = 0; i < right_operator._size; i++)
                 {
-                    this->_mainArray[i] = right_operator._mainArray[i];
+                    tempArray[i] = right_operator._mainArray[i];
                 }
+                
+                delete[] this->_mainArray;
+                
+                this->_mainArray = tempArray;
+                
+                this->_size = right_operator._size;
             }
-            return *this;            
+            return *this;           
         }
 
         int size( void )const{ return this->_size; }
+
+        ~Array( void ){ delete [] _mainArray; }
     
     private:
         T   *_mainArray;
