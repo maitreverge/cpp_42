@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   utils_template.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/08 09:42:36 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/25 14:03:20 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+// Includes all ANSII color codes
+#include "colors.hpp"
+
+// Libraries
 #include <iostream>
 #include <fstream>
 #include <istream>
@@ -19,7 +23,7 @@
 #include <sstream>
 #include <cstdlib>
 
-
+// Using keywords
 using std::string;
 using std::cout;
 using std::endl;
@@ -31,16 +35,59 @@ using std::ostream;
 using std::stringstream;
 using std::exception;
 
-#include "colors.hpp" // Includes all ANSII color codes
 
-// Utils wrappers functions 
-void	print( const string& str );
-void	printNoEndl( const string& str );
-void	printColor( string COLOR, const string& str );
-void	printColorNoEndl( string COLOR, const string& str );
+// ---------------------  Templates functions  ---------------------
+
+/**
+ * @brief Prints an template object with an `endl`
+ * 
+ * @tparam T 
+ * @param obj 
+ */
+template< typename T >
+void	print( const T& obj ){
+	cout << obj << endl;
+}
+
+/**
+ * @brief Prints an template object with no `endl`.
+ * 
+ * @tparam T 
+ * @param obj 
+ */
+template< typename T >
+void	printNoEndl( const T& obj ){
+	cout << obj;
+}
+
+/**
+ * @brief Prints an template object with the ANSII `COLOR` code with an `endl`. 
+ * 
+ * @tparam T 
+ * @param COLOR 
+ * @param obj 
+ */
+template< typename T >
+void	printColor( string COLOR, const T& obj){
+
+	cout << COLOR << obj << RESET << endl;
+}
+
+/**
+ * @brief Prints an template object with the ANSII `COLOR` code without an `endl`.
+ * 
+ * @tparam T 
+ * @param COLOR 
+ * @param obj 
+ */
+template< typename T >
+void	printColorNoEndl( string COLOR, const T& obj ){
+
+	cout << COLOR << obj << RESET;
+}
+
+//  ------------------ Functions prototypes ------------------ 
 void	clearScreen( void );
 void	customExit( const string& str );
-string	customItoA( const long long int& target);
-int 	customAtoI( const string& str );
 void	extraLine( void );
 bool	doesFileExists( const string& fileName);
