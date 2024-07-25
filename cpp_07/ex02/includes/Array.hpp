@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:56:30 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/25 12:44:40 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/25 13:10:23 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ class Array
                 this->_mainArray[i] = copy._mainArray[i];
             }
             
-            // *this = copy;
+            *this = copy;
         }
 
         class IndexOutOfRange : public exception
@@ -53,10 +53,12 @@ class Array
                 }
         };
 
-        T &operator[](const int& index){
+        T &operator[](const int &index){
 
-            if (index > this->_size)
+            if (index >= this->_size or index < 0){
                 throw IndexOutOfRange();
+				// std::cout << "Error" << std::endl;
+			}
             return _mainArray[index];
         }
 

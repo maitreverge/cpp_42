@@ -49,5 +49,6 @@ int main(int, char**)
         numbers[i] = rand();
     }
     delete [] mirror;//
+	std::cout << "coucou" << std::endl;
     return 0;
 }
