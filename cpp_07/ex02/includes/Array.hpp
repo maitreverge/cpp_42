@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:56:30 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/24 21:04:59 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/25 10:54:12 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ template < typename T >
 class Array
 {
     public:
-        Array( void ): mainArray(NULL){} // Init a empty array, so init the pointer to NULL
+        Array( void ): _mainArray(NULL), _size(0){} // Init a empty array, so init the pointer to NULL
 
-        Array ( unsigned int n ) : mainArray(new T[n] ){
+        Array ( unsigned int n ) : _mainArray(new T[n] ), _size(n) {
             
             // deep init each member to 0
             for (size_t i = 0; i < n; i++)
             {
-                mainArray[i] = 0;
+                _mainArray[i] = 0;
             }
         }
 
@@ -34,10 +34,26 @@ class Array
 
             // deep copy instead of list init
             // which copy the pointer, then kinda links two classes
-            for (size_t i = 0; i < size; i++)
+            for (int i = 0; i < size; i++)
             {
-                this->mainArray[i] = copy.mainArray[i];
+                this->_mainArray[i] = copy._mainArray[i];
             }
+        }
+
+        class IndexOutOfRange : public exception
+        {
+            public:
+                virtual const char* what() const throw() {
+
+                    return ("Selected index is out of range");
+                }
+        };
+
+        T &operator[](const int& index){
+
+            if (index > this->_size)
+                throw IndexOutOfRange();
+            return _mainArray[index];
         }
 
         // Operator= overload
@@ -50,43 +66,15 @@ class Array
 
                 for (size_t i = 0; i < size; i++)
                 {
-                    this->mainArray[i] = right_operator.mainArray[i];
+                    this->_mainArray[i] = right_operator._mainArray[i];
                 }
             }
             return *this;            
         }
 
-        // getter
-        T &accessArray( const int &index )const{
-
-            try
-            {
-                return this->mainArray[index];
-            }
-            catch(const std::exception& e)
-            {
-                std::cerr << e.what() << '\n';
-                cout << "Out of bounds accessing with accessArray" << endl;
-            }
-            
-        }
-
-        int size( void )const{
-            
-            
-            int *current_address = this->mainArray;
-
-            int *adress_p1 = &this->mainArray[0];
-            
-            // int *size
-
-            cout << current_address << endl;
-            
-            cout << adress_p1 << endl;
-
-            return *current_address;
-        }
+        int size( void )const{ return this->_size; }
     
     private:
-        T *mainArray;
+        T   *_mainArray;
+        int _size;
 };
