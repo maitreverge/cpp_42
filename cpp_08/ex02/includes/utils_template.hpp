@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/25 14:03:20 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/25 14:08:07 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ using std::exception;
  */
 template< typename T >
 void	print( const T& obj ){
+	
 	cout << obj << endl;
 }
 
@@ -57,6 +58,7 @@ void	print( const T& obj ){
  */
 template< typename T >
 void	printNoEndl( const T& obj ){
+	
 	cout << obj;
 }
 
