@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:56:30 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/25 13:10:23 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/25 13:27:12 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@ class Array
         // Copy constructor
         Array (const Array &copy) : _mainArray(new T[copy._size]), _size(copy._size) {
 
-            // int size = copy.size();
-
-            // this->_mainArray = new T[size];
-
-            // // deep copy instead of list init
-            // // which copy the pointer, then kinda links two classes
             for (int i = 0; i < this->_size; i++)
             {
                 this->_mainArray[i] = copy._mainArray[i];
@@ -44,6 +38,7 @@ class Array
             *this = copy;
         }
 
+        // Custom exception class
         class IndexOutOfRange : public exception
         {
             public:
@@ -53,12 +48,11 @@ class Array
                 }
         };
 
+        // [] operator overload
         T &operator[](const int &index){
 
-            if (index >= this->_size or index < 0){
+            if (index >= this->_size or index < 0)
                 throw IndexOutOfRange();
-				// std::cout << "Error" << std::endl;
-			}
             return _mainArray[index];
         }
 
@@ -67,6 +61,7 @@ class Array
             
             if (this != &right_operator){
                 
+                // Create a temp array in which we are going to deep init each member
                 T* tempArray = new T[right_operator._size];
                 
                 for (int i = 0; i < right_operator._size; i++)
@@ -74,6 +69,13 @@ class Array
                     tempArray[i] = right_operator._mainArray[i];
                 }
                 
+                /*
+                    Then we delete the old array if it does exists
+                    !                   IMPORTANT
+                    The condition
+                    !               if (this->_mainArray)
+                    is an unecessary check since deleting a NULL pointer is C++ okay.
+                */
                 delete[] this->_mainArray;
                 
                 this->_mainArray = tempArray;
@@ -85,7 +87,7 @@ class Array
 
         int size( void )const{ return this->_size; }
 
-        ~Array( void ){ delete [] _mainArray; }
+        ~Array( void ){ delete[] _mainArray; }
     
     private:
         T   *_mainArray;
