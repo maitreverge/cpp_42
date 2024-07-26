@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 13:15:42 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/26 13:19:25 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/26 18:59:44 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,18 @@
  * @return int 
  */
 template < typename T >
-int easyfind( T &haystack, int needle ){
+void easyfind( T &haystack, int needle ){
 
+    typedef typename T::iterator Iterator;
+    for ( Iterator it = haystack.begin(); it != haystack.end(); ++it ){
+        
+        if (*it == needle){
+            
+            printColor(BOLD_GREEN, "Needle has been found !");
+            return;
+        }
+    }
+    printColor(BOLD_RED, "Needle has not been found !");
+    return;
     
 }
