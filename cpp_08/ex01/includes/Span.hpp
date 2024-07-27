@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 17:24:37 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/27 22:46:10 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/27 23:28:52 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,16 @@ public:
 
     void    displayVector( void )const;
 
-    int     getRand( void )const;
-
     int     shortestSpan();
     
     int     longestSpan();
 
-    // Size Input Exception
+    // ---------- Exceptions ----------
     class NullSizeInput : public exception
     {
         public:
             virtual const char* what() const throw(){
-                return "Input Can't Be Null";
+                return "Input can't be NULL.";
         } 
     };
 
@@ -57,7 +55,7 @@ public:
     {
         public:
             virtual const char* what() const throw(){
-                return "Vector is Full";
+                return "Vector is Full.";
         } 
     };
 
@@ -65,7 +63,7 @@ public:
     {
         public:
             virtual const char* what() const throw(){
-                return "Vector is too short to calculate span";
+                return "Vector is too short to calculate both SPANs.";
         } 
     };
 
