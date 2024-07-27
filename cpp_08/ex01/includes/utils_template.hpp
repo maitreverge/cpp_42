@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/27 19:06:51 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/27 20:00:18 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 #include <stack>
 #include <algorithm>
 #include <complex>
+#include <ctime>
 
 // Using keywords
 using std::string;

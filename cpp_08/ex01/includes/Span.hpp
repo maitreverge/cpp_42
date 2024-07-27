@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 17:24:37 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/27 19:55:14 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/27 20:06:42 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,17 @@ public:
     // Size Input Exception
     class NullSizeInput : public exception
     {
-        virtual const char* what() throw(){
-            return "Input Can't Be Null";
+        public:
+            virtual const char* what() const throw(){
+                return "Input Can't Be Null";
         } 
     };
 
     class FullVector : public exception
     {
-        virtual const char* what() throw(){
-            return "Vector is Full";
+        public:
+            virtual const char* what() const throw(){
+                return "Vector is Full";
         } 
     };
 
@@ -103,12 +105,17 @@ void    Span::addNumber( int inputNumber ){
 
 void    Span::fillInVector( unsigned int nbInputs ){
 
-    if (_sizeMax > this->_mainVector.size() + nbInputs){
+    if (_sizeMax >= this->_mainVector.size() + nbInputs){
         
         std::vector<int> temp(nbInputs);
+
+        std::srand(unsigned(std::time(NULL)));
         
         
-        std::fill(temp.begin(), temp.end(), this->getRand());
+        // std::fill(temp.begin(), temp.end(), this->getRand());
+        // srand(time(NULL));
+
+        std::generate(temp.begin(), temp.end(), std::rand);
 
         _mainVector.insert(_mainVector.end(), temp.begin(), temp.end());
         
@@ -120,7 +127,6 @@ void    Span::fillInVector( unsigned int nbInputs ){
 
 int    Span::getRand( void )const {
     
-    srand(time(NULL));
     
     return rand();
 }
