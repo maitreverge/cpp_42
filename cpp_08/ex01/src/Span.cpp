@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 22:45:09 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/27 23:24:08 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/27 23:34:54 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,8 @@ void    Span::fillInVector( unsigned int nbInputs ){
         sed++;
         
         // Generating a random number for each position, from begin to end
-        // std::generate(temp.begin(), temp.end(), std::rand);
+        std::generate(temp.begin(), temp.end(), std::rand);
         
-        int coucou = std::rand();
-        std::fill(temp.begin(), temp.end(), coucou);
-
         // Append at the end of _mainVector the temp vector created and filled.
         _mainVector.insert(_mainVector.end(), temp.begin(), temp.end());
     } 
