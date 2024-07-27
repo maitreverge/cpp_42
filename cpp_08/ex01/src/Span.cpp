@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 22:45:09 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/27 22:49:15 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/27 23:24:08 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 // Unused constructor
 Span::Span( void ){}
 
+/**
+ * @brief Construct a new Span:: Span object
+ * 
+ * Throws an error with NULL input.
+ * 
+ * @param sizeInput 
+ */
 Span::Span( unsigned int sizeInput ) :
     _sizeMax(sizeInput) {
         
@@ -45,6 +52,14 @@ Span& Span::operator=( const Span& right_operator ){
 
 Span::~Span( void ){}
 
+
+/**
+ * @brief Function `push_back` the given number to the vector `_mainVector`.
+ * 
+ * Throws an error if vector size is alrealy or over `_sizeMax`
+ * 
+ * @param inputNumber 
+ */
 void    Span::addNumber( int inputNumber ){
 
     if (_mainVector.size() < _sizeMax )
@@ -54,9 +69,12 @@ void    Span::addNumber( int inputNumber ){
 }
 
 /**
- * @brief fillInVector create a temp vector,
+ * @brief fillInVector create a temp vector of size `nbInputs`,
  * fills it with timebased random generate algorithm
  * and append it to the _mainVector.
+ * 
+ * Function throws an error if size of `_mainVector` could
+ * be exceded by the function call.
  * 
  * @param nbInputs 
  */
@@ -66,28 +84,30 @@ void    Span::fillInVector( unsigned int nbInputs ){
         
         std::vector<int> temp(nbInputs);
         
-        // Putting sed as a static value, and incrementing it.
-        // If not incremented, I'd end up with the same vectors in several class instances.
+        // I choose to put sed as a static value, and incrementing it at each method call.
+        // If not incremented, I'd end up with the same vectors accross several class instances.
         
         static unsigned int sed = static_cast<unsigned int>(std::time(NULL));
         std::srand(sed);
         sed++;
         
         // Generating a random number for each position, from begin to end
-        std::generate(temp.begin(), temp.end(), std::rand);
+        // std::generate(temp.begin(), temp.end(), std::rand);
+        
+        int coucou = std::rand();
+        std::fill(temp.begin(), temp.end(), coucou);
 
+        // Append at the end of _mainVector the temp vector created and filled.
         _mainVector.insert(_mainVector.end(), temp.begin(), temp.end());
     } 
     else
         throw FullVector();
 }
 
-
 void    Span::displayVector( void )const {
     
     printNoEndl("{");
 
-    
     for ( ConstIterator it = this->_mainVector.begin() ; it != this->_mainVector.end(); ++it)
     {
         printNoEndl(*it);
@@ -97,7 +117,16 @@ void    Span::displayVector( void )const {
     print("}");
     
 }
-
+/**
+ * @brief Shortest Span will alway be calculated on the sorted vector
+ * between the actual iterator and the next one.
+ * 
+ * If such result is shorter than the actual `result` init to __INT_MAX__, store the result
+ * 
+ * Once the vector is fully compared, return the result.
+ * 
+ * @return int 
+ */
 int Span::shortestSpan( void ){
 
     if (this->_mainVector.size() > 1){
@@ -106,10 +135,11 @@ int Span::shortestSpan( void ){
 
         std::sort(sortedVector.begin(), sortedVector.end());
 
-        int curNb = 0;
-        int nextNb = 0;
+        int curNb = 0; // Value of the actual iterator
+        int nextNb = 0; // Value of the following iterator
         int result = __INT_MAX__;
         
+        // Loop stop 1 step before .end(), because .end() actually points outside the vector
         for ( ConstIterator it = sortedVector.begin(); it != sortedVector.end() - 1; ++it )
         {
             curNb = *it;
@@ -125,7 +155,7 @@ int Span::shortestSpan( void ){
 }
 
 /**
- * @brief Longest span actually
+ * @brief Longest span actually returns the max element minus the minimum element.
  * 
  * @return int 
  */
@@ -133,17 +163,10 @@ int Span::longestSpan( void ){
 
     if (this->_mainVector.size() > 1){
         
-        std::vector<int> sortedVector(_mainVector);
-        
-        std::sort(sortedVector.begin(), sortedVector.end());
+        int max = *(std::max_element(_mainVector.begin(), _mainVector.end()));
+        int min = *(std::min_element(_mainVector.begin(), _mainVector.end()));
 
-        
-        int firstValue = *sortedVector.begin();
-        
-        // end() actually points outside of the vector
-        int lastValue = *(sortedVector.end() - 1);
-        
-        return (lastValue - firstValue);
+        return (max - min);
     }
     else
         throw VectorTooShort();  
