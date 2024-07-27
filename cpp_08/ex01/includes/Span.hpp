@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 17:24:37 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/27 20:39:49 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/27 22:01:46 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ public:
 
     int     getRand( void )const;
 
+    int     shortestSpan();
+    
+    int     longestSpan();
+
     // Size Input Exception
     class NullSizeInput : public exception
     {
@@ -55,10 +59,15 @@ public:
         } 
     };
 
+    class VectorTooShort : public exception
+    {
+        public:
+            virtual const char* what() const throw(){
+                return "Vector is too short to calculate span";
+        } 
+    };
+
 };
-
-// ostream& operator<<( ostream& output_stream, const Span& input );
-
 
 // ---------- Functions declarations ---------------
 
@@ -127,11 +136,6 @@ void    Span::fillInVector( unsigned int nbInputs ){
     
 }
 
-int    Span::getRand( void )const {
-    
-    
-    return rand();
-}
 
 typedef std::vector<int>::const_iterator ConstIterator;
 
@@ -148,10 +152,44 @@ void    Span::displayVector( void )const {
     
 }
 
+int Span::shortestSpan( void ){
 
-// ostream& operator<<( ostream& output_stream, const Span& right_input ){
+    if (this->_mainVector.size() > 1){
 
-//     // output_stream << right_input.PutAGetterFunctionhere();
+        std::vector<int> sortedVector(_mainVector);
 
-//     return output_stream;
-// }
+        std::sort(sortedVector.begin(), sortedVector.end());
+
+        int curNb, nextNb = 0;
+        int result = __INT_MAX__;
+        
+        for ( ConstIterator it = sortedVector.begin(); it != sortedVector.end() - 1; ++it )
+        {
+            curNb = *it;
+            nextNb = *it + 1;
+            if ( result > ( nextNb - curNb ) )
+                result = nextNb - curNb;
+        }
+        return result;
+        
+    }
+    else
+        throw VectorTooShort();  
+}
+
+
+int Span::longestSpan( void ){
+
+    if (this->_mainVector.size() > 1){
+        
+        std::vector<int> sortedVector(_mainVector);
+
+        std::sort(sortedVector.begin(), sortedVector.end());
+
+        int firstValue = *sortedVector.begin();
+        int lastValue = *sortedVector.end();
+        return (lastValue - firstValue);
+    }
+    else
+        throw VectorTooShort();  
+}
