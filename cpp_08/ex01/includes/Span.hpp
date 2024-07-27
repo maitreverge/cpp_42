@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 17:24:37 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/27 18:03:21 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/27 19:41:18 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,24 @@ public:
     Span& operator=( const Span& right_operator );
     ~Span();
 
-    void checksize (void) { cout << _mainVector.max_size() << endl;}
+    void    addNumber( int inputNumber );
+
+    void    fillInVector( unsigned int nbInputs );
+
+    void    displayVector( void )const;
 
     // Size Input Exception
     class NullSizeInput : public exception
     {
         virtual const char* what() throw(){
             return "Input Can't Be Null";
+        } 
+    };
+
+    class FullVector : public exception
+    {
+        virtual const char* what() throw(){
+            return "Vector is Full";
         } 
     };
 
@@ -78,6 +89,41 @@ Span& Span::operator=( const Span& right_operator ){
 Span::~Span( void ){
 
     // maybe erase vector ??
+}
+
+void    Span::addNumber( int inputNumber ){
+
+    if (_mainVector.size() < _size )
+        _mainVector.push_back(inputNumber);
+    else
+        throw FullVector();
+}
+
+void    Span::fillInVector( unsigned int nbInputs ){
+
+     if (_size < this->_mainVector.size() + nbInputs){
+        
+        
+        
+    } 
+    else
+        throw FullVector();
+    
+}
+
+typedef std::vector<int>::const_iterator ConstIterator;
+
+void    Span::displayVector( void )const {
+    
+    print("[  ");
+
+    
+    for ( ConstIterator it = this->_mainVector.begin() ; it != this->_mainVector.end(); ++it)
+    {
+        cout << *it << " " << endl;
+    }
+    print("  ]");
+    
 }
 
 

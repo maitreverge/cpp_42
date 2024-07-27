@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/27 17:26:04 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/27 19:06:51 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 #include <deque>
 #include <stack>
 #include <algorithm>
+#include <complex>
 
 // Using keywords
 using std::string;
