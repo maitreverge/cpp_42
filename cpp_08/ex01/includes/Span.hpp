@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 17:24:37 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/27 20:06:42 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/27 20:39:49 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,10 @@ Span& Span::operator=( const Span& right_operator ){
 
    if (this != &right_operator){
 
-        this->_mainVector.erase(_mainVector.begin(), _mainVector.end()); // really usefull
+        // Erasing the first vector
+        this->_mainVector.erase(_mainVector.begin(), _mainVector.end());
+
+        // Assigning the r_o to the actual vector
         this->_mainVector = right_operator._mainVector;
         
         this->_sizeMax = right_operator._sizeMax;
@@ -90,10 +93,7 @@ Span& Span::operator=( const Span& right_operator ){
 }
 
 
-Span::~Span( void ){
-
-    // maybe erase vector ??
-}
+Span::~Span( void ){}
 
 void    Span::addNumber( int inputNumber ){
 
@@ -108,13 +108,15 @@ void    Span::fillInVector( unsigned int nbInputs ){
     if (_sizeMax >= this->_mainVector.size() + nbInputs){
         
         std::vector<int> temp(nbInputs);
-
-        std::srand(unsigned(std::time(NULL)));
         
+        // Putting sed as a static value, and incrementing it.
+        // If not incremented, I'd end up with the same vectors in several class instances.
         
-        // std::fill(temp.begin(), temp.end(), this->getRand());
-        // srand(time(NULL));
-
+        static unsigned int sed = static_cast<unsigned int>(std::time(NULL));
+        std::srand(sed);
+        sed++;
+        
+        // Generating a random number for each position, from begin to end
         std::generate(temp.begin(), temp.end(), std::rand);
 
         _mainVector.insert(_mainVector.end(), temp.begin(), temp.end());
