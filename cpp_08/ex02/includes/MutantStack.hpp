@@ -13,30 +13,27 @@
 #pragma once
 
 #include "utils_template.hpp"
-#include "MutantStack.tpp"
 
-template < typename T >
-class MutantStack : public std::stack<T>
+template< typename T, class Container = std::deque< T > > 
+class MutantStack : public std::stack< T, Container >
 {
-    typedef typename std::stack<T>::container_type::iterator Iterator;
-    private:
-    
-        // some private members
-        
-    protected:
-    
-        // some protected members
-        
-    public:
-    
-        MutantStack( void );
-        
-        MutantStack( const MutantStack& copy );
-        
-        MutantStack& operator=( const MutantStack& right_operator );
-        
-        ~MutantStack( void );
 
-        Iterator begin();
-	    Iterator end();
+private:
+
+public:
+
+    MutantStack() {};
+    ~MutantStack() {};
+
+    MutantStack(const MutantStack& other) { *this = other; }
+    MutantStack&    operator=(const MutantStack& other)
+    {
+        std::stack< T, Container >::operator=(other);
+        return *this;
+    }
+
+    typedef typename Container::iterator    iterator;
+
+    iterator    begin() { return this->c.begin(); }
+    iterator    end() { return this->c.end(); }
 };
