@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutanStack.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:28:53 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/28 12:32:08 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/28 17:57:15 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 #include "utils_template.hpp"
 
-template < typename TypeOfContainer >
-class MutanStack : public std::stack<TypeOfContainer>
+template < typename T >
+class MutanStack : public std::stack<T>
 {
     private:
     
@@ -27,20 +27,26 @@ class MutanStack : public std::stack<TypeOfContainer>
         
     public:
     
-        MutanStack( void );
-        MutanStack( const MutanStack& copy );
-        MutanStack& operator=( const MutanStack& right_operator );
+        MutanStack( void ) : std::stack<T> {};
+        MutanStack( const MutanStack& copy ) { *this = copy };
+        MutanStack& operator=( const MutanStack& right_operator ){
+            if (this != right_operator)
+                std::stack::opera
+        };
         ~MutanStack( void );
 };
 
 // Functions declarations
 
-MutanStack::MutanStack( void ){}
+// Default constructor
+// template < typename T >
+// MutanStack<T>::MutanStack( void ) : std::stack<T>{}
 
-MutanStack::MutanStack( const MutanStack& copy ){
+// template < typename T >
+// MutanStack<T>::MutanStack( const MutanStack& copy ){
 
-    // ! TO DO depending on what's in the class
-}
+//     // ! TO DO depending on what's in the class
+// }
 
 MutanStack& MutanStack::operator=( const MutanStack& right_operator ){
 
