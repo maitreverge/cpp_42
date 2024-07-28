@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MutanStack.hpp                                     :+:      :+:    :+:   */
+/*   MutantStack.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:28:53 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/28 17:57:15 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/28 18:35:49 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "utils_template.hpp"
+#include "MutantStack.tpp"
 
 template < typename T >
-class MutanStack : public std::stack<T>
+class MutantStack : public std::stack<T>
 {
+    typedef typename std::stack<T>::container_type::iterator Iterator;
     private:
     
         // some private members
@@ -27,33 +29,14 @@ class MutanStack : public std::stack<T>
         
     public:
     
-        MutanStack( void ) : std::stack<T> {};
-        MutanStack( const MutanStack& copy ) { *this = copy };
-        MutanStack& operator=( const MutanStack& right_operator ){
-            if (this != right_operator)
-                std::stack::opera
-        };
-        ~MutanStack( void );
+        MutantStack( void );
+        
+        MutantStack( const MutantStack& copy );
+        
+        MutantStack& operator=( const MutantStack& right_operator );
+        
+        ~MutantStack( void );
+
+        Iterator begin();
+	    Iterator end();
 };
-
-// Functions declarations
-
-// Default constructor
-// template < typename T >
-// MutanStack<T>::MutanStack( void ) : std::stack<T>{}
-
-// template < typename T >
-// MutanStack<T>::MutanStack( const MutanStack& copy ){
-
-//     // ! TO DO depending on what's in the class
-// }
-
-MutanStack& MutanStack::operator=( const MutanStack& right_operator ){
-
-    
-    // ! TO DO depending on what's in the class
-}
-
-MutanStack::~MutanStack( void ){}
-
-// it ++

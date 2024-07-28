@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:29:09 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/28 12:19:37 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/28 18:36:57 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MutanStack.hpp"
+#include "MutantStack.hpp"
 
 int main(void){
 
-    MutanStack<int> a(3);
+    MutantStack<int> a;
     
 }
