@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+         #
+#    By: flverge <flverge@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/28 09:35:55 by flverge           #+#    #+#              #
-#    Updated: 2024/07/20 21:04:18 by ubuntu           ###   ########.fr        #
+#    Updated: 2024/07/28 15:42:21 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ ORANGE = \033[93m
 CC = c++
 
 # Compiler flags 
-# ! REMETRE WERROR
 FLAGS = -Wall -Wextra -Werror -Wshadow -Wno-reorder -std=c++98 -g
 
 # Source files

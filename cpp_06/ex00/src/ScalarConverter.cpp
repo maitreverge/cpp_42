@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 09:32:28 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/22 09:32:38 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/28 15:43:56 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,7 +252,7 @@ void    printDouble( string &input, bool isLimit){
         return;
     }
 
-    long double result = std::atol(input.c_str());
+    long double result = std::atof(input.c_str());
 
     /*
         atof return 0 if the conversion failed, and such case has been handled
