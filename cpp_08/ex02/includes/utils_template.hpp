@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_template.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/25 14:08:07 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/28 11:33:25 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@
 #include <ostream>
 #include <sstream>
 #include <cstdlib>
+#include <vector>
+#include <list>
+#include <deque>
+#include <stack>
+#include <algorithm>
+#include <complex>
+#include <ctime>
+#include <unistd.h>
 
 // Using keywords
 using std::string;
