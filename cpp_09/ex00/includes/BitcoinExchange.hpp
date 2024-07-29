@@ -6,13 +6,15 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/29 10:53:19 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/29 11:15:46 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "utils_template.hpp"
+
+// #define DATA_FILE data.csv
 
 class BitcoinExchange
 {
