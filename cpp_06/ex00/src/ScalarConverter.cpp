@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 09:32:28 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/28 15:43:56 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/29 08:52:08 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 ScalarConverter::ScalarConverter( void ){}
 
 
-ScalarConverter::ScalarConverter( const ScalarConverter& copy ) {*this = copy;}
+ScalarConverter::ScalarConverter( const ScalarConverter& copy ) { *this = copy; }
 
-bool inputIsZero( string &input ) {
+bool isInputZero( string &input ) {
     
     int decimalPresence = 0; // for '.'
     int floatingPresence = 0; // for the 'f' character
@@ -25,14 +25,15 @@ bool inputIsZero( string &input ) {
 
     size_t i = 0;
 
+    // Detecting polarity as first character
     if (input[i] == '+' or input[i] == '-'){
         
-        polarityPresence = true;
+        polarityPresence++;
         i++;
     }
     
     // loop throught the whole string
-    for (; i < input.length(); i++)
+    for (; i < input.length(); ++i)
     {
         if (input[i] == '.'){
             
@@ -56,7 +57,7 @@ bool inputIsZero( string &input ) {
     return true;
 }
 
-bool inputIsValid( string &input ) {
+bool isInputValid( string &input ) {
     
     int decimalPresence = 0; // for '.'
     int floatingPresence = 0; // for the 'f' character
@@ -64,9 +65,10 @@ bool inputIsValid( string &input ) {
 
     size_t i = 0;
 
+    // Detecting polarity as first character
     if (input[i] == '+' or input[i] == '-'){
         
-        polarityPresence = true;
+        polarityPresence++;
         i++;
     }
     
@@ -107,13 +109,12 @@ void    printChar( string &input, bool isLimit ){
     }
     
     // Testing for limits 
-    if (isLimit or not inputIsValid(input)){
+    if (isLimit or not isInputValid(input)){
 
         printColor(BOLD_RED, "impossible");
         return;
     }
     
-
     // Trying to convert the string in a string
     unsigned char result = std::atoi(input.c_str());
 
@@ -123,7 +124,6 @@ void    printChar( string &input, bool isLimit ){
         printColor(BOLD_RED, "Non displayable");
     
 }
-
 
 void    printInt( string &input, bool isLimit ){
 
@@ -141,18 +141,19 @@ void    printInt( string &input, bool isLimit ){
 
     // edge case for single chars
     else if (input.length() == 1 && std::isprint(input[0])) {
+        
         cout << BOLD_GREEN << static_cast<int>(input[0]) << RESET << endl;
         return;
     }
     
-    else if (input.empty() or not inputIsValid(input)){
+    else if (input.empty() or not isInputValid(input)){
         
         printColor(BOLD_RED, "impossible");
         return;
     }
 
     // edge case for mathematical 0 value
-    else if (inputIsZero(input))
+    else if (isInputZero(input))
     {
         cout << BOLD_GREEN << 0 << RESET << endl;
         return;
@@ -162,7 +163,7 @@ void    printInt( string &input, bool isLimit ){
 
     /*
         atoll return 0 if the conversion failed, and such case has been handled
-        by the function inputIsZero
+        by the function isInputZero
     */
     if (result > INT_MAX or result < INT_MIN or result == 0)
         printColor(BOLD_RED, "impossible");
@@ -172,7 +173,7 @@ void    printInt( string &input, bool isLimit ){
     return;
 }
 
-void    printFloat( string &input, bool isLimit){
+void    printFloat( string &input, bool isLimit ){
 
     // Testing for limits keywords
     if (isLimit){
@@ -192,15 +193,15 @@ void    printFloat( string &input, bool isLimit){
         return;
     }
     
-    if (input.empty() or not inputIsValid(input)){
+    else if (input.empty() or not isInputValid(input)){
         
         printColor(BOLD_RED, "nanf");
         return;
     }
 
     // edge case for mathematical 0 value
-    if (inputIsZero(input))
-    {
+    else if (isInputZero(input)){
+        
         cout << BOLD_GREEN << "0.0f" << RESET << endl;
         return;
     }
@@ -209,7 +210,7 @@ void    printFloat( string &input, bool isLimit){
 
     /*
         atof return 0 if the conversion failed, and such case has been handled
-        by the function inputIsZero
+        by the function isInputZero
     */
 
     if (result > FLT_MAX or result < FLT_MIN or result == 0)
@@ -220,7 +221,7 @@ void    printFloat( string &input, bool isLimit){
     return;
 }
 
-void    printDouble( string &input, bool isLimit){
+void    printDouble( string &input, bool isLimit ){
 
     // Testing for limits keywords
     if (isLimit){
@@ -239,14 +240,14 @@ void    printDouble( string &input, bool isLimit){
         return;
     }
     
-    else if (input.empty() or not inputIsValid(input)){
+    else if (input.empty() or not isInputValid(input)){
         
         printColor(BOLD_RED, "nan");
         return;
     }
 
     // edge case for mathematical 0 value
-    else if (inputIsZero(input))
+    else if (isInputZero(input))
     {
         cout << BOLD_GREEN << "0.0" << RESET << endl;
         return;
@@ -256,7 +257,7 @@ void    printDouble( string &input, bool isLimit){
 
     /*
         atof return 0 if the conversion failed, and such case has been handled
-        by the function inputIsZero
+        by the function isInputZero
     */
     if (result > DBL_MAX or result < DBL_MIN or result == 0)
         printColor(BOLD_RED, "impossible");
