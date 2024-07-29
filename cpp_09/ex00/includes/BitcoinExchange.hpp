@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/29 11:15:46 by flverge          ###   ########.fr       */
+/*   Updated: 2024/07/29 13:07:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 #include "utils_template.hpp"
 
-// #define DATA_FILE data.csv
 
 class BitcoinExchange
 {
 
 private:
 
-    // Some private members
-
-protected:
-
-    // Some protected members
+    string _inputFile;
+    string _dataFile;
 
 public:
 
@@ -34,20 +30,29 @@ public:
     BitcoinExchange& operator=( const BitcoinExchange& right_operator );
     ~BitcoinExchange();
 
+    const string& getInputFile( void )const;
+    const string& getDataFile( void )const;
+
+    void    setInputFile( string input );
+    void    setDataFile( string input );
+
 };
 
-ostream& operator<<( ostream& output_stream, const BitcoinExchange& input );
+// ! TO DO LATER
+// ostream& operator<<( ostream& output_stream, const BitcoinExchange& input );
 
 
 // ---------- Functions declarations ---------------
 
 
-BitcoinExchange::BitcoinExchange( void ){}
+BitcoinExchange::BitcoinExchange( void ) : 
+    _inputFile(""),
+    _dataFile("") {}
 
 
 BitcoinExchange::BitcoinExchange( const BitcoinExchange& copy ) :
-    foo(copy._foo), // List init each value individually
-    bar(copy._bar) {}
+    _inputFile(copy._inputFile),
+    _dataFile(copy._dataFile) {}
     // {*this = copy;} in case of non-member values
 
 
@@ -55,7 +60,9 @@ BitcoinExchange& BitcoinExchange::operator=( const BitcoinExchange& right_operat
 
    if (this != &right_operator){
         // Reassign every value with the getter value 
-        // this->_foo = right_operator.getFoo()
+        this->_inputFile = right_operator._inputFile;
+        this->_dataFile = right_operator._dataFile;
+        
     }
     return *this;
 }
@@ -63,10 +70,19 @@ BitcoinExchange& BitcoinExchange::operator=( const BitcoinExchange& right_operat
 
 BitcoinExchange::~BitcoinExchange( void ){}
 
+// Getters
+const string& BitcoinExchange::getInputFile( void )const{ return this->_inputFile; }
+const string& BitcoinExchange::getDataFile( void )const{ return this->_dataFile; }
 
-ostream& operator<<( ostream& output_stream, const BitcoinExchange& right_input ){
+// Setters
+void    BitcoinExchange::setInputFile( string input ){ _inputFile = input; }
+void    BitcoinExchange::setDataFile( string input ){ _dataFile = input; }
 
-    // output_stream << right_input.PutAGetterFunctionhere();
 
-    return output_stream;
-}
+// ! TO DO LATER
+// ostream& operator<<( ostream& output_stream, const BitcoinExchange& right_input ){
+
+//     // output_stream << right_input.PutAGetterFunctionhere();
+
+//     return output_stream;
+// }
