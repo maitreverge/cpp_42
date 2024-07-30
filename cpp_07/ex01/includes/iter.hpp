@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 14:48:59 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/24 18:21:18 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/30 09:36:53 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void    theFunctionTemplate<string>( string &a ){
 }
 
 template< typename T >
-void    iter( T *adress, int &lenghArray, void(function)(T &) ){
+void    iter( T *adress, int lenghArray, void(function)(T &) ){
     
 
     print("The adress given is :");
