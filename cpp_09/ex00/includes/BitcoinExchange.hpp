@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/01 11:45:00 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/01 14:04:26 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,25 @@ void    BitcoinExchange::mapInput( void ){
 
     // Rules for a valid input
     // Have a | separator
-    // Have a valid date (YYYY-MM-DD)
+    // Have a valid date format (YYYY-MM-DD) AND a valid date (2012-13-55) 
     // Have a valid number (positive, between 0 and 1000 included)
+
+    ifstream inputFile(this->getInputFile().c_str());
+
+    if (not inputFile.is_open())
+        customExit("Failed to open " + this->getInputFile());
+
+    string pipeSeparator = "|";
+
+    string readLine;
+
+    while(getline(inputFile, readLine)){
+
+        // ! FAIRE LA GESTION D'ERREUR EN FLUX TENDU DE LECTURE
+
+        // detection du caractere pipe
+        
+    }
 }
 
 void    BitcoinExchange::printDataFile( void ){
