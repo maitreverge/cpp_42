@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/01 14:04:26 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/01 14:34:15 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ private:
     string _inputFile;
     string _dataFile;
     map<string, double> _mapData;
+    map<string, double> _mapParsedInput; // raw parsing
 
 public:
 
@@ -41,6 +42,7 @@ public:
 
     // print
     void    printDataFile( void );
+    void    printInputFile( void );
 
     void    mapData( void );
 
@@ -123,14 +125,18 @@ void    BitcoinExchange::mapInput( void ){
 
     string pipeSeparator = "|";
 
-    string readLine;
+    string readLine, key, value;
 
     while(getline(inputFile, readLine)){
 
-        // ! FAIRE LA GESTION D'ERREUR EN FLUX TENDU DE LECTURE
+        // ! STEP 1 : parse whatever the content
 
-        // detection du caractere pipe
-        
+        // extract the date
+        key = readLine.substr(0, readLine.find(pipeSeparator));
+        // extract BTC value
+        value = readLine.erase(0, readLine.find(pipeSeparator) + pipeSeparator.length());
+
+        this->_mapData.insert( std::make_pair(key, std::atof(value.c_str()) ) );
     }
 }
 
@@ -140,9 +146,22 @@ void    BitcoinExchange::printDataFile( void ){
         it != _mapData.end(); ++it)
     {
         printNoEndl("Date : ");
-        print(it->first);
+        print(it->first); // first value
         printNoEndl("Bitcoin Value : ");
-        print(it->second);
+        print(it->second); // second value
+    }
+    
+}
+
+void    BitcoinExchange::printInputFile( void ){
+
+    for (map<string, double>::iterator it = _mapParsedInput.begin();
+        it != _mapParsedInput.end(); ++it)
+    {
+        printNoEndl("Input Date : ");
+        print(it->first); // first value
+        printNoEndl("Input asked Value : ");
+        print(it->second); // second value
     }
     
 }
