@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/29 14:51:02 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/01 11:28:12 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ public:
     // Setter
     void    setInputFile( string input );
     void    setDataFile( string input );
+
+    // print
+    void    printDataFile( void );
 
     void    mapData( void );
 
@@ -83,7 +86,7 @@ void    BitcoinExchange::mapData( void ){
 
     // store both key and value on each
 
-    ifstream inputFile(this->getDataFile());
+    ifstream inputFile(this->getDataFile().c_str());
 
     if (not inputFile.is_open())
         customExit("Failed to open " + this->getDataFile());
@@ -91,12 +94,34 @@ void    BitcoinExchange::mapData( void ){
     string readLine;
     string key, value, splitValue;
 
-    while (getline(cin, readLine)){
+    string separator = ",";
+    // map date to a int value
+    while (getline(inputFile, readLine)){
 
-        
+        // extract the date
+        key = readLine.substr(0, readLine.find(separator));
+        // extract BTC value
+        value = readLine.erase(0, readLine.find(separator) + separator.length());
+
+        // insert in the _mapData raw date value AND double value with atof.
+        this->_mapData.insert( std::make_pair(key, std::atoff(value.c_str()) ) );
     }
 
+    std::ato
     
+    
+}
+
+void    BitcoinExchange::printDataFile( void ){
+
+    for (map<string, double>::iterator it = _mapData.begin();
+        it != _mapData.end(); ++it)
+    {
+        printNoEndl("Date : ");
+        print(it->first);
+        printNoEndl("Bitcoin Value : ");
+        print(it->second);
+    }
     
 }
 

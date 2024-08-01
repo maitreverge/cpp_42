@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:32 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/29 13:59:52 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/01 11:26:56 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static bool isPreCheckValid( BitcoinExchange &btc, int &ac, char **av ){
     if (ac != 2){
 
         printUsage();
-        return 1;
+        return false;
     }
     
     btc.setInputFile(av[1]);
@@ -68,7 +68,7 @@ static bool isPreCheckValid( BitcoinExchange &btc, int &ac, char **av ){
         do
         {
             print("Please enter the data file name with the extension");
-            printColor(BOLD_YELLOW, "[ Please note that the file need to be at the repo's root ]");
+            printColor(BOLD_YELLOW, "[ Make sure the file needs to be at the repo's root ]");
             getline(cin, promptUser);
             btc.setDataFile(promptUser);
         } while (btc.getDataFile().empty());
@@ -95,7 +95,7 @@ int main(int ac, char **av){
     btc.mapData();
     // ! check if data.csv contains a double value
     
-    
+    btc.printDataFile();
 
     // ! check if data.csv is corrupted in any way ()
     
