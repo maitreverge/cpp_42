@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/01 11:28:12 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/01 11:45:00 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ public:
     void    printDataFile( void );
 
     void    mapData( void );
+
+    void    mapInput( void );
 
 };
 
@@ -104,12 +106,15 @@ void    BitcoinExchange::mapData( void ){
         value = readLine.erase(0, readLine.find(separator) + separator.length());
 
         // insert in the _mapData raw date value AND double value with atof.
-        this->_mapData.insert( std::make_pair(key, std::atoff(value.c_str()) ) );
+        this->_mapData.insert( std::make_pair(key, std::atof(value.c_str()) ) );
     }
+}
+void    BitcoinExchange::mapInput( void ){
 
-    std::ato
-    
-    
+    // Rules for a valid input
+    // Have a | separator
+    // Have a valid date (YYYY-MM-DD)
+    // Have a valid number (positive, between 0 and 1000 included)
 }
 
 void    BitcoinExchange::printDataFile( void ){

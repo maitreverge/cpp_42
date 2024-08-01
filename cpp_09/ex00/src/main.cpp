@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:32 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/01 11:26:56 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/01 11:36:20 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,11 @@ int main(int ac, char **av){
     if (not isPreCheckValid(btc, ac, av))
         return (1);
     
+    // ! map data done
     btc.mapData();
-    // ! check if data.csv contains a double value
     
-    btc.printDataFile();
-
     // ! check if data.csv is corrupted in any way ()
+    btc.mapInput();
     
 
     return 0;
