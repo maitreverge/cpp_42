@@ -5,13 +5,13 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "(gdb) Launch",
+			"name": "c++ debug",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/cpp_09/ex00/btc",
 			"args": ["input.txt"],
 			"stopAtEntry": false,
-			"cwd": "${fileDirname}",
+			"cwd": "${workspaceFolder}/cpp_09/ex00", // HOOOOOOOO LA CONFIG LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "gdb",
@@ -28,6 +28,5 @@
 				}
 			]
 		}
-
 	]
 }

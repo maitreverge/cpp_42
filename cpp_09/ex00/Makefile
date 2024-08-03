@@ -6,7 +6,7 @@
 #    By: flverge <flverge@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/28 09:35:55 by flverge           #+#    #+#              #
-#    Updated: 2024/08/01 11:31:43 by flverge          ###   ########.fr        #
+#    Updated: 2024/08/03 17:15:11 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ YELLOW = \033[33m
 ORANGE = \033[93m
 
 # Compiler
-CC = c++
+CC = g++
 
 # Compiler flags
 FLAGS = -Wall -Wextra -Werror -Wshadow -Wno-reorder -std=c++98 -g
