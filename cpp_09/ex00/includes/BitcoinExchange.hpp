@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/05 21:32:48 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/08/05 21:42:47 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ public:
     void    mapData( void );
 
     void    mapInput( void );
+
+    void    printResult(string &key, string &value);
 
 };
 
@@ -119,14 +121,35 @@ void    BitcoinExchange::mapData( void ){
 }
 
 
-void    printResult( string &key, string &value){
+void    BitcoinExchange::printResult( string &key, string &value){
 
     int digitDate = convertDateToInt(key);
     
     double digitValue = std::atof(value.c_str());
 
-    std::map<int, double>::iterator closestResult = std::lower_bound()
+    std::map<int, double>::iterator closestResult = std::lower_bound(_mapData.begin(), _mapData.end(), digitDate);
 
+    /*
+        Prendre conscience que it == .begin est ok
+        cibler les iterateurs en dehors des limmites
+        Redescendre l'iterateur de 1 cran car lower_bound l'avance plutot que le reculer
+        
+        ! STEP 2 :
+        Une fois le correct iterateur obtenu, extraire la valeur et la multiplier par digitValue
+
+        ! STEP 3 :
+        imprimmer le resultat voir ou s'inspirer du sujet
+
+        ! STEP 4 : optionnel
+        Extraire le "numero" de l'iterateur pour afficher de maniere claire et precise le numero de la ligne dans le fichier data.csv
+        voir afficher en plus la ligne en entier en couleur differente
+    
+    */
+    if (closestResult == _mapData.begin()) // premier resulat == 0
+    {
+        
+    }
+    else if (closestResult == _mapData.end())
     
 }
 
