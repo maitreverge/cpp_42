@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/05 13:08:35 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/05 15:23:41 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,8 +169,100 @@ bool    isInputValid( string str ){
     return false;
 }
 
+bool    isValidDate( string str ){
 
-void    BitcoinExchange::mapInput( void ){
+    // valid format = 2023-02-20
+    string trimmed = trimWhitespace(str);
+
+    if (trimmed.length() != 10)
+        return false;
+    
+    if ( std::count(trimmed.begin(), trimmed.end(), '-') != 2
+        or trimmed[4] != HYPHEN
+        or trimmed[7] != HYPHEN )
+        return false;
+    
+    
+    // trimmed specific to extract substrings
+    string year = trimmed.substr(0, 4);
+
+    string month = trimmed.substr(5, 2);
+
+    string day = trimmed.substr(8, 2);
+
+    bool allNumeric = std::all_of(year.begin(), year.end(), ::isdigit)
+        & std::all_of(month.begin(), month.end(), ::isdigit)
+        & std::all_of(day.begin(), day.end(), ::isdigit);
+    
+    if ( not allNumeric )
+        return false;
+    
+    int yearInt = std::atoi(year.c_str());
+    int monthInt = std::atoi(month.c_str());
+    int dayInt = std::atoi(day.c_str());
+
+    if (yearInt < 0)
+        return false;
+    
+    // switch statement for checking the 30 and 31 DAYS repartition
+    switch (monthInt)
+    {
+        case 1: // january
+            if (dayInt > 31)
+                return false;
+            break;
+        case 2:// Febuary
+            if (dayInt > 28) // screw leap years
+                return false;
+            break;
+        case 3: // and so on
+            if (dayInt > 31)
+                return false;
+            break;
+        case 4:
+            if (dayInt > 30)
+                return false;
+            break;
+        case 5:
+            if (dayInt > 31)
+                return false;
+            break;
+        case 6:
+            if (dayInt > 30)
+                return false;
+            break;
+        case 7:
+            if (dayInt > 31)
+                return false;
+            break;
+        case 8:
+            if (dayInt > 31)
+                return false;
+            break;
+        case 9:
+            if (dayInt > 30)
+                return false;
+            break;
+        case 10:
+            if (dayInt > 31)
+                return false;
+            break;
+        case 11:
+            if (dayInt > 30)
+                return false;
+            break;
+        case 12:
+            if (dayInt > 31)
+                return false;
+            break;
+        default:
+            return false;
+    }
+    
+    
+}
+
+void    BitcoinExchange::mapInput( void ){ // rename function
 
     // Rules for a valid input
     // Have a | separator
@@ -188,14 +280,19 @@ void    BitcoinExchange::mapInput( void ){
 
     while(getline(inputFile, readLine)){
 
-        // ! STEP 1 : parse whatever the content
-
-        
-
         // extract the date
         key = readLine.substr(0, readLine.find(pipeSeparator));
         // extract BTC value
         value = readLine.erase(0, readLine.find(pipeSeparator) + pipeSeparator.length());
+
+        if (not isInputValid(readLine))
+            printColor(BOLD_RED, readLine + " is a invalid format line.");
+        else if (not isValidDate(key) or not isValidValue(value))
+        {
+            printColor(BOLD_RED, readLine + " is a invalid format line.");
+            //
+        }
+
 
     }
 }

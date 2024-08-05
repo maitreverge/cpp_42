@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/05 12:12:07 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/05 14:19:12 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,3 +104,5 @@ void	clearScreen( void );
 void	customExit( const string& str );
 void	extraLine( void );
 bool	doesFileExists( const string& fileName);
+string	trimWhitespace(const string& str);
+
