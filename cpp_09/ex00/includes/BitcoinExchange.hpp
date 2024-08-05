@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/05 15:23:41 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/05 15:29:48 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void    BitcoinExchange::mapData( void ){
  * @return true 
  * @return false 
  */
-bool validChar( char input ){
+bool validChar( char &input ){
 
     if (std::isdigit(input)
         or std::isspace(input)
@@ -151,7 +151,7 @@ bool validChar( char input ){
  * @return true 
  * @return false 
  */
-bool    isInputValid( string str ){
+bool    isInputValid( string &str ){
 
     // Count the amount of `|` characters
     int separator = std::count(str.begin(), str.end(), '|');
@@ -169,7 +169,7 @@ bool    isInputValid( string str ){
     return false;
 }
 
-bool    isValidDate( string str ){
+bool    isValidDate( string &str ){
 
     // valid format = 2023-02-20
     string trimmed = trimWhitespace(str);
@@ -259,6 +259,11 @@ bool    isValidDate( string str ){
             return false;
     }
     
+    return true;
+}
+
+bool    isValidValue( string &str ){
+
     
 }
 
@@ -287,7 +292,7 @@ void    BitcoinExchange::mapInput( void ){ // rename function
 
         if (not isInputValid(readLine))
             printColor(BOLD_RED, readLine + " is a invalid format line.");
-        else if (not isValidDate(key) or not isValidValue(value))
+        else if (not isValidDate(key) or not isValidValue(value)) // !!!!!!!!!!!!!!!!!!!!! HERE
         {
             printColor(BOLD_RED, readLine + " is a invalid format line.");
             //
