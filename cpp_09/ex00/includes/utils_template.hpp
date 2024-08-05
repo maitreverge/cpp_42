@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/29 14:29:46 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/05 12:12:07 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #include <stdio.h>
 #include <string>
 #include <map>
+#include <algorithm>
 
 // Using keywords
 using std::string;
@@ -39,6 +40,11 @@ using std::stringstream;
 using std::exception;
 using std::getline;
 using std::map;
+
+#define PIPE '|'
+#define DOT '.'
+#define HYPHEN '-'
+
 
 
 // ---------------------  Templates functions  ---------------------

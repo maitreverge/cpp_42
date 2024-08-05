@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/05 10:30:46 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/05 12:12:54 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ private:
 
     string _inputFile;
     string _dataFile;
-    map<string, double> _mapData;
-    map<string, double> _mapParsedInput; // raw parsing
+    map<string, double> _mapData; // parsed data.csv
+    // map<string, string> _mapParsedInput; // raw parsed input.txt with double string keys
 
 public:
 
@@ -118,6 +118,49 @@ void    BitcoinExchange::mapData( void ){
         this->_mapData.insert( std::make_pair(key, std::atof(value.c_str()) ) );
     }
 }
+
+bool validChar( char input ){
+
+     
+    if (std::isdigit(input)
+        or input == PIPE
+        or input == DOT
+        or input == HYPHEN)
+        return true;
+    return false;
+    
+}
+
+/**
+ * @brief Checks if the string of the input file has the correct value, such as :
+ * - One separator `|`
+ * - Two `-` Date separators
+ * - Maximum one dot `.` for double numbers
+ * - Only numbers
+ * 
+ * If not, return false
+ * 
+ * @param str 
+ * @return true 
+ * @return false 
+ */
+bool    isInputValid( string str ){
+
+    int separator = std::count(str.begin(), str.end(), '|');
+    
+    int hyphen = std::count(str.begin(), str.end(), '-');
+
+    int dot = std::count(str.begin(), str.end(), '.');
+
+    if (separator != 1 or hyphen != 2 or dot > 1)
+        return false;
+    
+    std::none_of(str.begin(), str.end(), validChar);
+    
+
+    
+    
+}
 void    BitcoinExchange::mapInput( void ){
 
     // Rules for a valid input
@@ -131,19 +174,20 @@ void    BitcoinExchange::mapInput( void ){
         customExit("Failed to open " + this->getInputFile());
 
     string pipeSeparator = "|";
-
+    
     string readLine, key, value;
 
     while(getline(inputFile, readLine)){
 
         // ! STEP 1 : parse whatever the content
 
+        
+
         // extract the date
         key = readLine.substr(0, readLine.find(pipeSeparator));
         // extract BTC value
         value = readLine.erase(0, readLine.find(pipeSeparator) + pipeSeparator.length());
 
-        this->_mapParsedInput.insert( std::make_pair(key, std::atof(value.c_str()) ) );
     }
 }
 
