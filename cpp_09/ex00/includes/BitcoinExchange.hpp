@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/03 16:59:34 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/05 10:30:46 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,13 @@ void    BitcoinExchange::mapData( void ){
         // extract BTC value
         value = readLine.erase(0, readLine.find(separator) + separator.length());
 
+
+        /*
+            this->_mapData.insert( key, std::atof(value.c_str()) );
+            
+            ! This way of inserting data is not C++ 98 friendly, we need to go through std::make_pair function
+        */
+        
         // insert in the _mapData raw date value AND double value with atof.
         this->_mapData.insert( std::make_pair(key, std::atof(value.c_str()) ) );
     }
@@ -136,7 +143,7 @@ void    BitcoinExchange::mapInput( void ){
         // extract BTC value
         value = readLine.erase(0, readLine.find(pipeSeparator) + pipeSeparator.length());
 
-        this->_mapData.insert( std::make_pair(key, std::atof(value.c_str()) ) );
+        this->_mapParsedInput.insert( std::make_pair(key, std::atof(value.c_str()) ) );
     }
 }
 
