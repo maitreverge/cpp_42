@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/05 12:12:54 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/05 13:08:35 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,17 +118,24 @@ void    BitcoinExchange::mapData( void ){
         this->_mapData.insert( std::make_pair(key, std::atof(value.c_str()) ) );
     }
 }
-
+/**
+ * @brief Return true if given char is either a digit, a whitespace, a `|', `-` or a `.`.
+ * 
+ * Returns false otherwise.
+ * 
+ * @param input 
+ * @return true 
+ * @return false 
+ */
 bool validChar( char input ){
 
-     
     if (std::isdigit(input)
+        or std::isspace(input)
         or input == PIPE
         or input == DOT
         or input == HYPHEN)
         return true;
     return false;
-    
 }
 
 /**
@@ -146,6 +153,7 @@ bool validChar( char input ){
  */
 bool    isInputValid( string str ){
 
+    // Count the amount of `|` characters
     int separator = std::count(str.begin(), str.end(), '|');
     
     int hyphen = std::count(str.begin(), str.end(), '-');
@@ -155,12 +163,13 @@ bool    isInputValid( string str ){
     if (separator != 1 or hyphen != 2 or dot > 1)
         return false;
     
-    std::none_of(str.begin(), str.end(), validChar);
-    
-
-    
-    
+    // Chekcks if there is all valid charatcers
+    if (std::any_of(str.begin(), str.end(), validChar))
+        return true;
+    return false;
 }
+
+
 void    BitcoinExchange::mapInput( void ){
 
     // Rules for a valid input
