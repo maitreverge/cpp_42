@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/05 15:29:48 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/05 20:55:43 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ public:
 
     // print
     void    printDataFile( void );
-    void    printInputFile( void );
 
     void    mapData( void );
 
@@ -172,23 +171,23 @@ bool    isInputValid( string &str ){
 bool    isValidDate( string &str ){
 
     // valid format = 2023-02-20
-    string trimmed = trimWhitespace(str);
+    string str = trimWhitespace(str);
 
-    if (trimmed.length() != 10)
+    if (str.length() != 10)
         return false;
     
-    if ( std::count(trimmed.begin(), trimmed.end(), '-') != 2
-        or trimmed[4] != HYPHEN
-        or trimmed[7] != HYPHEN )
+    if ( std::count(str.begin(), str.end(), '-') != 2
+        or str[4] != HYPHEN
+        or str[7] != HYPHEN )
         return false;
     
     
-    // trimmed specific to extract substrings
-    string year = trimmed.substr(0, 4);
+    // str specific to extract substrings
+    string year = str.substr(0, 4);
 
-    string month = trimmed.substr(5, 2);
+    string month = str.substr(5, 2);
 
-    string day = trimmed.substr(8, 2);
+    string day = str.substr(8, 2);
 
     bool allNumeric = std::all_of(year.begin(), year.end(), ::isdigit)
         & std::all_of(month.begin(), month.end(), ::isdigit)
@@ -262,7 +261,88 @@ bool    isValidDate( string &str ){
     return true;
 }
 
+bool isInputZero( string &input ) {
+    
+    int decimalPresence = 0; // for '.'
+    int polarityPresence = 0; // for the either '+' or the '-'
+
+    size_t i = 0;
+
+    // Detecting polarity as first character
+    if (input[i] == '+' or input[i] == '-'){
+        
+        polarityPresence++;
+        i++;
+    }
+    
+    // loop throught the whole string
+    for (; i < input.length(); ++i)
+    {
+        if (input[i] == '.'){
+            
+            decimalPresence++;
+            if (decimalPresence > 1) return false;
+        }
+        else if (input[i] == '+' or input[i] == '-'){
+
+            polarityPresence++;
+            if (polarityPresence > 1) return false;
+        }
+        else if (input[i] != '0')
+            return false;
+    }
+    
+    return true;
+}
+
 bool    isValidValue( string &str ){
+
+    // between 0 and 1000
+    // can be double numbers
+
+    string str = trimWhitespace(str);
+
+    if ( isInputZero(str) )
+        return true;
+    
+    int valueInt = std::atof(str.c_str());
+
+    if (valueInt < 0 or valueInt > 1000)
+        return false;
+    return true;
+}
+
+/**
+ * @brief Converts a string like 2020-12-31 in int 20201231
+ * 
+ * @param str 
+ * @return int 
+ */
+int    convertDateToInt( string &str ){
+
+    int result;
+
+    string year = str.substr(0, 4);
+
+    string month = str.substr(5, 2);
+
+    string day = str.substr(8, 2);
+
+    int yearInt = std::atoi(year.c_str());
+    int monthInt = std::atoi(month.c_str());
+    int dayInt = std::atoi(day.c_str());
+
+    // 2020  12   31
+    result = (yearInt * 1000) + (monthInt * 100) + dayInt;
+    
+    return result;
+}
+
+void    printResult( string &key, string &value){
+
+    int digitDate = convertDateToInt(key);
+    
+    double digitValue = std::atof(value.c_str());
 
     
 }
@@ -292,13 +372,12 @@ void    BitcoinExchange::mapInput( void ){ // rename function
 
         if (not isInputValid(readLine))
             printColor(BOLD_RED, readLine + " is a invalid format line.");
-        else if (not isValidDate(key) or not isValidValue(value)) // !!!!!!!!!!!!!!!!!!!!! HERE
-        {
-            printColor(BOLD_RED, readLine + " is a invalid format line.");
-            //
-        }
-
-
+        else if (not isValidDate(key))
+            printColor(BOLD_RED, key + " is a invalid date line.");
+        else if (not isValidValue(value))
+            printColor(BOLD_RED, value + " is a invalid value.");
+        else
+            printResult(key, value);
     }
 }
 
@@ -314,20 +393,6 @@ void    BitcoinExchange::printDataFile( void ){
     }
     
 }
-
-void    BitcoinExchange::printInputFile( void ){
-
-    for (map<string, double>::iterator it = _mapParsedInput.begin();
-        it != _mapParsedInput.end(); ++it)
-    {
-        printNoEndl("Input Date : ");
-        print(it->first); // first value
-        printNoEndl("Input asked Value : ");
-        print(it->second); // second value
-    }
-    
-}
-
 
 // Getters
 const string& BitcoinExchange::getInputFile( void )const{ return this->_inputFile; }
