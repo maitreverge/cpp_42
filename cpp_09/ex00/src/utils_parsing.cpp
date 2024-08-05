@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 21:27:03 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/08/05 21:32:29 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/08/05 21:49:35 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,9 @@ bool    isValidDate( string &str ){
 
     string day = str.substr(8, 2);
 
-    bool allNumeric = std::all_of(year.begin(), year.end(), ::isdigit)
-        & std::all_of(month.begin(), month.end(), ::isdigit)
-        & std::all_of(day.begin(), day.end(), ::isdigit);
+    bool allNumeric =   std::all_of(year.begin(), year.end(), ::isdigit) &&
+                        std::all_of(month.begin(), month.end(), ::isdigit) &&
+                        std::all_of(day.begin(), day.end(), ::isdigit);
     
     if ( not allNumeric )
         return false;
