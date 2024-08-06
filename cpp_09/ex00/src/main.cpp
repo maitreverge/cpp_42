@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:32 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/03 17:23:00 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/06 09:34:59 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int main(int ac, char **av){
 
     btc.printDataFile();
 
-    btc.printInputFile();
+    // btc.printInputFile();
     
 
     return 0;

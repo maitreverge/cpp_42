@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/05 21:42:47 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/08/06 10:30:15 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,19 +115,21 @@ void    BitcoinExchange::mapData( void ){
             ! This way of inserting data is not C++ 98 friendly, we need to go through std::make_pair function
         */
         
-        // insert in the _mapData raw date value AND double value with atof.
+        // insert in the _mapData converted date value AND double value with atof.
         this->_mapData.insert( std::make_pair(convertDateToInt(key), std::atof(value.c_str()) ) );
     }
 }
 
+// !! MAIN BUGGING FUNCTION
+void    BitcoinExchange::printResult( string &key, string &value){ // key = date, value = asked value of bitcoin
 
-void    BitcoinExchange::printResult( string &key, string &value){
-
-    int digitDate = convertDateToInt(key);
+    // int digitDate = convertDateToInt(key);
     
     double digitValue = std::atof(value.c_str());
 
-    std::map<int, double>::iterator closestResult = std::lower_bound(_mapData.begin(), _mapData.end(), digitDate);
+    // double refValue;
+
+    // std::map<int, double>::iterator it = std::lower_bound(_mapData.begin(), _mapData.end(), digitDate);
 
     /*
         Prendre conscience que it == .begin est ok
@@ -145,11 +147,27 @@ void    BitcoinExchange::printResult( string &key, string &value){
         voir afficher en plus la ligne en entier en couleur differente
     
     */
-    if (closestResult == _mapData.begin()) // premier resulat == 0
-    {
-        
-    }
-    else if (closestResult == _mapData.end())
+    // if (it == _mapData.begin()) // premier resulat == 0
+    // {
+    //     print("debug");
+    // }
+    // else /* if  (it != _mapData.end()) */
+    // {
+    //     it--;
+    // }
+
+    // double refValue = it->second;
+
+    printNoEndl("Date : ");
+    printColorNoEndl(BOLD_GREEN, key);
+    printNoEndl(" // Rate = ");
+    // printColorNoEndl(UNDERLINE_YELLOW, refValue);
+    printNoEndl(" // Nb of bitcoin = ");
+    printColorNoEndl(BOLD_CYAN, digitValue);
+    printNoEndl(" // Result = ");
+    printNoEndl(value + " * ");
+    // printNoEndl(refValue);
+    // printColor(HIGH_INTENSITY_GREEN, digitValue * refValue);
     
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 21:27:03 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/08/05 21:53:17 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/08/06 10:47:41 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ bool    isValidValue( string &str ){
     // between 0 and 1000
     // can be double numbers
 
-    string str = trimWhitespace(str);
+    str = trimWhitespace(str);
 
     if ( isInputZero(str) )
         return true;
@@ -89,10 +89,20 @@ bool isInputZero( string &input ) {
     return true;
 }
 
+bool    isStringDigit( string &str ){
+
+    for (size_t i = 0; i < str.length(); i++)
+    {
+        if (not std::isdigit(str[i]))
+            return false;
+    }
+    return true;
+}
+
 bool    isValidDate( string &str ){
 
     // valid format = 2023-02-20
-    string str = trimWhitespace(str);
+    str = trimWhitespace(str);
 
     if (str.length() != 10)
         return false;
@@ -110,10 +120,15 @@ bool    isValidDate( string &str ){
 
     string day = str.substr(8, 2);
 
-    bool allNumeric =   std::all_of(year.begin(), year.end(), ::isdigit) and
-                        std::all_of(month.begin(), month.end(), ::isdigit) and
-                        std::all_of(day.begin(), day.end(), ::isdigit);
+    // ! std::all_of is not c++98, fuck that
+    // bool allNumeric =   std::all_of(year.begin(), year.end(), ::isdigit) and
+    //                     std::all_of(month.begin(), month.end(), ::isdigit) and
+    //                     std::all_of(day.begin(), day.end(), ::isdigit);
     
+    bool allNumeric =   isStringDigit(year) and
+                        isStringDigit(month) and
+                        isStringDigit(day);
+                        
     if ( not allNumeric )
         return false;
     
@@ -182,6 +197,24 @@ bool    isValidDate( string &str ){
     return true;
 }
 
+
+bool isValidChar( string &input ){
+
+    for (size_t i = 0; i < input.length(); i++)
+    {
+        if (std::isdigit(input[i])
+            or std::isspace(input[i])
+            or input[i] == PIPE
+            or input[i] == DOT
+            or input[i] == HYPHEN)
+            continue;
+        else
+            return false;
+    }
+    
+    return true;
+}
+
 /**
  * @brief Checks if the string of the input file has the correct value, such as :
  * - One separator `|`
@@ -208,27 +241,11 @@ bool    isInputValid( string &str ){
         return false;
     
     // Chekcks if there is all valid charatcers
-    if (std::any_of(str.begin(), str.end(), validChar))
-        return true;
-    return false;
+    
+    // ! any_of is not c++98 friendly neither, fuck this 
+    // if (std::any_of(str.begin(), str.end(), validChar))
+    if (not isValidChar(str))
+        return false;
+    return true;
 }
 
-/**
- * @brief Return true if given char is either a digit, a whitespace, a `|', `-` or a `.`.
- * 
- * Returns false otherwise.
- * 
- * @param input 
- * @return true 
- * @return false 
- */
-bool validChar( char &input ){
-
-    if (std::isdigit(input)
-        or std::isspace(input)
-        or input == PIPE
-        or input == DOT
-        or input == HYPHEN)
-        return true;
-    return false;
-}

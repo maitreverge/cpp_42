@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_template.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/05 21:32:36 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/08/06 10:47:06 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ bool    isValidValue( string &str );
 bool isInputZero( string &input );
 bool    isValidDate( string &str );
 bool    isInputValid( string &str );
-bool validChar( char &input );
+bool isValidChar( string &input );
+bool    isStringDigit( string &str );
+
 
 
