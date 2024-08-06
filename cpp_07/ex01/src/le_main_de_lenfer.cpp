@@ -28,7 +28,7 @@ int main(){
     int tab[] = {0, 1, 2, 3, 4};
     Awesome tab2[5];
 
-    iter( tab, 5, my_print<int>); // appel de fonction qui casse la tete
+    iter( tab, 5, my_print<const int>); // appel de fonction qui casse la tete
     iter( tab2, 5, my_print<Awesome>);
 
     return 0;
