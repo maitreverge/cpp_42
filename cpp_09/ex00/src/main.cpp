@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:32 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/06 09:34:59 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/06 12:54:41 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int main(int ac, char **av){
     // ! check if data.csv is corrupted in any way ()
     btc.mapInput();
 
-    btc.printDataFile();
+    // btc.printDataFile();
 
     // btc.printInputFile();
     
