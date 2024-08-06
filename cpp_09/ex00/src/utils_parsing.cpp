@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 21:27:03 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/08/06 10:51:17 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/06 13:39:43 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  */
 int    convertDateToInt( string &str ){
 
-    int result;
+    int result = 0;
 
     string year = str.substr(0, 4);
 
@@ -32,8 +32,15 @@ int    convertDateToInt( string &str ){
     int monthInt = std::atoi(month.c_str());
     int dayInt = std::atoi(day.c_str());
 
-    // 2020  12   31
-    result = (yearInt * 1000) + (monthInt * 100) + dayInt;
+    // 2020  02   31
+    result += (yearInt * 10000)+ (monthInt * 100) + dayInt;
+    
+    // // 2020  02   31
+    // if (monthInt < 10)
+    //     result += (monthInt * )
+    //  + (monthInt * 100) + dayInt;
+    
+    // printColor(HIGH_INTENSITY_YELLOW, result);
     
     return result;
 }

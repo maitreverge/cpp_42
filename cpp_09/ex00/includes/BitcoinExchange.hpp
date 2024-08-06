@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/06 12:54:06 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/06 13:52:56 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,13 +125,14 @@ void    BitcoinExchange::mapData( void ){
 // !! MAIN BUGGING FUNCTION
 void    BitcoinExchange::printResult( string &key, string &value){ // key = date, value = asked value of bitcoin
 
-    // int digitDate = convertDateToInt(key);
+    int digitDate = convertDateToInt(key);
     
     double digitValue = std::atof(value.c_str());
 
-    // double refValue;
 
-    // std::map<int, double>::iterator it = std::lower_bound(_mapData.begin(), _mapData.end(), digitDate);
+    std::map<int, double>::iterator it = _mapData.lower_bound(digitDate);
+
+    int position = std::distance(_mapData.begin(), it) + 1;
 
     /*
         Prendre conscience que it == .begin est ok
@@ -149,27 +150,29 @@ void    BitcoinExchange::printResult( string &key, string &value){ // key = date
         voir afficher en plus la ligne en entier en couleur differente
     
     */
-    // if (it == _mapData.begin()) // premier resulat == 0
-    // {
-    //     print("debug");
-    // }
-    // else /* if  (it != _mapData.end()) */
-    // {
-    //     it--;
-    // }
+   
+    
+    if (it->first != digitDate)
+        it--;
+    else
+        position++;
+    // if (it != _mapData.begin()) // premier resulat == 0
 
-    // double refValue = it->second;
+    double refValue = it->second;
 
+    printColorNoEndl(BOLD_YELLOW, "At CSV position : ");
+    print(position);
     printNoEndl("Date : ");
     printColorNoEndl(BOLD_GREEN, key);
     printNoEndl(" // Rate = ");
-    // printColorNoEndl(UNDERLINE_YELLOW, refValue);
+    printColorNoEndl(UNDERLINE_YELLOW, refValue);
     printNoEndl(" // Nb of bitcoin = ");
     printColorNoEndl(BOLD_CYAN, digitValue);
     printNoEndl(" // Result = ");
     printNoEndl(value + " * ");
-    // printNoEndl(refValue);
-    // printColor(HIGH_INTENSITY_GREEN, digitValue * refValue);
+    printNoEndl(refValue);
+    printNoEndl(" = ");
+    printColor(HIGH_INTENSITY_GREEN, digitValue * refValue);
     
 }
 
@@ -187,21 +190,31 @@ void    BitcoinExchange::mapInput( void ){ // rename function
 
     string pipeSeparator = "|";
     
-    string readLine, key, value;
+    string readLine, key, value, tempReadline;
 
     while(getline(inputFile, readLine)){
 
+        tempReadline = readLine;
         // extract the date
         key = readLine.substr(0, readLine.find(pipeSeparator));
         // extract BTC value
         value = readLine.erase(0, readLine.find(pipeSeparator) + pipeSeparator.length());
 
-        if (not isInputValid(readLine))
-            printColor(BOLD_RED, readLine + " is a invalid format line.");
-        else if (not isValidDate(key))
-            printColor(BOLD_RED, key + " is a invalid date line.");
-        else if (not isValidValue(value))
-            printColor(BOLD_RED, value + " is a invalid value.");
+        if (not isInputValid(tempReadline)){
+
+            printColorNoEndl(BOLD_RED, tempReadline);
+            printColor(BOLD_RED, " is a invalid format line.");   
+        }
+        else if (not isValidDate(key)){
+
+            printColorNoEndl(BOLD_RED, key);
+            printColor(BOLD_RED, " is a invalid date line.");   
+        }
+        else if (not isValidValue(value)){
+
+            printColorNoEndl(BOLD_RED, value);
+            printColor(BOLD_RED, " is a invalid value.");   
+        }
         else
             printResult(key, value);
     }
