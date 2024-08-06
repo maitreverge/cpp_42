@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 21:27:03 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/08/06 13:39:43 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/06 15:17:07 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ int    convertDateToInt( string &str ){
     // 2020  02   31
     result += (yearInt * 10000)+ (monthInt * 100) + dayInt;
     
-    // // 2020  02   31
-    // if (monthInt < 10)
-    //     result += (monthInt * )
-    //  + (monthInt * 100) + dayInt;
-    
-    // printColor(HIGH_INTENSITY_YELLOW, result);
-    
     return result;
 }
 
+/**
+ * @brief Returns true if the given string is a int/double between 0 and 1000
+ * 
+ * @param str 
+ * @return true 
+ * @return false 
+ */
 bool    isValidValue( string &str ){
 
     // between 0 and 1000
@@ -62,6 +62,13 @@ bool    isValidValue( string &str ){
     return true;
 }
 
+/**
+ * @brief Checks if the string is 0 or a mathematical equivalent to it (like 0.00000000000000, +00000.0000000)
+ * 
+ * @param input 
+ * @return true 
+ * @return false 
+ */
 bool isInputZero( string &input ) {
     
     int decimalPresence = 0; // for '.'
@@ -96,6 +103,13 @@ bool isInputZero( string &input ) {
     return true;
 }
 
+/**
+ * @brief Returns `true`  if the given string is all digits
+ * 
+ * @param str 
+ * @return true 
+ * @return false 
+ */
 bool    isStringDigit( string &str ){
 
     for (size_t i = 0; i < str.length(); i++)
@@ -106,6 +120,15 @@ bool    isStringDigit( string &str ){
     return true;
 }
 
+/**
+ * @brief Returns `true` if the given date is in format `YYYY-MM-DD`
+ * 
+ * and checks about the Months and days coherence.
+ * 
+ * @param str 
+ * @return true 
+ * @return false 
+ */
 bool    isValidDate( string &str ){
 
     // valid format = 2023-02-20
@@ -127,7 +150,7 @@ bool    isValidDate( string &str ){
 
     string day = str.substr(8, 2);
 
-    // ! std::all_of is not c++98, fuck that
+    // ! std::all_of is not c++98, screw that
     // bool allNumeric =   std::all_of(year.begin(), year.end(), ::isdigit) and
     //                     std::all_of(month.begin(), month.end(), ::isdigit) and
     //                     std::all_of(day.begin(), day.end(), ::isdigit);
@@ -204,7 +227,13 @@ bool    isValidDate( string &str ){
     return true;
 }
 
-
+/**
+ * @brief Returns `true` if the whole string is composed of a `.`, `-`, `|`, whitespaces or digits.
+ * 
+ * @param input 
+ * @return true 
+ * @return false 
+ */
 bool isValidChar( string &input ){
 
     for (size_t i = 0; i < input.length(); i++)
@@ -249,7 +278,7 @@ bool    isInputValid( string &str ){
     
     // Chekcks if there is all valid charatcers
     
-    // ! any_of is not c++98 friendly neither, fuck this 
+    // ! any_of is not c++98 friendly neither, screw this 
     // if (std::any_of(str.begin(), str.end(), validChar))
     if (not isValidChar(str))
         return false;

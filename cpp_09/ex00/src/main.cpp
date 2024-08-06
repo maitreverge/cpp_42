@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:32 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/06 12:54:41 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/06 15:26:27 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void printUsage( void ){
 
-    printColor(BOLD_RED, "Wrong Argumennts Provided");
+    printColor(BOLD_RED, "Wrong Arguments Provided");
     print("Usage :");
     printColorNoEndl(BOLD_GREEN, "./btc      ");
     printColorNoEndl(BOLD_YELLOW, "<input_file>");
@@ -56,7 +56,6 @@ static bool isPreCheckValid( BitcoinExchange &btc, int &ac, char **av ){
         printColor(BOLD_RED, "NO");
         printColorNoEndl(BOLD_YELLOW, "CHOICE : ");
         getline(cin, promptUser);
-        print("Debug prompt = " + promptUser);
     } while (promptUser != "y" and promptUser != "n" );
 
     // Let's the user prompt the desired file
@@ -74,15 +73,6 @@ static bool isPreCheckValid( BitcoinExchange &btc, int &ac, char **av ){
         } while (btc.getDataFile().empty());
     }
     
-    // Checks access file
-    // if (not doesFileExists(btc.getInputFile())
-    //     or not doesFileExists(btc.getDataFile())){
-
-    //     printColor(BOLD_RED, "Either input file or data file can't be accessed");
-    //     return false;
-    // }
-
-    // un-factored function for debugging
     if ( not doesFileExists(btc.getDataFile()) ){
 
         print(btc.getDataFile());
@@ -106,16 +96,9 @@ int main(int ac, char **av){
     if (not isPreCheckValid(btc, ac, av))
         return (1);
     
-    // ! map data done
     btc.mapData();
     
-    // ! check if data.csv is corrupted in any way ()
-    btc.mapInput();
-
-    // btc.printDataFile();
-
-    // btc.printInputFile();
-    
+    btc.parseInput();
 
     return 0;
 }
