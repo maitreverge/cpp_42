@@ -6,12 +6,12 @@
 #    By: flverge <flverge@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/28 09:35:55 by flverge           #+#    #+#              #
-#    Updated: 2024/07/29 10:50:48 by flverge          ###   ########.fr        #
+#    Updated: 2024/08/06 15:31:31 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Program name
-NAME = rpn
+NAME = RPN
 
 # Colors
 RESET = \033[0m
