@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 21:27:03 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/08/06 10:47:41 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/06 10:51:17 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int    convertDateToInt( string &str ){
 
     string year = str.substr(0, 4);
 
-    string month = str.substr(5, 2);
+    string month = str.substr(5, 2); // ! error
 
     string day = str.substr(8, 2);
 

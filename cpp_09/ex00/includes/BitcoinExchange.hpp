@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:06 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/06 10:30:15 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/06 10:56:12 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void    BitcoinExchange::mapData( void ){
     // map date to a int value
     while (getline(inputFile, readLine)){
 
+        
         // extract the date
         key = readLine.substr(0, readLine.find(separator));
         // extract BTC value
@@ -116,7 +117,8 @@ void    BitcoinExchange::mapData( void ){
         */
         
         // insert in the _mapData converted date value AND double value with atof.
-        this->_mapData.insert( std::make_pair(convertDateToInt(key), std::atof(value.c_str()) ) );
+        if (key != "data")
+            this->_mapData.insert( std::make_pair(convertDateToInt(key), std::atof(value.c_str()) ) );
     }
 }
 
