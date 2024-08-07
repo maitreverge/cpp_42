@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:31:02 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/06 15:57:47 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/07 10:51:10 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ class RPN
 
 private:
 
-    RPN( void );
     RPN& operator=( const RPN& right_operator );
     
-    const string _promptARGV;
-    // probably a stack
+    const string        _promptARGV;
+    std::stack<char>    _stackArg;
 
 public:
 
+    RPN( void );
     RPN( string input );
     RPN( const RPN& copy );
     ~RPN();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_template.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/07/25 14:08:15 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/08/07 11:03:31 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 #include <ostream>
 #include <sstream>
 #include <cstdlib>
+#include <stdio.h>
+#include <string>
+#include <stack>
+#include <map>
+#include <algorithm>
 
 // Using keywords
 using std::string;
@@ -34,6 +39,11 @@ using std::ofstream;
 using std::ostream;
 using std::stringstream;
 using std::exception;
+
+#define PLUS '+'
+#define MINUS '-'
+#define MULTIPLY '*'
+#define DIVIDE '/'
 
 
 // ---------------------  Templates functions  ---------------------
