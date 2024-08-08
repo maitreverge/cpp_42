@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:43:22 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/07 15:07:52 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/08 11:59:54 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,63 +20,35 @@ static void printUsage( void ){
     printColorNoEndl(BOLD_YELLOW, " \" 8 5 * 3 - 9 / 1 - 12 + \" ");
 }
 
-bool    validChars( string input){
+bool okChars( char c){
+
+    if (std::isdigit(c) or
+        c == PLUS or
+        c == MINUS or
+        c == MULTIPLY or
+        c == DIVIDE)
+            return true;
+    return false;
+}
+
+bool    validChars( string &input ){
 
     // isdigit
     // Operators + - * /
 
-    bool isChar = false;
-    int nbChars = 0;
+    // removed all whitespaces from the string    
+    input.erase( std::remove_if( input.begin(), input.end(), ::isspace ), input.end() );
+    
+    // print(*(input.end() - 1));
 
-    // Checks if there is not two consecutives characters without a whitespace
-    for (size_t i = 0; i < input.length(); i++)
-    {
-        if ( std::isspace( input[i] ))
-            isChar = false;
-        else if ( std::isdigit(input[i]) and !isChar ){
-            
-            isChar = true;
-            nbChars++;
-        }
-        else if (  (input[i] == PLUS or
-                    input[i] == MINUS or
-                    input[i] == MULTIPLY or
-                    input[i] == DIVIDE ) and !isChar ){
-                        
-                        isChar = true;
-                        nbChars++;
-                    }
-        else
-            return false; // ? ALL CORNER CASES IDENTIFIED
-    }
-
-    if (nbChars < 3)
+    // checks if last argument is a number
+    if ( std::isdigit( input[input.length() - 1] ) )
         return false;
     
+    //     8 5 * 3 -  9 /  1 -  1 2 +
 
-    // ! THINK ABOUT FREEING THE POINTER
-    char *inputs = strtok(const_cast<char*>( input.c_str() ), " \t\n");
-
-    int operators = 0;
-    int numbers = 0;
-    // 3 consecutives numbers or 3 consecutives operators is false
+    std::find_if(input.begin(), input.end(), okChars);
     
-    for (size_t i = 0; inputs[i]; i++)
-    {
-        if (std::isdigit(inputs[i])){
-
-            numbers++;
-            operators = 0;
-        }
-        else{
-
-            operators++;
-            numbers = 0;
-        }
-        
-        if (operators > 2 or numbers > 2)
-            return false;
-    }
     
     return true;
     
@@ -91,10 +63,12 @@ bool    validChars( string input){
  */
 static bool correctArgv(char **av, RPN &rpn){
 
+    (void)(rpn);
     string mainArg(av[1]);
     
     if ( not validChars( mainArg ) )
         return false;
+    return true;
 }
 
 int main( int ac, char** av){
