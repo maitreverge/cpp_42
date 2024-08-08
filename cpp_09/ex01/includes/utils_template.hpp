@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/07 15:01:17 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/08 12:57:02 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@
 #include <stdio.h>
 #include <string>
 #include <stack>
-#include <map>
 #include <algorithm>
-#include <string.h>
 
 // Using keywords
 using std::string;
