@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:43:22 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/08 13:50:00 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/08 14:32:01 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,51 @@ bool    validChars( string &input ){
     // ! STEP 2 : search for an invalid char
     std::string::iterator it = std::find_if(input.begin(), input.end(), notOkChars);
     
-    print( *it );
+    // print( *it );
     
-    if (it == input.end()){
+    if (it != input.end()){
 
         printColor(BOLD_RED, "Invalid char detected");
         return false;
     }
+
+    int nbDetect = 0;
+    int opDetect = 0;
+    
+    for (size_t i = 2; input[i]; i++)
+    {
+        if ( std::isdigit(input[i]) )
+            nbDetect++;
+        else
+            opDetect++;
+        
+        if ( nbDetect == 1 and opDetect == 1 ){
+
+            nbDetect = 0;
+            opDetect = 0;
+        }
+
+        if ( (opDetect == 2 and nbDetect != 2) or (nbDetect == 2 and opDetect != 2)  ){
+
+            printColor(BOLD_RED, "Double numbers must be followed by two operators");
+            return false;
+        }
+        else if ( nbDetect > 2 or opDetect > 2 ){
+            
+            printColor(BOLD_RED, "3 consecutives nbs or operator ONE");
+            return false;
+        }
+        
+        // ! TO DO : detect if two operators succeed two number
+        
+    }
+
+    if ( ++opDetect != nbDetect){
+
+        printColor(BOLD_RED, "3 consecutives nbs or operator TWO");
+        return false;
+    }
+    
     
     
     
