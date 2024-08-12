@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:43:22 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/12 12:56:33 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/12 15:27:03 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ bool    validChars( string &input ){
                 return false;
         }
     }
+
     return true;
 }
 
@@ -149,9 +150,9 @@ bool    validChars( string &input ){
  * @return true 
  * @return false 
  */
-static bool correctArgv(char **av, RPN &rpn){
+static bool correctArgv(char **av){
 
-    (void)(rpn);
+    // (void)(rpn);
     string mainArg(av[1]);
     
     if ( not validChars( mainArg ) )
@@ -161,18 +162,24 @@ static bool correctArgv(char **av, RPN &rpn){
 
 int main( int ac, char** av){
 
-    RPN rpn;
     if (ac != 2){
 
         printUsage();
         return 1;
     }
-    else if (not correctArgv(av, rpn)){
+    
+    
+    if (not correctArgv(av)){
 
         printColor(BOLD_RED, "Wrong arguments given");
         return 1;
     }
+    
+    RPN rpn(av[1]);
 
     // ! TO DO : make the maths
+    rpn.parseStack();
+
+    // print(rpn.printResult());
     
 }
