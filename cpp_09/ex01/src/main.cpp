@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:43:22 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/08 14:32:01 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/12 12:56:33 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static void printUsage( void ){
 bool isOperator( char &c ){
 
     return (c == PLUS or
-        c == MINUS or
-        c == MULTIPLY or
-        c == DIVIDE)
+            c == MINUS or
+            c == MULTIPLY or
+            c == DIVIDE)
     ? true
     : false;
 }
@@ -94,48 +94,52 @@ bool    validChars( string &input ){
         return false;
     }
 
-    int nbDetect = 0;
-    int opDetect = 0;
+    // int nbDetect = 0;
+    // int opDetect = 0;
+
+    // ! STEP 3 : search for coherence for alternance between numbers and operators
+    // ! Except for first 3 chars, one number is followed by one operator, two numbers are followed by 2 operators, not more
+
+    string subThree(input);
+
+    subThree.erase(subThree.begin(), subThree.begin() + 3);
+
     
-    for (size_t i = 2; input[i]; i++)
-    {
-        if ( std::isdigit(input[i]) )
-            nbDetect++;
-        else
-            opDetect++;
-        
-        if ( nbDetect == 1 and opDetect == 1 ){
+    // ! Count post arguments of three to check if odd or not.
+    if ( subThree.length() % 2 != 0){
 
-            nbDetect = 0;
-            opDetect = 0;
-        }
-
-        if ( (opDetect == 2 and nbDetect != 2) or (nbDetect == 2 and opDetect != 2)  ){
-
-            printColor(BOLD_RED, "Double numbers must be followed by two operators");
-            return false;
-        }
-        else if ( nbDetect > 2 or opDetect > 2 ){
-            
-            printColor(BOLD_RED, "3 consecutives nbs or operator ONE");
-            return false;
-        }
-        
-        // ! TO DO : detect if two operators succeed two number
-        
-    }
-
-    if ( ++opDetect != nbDetect){
-
-        printColor(BOLD_RED, "3 consecutives nbs or operator TWO");
+        printColor(BOLD_RED, "Post three odd");
         return false;
     }
     
-    
-    
-    
+    bool doubleCount = false;
+
+    // ! Check if there is a coherence : 1 nb == 1 op, 2nb == 2op
+    if (subThree.length()){
+        
+        for (size_t i = 0; i < subThree.length(); i++)
+        {
+            if ( std::isdigit(subThree[i]) and !doubleCount ){
+
+               i++;
+               if ( std::isdigit(subThree[i]) )
+                   doubleCount = true;
+               else
+                   continue;
+            }
+            else if ( isOperator(subThree[i]) and doubleCount ){
+                
+                i++;
+                if ( isOperator(subThree[i]) )
+                    doubleCount = false;
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+    }
     return true;
-    
 }
 
 /**
