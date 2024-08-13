@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:31:02 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/13 12:08:31 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/13 12:34:43 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ public:
     RPN( const RPN& copy );
     ~RPN();
 
-    class DivideByZero : public exception
-    {
-        virtual const char* what() const throw();   
-    };
-
     void    parseStack( void );
 
     int     printResult( void );
@@ -44,175 +39,8 @@ public:
 
     int     performSwitch( int leftNb, int rightNb, char op );
 
+    class DivideByZero : public exception
+    {
+        virtual const char* what() const throw();   
+    };
 };
-
-
-// ---------- Functions declarations ---------------
-
-
-RPN::RPN( void ){}
-
-RPN::RPN( string input ) :
-    _promptARGV(input){}
-
-
-RPN::RPN( const RPN& copy ) :
-    _promptARGV(copy._promptARGV) {}
-
-
-RPN& RPN::operator=( const RPN& right_operator ){ static_cast<void>(right_operator); return *this; }
-
-void    RPN::parseStack( void ){
-
-    std::string::iterator it_begin = this->_promptARGV.begin();
-    std::string::iterator it_end = this->_promptARGV.end();
-    
-    // Erase all whitespaces
-    this->_promptARGV.erase(std::remove_if(it_begin, it_end, ::isspace ),it_end );
-
-    print(_promptARGV);
-    // push each element in the stack in reverse order
-
-    for (std::string::iterator it = _promptARGV.end() - 1; it >= _promptARGV.begin(); --it)
-    {
-        _stackArg.push(*it);
-    }
-
-    // print(_stackArg.top());
-    // _stackArg.pop();
-    // print(_stackArg.top());
-    // _stackArg.pop();
-    // print(_stackArg.top());
-    // _stackArg.pop();
-    // print(_stackArg.top());
- 
- 
-}
-
-int     RPN::popAndConvert( void ){
-
-    int value = _stackArg.top() - '0';
-
-    _stackArg.pop();
-
-    return value;
-}
-
-int     RPN::performSwitch( int leftNb, int rightNb, char op){
-
-    int result;
-    switch (op)
-    {
-        case '+': result = leftNb + rightNb;
-        case '-': result = leftNb - rightNb;
-        case '*': result = leftNb * rightNb;
-        case '/':
-            if (rightNb == 0)
-                throw DivideByZero();
-            result = leftNb / rightNb;
-    }
-    return result;
-}
-
-
-int     RPN::printResult( void ){
-
-    char mainOperator;
-    char secondOperator;
-    
-    int leftNb = 0, rightNb = 0, result = 0;
-
-    // Pop the first 3 elements of the stack
-    
-    leftNb = popAndConvert();
-    rightNb = popAndConvert();
-    mainOperator = _stackArg.top();
-    _stackArg.pop();
-
-    // switch (mainOperator)
-    // {
-    //     case '+':
-    //         result = leftNb + rightNb;
-    //         break;
-    //     case '-':
-    //         result = leftNb - rightNb;
-    //         break;
-    //     case '*':
-    //         result = leftNb * rightNb;
-    //         break;
-    //     case '/':
-    //         if (rightNb == 0)
-    //             throw DivideByZero();
-    //         result = leftNb / rightNb;
-    //         break;
-    // }
-    result = performSwitch( leftNb, rightNb, mainOperator );
-
-    while ( _stackArg.size() > 0 ){
-
-        leftNb = popAndConvert();
-
-        // Double numbers edge case
-        if ( std::isdigit( _stackArg.top() ) ){
-            
-            rightNb = popAndConvert();
-            secondOperator = _stackArg.top();
-            _stackArg.pop();
-            mainOperator = _stackArg.top();
-            _stackArg.pop();
-
-            // make the maths for temp result :
-
-            // switch (secondOperator)
-            // {
-            //     case '+':
-            //         tempResult = leftNb + rightNb;
-            //         break;
-            //     case '-':
-            //         tempResult = leftNb - rightNb;
-            //         break;
-            //     case '*':
-            //         tempResult = leftNb * rightNb;
-            //         break;
-            //     case '/':
-            //         if (rightNb == 0)
-            //             throw DivideByZero();
-            //         tempResult = leftNb / rightNb;
-            //         break;
-            // }
-            leftNb = performSwitch( leftNb, rightNb, secondOperator );
-        }
-        else{
-
-            mainOperator = _stackArg.top();
-            _stackArg.pop();
-        }
-        
-        // switch (mainOperator)
-        // {
-        //     case '+':
-        //         result += leftNb;
-        //         break;
-        //     case '-':
-        //         result -= leftNb;
-        //         break;
-        //     case '*':
-        //         result *= leftNb;
-        //         break;
-        //     case '/':
-        //         if (leftNb == 0)
-        //             throw DivideByZero();
-        //         result /= leftNb;
-        //         break;
-        // }
-
-        result = performSwitch( result, leftNb, mainOperator );
-    }
-
-    return result;
-}
-
-const char* RPN::DivideByZero::what( void )const throw() { return "Can't divide by Zero, aborting RPN"; }
-
-RPN::~RPN( void ){}
-

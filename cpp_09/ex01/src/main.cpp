@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:43:22 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/13 12:01:47 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/13 12:33:38 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void printUsage( void ){
     printColor(BOLD_RED, "Wrong Arguments Provided");
     print("Usage :");
     printColorNoEndl(BOLD_GREEN, "./RPN      ");
-    printColorNoEndl(BOLD_YELLOW, " \" 8 5 * 3 - 9 / 1 - 12 + \" ");
+    printColorNoEndl(BOLD_YELLOW, " \" 8 9 * 9 - 9 - 9 - 4 - 1 + \" ");
 }
 
 bool isOperator( char &c ){
@@ -44,10 +44,7 @@ bool notOkChars( char &c ){
 
 bool    validChars( string &input ){
 
-    //     8 5 * 3 -  9 /  1 -  1 2 +
-
-    
-    // ! STEP 0 : detects for double digits
+    // ! STEP 1 : detects for double digits
     int digitDetects = 0;
     for (size_t i = 0; input[i]; i++)
     {
@@ -68,7 +65,7 @@ bool    validChars( string &input ){
     
     char lastChar = *(input.end() - 1);
     
-    // ! STEP 1 : search for a lenght() < 3 or not an operator as last char
+    // ! STEP 2 : search for a lenght() < 3 or not an operator as last char
     if ( input.length() < 3 or !isOperator(lastChar) ){
 
         printColor(BOLD_RED, "lenght < 3 or last operator is not a operator ");
@@ -76,17 +73,15 @@ bool    validChars( string &input ){
     }
 
     
-    // ! STEP 1.1 checks if the first 3 operators are number/number/operator
+    // ! STEP 3 checks if the first 3 operators are number/number/operator
     if ( not ( std::isdigit(input[0]) and std::isdigit(input[1]) and isOperator(input[2]) ) ){
 
         printColor(BOLD_RED, "first 3 arguments are not nb/nb/op");
         return false;
     }
     
-    // ! STEP 2 : search for an invalid char
+    // ! STEP 4 : search for an invalid char
     std::string::iterator it = std::find_if(input.begin(), input.end(), notOkChars);
-    
-    // print( *it );
     
     if (it != input.end()){
 
@@ -94,10 +89,7 @@ bool    validChars( string &input ){
         return false;
     }
 
-    // int nbDetect = 0;
-    // int opDetect = 0;
-
-    // ! STEP 3 : search for coherence for alternance between numbers and operators
+    // ! STEP 5 : search for coherence for alternance between numbers and operators
     // ! Except for first 3 chars, one number is followed by one operator, two numbers are followed by 2 operators, not more
 
     string subThree(input);
@@ -112,10 +104,11 @@ bool    validChars( string &input ){
         return false;
     }
     
-    bool doubleCount = false;
 
-    // ! Check if there is a coherence : 1 nb == 1 op, 2nb == 2op
+    // ! STEP 6 : Check if there is a coherence : 1 nb == 1 op, 2nb == 2op
     if (subThree.length()){
+        
+        bool doubleCount = false;
         
         for (size_t i = 0; i < subThree.length(); i++)
         {
@@ -162,34 +155,24 @@ static bool correctArgv(char **av){
 
 int main( int ac, char** av){
 
-    if (ac != 2){
+    if (ac != 2 or not correctArgv(av)){
 
         printUsage();
         return 1;
     }
     
-    
-    if (not correctArgv(av)){
-
-        printColor(BOLD_RED, "Wrong arguments given");
-        return 1;
-    }
-    
     RPN rpn(av[1]);
 
-    // ! TO DO : make the maths
     rpn.parseStack();
 
+    printColorNoEndl(BOLD_GREEN, "Result = ");
+    
     try
     {
-        // int result = rpn.printResult();
-        printColorNoEndl(BOLD_GREEN, "Result = ");
         print(rpn.printResult());
     }
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
     }
-    
-    
 }
