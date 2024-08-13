@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:31:02 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/12 15:57:48 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/13 11:17:00 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ private:
     RPN( void );
     RPN& operator=( const RPN& right_operator );
     
-    string        _promptARGV;
     std::stack<char>    _stackArg;
+    string              _promptARGV;
 
 public:
 
@@ -31,7 +31,14 @@ public:
     RPN( const RPN& copy );
     ~RPN();
 
+    class DivideByZero : public exception
+    {
+        virtual const char* what() const throw();   
+    };
+
     void    parseStack( void );
+
+    int     printResult( void );
 
 };
 
@@ -67,12 +74,120 @@ void    RPN::parseStack( void ){
         _stackArg.push(*it);
     }
 
-    print(_stackArg.top());
-    _stackArg.pop();
-    print(_stackArg.top());
+    // print(_stackArg.top());
+    // _stackArg.pop();
+    // print(_stackArg.top());
+    // _stackArg.pop();
+    // print(_stackArg.top());
+    // _stackArg.pop();
+    // print(_stackArg.top());
+    // _stackArg.pop();
+    // print(_stackArg.top());
  
  
 }
+
+int     RPN::printResult( void ){
+
+    char mainOperator;
+    char secondOperator;
+    
+    int leftNb = 0, rightNb = 0, result = 0, tempResult = 0;
+
+    // Pop the first 3 elements of the stack
+    
+    leftNb = _stackArg.top() - 48;
+    _stackArg.pop();
+    rightNb = _stackArg.top() - 48;
+    _stackArg.pop();
+    mainOperator = _stackArg.top();
+    _stackArg.pop();
+
+    switch (mainOperator)
+    {
+        case '+':
+            result = leftNb + rightNb;
+            break;
+        case '-':
+            result = leftNb - rightNb;
+            break;
+        case '*':
+            result = leftNb * rightNb;
+            break;
+        case '/':
+            if (rightNb == 0)
+                throw DivideByZero();
+            result = leftNb / rightNb;
+            break;
+    }
+
+    while ( _stackArg.size() > 0 ){
+
+        leftNb = _stackArg.top() - 48;
+        _stackArg.pop();
+
+        // Double operators edge case
+        if ( std::isdigit( _stackArg.top())){
+            
+            // edge case if RPN got two consecutives numbers
+            
+            rightNb = _stackArg.top() - 48;
+            _stackArg.pop();
+            secondOperator = _stackArg.top();
+            _stackArg.pop();
+            mainOperator = _stackArg.top();
+            _stackArg.pop();
+
+            // make the maths for temp result :
+
+            switch (secondOperator)
+            {
+                case '+':
+                    tempResult = leftNb + rightNb;
+                    break;
+                case '-':
+                    tempResult = leftNb - rightNb;
+                    break;
+                case '*':
+                    tempResult = leftNb * rightNb;
+                    break;
+                case '/':
+                    if (rightNb == 0)
+                        throw DivideByZero();
+                    tempResult = leftNb / rightNb;
+                    break;
+            }
+            leftNb = tempResult;
+        }
+        else{
+
+            mainOperator = _stackArg.top();
+            _stackArg.pop();
+        }
+        
+        switch (mainOperator)
+        {
+            case '+':
+                result += leftNb;
+                break;
+            case '-':
+                result -= leftNb;
+                break;
+            case '*':
+                result *= leftNb;
+                break;
+            case '/':
+                if (leftNb == 0)
+                    throw DivideByZero();
+                result /= leftNb;
+                break;
+        }
+    }
+
+    return result;
+}
+
+const char* RPN::DivideByZero::what( void )const throw() { return "Can't divide by Zero, aborting RPN"; }
 
 RPN::~RPN( void ){}
 
