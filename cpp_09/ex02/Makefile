@@ -6,12 +6,12 @@
 #    By: flverge <flverge@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/28 09:35:55 by flverge           #+#    #+#              #
-#    Updated: 2024/07/29 10:51:05 by flverge          ###   ########.fr        #
+#    Updated: 2024/08/13 12:37:17 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Program name
-NAME = pmerge_me
+NAME = PmergeMe
 
 # Colors
 RESET = \033[0m
