@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:43:22 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/13 10:34:44 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/13 12:01:47 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,9 +182,9 @@ int main( int ac, char** av){
 
     try
     {
-        int result = rpn.printResult();
+        // int result = rpn.printResult();
         printColorNoEndl(BOLD_GREEN, "Result = ");
-        print(result);
+        print(rpn.printResult());
     }
     catch(const std::exception& e)
     {

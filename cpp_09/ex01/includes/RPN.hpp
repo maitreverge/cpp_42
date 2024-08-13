@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:31:02 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/13 11:17:00 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/13 12:08:31 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ public:
     void    parseStack( void );
 
     int     printResult( void );
+
+    int     popAndConvert ( void );
+
+    int     performSwitch( int leftNb, int rightNb, char op );
 
 };
 
@@ -81,58 +85,77 @@ void    RPN::parseStack( void ){
     // print(_stackArg.top());
     // _stackArg.pop();
     // print(_stackArg.top());
-    // _stackArg.pop();
-    // print(_stackArg.top());
  
  
 }
+
+int     RPN::popAndConvert( void ){
+
+    int value = _stackArg.top() - '0';
+
+    _stackArg.pop();
+
+    return value;
+}
+
+int     RPN::performSwitch( int leftNb, int rightNb, char op){
+
+    int result;
+    switch (op)
+    {
+        case '+': result = leftNb + rightNb;
+        case '-': result = leftNb - rightNb;
+        case '*': result = leftNb * rightNb;
+        case '/':
+            if (rightNb == 0)
+                throw DivideByZero();
+            result = leftNb / rightNb;
+    }
+    return result;
+}
+
 
 int     RPN::printResult( void ){
 
     char mainOperator;
     char secondOperator;
     
-    int leftNb = 0, rightNb = 0, result = 0, tempResult = 0;
+    int leftNb = 0, rightNb = 0, result = 0;
 
     // Pop the first 3 elements of the stack
     
-    leftNb = _stackArg.top() - 48;
-    _stackArg.pop();
-    rightNb = _stackArg.top() - 48;
-    _stackArg.pop();
+    leftNb = popAndConvert();
+    rightNb = popAndConvert();
     mainOperator = _stackArg.top();
     _stackArg.pop();
 
-    switch (mainOperator)
-    {
-        case '+':
-            result = leftNb + rightNb;
-            break;
-        case '-':
-            result = leftNb - rightNb;
-            break;
-        case '*':
-            result = leftNb * rightNb;
-            break;
-        case '/':
-            if (rightNb == 0)
-                throw DivideByZero();
-            result = leftNb / rightNb;
-            break;
-    }
+    // switch (mainOperator)
+    // {
+    //     case '+':
+    //         result = leftNb + rightNb;
+    //         break;
+    //     case '-':
+    //         result = leftNb - rightNb;
+    //         break;
+    //     case '*':
+    //         result = leftNb * rightNb;
+    //         break;
+    //     case '/':
+    //         if (rightNb == 0)
+    //             throw DivideByZero();
+    //         result = leftNb / rightNb;
+    //         break;
+    // }
+    result = performSwitch( leftNb, rightNb, mainOperator );
 
     while ( _stackArg.size() > 0 ){
 
-        leftNb = _stackArg.top() - 48;
-        _stackArg.pop();
+        leftNb = popAndConvert();
 
-        // Double operators edge case
-        if ( std::isdigit( _stackArg.top())){
+        // Double numbers edge case
+        if ( std::isdigit( _stackArg.top() ) ){
             
-            // edge case if RPN got two consecutives numbers
-            
-            rightNb = _stackArg.top() - 48;
-            _stackArg.pop();
+            rightNb = popAndConvert();
             secondOperator = _stackArg.top();
             _stackArg.pop();
             mainOperator = _stackArg.top();
@@ -140,24 +163,24 @@ int     RPN::printResult( void ){
 
             // make the maths for temp result :
 
-            switch (secondOperator)
-            {
-                case '+':
-                    tempResult = leftNb + rightNb;
-                    break;
-                case '-':
-                    tempResult = leftNb - rightNb;
-                    break;
-                case '*':
-                    tempResult = leftNb * rightNb;
-                    break;
-                case '/':
-                    if (rightNb == 0)
-                        throw DivideByZero();
-                    tempResult = leftNb / rightNb;
-                    break;
-            }
-            leftNb = tempResult;
+            // switch (secondOperator)
+            // {
+            //     case '+':
+            //         tempResult = leftNb + rightNb;
+            //         break;
+            //     case '-':
+            //         tempResult = leftNb - rightNb;
+            //         break;
+            //     case '*':
+            //         tempResult = leftNb * rightNb;
+            //         break;
+            //     case '/':
+            //         if (rightNb == 0)
+            //             throw DivideByZero();
+            //         tempResult = leftNb / rightNb;
+            //         break;
+            // }
+            leftNb = performSwitch( leftNb, rightNb, secondOperator );
         }
         else{
 
@@ -165,23 +188,25 @@ int     RPN::printResult( void ){
             _stackArg.pop();
         }
         
-        switch (mainOperator)
-        {
-            case '+':
-                result += leftNb;
-                break;
-            case '-':
-                result -= leftNb;
-                break;
-            case '*':
-                result *= leftNb;
-                break;
-            case '/':
-                if (leftNb == 0)
-                    throw DivideByZero();
-                result /= leftNb;
-                break;
-        }
+        // switch (mainOperator)
+        // {
+        //     case '+':
+        //         result += leftNb;
+        //         break;
+        //     case '-':
+        //         result -= leftNb;
+        //         break;
+        //     case '*':
+        //         result *= leftNb;
+        //         break;
+        //     case '/':
+        //         if (leftNb == 0)
+        //             throw DivideByZero();
+        //         result /= leftNb;
+        //         break;
+        // }
+
+        result = performSwitch( result, leftNb, mainOperator );
     }
 
     return result;
