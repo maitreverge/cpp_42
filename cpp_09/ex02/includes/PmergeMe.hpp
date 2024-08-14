@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 12:44:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/14 15:31:13 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/14 15:34:57 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,8 @@ void    PmergeMe::sortVector( void ){
     }
 
     std::sort( bigNumbers.begin(), bigNumbers.end() );
+
+    // ! TO DO : push the first from small at the beginning to big
     
     
     
