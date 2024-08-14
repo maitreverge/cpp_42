@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 12:44:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/14 14:44:34 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/14 15:31:13 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,56 @@ void    PmergeMe::sortVector( void ){
     // Clock in
     this->_timeStartVector = std::clock();
 
+    // ! STEP 1 : if there is a odd numbers in the vector, push it away
+    bool isStruggle = false;
+    int struggle;
+
+    if ( _vectorContainer.size() % 2 != 0 ){
+        
+        isStruggle = true;
+        struggle = *(_vectorContainer.end() - 1);
+        _vectorContainer.pop_back();
+    }
+
+    // ! STEP 2 : make pair of two numbers from the original vector
+    std::vector< std::pair<int, int> > pairedVector;
+
+    // Init the double vector and swap the values of big and small number is necessary
+    for ( std::vector<int>::iterator it = _vectorContainer.begin() ; it != _vectorContainer.end(); ++it)
+    {
+        int bigNb = *it;
+        int smallNb = *++it;
+        if (bigNb < smallNb)
+            std::swap(bigNb, smallNb); 
+        pairedVector.push_back( std::make_pair(bigNb, smallNb) );
+    }
+
+    
+    // printColor(BOLD_BLUE, "printing paired values vector");
+    // for ( std::vector< std::pair<int, int> >::iterator it = pairedVector.begin(); it != pairedVector.end(); ++it)
+    // {
+    //     printNoEndl("Value 1 :");
+    //     print( it->first );
+    //     printNoEndl("Value 2 :");
+    //     print(it->second);
+    // }
+    
+    // ! STEP 3 : Create two vectors of both big and small numbers
+    std::vector<int> bigNumbers; // the big numbers need to be sorted
+    std::vector<int> smallNumbers;
+
+    for ( std::vector< std::pair<int, int> >::iterator it = pairedVector.begin(); it != pairedVector.end(); ++it)
+    {
+        int big = it->first;
+        int small = it->second;
+        
+        bigNumbers.push_back(big);
+        smallNumbers.push_back(small);
+    }
+
+    std::sort( bigNumbers.begin(), bigNumbers.end() );
+    
+    
     
     
     // Clock out
