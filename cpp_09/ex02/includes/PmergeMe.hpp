@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 12:44:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/13 12:44:33 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/14 09:34:42 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,15 @@ class PmergeMe
 
 private:
 
-    // Some private members
+    PmergeMe( const PmergeMe& copy );
+    PmergeMe& operator=( const PmergeMe& right_operator );
 
 public:
 
     PmergeMe( void );
-    PmergeMe( const PmergeMe& copy );
-    PmergeMe& operator=( const PmergeMe& right_operator );
     ~PmergeMe();
 
 };
-
-ostream& operator<<( ostream& output_stream, const PmergeMe& input );
-
 
 // ---------- Functions declarations ---------------
 
@@ -39,28 +35,10 @@ ostream& operator<<( ostream& output_stream, const PmergeMe& input );
 PmergeMe::PmergeMe( void ){}
 
 
-PmergeMe::PmergeMe( const PmergeMe& copy ) :
-    foo(copy._foo), // List init each value individually
-    bar(copy._bar) {}
-    // {*this = copy;} in case of non-member values
+PmergeMe::PmergeMe( const PmergeMe& copy ) {*this = copy;}
 
 
-PmergeMe& PmergeMe::operator=( const PmergeMe& right_operator ){
-
-   if (this != &right_operator){
-        // Reassign every value with the getter value 
-        // this->_foo = right_operator.getFoo()
-    }
-    return *this;
-}
+PmergeMe& PmergeMe::operator=( const PmergeMe& right_operator ){ static_cast<void>(right_operator); return *this; }
 
 
 PmergeMe::~PmergeMe( void ){}
-
-
-ostream& operator<<( ostream& output_stream, const PmergeMe& right_input ){
-
-    // output_stream << right_input.PutAGetterFunctionhere();
-
-    return output_stream;
-}
