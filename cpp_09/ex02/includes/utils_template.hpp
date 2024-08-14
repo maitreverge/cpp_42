@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/14 09:46:57 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/14 10:25:18 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #include <vector>
 #include <algorithm>
 #include <deque>
+#include <exception>
 
 // Using keywords
 using std::string;
