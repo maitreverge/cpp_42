@@ -14,7 +14,7 @@ static void printUsage( void ){
 
 static void  paseArgs( char **av ){
 
-	++av;
+	// ++av;
 
 	// ! Checks if each char is a number
 	for ( size_t i = 0; av[i]; ++i )
@@ -66,7 +66,7 @@ int main( int ac, char**av ){
 
 	try
 	{
-		paseArgs(av);
+		paseArgs(++av);
 	}
 	catch(const std::exception& e)
 	{
@@ -74,6 +74,25 @@ int main( int ac, char**av ){
 		return 1;
 	}
 
-	print("Hello");
+	PmergeMe pmerge(av);
+
+	pmerge.printVector("Before");
+
+	pmerge.sortVector();
+
+	pmerge.printVector("After");
+
+	pmerge.printTimeExecution("Vector");
+
+	//=========================
+
+	pmerge.printList("Before");
+
+	pmerge.sortList();
+
+	pmerge.printList("After");
+
+	pmerge.printTimeExecution("List");
+	// print("Hello");
 	
 }
