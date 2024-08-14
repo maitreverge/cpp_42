@@ -87,13 +87,13 @@ int main( int ac, char**av ){
 
 	//=========================
 
-	pmerge.printList("Before");
+	pmerge.printDeque("Before");
 
-	pmerge.sortList();
+	pmerge.sortDeque();
 
-	pmerge.printList("After");
+	pmerge.printDeque("After");
 
-	pmerge.printTimeExecution("List");
+	pmerge.printTimeExecution("");
 	// print("Hello");
 	
 }

@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 12:44:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/14 12:58:00 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/14 14:44:34 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ private:
     std::clock_t        _timeStartVector;
     std::clock_t        _timeEndVector;
     
-    std::list<int>      _listContainer;
-    std::clock_t        _timeStartList;
-    std::clock_t        _timeEndList;
+    std::deque<int>      _dequeContainer;
+    std::clock_t        _timeStartDeque;
+    std::clock_t        _timeEndDeque;
 
 
 public:
@@ -38,12 +38,12 @@ public:
     ~PmergeMe();
 
     void    printVector( string input );
-    void    printList( string input );
+    void    printDeque( string input );
 
 	void    printTimeExecution( string input );
 
     void    sortVector( void );
-    void    sortList( void );
+    void    sortDeque( void );
 
 };
 
@@ -55,7 +55,7 @@ PmergeMe::PmergeMe( void ){}
 /**
  * @brief Construct a new Pmerge Me
  * 
- * and append the arguments to both the vector and the list.
+ * and append the arguments to both the vector and the deque.
  * 
  * @param av 
  */
@@ -68,7 +68,7 @@ PmergeMe::PmergeMe( char **av ){
 
     for ( size_t i = 0; av[i]; ++i )
     {
-        _listContainer.push_back( std::atoi(av[i]) );
+        _dequeContainer.push_back( std::atoi(av[i]) );
     }
 }
 
@@ -90,22 +90,22 @@ void PmergeMe::printVector( string input ){
     extraLine();
 }
 
-void PmergeMe::printList( string input ){
+void PmergeMe::printDeque( string input ){
 
     if (input == "Before")
-        printColor(BOLD_YELLOW, "List before sort :");
+        printColor(BOLD_YELLOW, "Dequeu before sort :");
     else
-        printColor(BOLD_GREEN, "List after sort :");
+        printColor(BOLD_GREEN, "Dequeu after sort :");
     
-    // We need to use a temp iterator instead of _listContainer.end() - 1
-    std::list<int>::iterator tempIt;
-    for ( std::list<int>::iterator it = _listContainer.begin(); it != _listContainer.end() ; ++it )
+    // We need to use a temp iterator instead of _dequeContainer.end() - 1
+    std::deque<int>::iterator tempIt;
+    for ( std::deque<int>::iterator it = _dequeContainer.begin(); it != _dequeContainer.end() ; ++it )
     {
         tempIt = it;
         tempIt++;
         
         printNoEndl(*it);
-        if (tempIt != _listContainer.end())
+        if (tempIt != _dequeContainer.end())
             printNoEndl(" - ");
     }
 
@@ -123,10 +123,10 @@ void    PmergeMe::printTimeExecution( string input ){
     }
     else{
 
-        printColorNoEndl(BOLD_BLUE, "Time to process sort with std::list = ");
-        printColor(BOLD_GREEN, static_cast<double>(_timeEndList - _timeStartList) / CLOCKS_PER_SEC);
+        printColorNoEndl(BOLD_BLUE, "Time to process sort with std::deque = ");
+        printColor(BOLD_GREEN, static_cast<double>(_timeEndDeque - _timeStartDeque) / CLOCKS_PER_SEC);
     }
-    
+
     extraLine();
 }
 
@@ -135,20 +135,21 @@ void    PmergeMe::sortVector( void ){
     // Clock in
     this->_timeStartVector = std::clock();
 
-    sleep(3);
+    
+    
     // Clock out
     this->_timeEndVector = std::clock();
 }
 
-void    PmergeMe::sortList( void ){
+void    PmergeMe::sortDeque( void ){
 
     // Clock in
-    this->_timeStartList = std::clock();
+    this->_timeStartDeque = std::clock();
 
     
     sleep(3);
     // Clock out
-    this->_timeEndList = std::clock();
+    this->_timeEndDeque = std::clock();
 }
 
 
