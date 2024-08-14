@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 12:44:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/14 15:34:57 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/14 17:12:34 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,10 +185,25 @@ void    PmergeMe::sortVector( void ){
     std::sort( bigNumbers.begin(), bigNumbers.end() );
 
     // ! TO DO : push the first from small at the beginning to big
+
+    // print("ONE");
+    // for (std::vector<int>::iterator it = bigNumbers.begin(); it != bigNumbers.end() ; ++it)
+    // {
+    //     print(*it);
+    // }
     
     
+    bigNumbers.insert(bigNumbers.begin(), smallNumbers.front());
+    smallNumbers.erase(smallNumbers.begin());
+
+    // print("TWO");
+    // for (std::vector<int>::iterator it = bigNumbers.begin(); it != bigNumbers.end() ; ++it)
+    // {
+    //     print(*it);
+    // }
     
-    
+    (void)isStruggle;
+    (void)struggle;
     // Clock out
     this->_timeEndVector = std::clock();
 }
