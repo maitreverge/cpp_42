@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 12:44:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/14 12:23:54 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/14 12:58:00 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,32 +52,23 @@ public:
 
 PmergeMe::PmergeMe( void ){}
 
+/**
+ * @brief Construct a new Pmerge Me
+ * 
+ * and append the arguments to both the vector and the list.
+ * 
+ * @param av 
+ */
 PmergeMe::PmergeMe( char **av ){
 
-    // ! PmergeMe append unsorted to the vector
     for ( size_t i = 0; av[i]; ++i )
 	{
 		_vectorContainer.push_back( std::atoi(av[i]) );
 	}
 
-    // ! PmergeMe append to a list
     for ( size_t i = 0; av[i]; ++i )
     {
         _listContainer.push_back( std::atoi(av[i]) );
-    }
-
-    // print vector
-    print("Print vector");
-    for ( std::vector<int>::iterator it = _vectorContainer.begin(); it != _vectorContainer.end() ; ++it )
-    {
-        print(*it);
-    }
-
-    print("Print list");
-    // print list
-    for ( std::list<int>::iterator it = _listContainer.begin(); it != _listContainer.end() ; ++it )
-    {
-        print(*it);
     }
 }
 
@@ -92,9 +83,11 @@ void PmergeMe::printVector( string input ){
     for ( std::vector<int>::iterator it = _vectorContainer.begin(); it != _vectorContainer.end() ; ++it )
     {
         printNoEndl(*it);
-        if (it != _vectorContainer.end())
+        if (it != _vectorContainer.end() - 1)
             printNoEndl(" - ");
     }
+
+    extraLine();
 }
 
 void PmergeMe::printList( string input ){
@@ -104,18 +97,24 @@ void PmergeMe::printList( string input ){
     else
         printColor(BOLD_GREEN, "List after sort :");
     
-    
+    // We need to use a temp iterator instead of _listContainer.end() - 1
+    std::list<int>::iterator tempIt;
     for ( std::list<int>::iterator it = _listContainer.begin(); it != _listContainer.end() ; ++it )
     {
+        tempIt = it;
+        tempIt++;
+        
         printNoEndl(*it);
-        if (it != _listContainer.end())
+        if (tempIt != _listContainer.end())
             printNoEndl(" - ");
     }
+
+    extraLine();
 }
 
 void    PmergeMe::printTimeExecution( string input ){
 
-    // double elapsedTime;
+    extraLine();
     
     if (input == "Vector"){
 
@@ -125,8 +124,10 @@ void    PmergeMe::printTimeExecution( string input ){
     else{
 
         printColorNoEndl(BOLD_BLUE, "Time to process sort with std::list = ");
-        printColor(BOLD_GREEN, static_cast<double>(_timeEndVector - _timeStartVector) / CLOCKS_PER_SEC);
+        printColor(BOLD_GREEN, static_cast<double>(_timeEndList - _timeStartList) / CLOCKS_PER_SEC);
     }
+    
+    extraLine();
 }
 
 void    PmergeMe::sortVector( void ){
@@ -145,7 +146,7 @@ void    PmergeMe::sortList( void ){
     this->_timeStartList = std::clock();
 
     
-    sleep(2);
+    sleep(3);
     // Clock out
     this->_timeEndList = std::clock();
 }

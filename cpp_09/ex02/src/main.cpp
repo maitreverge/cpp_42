@@ -58,7 +58,7 @@ static void  paseArgs( char **av ){
 
 int main( int ac, char**av ){
 	
-	if ( ac < 2){
+	if (ac < 2){
 		
 		printUsage();
 		return 1;
@@ -74,6 +74,7 @@ int main( int ac, char**av ){
 		return 1;
 	}
 
+	// Constructor + append to the list
 	PmergeMe pmerge(av);
 
 	pmerge.printVector("Before");

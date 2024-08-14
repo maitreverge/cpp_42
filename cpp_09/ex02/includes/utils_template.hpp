@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:17 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/14 12:21:25 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/14 12:49:09 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 #include <exception>
 #include <ctime>
 #include <unistd.h>
+#include <iterator>
 
 // Using keywords
 using std::string;
