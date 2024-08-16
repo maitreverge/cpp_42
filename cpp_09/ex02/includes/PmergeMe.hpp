@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 12:44:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/14 17:12:34 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/08/16 11:34:43 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,11 +196,13 @@ void    PmergeMe::sortVector( void ){
     bigNumbers.insert(bigNumbers.begin(), smallNumbers.front());
     smallNumbers.erase(smallNumbers.begin());
 
-    // print("TWO");
-    // for (std::vector<int>::iterator it = bigNumbers.begin(); it != bigNumbers.end() ; ++it)
-    // {
-    //     print(*it);
-    // }
+    print("Big numbers Displayed after small insertion");
+    for ( std::vector<int>::iterator it = bigNumbers.begin() ; it != bigNumbers.end() ; ++it)
+    {
+        print(*it);
+    }
+    
+    
     
     (void)isStruggle;
     (void)struggle;
