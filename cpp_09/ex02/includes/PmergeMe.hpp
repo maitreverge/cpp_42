@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 12:44:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/18 12:01:33 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/08/18 18:46:54 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ public:
 
     void    sortVector( void );
     void    sortDeque( void );
+
+    long    calculateJacobsthal( int i, std::vector< unsigned long long > &jacob );
 
 };
 
@@ -130,10 +132,22 @@ void    PmergeMe::printTimeExecution( string input ){
     extraLine();
 }
 
+long    PmergeMe::calculateJacobsthal( int i, std::vector< unsigned long long > &jacob ){
+
+    if (i == 0)
+        return 0;
+    else if (i == 1)
+        return 1;
+    
+    return ( jacob[i - 1] + (2 * jacob[i - 2]) ); // Switch from reference to recursive
+    
+}
+
 void    PmergeMe::sortVector( void ){
     // Clock in
     this->_timeStartVector = std::clock();
 
+    // STEP 1: If there is an odd number in the vector, push it away
     bool isStruggle = false;
     int struggle;
 
@@ -149,7 +163,7 @@ void    PmergeMe::sortVector( void ){
     // Init the double vector and swap the values of big and small number if necessary
     for (std::vector<int>::iterator it = _vectorContainer.begin(); it != _vectorContainer.end(); ++it) {
         int bigNb = *it;
-        int smallNb = *++it;
+        int smallNb = *(++it);
         if (bigNb < smallNb)
             std::swap(bigNb, smallNb);
         pairedVector.push_back(std::make_pair(bigNb, smallNb));
@@ -167,22 +181,26 @@ void    PmergeMe::sortVector( void ){
         smallNumbers.push_back(small);
     }
 
+    // Sort the first array
     std::sort(bigNumbers.begin(), bigNumbers.end());
 
     // Insert the first element of smallNumbers into bigNumbers
-    bigNumbers.insert(bigNumbers.begin(), smallNumbers.front());
-    smallNumbers.erase(smallNumbers.begin());
+    // bigNumbers.insert(bigNumbers.begin(), smallNumbers.front());
+    // smallNumbers.erase(smallNumbers.begin());
 
     // Calculate Jacobsthal numbers
-    std::vector<int> jacobsthalNumbers;
+    std::vector< unsigned long long > jacobsthalNumbers;
     int n = smallNumbers.size();
+    
     for (int i = 0; i < n; ++i) {
-        int jacobsthal = (i == 0) ? 0 : (i == 1) ? 1 : jacobsthalNumbers[i - 1] + 2 * jacobsthalNumbers[i - 2];
+        
+        unsigned long long jacobsthal = calculateJacobsthal(i, jacobsthalNumbers);
         jacobsthalNumbers.push_back(jacobsthal);
     }
 
     // Merge the remaining smallNumbers into bigNumbers using Jacobsthal numbers
-    for (size_t i = 1; i < jacobsthalNumbers.size(); ++i) {
+    for (size_t i = 0; i < jacobsthalNumbers.size(); ++i) {
+        
         size_t pos = jacobsthalNumbers[i];
         if (pos < smallNumbers.size()) {
             std::vector<int>::iterator insertPos = std::lower_bound(bigNumbers.begin(), bigNumbers.end(), smallNumbers[pos]);
@@ -192,6 +210,7 @@ void    PmergeMe::sortVector( void ){
 
     // If there was an odd number of elements, insert the struggle element
     if (isStruggle) {
+        
         std::vector<int>::iterator pos = std::lower_bound(bigNumbers.begin(), bigNumbers.end(), struggle);
         bigNumbers.insert(pos, struggle);
     }
@@ -205,6 +224,7 @@ void    PmergeMe::sortVector( void ){
         print(*it);
     }
 
+    // Clock out
     this->_timeEndVector = std::clock();
 }
 
