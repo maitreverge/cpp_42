@@ -77,9 +77,14 @@ int main( int ac, char**av ){
 	// Constructor + append to the list
 	PmergeMe pmerge(av);
 
+
+	// ! Refactor code to match the template class
+    // PmergeMe<std::vector<int>> vectorSorter;
+
+
 	pmerge.printVector("Before");
 
-	pmerge.sortVector();
+	pmerge.sortVector( );
 
 	pmerge.printVector("After");
 
