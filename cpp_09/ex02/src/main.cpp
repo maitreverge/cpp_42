@@ -75,30 +75,28 @@ int main( int ac, char**av ){
 	}
 
 	// Constructor + append to the list
-	PmergeMe pmerge(av);
+	PmergeMe< std::vector<int> > vectorPmerge(av);
+
+	vectorPmerge.printContainer("Before");
+
+	vectorPmerge.sortContainer();
+
+	vectorPmerge.printContainer("After");
+	
+	vectorPmerge.printTimeExecution("Vector");
+
+	PmergeMe< std::deque<int> > vectorPmerge(av);
+
+	PmergeMe< std::deque<int> > dequePmerge(av);
+
+	dequePmerge.printContainer("Before");
+
+	dequePmerge.sortContainer();
+
+	dequePmerge.printContainer("After");
+	
+	dequePmerge.printTimeExecution("Deque");
 
 
-	// ! Refactor code to match the template class
-    // PmergeMe<std::vector<int>> vectorSorter;
-
-
-	pmerge.printVector("Before");
-
-	pmerge.sortVector( );
-
-	pmerge.printVector("After");
-
-	pmerge.printTimeExecution("Vector");
-
-	//=========================
-
-	pmerge.printDeque("Before");
-
-	pmerge.sortDeque();
-
-	pmerge.printDeque("After");
-
-	pmerge.printTimeExecution("");
-	// print("Hello");
 	
 }
