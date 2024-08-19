@@ -56,6 +56,44 @@ static void  paseArgs( char **av ){
 		throw std::invalid_argument("Duplicate Value detected");
 }
 
+static void		printResume( PmergeMe< std::vector<int> > &vectorPmerge, PmergeMe< std::deque<int> > &dequePmerge ){
+
+	extraLine();
+
+	printColorNoEndl(BOLD_YELLOW, "=============");
+	printColorNoEndl(BOLD_YELLOW, "  RESUME  ");
+	printColor(BOLD_YELLOW, "=============");
+
+	extraLine();
+
+	printNoEndl("Total time for std::vector Container = ");
+	printColor(BOLD_CYAN, vectorPmerge.getTotalTime());
+
+	printNoEndl("Total time for std::deque Container = ");
+	printColor(BOLD_CYAN, dequePmerge.getTotalTime());
+
+	extraLine();
+
+	printColor(BOLD_YELLOW, "The time difference between vector and deque containers is :");
+
+	double timeDifference = dequePmerge.getTotalTime() - vectorPmerge.getTotalTime();
+
+
+	if (timeDifference < 0) // Vector Slower
+		printColor(BOLD_GREEN, timeDifference);
+	else // Deque slower
+		printColor(BOLD_GREEN, timeDifference);
+
+	printNoEndl("Which makes a difference of ");
+
+	printColorNoEndl(BOLD_GREEN, " + ");
+	printColorNoEndl(BOLD_GREEN, ( ((dequePmerge.getTotalTime()) / vectorPmerge.getTotalTime() ) - 1) * 100);
+	printColorNoEndl(BOLD_GREEN, " %");
+
+	extraLine();
+
+}
+
 int main( int ac, char**av ){
 	
 	if (ac < 2){
@@ -74,7 +112,8 @@ int main( int ac, char**av ){
 		return 1;
 	}
 
-	// Constructor + append to the list
+	// ================ VECTOR CONTAINER =================
+
 	PmergeMe< std::vector<int> > vectorPmerge(av);
 
 	vectorPmerge.printContainer("Before");
@@ -85,7 +124,7 @@ int main( int ac, char**av ){
 	
 	vectorPmerge.printTimeExecution("Vector");
 
-	PmergeMe< std::deque<int> > vectorPmerge(av);
+	// ================ DEQUE CONTAINER =================
 
 	PmergeMe< std::deque<int> > dequePmerge(av);
 
@@ -98,5 +137,8 @@ int main( int ac, char**av ){
 	dequePmerge.printTimeExecution("Deque");
 
 
-	
+	// ================ PRINT RESUME =================
+
+	printResume(vectorPmerge, dequePmerge);
+
 }
