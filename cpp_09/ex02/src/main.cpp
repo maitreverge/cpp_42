@@ -1,4 +1,16 @@
-#include "PmergeMe.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/19 12:21:34 by flverge           #+#    #+#             */
+/*   Updated: 2024/08/19 12:32:35 by flverge          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/PmergeMe.hpp"
 
 static void printUsage( void ){
 
@@ -14,9 +26,7 @@ static void printUsage( void ){
 
 static void  paseArgs( char **av ){
 
-	// ++av;
-
-	// ! Checks if each char is a number
+	// Checks if each char is a number
 	for ( size_t i = 0; av[i]; ++i )
 	{
 		for ( size_t j = 0; av[i][j]; ++j )
@@ -24,11 +34,9 @@ static void  paseArgs( char **av ){
 			if ( not std::isdigit(av[i][j]) )
 				throw std::invalid_argument("Invalid Character detected");
 		}
-		
 	}
-	// print(av);
 
-	// ! Check if there is no duplicate
+	// Check if there is no either duplicate values or above INT_MAX
 	std::vector<int> tempVector;
 
 	for ( size_t i = 0; av[i]; ++i )
@@ -38,19 +46,10 @@ static void  paseArgs( char **av ){
 		tempVector.push_back( std::atoi(av[i]) );
 	}
 
-	
-
-	// for (std::vector<int>::iterator it = tempVector.begin(); it != tempVector.end(); ++it)
-	// {
-	// 	print(*it);
-	// }
-
-	// ! Check for duplicate numbers in a sorted vector
+	// Check for duplicate numbers in a sorted vector
 	std::sort(tempVector.begin(), tempVector.end());
+
 	std::vector<int>::iterator it = std::unique(tempVector.begin(), tempVector.end());
-
-
-	// return ( it != tempVector.end() ) ? false : true;
 
 	if ( it != tempVector.end())
 		throw std::invalid_argument("Duplicate Value detected");
@@ -78,7 +77,6 @@ static void		printResume( PmergeMe< std::vector<int> > &vectorPmerge, PmergeMe< 
 
 	double timeDifference = dequePmerge.getTotalTime() - vectorPmerge.getTotalTime();
 
-
 	if (timeDifference < 0) // Vector Slower
 		printColor(BOLD_GREEN, timeDifference);
 	else // Deque slower
@@ -86,12 +84,10 @@ static void		printResume( PmergeMe< std::vector<int> > &vectorPmerge, PmergeMe< 
 
 	printNoEndl("Which makes a difference of ");
 
-	printColorNoEndl(BOLD_GREEN, " + ");
 	printColorNoEndl(BOLD_GREEN, ( ((dequePmerge.getTotalTime()) / vectorPmerge.getTotalTime() ) - 1) * 100);
 	printColorNoEndl(BOLD_GREEN, " %");
 
 	extraLine();
-
 }
 
 int main( int ac, char**av ){
@@ -113,11 +109,11 @@ int main( int ac, char**av ){
 	}
 
 	// ================ VECTOR CONTAINER =================
-
 	PmergeMe< std::vector<int> > vectorPmerge(av);
 
 	vectorPmerge.printContainer("Before");
 
+	// Sort Vector Container
 	vectorPmerge.sortContainer();
 
 	vectorPmerge.printContainer("After");
@@ -125,11 +121,11 @@ int main( int ac, char**av ){
 	vectorPmerge.printTimeExecution("Vector");
 
 	// ================ DEQUE CONTAINER =================
-
 	PmergeMe< std::deque<int> > dequePmerge(av);
 
 	dequePmerge.printContainer("Before");
 
+	// Print Real Container
 	dequePmerge.sortContainer();
 
 	dequePmerge.printContainer("After");
@@ -138,7 +134,5 @@ int main( int ac, char**av ){
 
 
 	// ================ PRINT RESUME =================
-
 	printResume(vectorPmerge, dequePmerge);
-
 }
