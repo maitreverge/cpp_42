@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:24:31 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/06 15:25:02 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/19 21:25:25 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,20 @@ void    BitcoinExchange::printResult( string &key, string &value){
     double digitValue = std::atof(value.c_str());
 
     // lower_bound actually searche for the closest result, because results are sorted
+
+    // Edge case if the date < _map.Data date
+    std::map<int, double>::iterator itFirst = _mapData.begin();
     std::map<int, double>::iterator it = _mapData.lower_bound(digitDate);
+    if (digitDate > it->first)
+        it = itFirst;
+    // else
+    //     it = _mapData.lower_bound(digitDate);
+    
 
     // Position variable actually eases the csv data reading
     int position = std::distance(_mapData.begin(), it) + 1;
 
-    if (it->first != digitDate)
+    if (it->first != digitDate and digitDate > itFirst->first)
         it--;
     else
         position++;

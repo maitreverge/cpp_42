@@ -1,0 +1,5 @@
+BTC : premiere et derniere date, refaire le parsing pour la premiere et derniere valeur, faire + de test
+
+RPN : non fonctionnel
+
+PMERGEME : Doubles generes avec shuffle command + typo
