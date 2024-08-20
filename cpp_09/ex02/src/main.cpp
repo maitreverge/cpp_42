@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:21:34 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/19 12:32:35 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/20 10:34:38 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,24 +111,24 @@ int main( int ac, char**av ){
 	// ================ VECTOR CONTAINER =================
 	PmergeMe< std::vector<int> > vectorPmerge(av);
 
-	vectorPmerge.printContainer("Before");
+	vectorPmerge.printContainer("Before", "Vector");
 
 	// Sort Vector Container
 	vectorPmerge.sortContainer();
 
-	vectorPmerge.printContainer("After");
+	vectorPmerge.printContainer("After", "Vector");
 	
 	vectorPmerge.printTimeExecution("Vector");
 
 	// ================ DEQUE CONTAINER =================
 	PmergeMe< std::deque<int> > dequePmerge(av);
 
-	dequePmerge.printContainer("Before");
+	dequePmerge.printContainer("Before", "Deque");
 
 	// Print Real Container
 	dequePmerge.sortContainer();
 
-	dequePmerge.printContainer("After");
+	dequePmerge.printContainer("After", "Deque");
 	
 	dequePmerge.printTimeExecution("Deque");
 

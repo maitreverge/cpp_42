@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:15:01 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/19 12:30:36 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/20 13:39:45 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,28 @@ PmergeMe< Container >::PmergeMe( char **av ):
 }
 
 template < typename Container >
-void PmergeMe< Container >::printContainer( string input ){
+void PmergeMe< Container >::printContainer( string when, string what ){
 
-    if (input == "Before")
-        printColor(BOLD_YELLOW, "Dequeu before sort :");
-    else
-        printColor(BOLD_GREEN, "Dequeu after sort :");
+    string Color;
+    
+    Color = (when == "Before") ? BOLD_YELLOW : BOLD_GREEN;
+    
+    // Deciding what to print depending on the container or the temporality
+    if (what == "Vector"){
+        
+        if (when == "Before")
+            printColor(Color, "Vector before sort :");
+        else
+            printColor(Color, "Vector after sort :");
+    }
+    else{
+
+        if (when == "Before")
+            printColor(Color, "Deque before sort :");
+        else
+            printColor(Color, "Deque after sort :");
+        
+    }
     
     // We need to use a temp iterator instead of _dequeContainer.end() - 1
     typename Container::iterator tempIt;
@@ -127,7 +143,6 @@ void    PmergeMe< Container >::sortContainer( void ){
     // Sort the first array
     std::sort(bigNumbers.begin(), bigNumbers.end());
 
-
     // ! STEP 4 : Calculate Jacobsthal numbers
     std::vector< unsigned long long > jacobsthalNumbers;
     int n = smallNumbers.size();
@@ -142,12 +157,9 @@ void    PmergeMe< Container >::sortContainer( void ){
     // lower_bound is a binary search algo
     for (size_t i = 0; i < jacobsthalNumbers.size(); ++i) {
         
-        size_t pos = jacobsthalNumbers[i];
-        if (pos < smallNumbers.size()) {
-            
-            typename Container::iterator insertPos = std::lower_bound(bigNumbers.begin(), bigNumbers.end(), smallNumbers[pos]);
-            bigNumbers.insert(insertPos, smallNumbers[pos]);
-        }
+        typename Container::iterator insertPos = std::lower_bound(bigNumbers.begin(), bigNumbers.end(), smallNumbers[i]);
+        bigNumbers.insert(insertPos, smallNumbers[i]);
+    
     }
 
     // If there was an odd number of elements, insert the struggle element

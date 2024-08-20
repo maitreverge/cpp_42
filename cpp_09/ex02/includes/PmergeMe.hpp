@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 12:44:12 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/19 12:33:05 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/20 10:43:18 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ public:
     PmergeMe( char **av );
     ~PmergeMe();
 
-    void    printContainer( string input );
+    void    printContainer( string when, string what );
 
 	void    printTimeExecution( string input );
 
