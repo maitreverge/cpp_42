@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 12:34:16 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/13 12:34:35 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/20 10:25:34 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,20 @@ int     RPN::performSwitch( int leftNb, int rightNb, char op ){
     int result;
     switch (op)
     {
-        case '+': result = leftNb + rightNb;
-        case '-': result = leftNb - rightNb;
-        case '*': result = leftNb * rightNb;
+        case '+':
+            result = leftNb + rightNb;
+            break;
+        case '-':
+            result = leftNb - rightNb;
+            break;
+        case '*':
+            result = leftNb * rightNb;
+            break;
         case '/':
             if (rightNb == 0)
                 throw DivideByZero();
             result = leftNb / rightNb;
+            break;
     }
     return result;
 }
