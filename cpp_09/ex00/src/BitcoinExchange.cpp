@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:24:31 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/19 21:25:25 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/08/20 10:14:57 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,20 +82,21 @@ void    BitcoinExchange::printResult( string &key, string &value){
 
     // Edge case if the date < _map.Data date
     std::map<int, double>::iterator itFirst = _mapData.begin();
-    std::map<int, double>::iterator it = _mapData.lower_bound(digitDate);
-    if (digitDate > it->first)
-        it = itFirst;
-    // else
-    //     it = _mapData.lower_bound(digitDate);
+
+    std::map<int, double>::iterator itLast = _mapData.end(); --itLast;
     
+    std::map<int, double>::iterator it = _mapData.lower_bound(digitDate);
+    
+    if (digitDate > it->first and digitDate < itLast->first)
+        it = itFirst;
 
     // Position variable actually eases the csv data reading
     int position = std::distance(_mapData.begin(), it) + 1;
 
     if (it->first != digitDate and digitDate > itFirst->first)
-        it--;
+        --it;
     else
-        position++;
+        ++position;
 
     double refValue = it->second;
 
