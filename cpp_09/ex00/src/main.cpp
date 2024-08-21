@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:32 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/06 15:26:27 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/21 08:49:34 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,12 @@ static bool isPreCheckValid( BitcoinExchange &btc, int &ac, char **av ){
     
     if ( not doesFileExists(btc.getDataFile()) ){
 
-        print(btc.getDataFile());
-        printColor(BOLD_RED, "Either input file or data file can't be accessed");
+        printColor(BOLD_RED, "Data file can't be accessed");
         return false;
     }
     if (not doesFileExists(btc.getInputFile()) ){
 
-        print(btc.getInputFile());
-        printColor(BOLD_RED, "Either input file or data file can't be accessed");
+        printColor(BOLD_RED, "Input file can't be accessed");
         return false;
     }
 
