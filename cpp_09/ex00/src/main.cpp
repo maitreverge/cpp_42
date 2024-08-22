@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:53:32 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/21 08:49:34 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/22 10:17:31 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ static bool isPreCheckValid( BitcoinExchange &btc, int &ac, char **av ){
         printNoEndl("[n] for ");
         printColor(BOLD_RED, "NO");
         printColorNoEndl(BOLD_YELLOW, "CHOICE : ");
-        getline(cin, promptUser);
+        if (!getline(cin, promptUser))
+            customExit("Mdr c koua 7 mer2");
     } while (promptUser != "y" and promptUser != "n" );
 
     // Let's the user prompt the desired file
