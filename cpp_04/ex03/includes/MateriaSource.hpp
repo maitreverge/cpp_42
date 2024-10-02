@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 21:04:31 by flverge           #+#    #+#             */
-/*   Updated: 2024/10/02 21:14:54 by flverge          ###   ########.fr       */
+/*   Updated: 2024/10/02 21:47:19 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ public:
 	MateriaSource& operator=( MateriaSource& right_operator );
 	~MateriaSource();
 
-	void learnMateria(AMateria*);
-	AMateria* createMateria(std::string const & type);
+	void learnMateria(AMateria* m);
+	AMateria* createMateria(const string& type);
 
 	AMateria* getInventory(const unsigned short i);
 
@@ -69,7 +69,6 @@ MateriaSource::MateriaSource( MateriaSource& copy ) {
 		else
 			_inventory[i] = allocMateria->clone();
 	}
-	
 }
 
 
@@ -78,7 +77,7 @@ MateriaSource& MateriaSource::operator=( MateriaSource& right_operator ){
 	if (this != &right_operator){
 		
 		// Clean local inventory
-		for (size_t i = 0; i < 4; ++i)
+		for (size_t i = 0; i < INVENTORY_SIZE; ++i)
 		{
 			if (_inventory[i])
 				delete _inventory[i];
@@ -101,12 +100,46 @@ MateriaSource& MateriaSource::operator=( MateriaSource& right_operator ){
 
 MateriaSource::~MateriaSource( void ){
 
+	// Clean inventory
 	for (size_t i = 0; i < INVENTORY_SIZE; ++i)
 	{
 		if (_inventory[i])
 			delete _inventory[i];
 	}
 }
+
+void MateriaSource::learnMateria(AMateria* m){
+
+	if (!m)
+		throw std::bad_alloc();
+	
+	for (size_t i = 0; i < INVENTORY_SIZE; ++i)
+	{
+		if ( !_inventory[i] )
+		{
+			_inventory[i] = m;
+			printColor(BOLD_GREEN, m->getType() + "successfully added to Materia Source");
+			return;
+		}
+	}
+	printColor(BOLD_RED, "MateriaSource inventory is full, can't add " + m->getType());
+	delete m; // delete the input if it can't be allocated
+}
+
+AMateria* MateriaSource::createMateria(const string& type){
+
+	AMateria* result = 0;
+
+	for (size_t i = 0; i < INVENTORY_SIZE; ++i)
+	{
+		// Look for the first Materia which matches the type input.
+		if (type == _inventory[i]->getType())
+			result = _inventory[i]->clone();
+	}
+
+	return result;
+}
+
 
 AMateria* MateriaSource::getInventory(const unsigned short i){
 
