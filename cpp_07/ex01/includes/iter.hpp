@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 14:48:59 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/30 09:36:53 by flverge          ###   ########.fr       */
+/*   Updated: 2024/10/02 12:35:12 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,18 @@ void    iter( T *adress, int lenghArray, void(function)(T &) ){
     {
         function( adress[i] );
     }
+}
+
+template< typename T >
+void    iter( T *adress, int lenghArray, void(function)(const T &) ){
     
+
+    print("The adress given is :");
+    
+    cout << adress << endl;
+
+    for (int i = 0; i < lenghArray; i++)
+    {
+        function( adress[i] );
+    }
 }
