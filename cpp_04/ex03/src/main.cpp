@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:38:07 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/23 13:39:53 by flverge          ###   ########.fr       */
+/*   Updated: 2024/10/02 12:56:17 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
-#include "Ice.hpp"
-
 int main( void ){
 
-	Ice i1;
-
-	cout << i1.getType(); << endl;
 	
-	return 0;
 }
