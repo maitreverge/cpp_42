@@ -3,56 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils_template.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flverge <flverge@student.42perpignan.fr    +#+  +:+       +#+        */
+/*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:24 by flverge           #+#    #+#             */
-/*   Updated: 2024/06/15 11:47:32 by flverge          ###   ########.fr       */
+/*   Updated: 2024/10/03 13:25:04 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/utils_template.hpp"
 
-/**
- * @brief Print a string with a newline at the end.
- * 
- * @param str 
- */
-void	print( const string& str ){
-	
-	cout << str << endl;
-}
-
-/**
- * @brief Prints a string without a newline at the end.
- * 
- * @param str 
- */
-void	printNoEndl( const string& str ){
-	
-	cout << str;
-}
-
-/**
- * @brief Prints a string with an ANSII `COLOR` and a newline at the end.
- * 
- * @param COLOR 
- * @param str 
- */
-void	printColor( string COLOR, const string& str ){
-	
-	cout << COLOR << str << RESET << endl;
-}
-
-/**
- * @brief Prints a string with an ANSII `COLOR` without a newline at the end.
- * 
- * @param COLOR 
- * @param str 
- */
-void	printColorNoEndl( string COLOR, const string& str ){
-	
-	cout << COLOR << str << RESET;
-}
+#include "../includes/utils_template.hpp"
 
 /**
  * @brief Clears the terminal screen.
@@ -74,37 +34,32 @@ void	customExit( const string& str ){
 }
 
 /**
- * @brief c++98 itoa implementation.
+ * @brief Prints an extra empty line
  * 
- * @param target 
- * @return string 
  */
-string customItoA( const long long int& target ){
+void	extraLine( void ){
 
-	string temp;
-	stringstream out;
-	
-	out << target;
-	temp = out.str();
-
-	return temp;
+	cout << endl;
 }
 
 /**
- * @brief c++98 atoi implementation.
+ * @brief Return `true` if the given `fileName` exists,
+ * Return `false` otherwise.
  * 
- * @param str 
- * @return int 
+ * @param fileName 
+ * @return true 
+ * @return false 
  */
-int customAtoI(const string& str) {
-	
-	int result;
-	
-	std::stringstream ss(str);
-	ss >> result;
-	
-	if (ss.fail()) {
-		customExit("customAtoI failed to allocate in stringstream");
+bool	doesFileExists( const string& fileName){
+
+	FILE * fileStream;
+
+	fileStream = fopen(fileName.c_str(), "r");
+
+	if (fileStream != NULL){
+		
+		fclose(fileStream);
+		return true;
 	}
-	return result;
+	return false;
 }
