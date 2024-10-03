@@ -23,7 +23,18 @@ Students explore the intricacies of architectural design, fostering an appreciat
 
 ## 🛠️ PROGRAM SPECIFICITIES AND CONSIDERATIONS
 
-Unfinished project, soon.
+| Module | Brief |
+|:--------:|:---------:|
+| [cpp_00](https://github.com/maitreverge/cpp_42/tree/master/cpp_00)| This first C++ module is designed to help you understand the specific features of C++ compared with compared with C. This is your first contact with object oriented programming.  |
+| [cpp_01](https://github.com/maitreverge/cpp_42/tree/master/cpp_01)| This in-depth C++ module focuses on memory allocation, references, pointers to members and switch usage. Participants will benefit from hands-on immersion in these key concepts, reinforcing their expertise in object-oriented programming. |
+| [cpp_02](https://github.com/maitreverge/cpp_42/tree/master/cpp_02)| blah |
+| [cpp_03](https://github.com/maitreverge/cpp_42/tree/master/cpp_03)| blah |
+| [cpp_04](https://github.com/maitreverge/cpp_42/tree/master/cpp_04)| blah |
+| [cpp_05](https://github.com/maitreverge/cpp_42/tree/master/cpp_05)| blah |
+| [cpp_06](https://github.com/maitreverge/cpp_42/tree/master/cpp_06)| blah |
+| [cpp_07](https://github.com/maitreverge/cpp_42/tree/master/cpp_07)| blah |
+| [cpp_08](https://github.com/maitreverge/cpp_42/tree/master/cpp_08)| blah |
+| [cpp_09](https://github.com/maitreverge/cpp_42/tree/master/cpp_09)| blah |
 
 ## ⚙️ USAGE
 
