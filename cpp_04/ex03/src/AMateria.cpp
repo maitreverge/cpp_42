@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 10:20:09 by flverge           #+#    #+#             */
-/*   Updated: 2024/10/03 10:20:40 by flverge          ###   ########.fr       */
+/*   Updated: 2024/10/03 10:31:30 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ AMateria& AMateria::operator=( const AMateria& right_operator ){
 		// this->_foo = right_operator.getFoo()
 	}
 	return *this;
+}
+
+// Need to code the method despite can't being called
+void AMateria::use(ICharacter& target){
+
+	(void)(target);
 }
 
 
