@@ -6,7 +6,7 @@
 #    By: flverge <flverge@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/28 09:35:55 by flverge           #+#    #+#              #
-#    Updated: 2024/10/03 10:33:41 by flverge          ###   ########.fr        #
+#    Updated: 2024/10/03 18:13:10 by flverge          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ ORANGE = \033[93m
 CC = c++
 
 # Compiler flags
-FLAGS = -Wall -Wextra -Werror -Wshadow -Wno-reorder -std=c++98 -g
+FLAGS = -Wall -Wextra -Werror -Wshadow -Wno-reorder -std=c++98
 
 # Source files
 SRC_DIR := src

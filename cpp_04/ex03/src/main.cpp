@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:38:07 by flverge           #+#    #+#             */
-/*   Updated: 2024/10/03 13:32:31 by flverge          ###   ########.fr       */
+/*   Updated: 2024/10/03 18:12:48 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int main( void ){
 	me->equip(tmp); // Equip index [3]
 	
 	printColor(BOLD_BLUE, "Attempt to equip character a 5th Materia");
-	me->equip(tmp); // Equip index [4], which will fail
+	me->equip(tmp); // Equip index at full index, which will fails.
 	
 	// Creating another character
 	ICharacter* bob = new Character("bob");
@@ -86,18 +86,20 @@ int main( void ){
 		The following commented test target specifically this limit by throwing an error
 	*/
 
-	// try
-	// {
-	// 	for (size_t i = 0; i < DUMP_SIZE + 1; ++i) // + 1 will raise an error
-	// 	{
-	// 		me->unequip(0);
-	// 		me->equip(tmp);
-	// 	}
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
+	/*
+	try
+	{
+		for (size_t i = 0; i < DUMP_SIZE + 1; ++i) // + 1 will raise an error
+		{
+			me->unequip(0);
+			me->equip(tmp);
+		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	*/
 	
 	delete bob;
 	delete me;
