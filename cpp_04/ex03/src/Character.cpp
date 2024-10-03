@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 10:20:53 by flverge           #+#    #+#             */
-/*   Updated: 2024/10/03 10:21:32 by flverge          ###   ########.fr       */
+/*   Updated: 2024/10/03 10:43:08 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void Character::equip(AMateria* m){
 		if ( !_inventory[i] )
 		{
 			_inventory[i] = m;
-			printColor(BOLD_GREEN, m->getType() + "successfully added");
+			printColor(BOLD_GREEN, m->getType() + " successfully added");
 			return;
 		}
 	}

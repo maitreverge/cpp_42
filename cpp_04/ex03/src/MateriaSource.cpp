@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 10:24:13 by flverge           #+#    #+#             */
-/*   Updated: 2024/10/03 10:24:50 by flverge          ###   ########.fr       */
+/*   Updated: 2024/10/03 10:41:56 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void MateriaSource::learnMateria(AMateria* m){
 		if ( !_inventory[i] )
 		{
 			_inventory[i] = m;
-			printColor(BOLD_GREEN, m->getType() + "successfully added to Materia Source");
+			printColor(BOLD_GREEN, m->getType() + " successfully added to Materia Source");
 			return;
 		}
 	}
@@ -99,10 +99,16 @@ AMateria* MateriaSource::createMateria(const string& type){
 	for (size_t i = 0; i < INVENTORY_SIZE; ++i)
 	{
 		// Look for the first Materia which matches the type input.
-		if (type == _inventory[i]->getType())
+		if (_inventory[i] and type == _inventory[i]->getType()) // ! HOTFIX segfault if !_inventory[i]
+		{
 			result = _inventory[i]->clone();
+			printColor(BOLD_GREEN, "Materia " + _inventory[i]->getType() + " created");
+			break;
+		}
 	}
 
+	if (!result)
+		printColor(BOLD_RED, "Couldn't create Materia");
 	return result;
 }
 
