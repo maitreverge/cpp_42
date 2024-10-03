@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 14:19:26 by flverge           #+#    #+#             */
-/*   Updated: 2024/10/03 10:21:29 by flverge          ###   ########.fr       */
+/*   Updated: 2024/10/03 13:32:52 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,9 @@ public:
 	void unequip(int idx);
 	void use(int idx, ICharacter& target);
 
-	AMateria* getInventory(const unsigned short i);
-	AMateria* getDump(unsigned int i);
-
-
+	AMateria* getInventory(const unsigned short i)const;
+	AMateria* getDump(unsigned int i)const;
+	
 };
 
 ostream& operator<<( ostream& output_stream, const Character& input );
-
-
-// ---------- Functions declarations ---------------
-
-

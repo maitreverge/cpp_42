@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 10:20:53 by flverge           #+#    #+#             */
-/*   Updated: 2024/10/03 10:43:08 by flverge          ###   ########.fr       */
+/*   Updated: 2024/10/03 13:32:14 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ Character::Character( Character& copy ) :
 		else
 			_dump[i] = allocMateria->clone();
 	}
-	
 }
 
 
@@ -109,8 +108,8 @@ Character::~Character( void ){
 	// Clean allocated Materia
 	for (size_t i = 0; i < 4; ++i)
 	{
-		if (_inventory[i])
-			delete _inventory[i];
+		if (_inventory[i] != 0)
+			delete _inventory[i]; // segfault
 	}
 
 	// Clean Dump
@@ -131,15 +130,14 @@ void Character::equip(AMateria* m){
 	
 	for (size_t i = 0; i < 4; ++i)
 	{
-		if ( !_inventory[i] )
+		if ( _inventory[i] == 0 )
 		{
-			_inventory[i] = m;
+			_inventory[i] = m->clone(); // fix for segfault
 			printColor(BOLD_GREEN, m->getType() + " successfully added");
 			return;
 		}
 	}
 	printColor(BOLD_RED, this->getName() + "'s inventory is full, can't add " + m->getType());
-	delete m; // delete the input if it can't be allocated
 }
 
 void Character::unequip(int idx){
@@ -162,13 +160,19 @@ void Character::unequip(int idx){
 
 void Character::use(int idx, ICharacter& target){
 
-	// This call might thrown an error.
+	if (_inventory[idx] == 0)
+	{
+		printColorNoEndl(BOLD_RED, "Using index ");
+		printColorNoEndl(BOLD_RED, idx);
+		printColor(BOLD_RED, " can't be done, nothing at the specified index");
+		return;	
+	}
 	AMateria *current = this->getInventory(idx);
 	
 	current->use(target);
 }
 
-AMateria* Character::getInventory(const unsigned short i){
+AMateria* Character::getInventory(const unsigned short i)const {
 
 	if ( i > 4 ){
 		throw std::out_of_range("Index Inventory is out of bounds");
@@ -176,7 +180,7 @@ AMateria* Character::getInventory(const unsigned short i){
 	return _inventory[i];
 }
 
-AMateria* Character::getDump(unsigned int i){
+AMateria* Character::getDump(unsigned int i)const{
 
 	if ( i > DUMP_SIZE ){
 		throw std::out_of_range("Index DUmp is out of bounds");
@@ -189,6 +193,14 @@ ostream& operator<<( ostream& output_stream, const Character& right_input ){
 
 	output_stream << "Name of Character = ";
 	output_stream << right_input.getName();
+	output_stream << "Inventory [0] =";
+	output_stream << right_input.getInventory(0);
+	output_stream << "Inventory [1] =";
+	output_stream << right_input.getInventory(1);
+	output_stream << "Inventory [2] =";
+	output_stream << right_input.getInventory(2);
+	output_stream << "Inventory [3] =";
+	output_stream << right_input.getInventory(3);
 
 	return output_stream;
 }
