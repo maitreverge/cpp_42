@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:43:22 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/13 12:33:38 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/27 12:17:23 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,8 +171,15 @@ int main( int ac, char** av){
     {
         print(rpn.printResult());
     }
+    catch(const RPN::DivideByZero& e)
+    {
+        std::cerr << e.what() << '\n';
+        print("Hello");
+    }
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
+        print("Hellodfjhgdfbvg");
     }
+    
 }

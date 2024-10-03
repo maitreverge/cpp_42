@@ -6,7 +6,7 @@
 /*   By: flverge <flverge@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:31:02 by flverge           #+#    #+#             */
-/*   Updated: 2024/08/13 12:34:43 by flverge          ###   ########.fr       */
+/*   Updated: 2024/08/27 12:17:51 by flverge          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ public:
 
     class DivideByZero : public exception
     {
-        virtual const char* what() const throw();   
+        public:
+            virtual const char* what() const throw();   
     };
 };
