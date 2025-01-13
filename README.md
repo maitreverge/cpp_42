@@ -58,4 +58,4 @@ Each sub-module is built in the same way :
 > Those files are mostly wrappers functions and ANSI colors for better code readibility.
 
 ## 🤝 CONTRIBUTION
-Contributions are open !
+Contributions are open, open a Github Issue or submit a PR 🚀
